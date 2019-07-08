@@ -1,3 +1,4 @@
+/*
 # DisorderUnderstar
 A Terraria mod.
 Here is all about this "mod"'s code, take it.
@@ -9,4 +10,5 @@ Or you can call me "Reality_Killer", either.
 
 # Why you write this?
 Emm...write this to myself?
-I think this is the best way to explain all of this .txt
+I think this is the best way to explain all of this [.txt](Actually, [.cs])
+*/

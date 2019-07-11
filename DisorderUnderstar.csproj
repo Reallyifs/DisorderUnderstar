@@ -1,0 +1,185 @@
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{693903EF-B57E-4AB6-83ED-36EAFBD6BA2C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <AssemblyName>ClassLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>DisorderUnderstar</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\Microsoft.Xna.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\Microsoft.Xna.Framework.Game.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Graphics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\Microsoft.Xna.Framework.Graphics.dll</HintPath>
+    </Reference>
+    <Reference Include="ReLogic, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\ReLogic.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Terraria.EXE, Version=1.3.5.1, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\Terraria.EXE.exe</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="build.txt" />
+    <Content Include="description.txt" />
+    <Content Include="icon.png" />
+    <Content Include="Libraries\Microsoft.Xna.Framework.dll" />
+    <Content Include="Libraries\Microsoft.Xna.Framework.Game.dll" />
+    <Content Include="Libraries\Microsoft.Xna.Framework.Graphics.dll" />
+    <Content Include="Libraries\ReLogic.dll" />
+    <Content Include="Libraries\Terraria.EXE.exe" />
+    <Content Include="Sounds\Disorder\DisorderEschatologyDeathSound.mp3" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".vs\DisorderUnderstar\v15\.suo" />
+    <None Include=".vs\slnx.sqlite" />
+    <None Include=".vs\VSWorkspaceState.json" />
+    <None Include="Items\.vs\Items\v15\.suo" />
+    <None Include="Items\.vs\slnx.sqlite" />
+    <None Include="Items\.vs\VSWorkspaceState.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Buffs\Disorder\BuffBlessingMoment.cs" />
+    <Compile Include="Buffs\Disorder\DebuffChaosTheory.cs" />
+    <Compile Include="Buffs\Disorder\DebuffBendingMagnets.cs" />
+    <Compile Include="Buffs\DebuffGreenLight.cs" />
+    <Compile Include="Buffs\Disorder\DebuffFourHeavyBlocking.cs" />
+    <Compile Include="Buffs\NMODCrystalLeaf.cs" />
+    <Compile Include="Buffs\MODCrystalLeaf.cs" />
+    <Compile Include="Buffs\Sunset\DebuffSunsetBlackFire.cs" />
+    <Compile Include="DisorderUnderstar.cs" />
+    <Compile Include="Dusts\Code\DustCodeParticle.cs" />
+    <Compile Include="Dusts\Disorder\DustBodyDebris.cs" />
+    <Compile Include="Dusts\Disorder\DustGoldenSymbol.cs" />
+    <Compile Include="Items\Armors\ChlorophyteHeadnail.cs" />
+    <Compile Include="Items\Code\CodeFragments.cs" />
+    <Compile Include="Items\Code\CodeGun.cs" />
+    <Compile Include="Items\Code\CoreGun.cs" />
+    <Compile Include="Items\Disorder\Armors\DisorderBreastplate.cs" />
+    <Compile Include="Items\Disorder\Armors\DisorderHelmet.cs" />
+    <Compile Include="Items\Disorder\Armors\DisorderLeggings.cs" />
+    <Compile Include="Items\Disorder\DisorderAxe.cs" />
+    <Compile Include="Items\Disorder\DisorderBar.cs" />
+    <Compile Include="Items\Disorder\DisorderCross.cs" />
+    <Compile Include="Items\Disorder\DisorderEschatologyBossBag.cs" />
+    <Compile Include="Items\Disorder\DisorderFourtype.cs" />
+    <Compile Include="Items\Disorder\DisorderHammer.cs" />
+    <Compile Include="Items\Disorder\DisorderKnife.cs" />
+    <Compile Include="Items\Disorder\DisorderMyself.cs" />
+    <Compile Include="Items\Disorder\DisorderOmnipotence.cs" />
+    <Compile Include="Items\Disorder\DisorderPickaxe.cs" />
+    <Compile Include="Items\Disorder\DisorderSummoned.cs" />
+    <Compile Include="Items\Disorder\DisorderWings.cs" />
+    <Compile Include="Items\StartStarsStory.cs" />
+    <Compile Include="Items\Armors\SwimwearBody.cs" />
+    <Compile Include="Items\Armors\SwimwearHead.cs" />
+    <Compile Include="Items\Armors\SwimwearLegs.cs" />
+    <Compile Include="Items\Armors\HallowedHeadnail.cs" />
+    <Compile Include="Items\Armors\ShroomiteHeadnail.cs" />
+    <Compile Include="Items\DXTBlade.cs" />
+    <Compile Include="Items\PoisonousPotion.cs" />
+    <Compile Include="Items\Star\Armors\StarHat.cs" />
+    <Compile Include="Items\Star\Armors\StarPants.cs" />
+    <Compile Include="Items\Star\Armors\StarVest.cs" />
+    <Compile Include="Items\Star\FireOfStarZero.cs" />
+    <Compile Include="Items\Star\GalaxyLight.cs" />
+    <Compile Include="Items\GlitchRIO.cs" />
+    <Compile Include="Items\GlitchSIO.cs" />
+    <Compile Include="Items\LikeLifeLine.cs" />
+    <Compile Include="Items\PurpleStone.cs" />
+    <Compile Include="Items\Star\StarFrame.cs" />
+    <Compile Include="Items\Star\BiDirectionalMeteor.cs" />
+    <Compile Include="Items\Star\StarKnife.cs" />
+    <Compile Include="Items\Star\StarMana.cs" />
+    <Compile Include="Items\Star\StarManaGun.cs" />
+    <Compile Include="Items\Star\StellarDeliberate.cs" />
+    <Compile Include="Items\Star\SurroundStar.cs" />
+    <Compile Include="Items\Star\StarSurround.cs" />
+    <Compile Include="Items\RSGun.cs" />
+    <Compile Include="Items\Sunset\BlackLavaBow.cs" />
+    <Compile Include="Items\Sunset\ElectromagnetismLighting.cs" />
+    <Compile Include="Items\Testament\AugustGoose.cs" />
+    <Compile Include="Items\Testament\OctoberOath.cs" />
+    <Compile Include="Items\Testament\SeptemberOldFlames.cs" />
+    <Compile Include="NPCs\Bosses\Code\KeepImagineLastLongUnderSymbol.cs" />
+    <Compile Include="NPCs\Bosses\Disorder\DisorderEschatology.cs" />
+    <Compile Include="Dusts\Code\DustCodeNumber.cs" />
+    <Compile Include="NPCs\Bosses\Star\MeteorTidal.cs" />
+    <Compile Include="FSM_NPC.cs" />
+    <Compile Include="NPCs\Star\Hostile\StarCurseTheStarOfFire.cs" />
+    <Compile Include="NPCs\Star\Hostile\StarIchorTheStarOfFire.cs" />
+    <Compile Include="Projectiles\Disorder\Bosses\DisorderEschatologyTriangleBlack.cs" />
+    <Compile Include="Projectiles\Disorder\Bosses\DisorderEschatologyTriangleBule.cs" />
+    <Compile Include="Projectiles\Disorder\Bosses\DisorderEschatologyTriangleGreen.cs" />
+    <Compile Include="Projectiles\Disorder\Bosses\DisorderEschatologyTriangleLime.cs" />
+    <Compile Include="Projectiles\Disorder\Bosses\DisorderEschatologyTriangleRed.cs" />
+    <Compile Include="Projectiles\Disorder\Bosses\DisorderEschatologyTriangleYellow.cs" />
+    <Compile Include="Projectiles\Disorder\ProDisorderBeam.cs" />
+    <Compile Include="Projectiles\FalseBeam.cs" />
+    <Compile Include="Projectiles\Code\ProCodeLaser.cs" />
+    <Compile Include="Projectiles\Star\Monsters\ProStarCTSOF3.cs" />
+    <Compile Include="Projectiles\Star\Monsters\ProStarITSOF3.cs" />
+    <Compile Include="Projectiles\Star\Monsters\ProStarITSOF2.cs" />
+    <Compile Include="Projectiles\Star\Monsters\ProStarITSOF1.cs" />
+    <Compile Include="Projectiles\Star\ProStarLight.cs" />
+    <Compile Include="Projectiles\Star\Monsters\ProStarCTSOF1.cs" />
+    <Compile Include="Projectiles\Star\Monsters\ProStarCTSOF2.cs" />
+    <Compile Include="Projectiles\Star\ProStarStar.cs" />
+    <Compile Include="Projectiles\Star\ProStarArrow.cs" />
+    <Compile Include="Projectiles\Sunset\ProSunsetBlackFireArrow.cs" />
+    <Compile Include="Projectiles\Sunset\ProSunsetElectromagneticProjectile.cs" />
+    <Compile Include="Projectiles\Sunset\ProSunsetEnergyArrow.cs" />
+    <Compile Include="Projectiles\Sunset\ProSunsetLaser1.cs" />
+    <Compile Include="Projectiles\Sunset\ProSunsetLaser2.cs" />
+    <Compile Include="Projectiles\Sunset\PSEUDOProSunsetElectromagneticProjectile.cs" />
+    <Compile Include="Projectiles\Sunset\PSEUDOProSunsetEnergyArrow.cs" />
+    <Compile Include="Utils\MyDustID.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="NPCs\Star\Friendly\" />
+    <Folder Include="NPCs\Sunset\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
+  <ProjectExtensions>
+    <VisualStudio AllowExistingFolder="true" />
+  </ProjectExtensions>
+</Project>

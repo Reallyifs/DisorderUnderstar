@@ -1,4 +1,4 @@
-﻿using Terraria;
+using Terraria;
 using Terraria.ModLoader;
 using DisorderUnderstar.Utils;
 using Microsoft.Xna.Framework;

@@ -33,20 +33,20 @@ namespace DisorderUnderstar.Projectiles.Sunset
                     (projectile.position, projectile.width, projectile.height,
                     MyDustId.Fire, -projectile.velocity.X, -projectile.velocity.Y, 100,
                     Color.Firebrick, 1f);
-                dust.noGravity = true;
                 dust.noLight = false;
+                dust.noGravity = true;
             }
         }
         public override void Kill(int timeLeft)
         {
-            for (int i=0;i<5;i++)
+            for (int i = 0; i < 5; i++)
             {
                 Dust dust = Dust.NewDustDirect
                     (projectile.position, projectile.width, projectile.height,
                     MyDustId.Fire, 0f, 0f, -10,
                     Color.Firebrick, -0.5f);
-                dust.noGravity = true;
                 dust.noLight = false;
+                dust.noGravity = true;
             }
         }
         public override void OnHitPlayer(Player target, int damage, bool crit)

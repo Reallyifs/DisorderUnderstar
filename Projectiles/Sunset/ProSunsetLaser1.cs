@@ -1,4 +1,5 @@
 ﻿using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using DisorderUnderstar.Utils;
 using Microsoft.Xna.Framework;
@@ -17,7 +18,7 @@ namespace DisorderUnderstar.Projectiles.Sunset
             projectile.height = 4;
             projectile.aiStyle = -1;
             projectile.friendly = true;
-            projectile.timeLeft = 500;
+            projectile.timeLeft = 5000;
             projectile.knockBack = 3f;
             projectile.ignoreWater = true;
             projectile.extraUpdates = 100;
@@ -25,30 +26,38 @@ namespace DisorderUnderstar.Projectiles.Sunset
         public override void AI()
         {
             Lighting.AddLight(projectile.position, 1f, 1f, 0.5f);
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 2; i++)
             {
                 Dust d = Dust.NewDustDirect(projectile.position, projectile.width,
                     projectile.height, MyDustId.YellowGoldenFire, 0, 0, 100, Color.Yellow, 1f);
+                d.scale = (float)Main.rand.Next(90, 110) * 0.014f;
                 d.position = projectile.Center - projectile.velocity * i / 3f;
                 d.velocity *= 0.2f;
                 d.noGravity = true;
-                d.scale = (float)Main.rand.Next(90, 110) * 0.014f;
             }
             NPC tar = null;
             float disMAX = 1000f;
             foreach (NPC npc in Main.npc)
             {
-                if (npc.active && !npc.friendly)
+                if (npc.active && !npc.friendly && npc.type != NPCID.LunarTowerNebula &&
+                    !npc.behindTiles && npc.type != NPCID.LunarTowerSolar &&
+                    npc.type != NPCID.LunarTowerStardust &&
+                    npc.type != NPCID.LunarTowerVortex)
                 {
                     float dis = Vector2.Distance(npc.Center, projectile.Center);
                     if (dis <= disMAX)
                     {
-                        disMAX = dis;
                         tar = npc;
+                        disMAX = dis;
                     }
                 }
             }
-            if (tar != null && projectile.timeLeft % 10 < 1)
+            int attack = 0;
+            {
+                if (attack >= 0) attack++;
+                if (attack == 5) attack = 0;
+            }
+            if (tar != null && attack == 5)
             {
                 Vector2 tarVEC = Vector2.Normalize(tar.Center - projectile.Center);
                 tarVEC *= 6f;

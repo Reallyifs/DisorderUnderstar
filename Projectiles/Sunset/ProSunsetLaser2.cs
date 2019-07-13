@@ -17,6 +17,7 @@ namespace DisorderUnderstar.Projectiles.Sunset
             projectile.damage = 74;
             projectile.height = 4;
             projectile.aiStyle = -1;
+            projectile.hostile = false;
             projectile.friendly = true;
             projectile.timeLeft = 100;
             projectile.knockBack = 4f;
@@ -47,11 +48,8 @@ namespace DisorderUnderstar.Projectiles.Sunset
             NPC tar = Main.npc[(int)projectile.ai[0]];
             if (tar.active)
             {
-                float nVEC = 30f;
-                if (nVEC <= 30f && nVEC > 0)
-                {
-                    nVEC--;
-                }
+                float nVEC = 28f;
+                if (nVEC <= 28f && nVEC > 0) nVEC -= 0.1f;
                 Vector2 tarVEC = Vector2.Normalize(tar.Center - projectile.Center);
                 tarVEC *= 6f;
                 projectile.velocity = (projectile.velocity * nVEC + tarVEC) / (nVEC + 1f);

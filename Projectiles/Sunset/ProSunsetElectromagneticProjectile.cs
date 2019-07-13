@@ -13,17 +13,6 @@ namespace DisorderUnderstar.Projectiles.Sunset
         }
         public override void SetDefaults()
         {
-            {
-                Main.projFrames[projectile.type] = 3;
-                projectile.frameCounter++;
-                if (projectile.frameCounter >= 10)
-                {
-                    projectile.frameCounter = 0;
-                    projectile.frame++;
-                    if (projectile.frame >= 3)
-                        projectile.frame = 0;
-                }
-            }
             projectile.alpha = 0;
             projectile.light = 0.4f;
             projectile.magic = true;
@@ -36,29 +25,42 @@ namespace DisorderUnderstar.Projectiles.Sunset
             projectile.penetrate = 1;
             projectile.ignoreWater = false;
             projectile.tileCollide = true;
+            Main.projFrames[projectile.type] = 3;
         }
         public override void AI()
         {
             Lighting.AddLight(projectile.position, 0f, 0f, 0.5f);
+            {
+                projectile.frameCounter++;
+                if (projectile.frameCounter >= 10)
+                {
+                    projectile.frame++;
+                    projectile.frameCounter = 0;
+                }
+                if (projectile.frame >= 3) projectile.frame = 0;
+            }
             for (int i = 0; i < 3; i++)
             {
                 Dust.NewDustDirect(projectile.Center, projectile.width * 2,
                     projectile.height * 2, MyDustId.BlueMagic, -projectile.velocity.X,
                     -projectile.velocity.Y, 128, Color.Blue, 1.5f);
             }
+            if(projectile.timeLeft<=5997)
             {
                 NPC tar = null;
                 float disMAX = 1000f;
-                Player player = Main.player[projectile.owner];
                 foreach (NPC npc in Main.npc)
                 {
-                    if (npc.active && !npc.friendly && npc.type != NPCID.TargetDummy)
+                    if (npc.active && !npc.friendly && npc.type != NPCID.LunarTowerNebula &&
+                    !npc.behindTiles && npc.type != NPCID.LunarTowerSolar &&
+                    npc.type != NPCID.LunarTowerStardust &&
+                    npc.type != NPCID.LunarTowerVortex)
                     {
-                        float dis = Vector2.Distance(npc.Center, player.Center);
-                        if (disMAX > dis)
+                        float dis = Vector2.Distance(npc.Center, projectile.Center);
+                        if (disMAX >= dis)
                         {
-                            disMAX = dis;
                             tar = npc;
+                            disMAX = dis;
                         }
                     }
                 }
@@ -67,8 +69,7 @@ namespace DisorderUnderstar.Projectiles.Sunset
                     Vector2 tarVEC = Vector2.Normalize(tar.Center - projectile.Center);
                     tarVEC *= 20f;
                     float nVEC = 10f;
-                    if (nVEC <= 10f)
-                        nVEC -= 0.1f;
+                    if (nVEC <= 10f) nVEC -= 0.1f;
                     projectile.velocity = (projectile.velocity * nVEC + tarVEC) / (nVEC + 1f);
                 }
             }

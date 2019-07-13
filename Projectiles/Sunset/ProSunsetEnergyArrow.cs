@@ -30,11 +30,12 @@ namespace DisorderUnderstar.Projectiles.Sunset
             if (projectile.timeLeft < 9999996)
             {
                 Dust dust = Dust.NewDustDirect
-                    (projectile.position, projectile.width, projectile.height,
+                    (projectile.position, projectile.width + 2, projectile.height + 2,
                     MyDustId.BlueMagic, -projectile.velocity.X, -projectile.velocity.Y, 100,
                     Color.LightBlue, 1f);
-                dust.noGravity = true;
                 dust.noLight = false;
+                dust.velocity *= 1.2f;
+                dust.noGravity = true;
             }
         }
         public override void Kill(int timeLeft)
@@ -42,11 +43,12 @@ namespace DisorderUnderstar.Projectiles.Sunset
             for (int i = 0; i < 5; i++)
             {
                 Dust dust = Dust.NewDustDirect
-                    (projectile.position, projectile.width, projectile.height,
-                    MyDustId.BlueCircle, 0f, 0f, -10,
-                    Color.LightBlue, +0.5f);
-                dust.noGravity = true;
+                    (projectile.Center, projectile.width + 4, projectile.height + 4,
+                    MyDustId.BlueCircle, 0f, 0f, 100,
+                    Color.LightBlue, 1.5f);
                 dust.noLight = true;
+                dust.velocity *= 1.2f;
+                dust.noGravity = true;
             }
         }
     }

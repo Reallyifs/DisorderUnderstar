@@ -54,12 +54,12 @@ namespace DisorderUnderstar.Projectiles.Sunset
                 {
                     Dust d = Dust.NewDustDirect(projectile.Center, projectile.width,
                         projectile.height, MyDustId.BlueMagic, -player.velocity.X,
-                        -player.velocity.Y, 128, Color.Blue, ai0 / 106);
+                        -player.velocity.Y, 128, Color.Blue, ai0 / (float)(106f / 1.5f));
                     d.rotation += 0.1f;
                     d.velocity *= 2;
                     Dust u = Dust.NewDustDirect(projectile.Center, projectile.width,
                         projectile.height, MyDustId.BlueCircle, -player.velocity.X,
-                        -player.velocity.Y, 128, Color.Blue, ai0 / 106);
+                        -player.velocity.Y, 128, Color.Blue, ai0 / (float)(106f / 1.5f));
                     u.rotation += 0.3f;
                     u.velocity *= 1;
                 }
@@ -70,7 +70,7 @@ namespace DisorderUnderstar.Projectiles.Sunset
                     projectile.velocity * 7f,
                     mod.ProjectileType<ProSunsetElectromagneticProjectile>(),
                     (int)(projectile.ai[0] / 200f * 200), 5f, projectile.owner);
-                pro1.scale = 1f + (float)projectile.ai[0] / 1616f;
+                pro1.scale = 1f + (float)(projectile.ai[0] / 1616f);
                 if (projectile.timeLeft >= 30) projectile.timeLeft = 30;
                 return;
             }

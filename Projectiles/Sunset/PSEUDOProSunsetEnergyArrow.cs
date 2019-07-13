@@ -54,7 +54,7 @@ namespace DisorderUnderstar.Projectiles.Sunset
                 {
                     Dust d = Dust.NewDustDirect(projectile.Center, projectile.width,
                         projectile.height, MyDustId.BlueMagic, -pl.velocity.X, -pl.velocity.Y,
-                        255 - (ai0 + 99), Color.Blue, (float)ai0 / 156f);
+                        255 - (ai0 + 99), Color.Blue, (float)(ai0 / 104f));
                     d.rotation += 0.09f;
                     d.velocity *= 1.5f;
                 }
@@ -65,7 +65,7 @@ namespace DisorderUnderstar.Projectiles.Sunset
                     (projectile.Center, projectile.velocity * 30f,
                     mod.ProjectileType<ProSunsetEnergyArrow>(),
                     (int)(projectile.ai[0] / 200f * 200), 6f, projectile.owner);
-                pVEC.scale = 1f + ai0 / 312f;
+                pVEC.scale = 1f + (float)(projectile.ai[0] / 2448f);
                 if (projectile.timeLeft > 30) projectile.timeLeft = 30;
                 return;
             }

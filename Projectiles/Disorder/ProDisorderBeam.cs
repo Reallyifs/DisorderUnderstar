@@ -1,4 +1,4 @@
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using DisorderUnderstar.Utils;
@@ -49,7 +49,6 @@ namespace DisorderUnderstar.Projectiles.Disorder
             {
                 NPC tar = null;
                 float disMAX = 1000f;
-                Player pl = Main.player[projectile.owner];
                 foreach(NPC npc in Main.npc)
                 {
                     if (npc.active && !npc.friendly && npc.type != NPCID.TargetDummy &&
@@ -70,8 +69,8 @@ namespace DisorderUnderstar.Projectiles.Disorder
                 {
                     Vector2 tarVEC = Vector2.Normalize(tar.Center - projectile.Center);
                     tarVEC *= 20f;
-                    float nVEC = 25f;
-                    if (nVEC <= 25f) nVEC -= 0.1f;
+                    float nVEC = 20f;
+                    if (nVEC <= 20f) nVEC -= 0.1f;
                     projectile.velocity =
                         (projectile.velocity * nVEC + tarVEC) / (nVEC + 1f);
                 }

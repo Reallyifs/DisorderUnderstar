@@ -1,4 +1,4 @@
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using DisorderUnderstar.Utils;
@@ -10,14 +10,6 @@ namespace DisorderUnderstar.Projectiles.Disorder.Bosses
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("三角型攻击");
-            Main.projFrames[projectile.type] = 6;
-            projectile.frameCounter++;
-            if (projectile.frameCounter >= 10)
-            {
-                projectile.frame++;
-                projectile.frameCounter = 0;
-            }
-            if (projectile.frame >= 6) projectile.frame = 0;
         }
         public override void SetDefaults()
         {
@@ -35,9 +27,19 @@ namespace DisorderUnderstar.Projectiles.Disorder.Bosses
             projectile.penetrate = 1;
             projectile.ignoreWater = false;
             projectile.tileCollide = true;
+            Main.projFrames[projectile.type] = 6;
         }
         public override void AI()
         {
+            {
+                projectile.frameCounter++;
+                if (projectile.frameCounter >= 10)
+                {
+                    projectile.frame++;
+                    projectile.frameCounter = 0;
+                }
+                if (projectile.frame >= 6) projectile.frame = 0;
+            }
             if (projectile.timeLeft <= 149)
             {
                 for(int i = 0; i < 2; i++)

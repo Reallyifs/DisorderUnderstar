@@ -33,6 +33,7 @@ namespace DisorderUnderstar.Items.Armors
             player.meleeDamage += 0.16f;
             player.rangedDamage += 0.64f;
             player.statManaMax2 += 80;
+            // player.AddBuff(mod.BuffType("NNMODCrystalLeaf"), 1);
         }
         public override bool ConsumeAmmo(Player player)
         {

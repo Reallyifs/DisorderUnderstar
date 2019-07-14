@@ -36,10 +36,10 @@ namespace DisorderUnderstar.Items.Code
         }
         public override void AddRecipes()
         {
-            ModRecipe R = new ModRecipe(mod);
+            ModRecipe R = new ModRecipe(mod)
             {
-                R.anyIronBar = true;
-            }
+                anyIronBar = true
+            };
             R.AddIngredient(ItemID.SpaceGun, 1);
             R.AddIngredient(mod, "CodeFragments", 10);
             R.AddIngredient(ItemID.IronBar, 30);

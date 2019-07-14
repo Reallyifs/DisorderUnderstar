@@ -1,4 +1,4 @@
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using DisorderUnderstar.Utils;
@@ -28,7 +28,6 @@ namespace DisorderUnderstar.Projectiles.Star
             projectile.ignoreWater = false;
             projectile.tileCollide = true;
         }
-
         public override void AI()
         {
             {
@@ -73,7 +72,6 @@ namespace DisorderUnderstar.Projectiles.Star
             {
                 NPC tar = null;
                 float disMAX = 500f;
-                Player player = Main.player[projectile.owner];
                 foreach (NPC npc in Main.npc)
                 {
                     // 如果npc活着且敌对
@@ -101,7 +99,7 @@ namespace DisorderUnderstar.Projectiles.Star
                     tarVEC *= 20f;
                     // 声明一个float变量，并随之减小
                     float nVEC = 30f;
-                    if (nVEC <= 30f) nVEC -= 0.1f;
+                    if (nVEC <= 30f && 0f < nVEC) nVEC -= 0.1f;
                     // 朝向npc的单位向量 * nVEC + 3.33%偏移量
                     projectile.velocity =
                         (projectile.velocity * nVEC + tarVEC) / (nVEC + 1f);

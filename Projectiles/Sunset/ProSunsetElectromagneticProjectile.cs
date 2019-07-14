@@ -52,7 +52,9 @@ namespace DisorderUnderstar.Projectiles.Sunset
                 foreach (NPC npc in Main.npc)
                 {
                     if (npc.active && !npc.friendly && npc.type != NPCID.LunarTowerNebula &&
-                    !npc.behindTiles && npc.type != NPCID.LunarTowerSolar &&
+                    !npc.behindTiles && Collision.CanHit
+                    (projectile.Center, 1, 1, npc.position, npc.width, npc.height) &&
+                    npc.type != NPCID.LunarTowerSolar &&
                     npc.type != NPCID.LunarTowerStardust &&
                     npc.type != NPCID.LunarTowerVortex)
                     {

@@ -40,7 +40,9 @@ namespace DisorderUnderstar.Projectiles.Sunset
             foreach (NPC npc in Main.npc)
             {
                 if (npc.active && !npc.friendly && npc.type != NPCID.LunarTowerNebula &&
-                    !npc.behindTiles && npc.type != NPCID.LunarTowerSolar &&
+                    !npc.behindTiles && Collision.CanHit
+                    (projectile.Center, 1, 1, npc.position, npc.width, npc.height) &&
+                    npc.type != NPCID.LunarTowerSolar &&
                     npc.type != NPCID.LunarTowerStardust &&
                     npc.type != NPCID.LunarTowerVortex)
                 {
@@ -64,7 +66,7 @@ namespace DisorderUnderstar.Projectiles.Sunset
                 tarVEC = tarVEC.RotatedBy(Main.rand.NextFloatDirection() * 0.3f);
                 Projectile.NewProjectile(projectile.Center + projectile.velocity * 4f,
                             tarVEC, mod.ProjectileType("ProSunsetLaser2"), 100, 5f,
-                            projectile.owner);
+                            projectile.owner, tar.whoAmI);
             }
         }
     }

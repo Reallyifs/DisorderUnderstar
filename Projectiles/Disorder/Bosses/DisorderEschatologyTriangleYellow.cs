@@ -55,7 +55,8 @@ namespace DisorderUnderstar.Projectiles.Disorder.Bosses
                 float disMAX = 300f;
                 foreach (Player player in Main.player)
                 {
-                    if (player.active && player.aggro > 0)
+                    if (player.active && player.aggro > 0 && Collision.CanHit
+                        (projectile.Center, 1, 1, pl.position, pl.width, pl.height))
                     {
                         float dis = Vector2.Distance(projectile.Center, player.Center);
                         if (disMAX >= dis)
@@ -64,16 +65,15 @@ namespace DisorderUnderstar.Projectiles.Disorder.Bosses
                             disMAX = dis;
                         }
                     }
-                    else if (pl != null)
-                    {
-                        Vector2 plVEC = Vector2.Normalize(pl.Center - projectile.Center);
-                        plVEC *= 35f;
-                        float nVEC = 40f;
-                        if (nVEC >= 40) nVEC -= 0.1f;
-                        projectile.velocity =
-                            (projectile.velocity * nVEC + plVEC) / (nVEC += 1f);
-                    }
-
+                }
+                if (pl != null)
+                {
+                    Vector2 plVEC = Vector2.Normalize(pl.Center - projectile.Center);
+                    plVEC *= 35f;
+                    float nVEC = 40f;
+                    if (nVEC >= 40) nVEC -= 0.1f;
+                    projectile.velocity =
+                        (projectile.velocity * nVEC + plVEC) / (nVEC + 1f);
                 }
             }
         }

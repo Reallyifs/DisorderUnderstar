@@ -38,7 +38,6 @@ namespace DisorderUnderstar.Items
 		}
         public override bool ConsumeAmmo(Player player)
         {
-            player.ammoCost75 = true;
             return Main.rand.Next(10) < 9;
         }
         public override Vector2? HoldoutOffset()

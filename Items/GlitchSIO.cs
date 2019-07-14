@@ -36,7 +36,6 @@ namespace DisorderUnderstar.Items
         }
         public override bool ConsumeAmmo(Player player)
         {
-            item.useAmmo = AmmoID.Arrow;
             return true;
         }
         public override Vector2? HoldoutOffset()

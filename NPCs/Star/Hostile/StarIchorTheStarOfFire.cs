@@ -1,5 +1,5 @@
-﻿using Terraria;
-using System.Linq;
+﻿using System.Linq;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using DisorderUnderstar.Utils;
@@ -31,6 +31,7 @@ namespace DisorderUnderstar.NPCs.Star.Hostile
             npc.noGravity = true;
             npc.noTileCollide = true;
             npc.knockBackResist = 0.1f;
+            npc.buffImmune[BuffID.Ichor] = true;
             npc.buffImmune[BuffID.OnFire] = true;
             npc.buffImmune[BuffID.Confused] = true;
             banner = npc.type;
@@ -48,21 +49,8 @@ namespace DisorderUnderstar.NPCs.Star.Hostile
                         {
                             Dust.NewDustDirect
                                 (npc.position, npc.width, npc.height,
-                                MyDustId.GreenFXPowder, 0f, 0f, +85,
+                                MyDustId.YellowFx, 0f, 0f, +85,
                                 Color.Yellow, -0.3f);
-                        }
-                        if (Main.player.Any
-                            (p => p.active && p.Distance(npc.Center) < 600))
-                        {
-                            SwitchState((int)NPCState.NAttack);
-                        }
-                        if (npc.life < 480)
-                        {
-                            SwitchState((int)NPCState.LAttack);
-                        }
-                        else if (npc.life < 1200)
-                        {
-                            SwitchState((int)NPCState.YAttack);
                         }
                         break;
                     }
@@ -75,27 +63,18 @@ namespace DisorderUnderstar.NPCs.Star.Hostile
                         {
                             Dust.NewDustDirect
                                 (npc.position, npc.width, npc.height,
-                                MyDustId.GreenFXPowder, 0f, 0f, +85,
+                                MyDustId.YellowFx, 0f, 0f, +85,
                                 Color.Yellow, -0.3f);
                             Player p = Main.player[npc.target];
                             Projectile.NewProjectile
                                 (p.position, p.velocity, mod.ProjectileType("ProStarITSOF1"),
                                 npc.damage + npc.life, 2f, npc.damage);
                         }
-                        if (npc.life < 480)
-                        {
-                            SwitchState((int)NPCState.LAttack);
-                        }
-                        else if (npc.life < 1200)
-                        {
-                            SwitchState((int)NPCState.YAttack);
-                        }
                         break;
                     }
                 case NPCState.YAttack:
                     {
                         aiType = NPCID.MeteorHead;
-                        animationType = NPCID.MeteorHead;
                         npc.color = Color.Lime;
                         npc.damage += 28;
                         npc.defense += 34;
@@ -103,35 +82,31 @@ namespace DisorderUnderstar.NPCs.Star.Hostile
                         {
                             Dust.NewDustDirect
                                 (npc.position, npc.width, npc.height,
-                                MyDustId.GreenFXPowder, 0f, 0f, +85,
-                                Color.LimeGreen, -0.3f);
+                                MyDustId.YellowFx, 0f, 0f, +85,
+                                Color.Yellow, -0.3f);
                             Player p = Main.player[npc.target];
                             Projectile.NewProjectile
                                 (p.position, p.velocity, mod.ProjectileType("ProStarITSOF2"),
                                 npc.damage + p.dpsDamage, 2.5f, npc.damage + 10);
-                        }
-                        if (npc.life < 480)
-                        {
-                            SwitchState((int)NPCState.LAttack);
                         }
                         break;
                     }
                 case NPCState.LAttack:
                     {
                         aiType = NPCID.EyeofCthulhu;
-                        npc.defense += 7;
                         npc.damage += 16;
+                        npc.defense += 7;
                         npc.behindTiles = true;
                         for (int i = 0; i < 2; i++)
                         {
                             Dust.NewDustDirect
                                 (npc.position, npc.width, npc.height,
-                                MyDustId.GreenFXPowder, 0f, 0f, +128,
+                                MyDustId.YellowFx, 0f, 0f, +128,
                                 Color.Lime, -0.5f);
                         }
-                        if (Main.rand.Next(10) < 1)
+                        if (Main.rand.Next(10) < 3)
                         {
-                            for (int i = 0; i < 2; i++)
+                            for (int i = 0; i < 3; i++)
                             {
                                 Player p = Main.player[npc.target];
                                 Projectile.NewProjectile
@@ -148,27 +123,38 @@ namespace DisorderUnderstar.NPCs.Star.Hostile
                         npc.damage = 64;
                         npc.defense = 24;
                         npc.lifeMax = 4800;
-                        npc.friendly = false;
                         npc.lifeRegen += 18;
-                        npc.noGravity = true;
-                        npc.noTileCollide = true;
                         npc.knockBackResist = 0.05f;
-                        npc.buffImmune[BuffID.OnFire] = true;
-                        npc.buffImmune[BuffID.Ichor] = true;
-                        banner = npc.type;
-                        bannerItem = mod.ItemType("FireOfStarZero");
-                        Dust.NewDustDirect
-                                (npc.position, npc.width, npc.height,
-                                MyDustId.GreenFXPowder, 0f, 0f, +128,
-                                Color.LimeGreen, -0.5f);
+                        for(int i = 0; i < 2; i++)
+                        {
+                            Dust.NewDustDirect
+                                    (npc.position, npc.width, npc.height,
+                                    MyDustId.GreenFXPowder, 0f, 0f, +128,
+                                    Color.LimeGreen, -0.5f);
+                        }
+                        {
+                            if (Main.player.Any
+                                (p => p.active && p.Distance(npc.Center) < 600))
+                            {
+                                SwitchState((int)NPCState.NAttack);
+                            }
+                            else if (npc.life <= 480)
+                            {
+                                SwitchState((int)NPCState.LAttack);
+                            }
+                            else if (npc.life <= 1200)
+                            {
+                                SwitchState((int)NPCState.YAttack);
+                            }
+                        }
                     }
                     break;
             }
         }
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            target.AddBuff(BuffID.OnFire, damage * 2);
             target.AddBuff(BuffID.Ichor, 6000 / damage);
+            target.AddBuff(BuffID.OnFire, damage * 2);
             target.AddBuff(BuffID.BrokenArmor, Player.tileRangeX / Player.tileRangeY);
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)

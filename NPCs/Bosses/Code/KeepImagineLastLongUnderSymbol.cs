@@ -37,52 +37,52 @@ namespace DisorderUnderstar.NPCs.Bosses.Code
         }
         public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit)
         {
-            item.mana += 999999999;
-            item.damage -= 999999999;
             item.crit -= 999999999;
-            item.knockBack -= 999999999;
-            item.autoReuse = false;
-            item.useAnimation += 999999999;
-            item.useTime += 999999999;
-            item.useAmmo = AmmoID.Bullet;
-            item.useAmmo = AmmoID.Arrow;
-            item.useStyle = 4;
-            item.value = Item.sellPrice(0, 0, 0, 1);
-            item.value += Item.buyPrice(999999999, 999999999, 999999999, 999999999);
+            item.mana += 999999999;
             item.magic = true;
             item.melee = true;
+            item.value = Item.sellPrice(0, 0, 0, 1);
+            item.value += Item.buyPrice(999999999, 999999999, 999999999, 999999999);
+            item.damage -= 999999999;
+            item.ranged = false;
+            item.summon = false;
+            item.thrown = false;
             item.noMelee = true;
             item.notAmmo = true;
-            item.thrown = false;
-            item.summon = false;
-            item.ranged = false;
-            player.lifeRegen -= 999999999;
-            player.statLifeMax2 = 1;
+            item.useAmmo = AmmoID.Arrow;
+            item.useAmmo = AmmoID.Bullet;
+            item.useTime += 999999999;
+            item.useStyle = 4;
+            item.autoReuse = false;
+            item.knockBack -= 999999999;
+            item.useAnimation += 999999999;
             player.dead = true;
+            player.lifeRegen -= 999999999;
             player.maxMinions = 0;
+            player.statLifeMax2 = 1;
             player.statManaMax2 = 1;
             player.KillMe(PlayerDeathReason.ByCustomReason(player.name + "的大剑反打了自己"), 9999, 0);
         }
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            target.lifeRegen -= 999999999;
-            target.statLifeMax2 = 1;
             target.dead = true;
-            target.maxMinions = 0;
-            target.statManaMax2 = 1;
+            target.lifeRegen -= 999999999;
             target.magicCrit -= 999999999;
-            target.meleeDamage -= 999999999;
+            target.maxMinions = 0;
             target.meleeSpeed += 999999999;
+            target.meleeDamage -= 999999999;
+            target.statLifeMax2 = 1;
+            target.statManaMax2 = 1;
             target.KillMe(PlayerDeathReason.ByCustomReason(target.name + "被虚空的力量扭曲了。"), 9999, 0);
         }
         public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
         {
-            projectile.damage -= 999999999;
-            projectile.knockBack -= 999999999;
-            projectile.melee = false;
-            projectile.ranged = false;
-            projectile.minion = false;
             projectile.magic = true;
+            projectile.melee = false;
+            projectile.damage -= 999999999;
+            projectile.knockBack -= 999999999f;
+            projectile.minion = false;
+            projectile.ranged = false;
             projectile.thrown = false;
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
@@ -98,19 +98,10 @@ namespace DisorderUnderstar.NPCs.Bosses.Code
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            if (Main.pumpkinMoon)
-            {
-                return 0.09f;
-            }
-            else if (Main.snowMoon)
-            {
-                return 0.09f;
-            }
-            else if (Main.bloodMoon)
-            {
-                return 0.01f;
-            }
-            return 0.0f;
+            if (Main.pumpkinMoon) return 0.09f;
+            else if (Main.snowMoon) return 0.09f;
+            else if (Main.bloodMoon) return 0.01f;
+            else return 0.0f;
         }
         public override void BossLoot(ref string name, ref int potionType)
         {

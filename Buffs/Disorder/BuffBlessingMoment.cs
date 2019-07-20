@@ -2,7 +2,6 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using DisorderUnderstar.Dusts.Disorder;
 namespace DisorderUnderstar.Buffs.Disorder
 {
     public class BuffBlessingMoment : ModBuff

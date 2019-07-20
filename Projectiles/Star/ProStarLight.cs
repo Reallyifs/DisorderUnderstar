@@ -9,7 +9,7 @@ namespace DisorderUnderstar.Projectiles.Star
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("星星激光");
+            DisplayName.SetDefault("金色激光");
         }
         public override void SetDefaults()
         {

@@ -162,10 +162,12 @@
     <Compile Include="Projectiles\Star\Monsters\ProStarITSOF3.cs" />
     <Compile Include="Projectiles\Star\Monsters\ProStarITSOF2.cs" />
     <Compile Include="Projectiles\Star\Monsters\ProStarITSOF1.cs" />
+    <Compile Include="Projectiles\Star\ProStarDownStar.cs" />
+    <Compile Include="Projectiles\Star\ProStarFollowingStar2.cs" />
     <Compile Include="Projectiles\Star\ProStarLight.cs" />
     <Compile Include="Projectiles\Star\Monsters\ProStarCTSOF1.cs" />
     <Compile Include="Projectiles\Star\Monsters\ProStarCTSOF2.cs" />
-    <Compile Include="Projectiles\Star\ProStarStar.cs" />
+    <Compile Include="Projectiles\Star\ProStarFollowingStar1.cs" />
     <Compile Include="Projectiles\Star\ProStarArrow.cs" />
     <Compile Include="Projectiles\Sunset\ProSunsetBlackFireArrow.cs" />
     <Compile Include="Projectiles\Sunset\ProSunsetElectromagneticProjectile.cs" />

@@ -18,12 +18,12 @@ namespace DisorderUnderstar.Items.Star.Armors
         }
         public override void SetDefaults()
         {
-            item.width = 20;
-            item.height = 16;
             item.rare = ItemRarityID.Orange;
-            item.defense = 9;
             item.value = Item.sellPrice(0, 2, 50, 0);
             item.value = Item.buyPrice(0, 5, 0, 0);
+            item.width = 20;
+            item.height = 16;
+            item.defense = 9;
             item.maxStack = 1;
         }
         public override void UpdateAccessory(Player player, bool hideVisual)

@@ -19,7 +19,7 @@ namespace DisorderUnderstar.Items.Star
             item.rare = ItemRarityID.LightPurple;
             item.magic = true;
             item.scale = 1f;
-            item.shoot = mod.ProjectileType("ProStarStar");
+            item.shoot = mod.ProjectileType("ProStarFollowingStar1");
             item.value = Item.sellPrice(0, 1, 50, 0);
             item.width = 40;
             item.damage = 12;

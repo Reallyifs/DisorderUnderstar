@@ -107,7 +107,7 @@ namespace DisorderUnderstar.Items.Star
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod, "StarSurround", 1);
             recipe.AddIngredient(mod, "SurroundStar", 1);
-            recipe.AddIngredient(mod, "FireOfStarZero", 16);
+            // recipe.AddIngredient(mod, "FireOfStarZero", 16);
             recipe.AddIngredient(mod, "StarFrame", 8);
             recipe.AddIngredient(ItemID.BoneGlove, 1);
             recipe.AddIngredient(ItemID.HiveBackpack, 1);

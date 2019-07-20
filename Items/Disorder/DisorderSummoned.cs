@@ -13,7 +13,10 @@ namespace DisorderUnderstar.Items.Disorder
                 "让你不寒而栗……\n" +
                 "“我，回来了。”\n" +
                 "-\n" +
-                "召唤[无序·恐惧症]\n"+
+                "召唤[无序·恐惧症]\n" +
+                "-\n" +
+                "目前因为作者的咕咕咕，所以此物品暂不能使用。\n" +
+                "敬请期待。\n" +
                 "-");
         }
         public override void SetDefaults()

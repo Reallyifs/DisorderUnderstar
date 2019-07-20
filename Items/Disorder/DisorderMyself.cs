@@ -26,8 +26,7 @@ namespace DisorderUnderstar.Items.Disorder
                 "如果以上条件都不满足，移动速度乘以8\n" +
                 "-\n" +
                 "当生命低于生命上限的三分之一时，给予你持续30秒的“冰障”Buff\n" +
-                "如果以上条件不满足，给予你“祝福时刻”Buff\n" +
-                "同时给予你“混乱理论”Debuff\n" +
+                "如果以上条件不满足，给予你“祝福时刻”Buff，同时给予你“混乱理论”Debuff\n" +
                 "-\n" +
                 "无论你在何种状态，给予你“偏转磁极”Debuff\n" +
                 "-\n" +
@@ -242,12 +241,11 @@ namespace DisorderUnderstar.Items.Disorder
             recipe1.AddIngredient(mod, "DisorderFourtype", 1);
             recipe1.AddIngredient(mod, "DisorderOmnipotence", 1);
             recipe1.AddIngredient(mod, "DisorderCross", 1);
-            recipe1.AddIngredient(mod, "GlitchSIO", 1);
             recipe1.AddIngredient(mod, "DisorderBar", 33);
             recipe1.AddIngredient(mod, "LikeLifeLine", 10);
             recipe1.AddIngredient(mod, "StartStarsStory", 10);
-            recipe1.AddIngredient(ItemID.LifeCrystal, 50);
-            recipe1.AddIngredient(ItemID.ManaCrystal, 50);
+            recipe1.AddIngredient(ItemID.LifeCrystal, 25);
+            recipe1.AddIngredient(ItemID.ManaCrystal, 25);
             recipe1.AddTile(TileID.LunarCraftingStation);
             recipe1.SetResult(this);
             recipe1.AddRecipe();

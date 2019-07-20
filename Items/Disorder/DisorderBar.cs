@@ -21,6 +21,11 @@ namespace DisorderUnderstar.Items.Disorder
             item.height = 22;
             item.maxStack = 999;
             item.expertOnly = true;
+            if (item.stack == 1)
+            {
+                Tooltip.SetDefault("【无序-Disorder】\n" +
+                    "这个锭里散发出了许多能量，应该能拿来做些什么……");
+            }
         }
         public override void AddRecipes()
         {

@@ -61,7 +61,7 @@ namespace DisorderUnderstar.Items.Sunset
                 item.shootSpeed = 0f;
                 item.useAnimation = 40;
             }
-            return false;
+            return true;
         }
         public override void AddRecipes()
         {

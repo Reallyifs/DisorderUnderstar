@@ -31,7 +31,7 @@ namespace DisorderUnderstar.Items.Code
             item.useStyle = 5;
             item.autoReuse = true;
             item.knockBack = 1f;
-            item.shootSpeed = 10f;
+            item.shootSpeed = 20f;
             item.useAnimation = 24;
         }
         public override void AddRecipes()

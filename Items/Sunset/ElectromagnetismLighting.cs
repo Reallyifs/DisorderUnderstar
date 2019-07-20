@@ -45,7 +45,7 @@ namespace DisorderUnderstar.Items.Sunset
             {
                 item.crit = 70;
                 item.mana = 10;
-                item.shoot = mod.ProjectileType("ProSunsetElectromagneticProjectile");
+                item.shoot = mod.ProjectileType("PESUDOProSunsetElectromagneticProjectile");
                 item.damage = 136;
                 item.channel = true;
                 item.useTime = 20;
@@ -67,7 +67,7 @@ namespace DisorderUnderstar.Items.Sunset
                 item.shootSpeed = 100f;
                 item.useAnimation = 16;
             }
-            return false;
+            return true;
         }
         public override void AddRecipes()
         {

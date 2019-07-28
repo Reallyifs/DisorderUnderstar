@@ -3,7 +3,7 @@ author = 实弑Reality_Killer（Really'if.s.）
 version = 0.0.2.0
 hideResources = true
 hideCode = true
-includeSource = true
-includePDB = true
+includeSource = false
+includePDB = false
 homepage = https://jq.qq.com/?_wv=1027&k=5kHMuc2
 buildIgnore = *.csproj, *.sln, obj\*, bin\*, *.suo, *.user, .git\*, .vs\*, Libraries\*

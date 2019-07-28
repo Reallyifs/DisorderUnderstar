@@ -18,7 +18,6 @@ namespace DisorderUnderstar.NPCs.Star.Hostile
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("诅咒火之星");
-            Main.npcFrameCount[npc.type] = 2;
         }
         public override void SetDefaults()
         {
@@ -36,6 +35,7 @@ namespace DisorderUnderstar.NPCs.Star.Hostile
             npc.buffImmune[BuffID.Confused] = true;
             banner = npc.type;
             bannerItem = mod.ItemType("FireOfStarZero");
+            Main.npcFrameCount[npc.type] = 2;
         }
         public override void AI()
         {
@@ -119,8 +119,6 @@ namespace DisorderUnderstar.NPCs.Star.Hostile
                     }
                 default:
                     {
-                        aiType = NPCID.EyeofCthulhu;
-                        animationType = NPCID.MeteorHead;
                         npc.damage = 64;
                         npc.defense = 24;
                         npc.lifeMax = 4800;
@@ -160,18 +158,8 @@ namespace DisorderUnderstar.NPCs.Star.Hostile
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            if (Main.bloodMoon)
-            {
-                return 0.2f;
-            }
-            if (Main.dayTime)
-            {
-                return SpawnCondition.Crimson.Chance * 0.2f;
-            }
-            else if (!Main.dayTime)
-            {
-                return SpawnCondition.Crimson.Chance * 0.4f;
-            }
+            if (Main.dayTime) return SpawnCondition.Corruption.Chance * 0.1f;
+            else if (!Main.dayTime) return SpawnCondition.Corruption.Chance * 0.2f;
             return 0.0f;
         }
         public override void NPCLoot()

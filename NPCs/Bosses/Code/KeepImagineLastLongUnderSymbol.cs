@@ -1,6 +1,6 @@
-﻿using Terraria.ModLoader;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 using Terraria.DataStructures;
 namespace DisorderUnderstar.NPCs.Bosses.Code
 {
@@ -13,14 +13,14 @@ namespace DisorderUnderstar.NPCs.Bosses.Code
         public override void SetDefaults()
         {
             npc.boss = true;
-            npc.lifeMax = 9999999;
             npc.defense = 0;
+            npc.lifeMax = 9999999;
             if (npc.defense == 0)
             {
                 npc.lifeRegen += 100;
                 npc.defense += 1;
             }
-            if (npc.timeLeft > 6000)
+            if (npc.timeLeft >= 6000)
             {
                 if (npc.defense >= 1)
                 {
@@ -28,7 +28,7 @@ namespace DisorderUnderstar.NPCs.Bosses.Code
                     npc.lifeRegen -= 99;
                 }
             }
-            if (npc.lifeRegen > 50)
+            if (npc.lifeRegen >= 50)
             {
                 npc.defense = 0;
                 npc.damage = 999999999;
@@ -57,6 +57,7 @@ namespace DisorderUnderstar.NPCs.Bosses.Code
             item.knockBack -= 999999999;
             item.useAnimation += 999999999;
             player.dead = true;
+            player.statLife = 0;
             player.lifeRegen -= 999999999;
             player.maxMinions = 0;
             player.statLifeMax2 = 1;
@@ -66,6 +67,7 @@ namespace DisorderUnderstar.NPCs.Bosses.Code
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
             target.dead = true;
+            target.statLife = 0;
             target.lifeRegen -= 999999999;
             target.magicCrit -= 999999999;
             target.maxMinions = 0;
@@ -77,13 +79,16 @@ namespace DisorderUnderstar.NPCs.Bosses.Code
         }
         public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
         {
+            Player pl = Main.player[projectile.owner];
+            pl.dead = true;
+            pl.statLife = 0;
             projectile.magic = true;
             projectile.melee = false;
-            projectile.damage -= 999999999;
-            projectile.knockBack -= 999999999f;
+            projectile.damage = 0;
             projectile.minion = false;
             projectile.ranged = false;
             projectile.thrown = false;
+            projectile.knockBack = 0f;
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
@@ -98,10 +103,7 @@ namespace DisorderUnderstar.NPCs.Bosses.Code
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            if (Main.pumpkinMoon) return 0.09f;
-            else if (Main.snowMoon) return 0.09f;
-            else if (Main.bloodMoon) return 0.01f;
-            else return 0.0f;
+            return 0.0f;
         }
         public override void BossLoot(ref string name, ref int potionType)
         {

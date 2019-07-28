@@ -32,7 +32,7 @@ namespace DisorderUnderstar.Projectiles.Sunset
                 Dust dust = Dust.NewDustDirect
                     (projectile.position, projectile.width, projectile.height,
                     MyDustId.Fire, -projectile.velocity.X, -projectile.velocity.Y, 100,
-                    Color.Firebrick, 1f);
+                    Color.Black, 1f);
                 dust.noLight = false;
                 dust.noGravity = true;
             }
@@ -42,9 +42,9 @@ namespace DisorderUnderstar.Projectiles.Sunset
             for (int i = 0; i < 5; i++)
             {
                 Dust dust = Dust.NewDustDirect
-                    (projectile.position, projectile.width, projectile.height,
-                    MyDustId.Fire, 0f, 0f, -10,
-                    Color.Firebrick, -0.5f);
+                    (projectile.Center, projectile.width + 3, projectile.height + 3,
+                    MyDustId.Fire, 0f, 0f, 10,
+                    Color.Firebrick, 1.5f);
                 dust.noLight = false;
                 dust.noGravity = true;
             }

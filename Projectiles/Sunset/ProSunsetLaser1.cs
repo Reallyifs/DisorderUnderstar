@@ -61,8 +61,7 @@ namespace DisorderUnderstar.Projectiles.Sunset
             }
             if (tar != null && attack == 5)
             {
-                Vector2 tarVEC = Vector2.Normalize(tar.Center - projectile.Center);
-                tarVEC *= 6f;
+                Vector2 tarVEC = Vector2.Normalize(tar.Center - projectile.Center) * 6;
                 tarVEC = tarVEC.RotatedBy(Main.rand.NextFloatDirection() * 0.3f);
                 Projectile.NewProjectile(projectile.Center + projectile.velocity * 4f,
                             tarVEC, mod.ProjectileType("ProSunsetLaser2"), 100, 5f,

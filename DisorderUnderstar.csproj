@@ -158,6 +158,7 @@
     <Compile Include="Projectiles\Code\ProCodeLaser.cs" />
     <Compile Include="Projectiles\NHolyArrow.cs" />
     <Compile Include="Projectiles\NNHolyArrow.cs" />
+    <Compile Include="Projectiles\NNNHolyArrow.cs" />
     <Compile Include="Projectiles\Star\Monsters\ProStarCTSOF3.cs" />
     <Compile Include="Projectiles\Star\Monsters\ProStarITSOF3.cs" />
     <Compile Include="Projectiles\Star\Monsters\ProStarITSOF2.cs" />

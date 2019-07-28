@@ -8,7 +8,7 @@ namespace DisorderUnderstar.Items.Testament
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("十月誓言");
-            Tooltip.SetDefault("【最后之剑-Last Swords】\n" +
+            Tooltip.SetDefault("【遗言-Testament】\n" +
                 "-十月-\n" +
                 "“在绝望的北端斩掉失色的紫罗兰。”\n" +
                 "-\n" +

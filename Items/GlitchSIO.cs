@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using DisorderUnderstar.Utils;
 using Microsoft.Xna.Framework;
 namespace DisorderUnderstar.Items
 {
@@ -17,13 +18,13 @@ namespace DisorderUnderstar.Items
             item.crit = 55;
             item.rare = ItemRarityID.Red;
             item.scale = 1f;
-            item.shoot = ProjectileID.MoonlordArrow;
             item.value = Item.sellPrice(121, 31, 41, 50);
             item.width = 20;
             item.damage = 969;
             item.expert = true;
             item.height = 34;
             item.ranged = true;
+            item.useAmmo = AmmoID.Arrow;
             item.useTime = 3;
             item.noMelee = false;
             item.useStyle = 5;
@@ -34,9 +35,48 @@ namespace DisorderUnderstar.Items
             item.shootSpeed = 30f;
             item.useAnimation = 30;
         }
-        public override bool ConsumeAmmo(Player player)
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            return true;
+            #region 发射粒子
+            float dis = 5f;
+            float disMAX = 300f;
+            Vector2 uVEC = new Vector2(speedX, speedY);
+            uVEC.Normalize();
+            for (float i = 0f; i < disMAX; i += dis)
+            {
+                var d = Dust.NewDustDirect(position + uVEC * i, 4, 4, MyDustId.BlueMagic,
+                    0, 0, 0, Color.Blue, 1.5f);
+                d.velocity *= 0.3f;
+                d.noGravity = true;
+            }
+            #endregion
+            #region 向目标发射
+            NPC tar = null;
+            foreach (NPC npc in Main.npc)
+            {
+                if (npc.active && !npc.friendly && npc.type != NPCID.LunarTowerNebula &&
+                    !npc.behindTiles && Collision.CanHit
+                    (Main.MouseWorld, 1, 1, npc.position, npc.width, npc.height) &&
+                    npc.type != NPCID.LunarTowerSolar &&
+                    npc.type != NPCID.LunarTowerStardust &&
+                    npc.type != NPCID.LunarTowerVortex)
+                {
+                    float dis2 = Vector2.Distance(npc.Center, Main.MouseWorld);
+                    if (dis2 <= disMAX)
+                    {
+                        tar = npc;
+                        disMAX = dis;
+                    }
+                }
+            }
+            if (tar != null)
+            {
+                Vector2 tVEC = Vector2.Normalize(tar.Center - Main.MouseWorld) * 40;
+                Projectile.NewProjectile(player.Center, tVEC,
+                    mod.ProjectileType("NNHolyArrow"), item.damage, item.knockBack, item.owner);
+            }
+            #endregion
+            return false;
         }
         public override Vector2? HoldoutOffset()
         {

@@ -1,12 +1,12 @@
-﻿using System.Linq;
-using Terraria;
+﻿using Terraria;
+using System.Linq;
 using Terraria.ID;
 using Terraria.ModLoader;
 using DisorderUnderstar.Utils;
 using Microsoft.Xna.Framework;
 namespace DisorderUnderstar.NPCs.Star.Hostile
 {
-    public class StarIchorTheStarOfFire : FSM_NPC
+    public class StarIchorTheStarOfFire : DUNPC
     {
         enum NPCState
         {

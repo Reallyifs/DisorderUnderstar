@@ -4,12 +4,11 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 namespace DisorderUnderstar.Items.Testament
 {
-    public class SeptemberOldflames : ModItem
+    public class JanuaryTestament : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("九月旧焰");
-            Tooltip.SetDefault("");
+            DisplayName.SetDefault("一月遗言");
         }
     }
 }

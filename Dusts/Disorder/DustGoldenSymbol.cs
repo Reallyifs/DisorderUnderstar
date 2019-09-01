@@ -6,9 +6,10 @@ namespace DisorderUnderstar.Dusts.Disorder
 {
     public class DustGoldenSymbol : ModDust
     {
-        private readonly Player pl = Main.player[Main.myPlayer];
+        private Player pl = Main.player[Main.myPlayer];
         public override void OnSpawn(Dust dust)
         {
+            Player pl = Main.player[Main.myPlayer];
             dust.alpha = 25;
             dust.color = Color.Gold;
             dust.scale = 0.9f;
@@ -23,12 +24,12 @@ namespace DisorderUnderstar.Dusts.Disorder
             Main.maxDustToDraw = pl.whoAmI;
             dust.fadeIn++;
             #region dust的位移
-            if (dust.position.Y < pl.position.Y) dust.velocity.Y += 0.1f;
-            else if (dust.position.Y == pl.velocity.Y) dust.velocity.Y = 0;
-            else dust.position.Y -= 0.1f;
-            if (dust.position.X < pl.position.X) dust.velocity.X += 0.1f;
-            else if (dust.position.X == pl.velocity.X) dust.velocity.X = 0;
-            else dust.position.X -= 0.1f;
+            if (dust.position.Y < pl.position.Y) dust.velocity.Y *= 1.1f;
+            else if (dust.position.Y == pl.velocity.Y) dust.velocity.Y *= 0.9f;
+            else dust.position.Y *= 0.9f;
+            if (dust.position.X < pl.position.X) dust.velocity.X *= 1.1f;
+            else if (dust.position.X == pl.velocity.X) dust.velocity.X *= 0.9f;
+            else dust.position.X *= 0.9f;
             #endregion
             #region dust的消失
             if (dust.active && dust.fadeIn < 3f)
@@ -51,7 +52,7 @@ namespace DisorderUnderstar.Dusts.Disorder
                 dust.scale -= 0.1f;
                 dust.rotation += 0.1f;
             }
-            if (dust.scale == 0.4f) dust.active = false;
+            if (dust.scale <= 0.4f) dust.active = false;
             #endregion
             return false;
         }

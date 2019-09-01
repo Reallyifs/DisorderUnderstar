@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using DisorderUnderstar.Projectiles.Sunset;
 namespace DisorderUnderstar.Items.Sunset
 {
     public class BlackLavaBow : ModItem
@@ -40,7 +41,7 @@ namespace DisorderUnderstar.Items.Sunset
             if (player.altFunctionUse != 2)
             {
                 item.mana = 5;
-                item.shoot = mod.ProjectileType("ProSunsetBlackFireArrow");
+                item.shoot = mod.ProjectileType<ProSunsetBlackFireArrow>();
                 item.damage = 133;
                 item.channel = false;
                 item.useTime = 5;
@@ -52,7 +53,7 @@ namespace DisorderUnderstar.Items.Sunset
             else
             {
                 item.mana = 10;
-                item.shoot = mod.ProjectileType("PSEUDOProSunsetEnergyArrow");
+                item.shoot = mod.ProjectileType<PSEUDOProSunsetEnergyArrow>();
                 item.damage = 0;
                 item.channel = true;
                 item.useTime = 40;
@@ -65,10 +66,10 @@ namespace DisorderUnderstar.Items.Sunset
         }
         public override void AddRecipes()
         {
-            ModRecipe when = new ModRecipe(mod);
+            ModRecipe when = new ModRecipe(mod)
             {
-                when.anyIronBar = true;
-            }
+                anyIronBar = true
+            };
             when.AddIngredient(ItemID.MoltenFury, 1);
             when.AddIngredient(ItemID.IronBar, 25);
             when.AddIngredient(ItemID.Hellstone, 30);

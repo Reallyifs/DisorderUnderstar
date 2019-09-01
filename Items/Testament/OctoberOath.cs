@@ -2,6 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
+using DisorderUnderstar.Projectiles.Testament;
 namespace DisorderUnderstar.Items.Testament
 {
     public class OctoberOath : ModItem
@@ -49,10 +50,8 @@ namespace DisorderUnderstar.Items.Testament
                 Player pl = Main.player[item.owner];
                 foreach (NPC npc in Main.npc)
                 {
-                    if (npc.active && !npc.friendly && npc.type != NPCID.LunarTowerNebula &&
-                        !visited[npc.whoAmI] && npc.type != NPCID.LunarTowerSolar &&
-                        npc.type != NPCID.LunarTowerStardust &&
-                        npc.type != NPCID.LunarTowerVortex)
+                    if (npc.active && !npc.friendly && npc.type != NPCID.LunarTowerNebula && !visited[npc.whoAmI] &&
+                        npc.type != NPCID.LunarTowerSolar && npc.type != NPCID.LunarTowerStardust && npc.type != NPCID.LunarTowerVortex)
                     {
                         float dis = Vector2.Distance(pl.Center, npc.Center);
                         if (disMAX >= dis)
@@ -62,13 +61,18 @@ namespace DisorderUnderstar.Items.Testament
                         }
                     }
                 }
-                if (tar != null)
+                for(int o = 0; o < 6; o++)
                 {
-                    Vector2 positionVEC = new Vector2(tar.Center.X, tar.Center.Y - tar.height * 4);
-                    Vector2 shootVEC = Vector2.Normalize(tar.Center - positionVEC) * 100;
-                    Projectile.NewProjectile(positionVEC, shootVEC,
-                        mod.ProjectileType("ProTestament"),
-                        item.damage, item.knockBack, item.owner);
+                    if (tar != null)
+                    {
+                        if (o % 2 == 0)
+                        {
+                            Vector2 positionVEC = new Vector2 (tar.Center.X, tar.Center.Y - tar.height * 3);
+                            Vector2 shootVEC = Vector2.Normalize(tar.Center - positionVEC) * 100;
+                            Projectile.NewProjectile(positionVEC, shootVEC, mod.ProjectileType<ProTestamentLightsaber>(), item.damage,
+                                item.knockBack, item.owner, item.type);
+                        }
+                    }
                 }
             }
         }

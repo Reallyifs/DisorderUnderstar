@@ -1,6 +1,8 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using DisorderUnderstar.Items.Star;
+using DisorderUnderstar.Projectiles.Sunset;
 namespace DisorderUnderstar.Items.Sunset
 {
     public class ElectromagnetismLighting : ModItem
@@ -45,7 +47,7 @@ namespace DisorderUnderstar.Items.Sunset
             {
                 item.crit = 70;
                 item.mana = 10;
-                item.shoot = mod.ProjectileType("PESUDOProSunsetElectromagneticProjectile");
+                item.shoot = mod.ProjectileType<PSEUDOProSunsetElectromagneticProjectile>();
                 item.damage = 136;
                 item.channel = true;
                 item.useTime = 20;
@@ -58,7 +60,7 @@ namespace DisorderUnderstar.Items.Sunset
             {
                 item.crit = 35;
                 item.mana = 3;
-                item.shoot = mod.ProjectileType("ProSunsetLaser1");
+                item.shoot = mod.ProjectileType<ProSunsetLaser1>();
                 item.damage = 74;
                 item.channel = false;
                 item.useTime = 8;
@@ -75,7 +77,7 @@ namespace DisorderUnderstar.Items.Sunset
             modde.AddIngredient(ItemID.ChargedBlasterCannon, 1);
             modde.AddIngredient(ItemID.ElectrosphereLauncher, 1);
             modde.AddIngredient(ItemID.ShadowbeamStaff, 1);
-            modde.AddIngredient(mod.ItemType("StarManaGun"), 1);
+            modde.AddIngredient(mod.ItemType<StarManaGun>(), 1);
             modde.AddTile(TileID.HeavyWorkBench);
             modde.SetResult(this);
             modde.AddRecipe();

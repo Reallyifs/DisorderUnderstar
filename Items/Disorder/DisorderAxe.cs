@@ -1,4 +1,4 @@
-using Terraria;
+ï»¿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 namespace DisorderUnderstar.Items.Disorder
@@ -7,9 +7,9 @@ namespace DisorderUnderstar.Items.Disorder
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("ÎŞĞò¡¤¸«");
-            Tooltip.SetDefault("¡¾ÎŞĞò-Disorder¡¿\n" +
-                "Ç¿´óµ½×ãÒÔ´İ»ÙËùÓĞÄ¾Í·¡£");
+            DisplayName.SetDefault("æ— åºÂ·æ–§");
+            Tooltip.SetDefault("ã€[c/FF0000:æ— åº-Disorder]ã€‘\n" +
+                "å¼ºå¤§åˆ°è¶³ä»¥æ‘§æ¯æ‰€æœ‰æœ¨å¤´ã€‚");
         }
         public override void SetDefaults()
         {
@@ -44,7 +44,7 @@ namespace DisorderUnderstar.Items.Disorder
             recipe1.AddIngredient(ItemID.ChlorophyteGreataxe, 1);
             recipe1.AddIngredient(ItemID.HallowedBar, 9);
             recipe1.AddIngredient(ItemID.ShroomiteBar, 9);
-            recipe1.AddIngredient(mod, "DisorderBar", 5);
+            recipe1.AddIngredient(mod.ItemType<DisorderBar>(), 5);
             recipe1.AddTile(TileID.LunarCraftingStation);
             recipe1.SetResult(this);
             recipe1.AddRecipe();

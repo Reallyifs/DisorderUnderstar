@@ -1,4 +1,4 @@
-using Terraria;
+ï»¿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 namespace DisorderUnderstar.Items.Disorder
@@ -7,9 +7,9 @@ namespace DisorderUnderstar.Items.Disorder
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("ÎŞĞò¡¤¸ä");
-            Tooltip.SetDefault("¡¾ÎŞĞò-Disorder¡¿\n" +
-                "Ç¿´óµ½×ãÒÔ´İ»ÙËùÓĞ·½¿é¡£");
+            DisplayName.SetDefault("æ— åºÂ·é•");
+            Tooltip.SetDefault("ã€[c/FF0000:æ— åº-Disorder]ã€‘\n" +
+                "å¼ºå¤§åˆ°è¶³ä»¥æ‘§æ¯æ‰€æœ‰æ–¹å—ã€‚");
         }
         public override void SetDefaults()
         {

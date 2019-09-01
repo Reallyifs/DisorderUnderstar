@@ -10,14 +10,14 @@ namespace DisorderUnderstar.Items.Disorder
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("无序·十字架");
-            Tooltip.SetDefault("【无序-Disorder】\n" +
+            Tooltip.SetDefault("【[c/FF0000:无序-Disorder]】\n" +
                 "它的样子非常的奇怪。\n" +
                 "-\n" +
-                "最大生命增加350，最大魔法增加175\n" +
-                "魔法消耗减少40%，近战暴击增加32%，最大随从增加15个，近战速度增加9%\n" +
-                "魔法、近战和远程伤害增加55%\n" +
+                "[c/FF0000:最大生命]增加350，[c/0000FF:最大魔法]增加175\n" +
+                "[c/0000FF:魔法]消耗减少40%，[c/FF8000:近战暴击]增加32%，[c/00FFFF:最大随从]增加15个，[c/FF8000:近战速度]增加9%\n" +
+                "[c/0000FF:魔法]、[c/FF8000:近战]和[c/00007F:远程伤害]增加55%\n" +
                 "允许玩家连跳，速度增加80%，免疫摔落伤害及击退\n" +
-                "站着不动生命恢复会大大提高，自动收税，跳跃高度增加20%\n" +
+                "站着不动[c/FF0000:生命恢复]会大大提高，自动收税，跳跃高度增加20%\n" +
                 "-");
         }
         public override void SetDefaults()
@@ -70,10 +70,10 @@ namespace DisorderUnderstar.Items.Disorder
         public override void AddRecipes()
         {
             ModRecipe recipe1 = new ModRecipe(mod);
-            recipe1.AddIngredient(mod, "PurpleStone", 1);
+            recipe1.AddIngredient(mod.ItemType<PurpleStone>(), 1);
             recipe1.AddIngredient(ItemID.ShinyStone, 2);
             recipe1.AddIngredient(ItemID.EoCShield, 3);
-            recipe1.AddIngredient(mod, "DisorderBar", 10);
+            recipe1.AddIngredient(mod.ItemType<DisorderBar>(), 10);
             recipe1.AddIngredient(ItemID.LifeCrystal, 10);
             recipe1.AddIngredient(ItemID.ManaCrystal, 10);
             recipe1.AddIngredient(ItemID.FallenStar, 20);

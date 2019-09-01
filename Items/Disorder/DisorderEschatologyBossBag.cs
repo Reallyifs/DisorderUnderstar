@@ -45,10 +45,10 @@ namespace DisorderUnderstar.Items.Disorder
             z2333.AddIngredient(mod, "DisorderEschatologyBossBag", 2);
             z2333.SetResult(this);
             z2333.AddRecipe();
-            ModRecipe z3222 = new ModRecipe(mod);
+            ModRecipe z3222 = new ModRecipe(mod)
             {
-                z3222.anyWood = true;
-            }
+                anyWood = true
+            };
             z3222.AddIngredient(ItemID.Wood, 233);
             z3222.AddIngredient(ItemID.StoneBlock, 233);
             z3222.SetResult(this, 100);

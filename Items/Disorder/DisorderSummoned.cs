@@ -8,7 +8,7 @@ namespace DisorderUnderstar.Items.Disorder
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("无序·混乱晶体");
-            Tooltip.SetDefault("【无序-Disorder】\n" +
+            Tooltip.SetDefault("【[c/FF0000:无序-Disorder]】\n" +
                 "它发出的能量……\n" +
                 "让你不寒而栗……\n" +
                 "“我，回来了。”\n" +

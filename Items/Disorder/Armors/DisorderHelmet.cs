@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using DisorderUnderstar.Items.Armors;
 namespace DisorderUnderstar.Items.Disorder.Armors
 {
     // 注意这里，这是C#里面的一个神奇的语法
@@ -15,26 +16,26 @@ namespace DisorderUnderstar.Items.Disorder.Armors
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("无序·头盔");
-            Tooltip.SetDefault("【无序-Disorder】\n" +
+            Tooltip.SetDefault("【[c/FF0000:无序-Disorder]】\n" +
                 "“聆听世界寂静。”\n" +
                 "-\n" +
-                "生命恢复增加100/s，魔法回复增加30/s\n" +
-                "最大生命增加500，最大魔法增加250\n" +
-                "近战暴击增加40%，除召唤外其他暴击增加45%\n" +
-                "魔法、近战和远程伤害乘以2.5，投掷和召唤伤害乘以4.5\n" +
-                "40%不消耗弹药，召唤一个叶绿水晶为你而战\n" +
+                "[c/FF0000:生命恢复]增加100，[c/0000FF:魔法恢复]增加30\n" +
+                "[c/FF0000:最大生命]增加500，[c/0000FF:最大魔法]增加250\n" +
+                "[c/FF8000:近战暴击]增加40%，除[c/00FFFF:召唤]外其他暴击增加45%\n" +
+                "[c/0000FF:魔法]、[c/FF8000:近战]和[c/00007F:远程]伤害乘以2.5，[c/3F3F3F:投掷]和[c/00FFFF:召唤]伤害乘以4.5\n" +
+                "40%不[c/00007F:消耗弹药]，[c/00FFFF:召唤]一个[c/00FF00:叶绿水晶]为你而战\n" +
                 "站着不动进入隐身状态\n" +
                 "-");
         }
         public override void SetDefaults()
         {
-            item.width = 20;
-            item.height = 18;
-            item.value = Item.sellPrice(0, 15, 15, 0);
             item.rare = 10;
+            item.value = Item.sellPrice(0, 15, 15, 0);
+            item.width = 20;
+            item.expert = true;
+            item.height = 18;
             item.defense = 58;
             item.maxStack = 1;
-            item.expert = true;
             item.expertOnly = true;
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
@@ -47,14 +48,14 @@ namespace DisorderUnderstar.Items.Disorder.Armors
             }
             {
                 player.magicCrit += 45;
-                player.meleeCrit = 40;
+                player.meleeCrit += 40;
                 player.rangedCrit += 45;
                 player.thrownCrit += 45;
-                player.magicDamage += 1.5f;
-                player.meleeDamage += 1.5f;
-                player.minionDamage += 3.5f;
-                player.rangedDamage += 1.5f;
-                player.thrownDamage += 3.5f;
+                player.magicDamage *= 2.5f;
+                player.meleeDamage *= 2.5f;
+                player.minionDamage *= 4.5f;
+                player.rangedDamage *= 2.5f;
+                player.thrownDamage *= 4.5f;
                 //player.AddBuff(mod.BuffType("NMODCrystalLeaf"), 1);
             }
         }
@@ -77,11 +78,11 @@ namespace DisorderUnderstar.Items.Disorder.Armors
             player.setBonus = "-\n" +
                 "“你的身体看起来……没有顺序？”\n" +
                 "-\n" +
-                "魔法消耗减少60%，召唤物击退增加10%，生命恢复增加100/s\n" +
-                "耐力增加70%，免疫熔浆，红心拾取范围加大\n" +
-                "最大随从增加10个，所有伤害乘以6.66\n" +
-                "改为65%不消耗弹药\n" +
-                "召唤星辰守护者为你而战，拥有星云套效果\n" +
+                "[c/0000FF:魔法消耗]减少60%，[c/00FFFF:召唤物]击退增加10%，[c/FF0000:生命恢复]增加100\n" +
+                "[c/7F7F7F:耐力]增加70%，免疫熔浆，[c/FF0000:红心拾取范围]加大\n" +
+                "[c/00FFFF:最大随从]增加10个，[c/000000:所有伤害]乘以6.66\n" +
+                "改为65%不[c/00007F:消耗弹药]\n" +
+                "[c/00FFFF:召唤星辰守护者]为你而战，拥有[c/FF00FF:星云套]效果\n" +
                 "改为双击下键进入隐身状态\n" +
                 "-";
             player.manaCost -= 0.6f;
@@ -92,11 +93,11 @@ namespace DisorderUnderstar.Items.Disorder.Armors
             player.lavaImmune = true;
             player.lifeMagnet = true;
             player.maxMinions += 10;
-            player.magicDamage += 6.66f;
-            player.meleeDamage += 6.66f;
-            player.minionDamage += 6.66f;
-            player.rangedDamage += 6.66f;
-            player.thrownDamage += 6.66f;
+            player.magicDamage *= 6.66f;
+            player.meleeDamage *= 6.66f;
+            player.minionDamage *= 6.66f;
+            player.rangedDamage *= 6.66f;
+            player.thrownDamage *= 6.66f;
             player.vortexStealthActive = true;
             //player.AddBuff(mod.BuffType("NMODStardustGuardian"), 1);
         }
@@ -108,10 +109,10 @@ namespace DisorderUnderstar.Items.Disorder.Armors
             recipe0.AddIngredient(ItemID.NebulaHelmet, 1);
             recipe0.AddIngredient(ItemID.SolarFlareHelmet, 1);
             recipe0.AddIngredient(ItemID.MoltenHelmet, 1);
-            recipe0.AddIngredient(mod, "HallowedHeadnail", 1);
-            recipe0.AddIngredient(mod, "ChlorophyteHeadnail", 1);
-            recipe0.AddIngredient(mod, "ShroomiteHeadnail", 1);
-            recipe0.AddIngredient(mod, "DisorderBar", 10);
+            recipe0.AddIngredient(mod.ItemType<HallowedHeadnail>(), 1);
+            recipe0.AddIngredient(mod.ItemType<ChlorophyteHeadnail>(), 1);
+            recipe0.AddIngredient(mod.ItemType<ShroomiteHeadnail>(), 1);
+            recipe0.AddIngredient(mod.ItemType<DisorderBar>(), 10);
             recipe0.AddTile(TileID.LunarCraftingStation);
             recipe0.SetResult(this);
             recipe0.AddRecipe();

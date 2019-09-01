@@ -8,7 +8,7 @@ namespace DisorderUnderstar.Items.Disorder
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("无序·锤");
-            Tooltip.SetDefault("【无序-Disorder】\n" +
+            Tooltip.SetDefault("【[c/FF0000:无序-Disorder]】\n" +
                 "强大到足以摧毁所有墙壁。");
         }
         public override void SetDefaults()
@@ -41,7 +41,7 @@ namespace DisorderUnderstar.Items.Disorder
             recipe1.AddIngredient(ItemID.ChlorophyteJackhammer, 1);
             recipe1.AddIngredient(ItemID.HallowedBar, 9);
             recipe1.AddIngredient(ItemID.ShroomiteBar, 9);
-            recipe1.AddIngredient(mod, "DisorderBar", 5);
+            recipe1.AddIngredient(mod.ItemType<DisorderBar>(), 5);
             recipe1.AddTile(TileID.LunarCraftingStation);
             recipe1.SetResult(this);
             recipe1.AddRecipe();

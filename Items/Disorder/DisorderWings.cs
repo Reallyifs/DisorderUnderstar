@@ -11,7 +11,7 @@ namespace DisorderUnderstar.Items.Disorder
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("无序·翅膀");
-            Tooltip.SetDefault("【无序-Disorder】\n" +
+            Tooltip.SetDefault("【[c/FF0000:无序-Disorder]】\n" +
                 "“飞向世界各地。”");
         }
         public override void SetDefaults()

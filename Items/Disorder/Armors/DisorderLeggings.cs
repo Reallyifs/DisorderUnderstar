@@ -17,8 +17,8 @@ namespace DisorderUnderstar.Items.Disorder.Armors
                 "-\n" +
                 "允许玩家连跳，免疫摔落伤害，可在熔浆上行走\n" +
                 "移动速度增加80%，跳跃高度增加50%\n" +
-                "当你移动时，所有伤害增加60%，移动速度增加6.66%\n" +
-                "当你不移动时，魔法消耗减少50%，除召唤外所有暴击增加50%，所有伤害增加80%\n" +
+                "当你移动时，[c/000000:所有伤害]增加60%，移动速度增加6.66%\n" +
+                "当你不移动时，[c/0000FF:魔法消耗]减少50%，除[c/00FFFF:召唤]外所有暴击增加50%，[c/000000:所有伤害]增加80%\n" +
                 "-");
         }
         public override void SetDefaults()
@@ -36,12 +36,12 @@ namespace DisorderUnderstar.Items.Disorder.Armors
         {
             if (player.velocity.Length() > 0.05f)
             {
+                player.moveSpeed += 6.66f;
                 player.magicDamage += 0.60f;
                 player.meleeDamage += 0.60f;
                 player.minionDamage += 0.60f;
                 player.rangedDamage += 0.60f;
                 player.thrownDamage += 0.60f;
-                player.moveSpeed += 6.66f;
             }
             else
             {
@@ -73,7 +73,7 @@ namespace DisorderUnderstar.Items.Disorder.Armors
             recipe1.AddIngredient(ItemID.HallowedGreaves, 1);
             recipe1.AddIngredient(ItemID.ChlorophyteGreaves, 1);
             recipe1.AddIngredient(ItemID.ShroomiteLeggings, 1);
-            recipe1.AddIngredient(mod, "DisorderBar", 15);
+            recipe1.AddIngredient(mod.ItemType<DisorderBar>(), 15);
             recipe1.AddTile(TileID.LunarCraftingStation);
             recipe1.SetResult(this);
             recipe1.AddRecipe();

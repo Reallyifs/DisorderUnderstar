@@ -3,6 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using DisorderUnderstar.Utils;
 using Microsoft.Xna.Framework;
+using DisorderUnderstar.Items.Disorder.Armors;
 namespace DisorderUnderstar.Items.Disorder
 {
     [AutoloadEquip(EquipType.Wings)]
@@ -11,12 +12,12 @@ namespace DisorderUnderstar.Items.Disorder
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("无序·四型");
-            Tooltip.SetDefault("【无序-Disorder】\n" +
+            Tooltip.SetDefault("【[c/FF0000:无序-Disorder]】\n" +
                 "集合了你身上的无序之力。\n" +
                 "-\n" +
-                "免疫十字盾免疫的所有debuff和旋涡漂浮\n" +
-                "耐力增加95%，生命回复增加290/s，魔法回复增加145/s，最大生命增加1800，最大魔法增加900\n" +
-                "除召唤外暴击增加38%，近战速度增加75%，召唤一个叶绿水晶为你而战，所有伤害乘以7.4\n" +
+                "免疫十字盾免疫的所有[c/3F3F3F:debuff]和[c/3F3F3F:旋涡漂浮debuff]\n" +
+                "[c/7F7F7F:耐力]增加95%，[c/FF0000:生命恢复]增加290，[c/0000FF:魔法恢复]增加145，[c/FF0000:最大生命]增加1800，[c/0000FF:最大魔法]增加900\n" +
+                "除[c/00FFFF:召唤]外暴击增加38%，[c/FF8000:近战速度]增加75%，[c/000000:所有伤害]乘以7.4\n" +
                 "站着不动进入隐身状态，但是会产生火焰粒子暴露位置\n" +
                 "可无限飞行，延长水下呼吸100秒，可以让玩家连跳，跳跃高度增加7.5%，速度翻一倍\n" +
                 "免疫摔落伤害及击退，可在熔浆、水和蜂蜜上行走，自动收取租金\n" +
@@ -63,11 +64,11 @@ namespace DisorderUnderstar.Items.Disorder
                 player.rangedCrit += 38;
                 player.thrownCrit += 38;
                 player.crystalLeaf = true;
-                player.magicDamage += 6.4f;
-                player.meleeDamage += 6.4f;
-                player.minionDamage += 6.4f;
-                player.rangedDamage += 6.4f;
-                player.thrownDamage += 6.4f;
+                player.magicDamage *= 7.4f;
+                player.meleeDamage *= 7.4f;
+                player.minionDamage *= 7.4f;
+                player.rangedDamage *= 7.4f;
+                player.thrownDamage *= 7.4f;
                 player.shroomiteStealth = true;
             }
             {
@@ -92,10 +93,8 @@ namespace DisorderUnderstar.Items.Disorder
                 }
             }
         }
-        public override void VerticalWingSpeeds
-            (Player player, ref float ascentWhenFalling, ref float ascentWhenRising,
-            ref float maxCanAscendMultiplier, ref float maxAscentMultiplier,
-            ref float constantAscend)
+        public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising,
+            ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)
         {
             ascentWhenFalling = 1.75f;
             ascentWhenRising = 0.5f;
@@ -103,8 +102,7 @@ namespace DisorderUnderstar.Items.Disorder
             maxCanAscendMultiplier = 16f;
             constantAscend = 0.35f;
         }
-        public override void HorizontalWingSpeeds
-            (Player player, ref float speed, ref float acceleration)
+        public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration)
         {
             speed = 75f;
             acceleration *= 12.5f;
@@ -112,13 +110,13 @@ namespace DisorderUnderstar.Items.Disorder
         public override void AddRecipes()
         {
             ModRecipe recipe1 = new ModRecipe(mod);
-            recipe1.AddIngredient(mod, "DisorderHelmet", 1);
-            recipe1.AddIngredient(mod, "DisorderBreastplate", 1);
-            recipe1.AddIngredient(mod, "DisorderLeggings", 1);
-            recipe1.AddIngredient(mod, "DisorderWings", 1);
+            recipe1.AddIngredient(mod.ItemType<DisorderHelmet>(), 1);
+            recipe1.AddIngredient(mod.ItemType<DisorderBreastplate>(), 1);
+            recipe1.AddIngredient(mod.ItemType<DisorderLeggings>(), 1);
+            recipe1.AddIngredient(mod.ItemType<DisorderWings>(), 1);
             recipe1.AddIngredient(ItemID.AnkhShield, 1);
             recipe1.AddIngredient(ItemID.SpectreBar, 10);
-            recipe1.AddIngredient(mod, "DisorderBar", 10);
+            recipe1.AddIngredient(mod.ItemType<DisorderBar>(), 10);
             recipe1.AddTile(TileID.LunarCraftingStation);
             recipe1.SetResult(this);
             recipe1.AddRecipe();

@@ -9,7 +9,7 @@ namespace DisorderUnderstar.Items.Disorder
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("无序·万能型");
-            Tooltip.SetDefault("【无序-Disorder】\n" +
+            Tooltip.SetDefault("【[c/FF0000:无序-Disorder]】\n" +
                 "集合了工具上的无序之力。");
         }
         public override void SetDefaults()
@@ -38,12 +38,12 @@ namespace DisorderUnderstar.Items.Disorder
         public override void AddRecipes()
         {
             ModRecipe recipe1 = new ModRecipe(mod);
-            recipe1.AddIngredient(mod, "DisorderPickaxe", 1);
-            recipe1.AddIngredient(mod, "DisorderAxe", 1);
-            recipe1.AddIngredient(mod, "DisorderHammer", 1);
-            recipe1.AddIngredient(mod, "DisorderKnife", 1);
+            recipe1.AddIngredient(mod.ItemType<DisorderPickaxe>(), 1);
+            recipe1.AddIngredient(mod.ItemType<DisorderAxe>(), 1);
+            recipe1.AddIngredient(mod.ItemType<DisorderHammer>(), 1);
+            recipe1.AddIngredient(mod.ItemType<ChaoticSword>(), 1);
             recipe1.AddIngredient(ItemID.SpectreBar, 10);
-            recipe1.AddIngredient(mod, "DisorderBar", 10);
+            recipe1.AddIngredient(mod.ItemType<DisorderBar>(), 10);
             recipe1.AddTile(TileID.LunarCraftingStation);
             recipe1.SetResult(this);
             recipe1.AddRecipe();

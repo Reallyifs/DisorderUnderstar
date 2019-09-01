@@ -1,35 +1,35 @@
-using Terraria;
+ï»¿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 namespace DisorderUnderstar.Items.Disorder.Armors
 {
-    // ×¢ÒâÕâÀï£¬ÕâÊÇC#ÀïÃæµÄÒ»¸öÉñÆæµÄÓï·¨
-    // ×÷ÓÃÊÇ¸øÒ»¸öÀà¸½¼ÓÒ»¸öÊôĞÔ
-    // ±ÈÈçÕâÀï¾ÍÊÇ¸øÕâ¸öÀà¸½¼ÓÒ»¸ö×°±¸ÑùÊ½ÎªÍ·¿øµÄÊôĞÔ£¬ÕâÑùTML¾Í»á°ÑËüÊ¶±ğ³ÉÍ·¿ø
+    // æ³¨æ„è¿™é‡Œï¼Œè¿™æ˜¯C#é‡Œé¢çš„ä¸€ä¸ªç¥å¥‡çš„è¯­æ³•
+    // ä½œç”¨æ˜¯ç»™ä¸€ä¸ªç±»é™„åŠ ä¸€ä¸ªå±æ€§
+    // æ¯”å¦‚è¿™é‡Œå°±æ˜¯ç»™è¿™ä¸ªç±»é™„åŠ ä¸€ä¸ªè£…å¤‡æ ·å¼ä¸ºå¤´ç›”çš„å±æ€§ï¼Œè¿™æ ·TMLå°±ä¼šæŠŠå®ƒè¯†åˆ«æˆå¤´ç›”
     [AutoloadEquip(EquipType.Body)]
     public class DisorderBreastplate : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("ÎŞĞò¡¤ĞØ¼×");
-            Tooltip.SetDefault("¡¾ÎŞĞò-Disorder¡¿\n" +
-                "¡°¸ĞÊÜÊÀ½çĞÄÌø¡£¡±\n" +
+            DisplayName.SetDefault("æ— åºÂ·èƒ¸ç”²");
+            Tooltip.SetDefault("ã€æ— åº-Disorderã€‘\n" +
+                "â€œæ„Ÿå—ä¸–ç•Œå¿ƒè·³ã€‚â€\n" +
                 "-\n" +
-                "ÄÍÁ¦Ôö¼Ó70%£¬ÉúÃü»Ö¸´Ôö¼Ó40/s£¬³ıÕÙ»½ÍâËùÓĞ±©»÷Ôö¼Ó22%£¬½üÕ½ËÙ¶ÈÔö¼Ó50%\n" +
-                "ÃâÒß»÷ÍË£¬×î´óÉúÃüÔö¼Ó300£¬×î´óÄ§·¨Ôö¼Ó150\n" +
-                "ÃâÒß»ğÑæÉÕÉË\n" +
+                "[c/7F7F7F:è€åŠ›]å¢åŠ 70%ï¼Œ[c/FF0000:ç”Ÿå‘½æ¢å¤]å¢åŠ 40ï¼Œé™¤[c/00FFFF:å¬å”¤]å¤–[c/000000:æ‰€æœ‰æš´å‡»]å¢åŠ 22%ï¼Œ[c/FF8000:è¿‘æˆ˜é€Ÿåº¦]å¢åŠ 50%\n" +
+                "å…ç–«å‡»é€€ï¼Œ[c/FF0000:æœ€å¤§ç”Ÿå‘½]å¢åŠ 300ï¼Œ[c/0000FF:æœ€å¤§é­”æ³•]å¢åŠ 150\n" +
+                "å…ç–«ç«ç„°çƒ§ä¼¤\n" +
                 "-");
         }
         public override void SetDefaults()
         {
-            item.width = 28;
-            item.height = 18;
-            item.value = Item.sellPrice(0, 1, 1, 0);
             item.rare = ItemRarityID.Orange;
-            item.defense = 80;
+            item.value = Item.sellPrice(0, 1, 1, 0);
+            item.width = 28;
             item.expert = true;
-            item.expertOnly = true;
+            item.height = 18;
+            item.defense = 80;
             item.maxStack = 1;
+            item.expertOnly = true;
         }
         public override void UpdateEquip(Player player)
         {
@@ -56,7 +56,7 @@ namespace DisorderUnderstar.Items.Disorder.Armors
             recipe0.AddIngredient(ItemID.HallowedPlateMail, 1);
             recipe0.AddIngredient(ItemID.ChlorophytePlateMail, 1);
             recipe0.AddIngredient(ItemID.ShroomiteBreastplate, 1);
-            recipe0.AddIngredient(mod, "DisorderBar", 20);
+            recipe0.AddIngredient(mod.ItemType<DisorderBar>(), 20);
             recipe0.AddTile(TileID.LunarCraftingStation);
             recipe0.SetResult(this);
             recipe0.AddRecipe();

@@ -1,4 +1,4 @@
-using Terraria;
+ï»¿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 namespace DisorderUnderstar.Items.Disorder
@@ -7,9 +7,12 @@ namespace DisorderUnderstar.Items.Disorder
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("ÎŞĞò¡¤¶§");
-            Tooltip.SetDefault("¡¾ÎŞĞò-Disorder¡¿\n"+
-                "ÕâĞ©¶§ÀïÉ¢·¢³öÁËĞí¶àÄÜÁ¿£¬Ó¦¸ÃÄÜÄÃÀ´×öĞ©Ê²Ã´¡­¡­");
+            DisplayName.SetDefault("æ— åºÂ·é”­");
+            Tooltip.SetDefault("ã€[c/FF0000:æ— åº-Disorder]ã€‘\n" +
+                "è¿™äº›é”­é‡Œæ•£å‘å‡ºäº†è®¸å¤šèƒ½é‡ï¼Œåº”è¯¥èƒ½æ‹¿æ¥åšäº›ä»€ä¹ˆâ€¦â€¦");
+            if (item.stack == 1) Tooltip.SetDefault("ã€[c/FF0000:æ— åº-Disorder]ã€‘\n" +
+                    "è¿™ä¸ªé”­é‡Œæ•£å‘å‡ºäº†è®¸å¤šèƒ½é‡ï¼Œåº”è¯¥èƒ½æ‹¿æ¥åšäº›ä»€ä¹ˆâ€¦â€¦\n" +
+                    "ä½†æ˜¯â€¦â€¦è¿˜ä¸å¤Ÿâ€¦â€¦");
         }
         public override void SetDefaults()
         {
@@ -21,11 +24,6 @@ namespace DisorderUnderstar.Items.Disorder
             item.height = 22;
             item.maxStack = 999;
             item.expertOnly = true;
-            if (item.stack == 1)
-            {
-                Tooltip.SetDefault("¡¾ÎŞĞò-Disorder¡¿\n" +
-                    "Õâ¸ö¶§ÀïÉ¢·¢³öÁËĞí¶àÄÜÁ¿£¬Ó¦¸ÃÄÜÄÃÀ´×öĞ©Ê²Ã´¡­¡­");
-            }
         }
         public override void AddRecipes()
         {

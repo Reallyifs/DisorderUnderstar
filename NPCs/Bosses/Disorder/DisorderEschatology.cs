@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿/*
+using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -13,7 +14,6 @@ namespace DisorderUnderstar.NPCs.Bosses.Disorder
         }
         public override void SetDefaults()
         {
-            npc.life = 60170;
             npc.value = Item.buyPrice(10, 10, 10, 10);
             npc.damage = 123;
             npc.defense = 89;
@@ -38,3 +38,4 @@ namespace DisorderUnderstar.NPCs.Bosses.Disorder
         }
     }
 }
+*/

@@ -1,7 +1,7 @@
 ﻿using Terraria.ModLoader;
 namespace DisorderUnderstar.NPCs.Bosses.Star
 {
-    public class MeteorTidal : ModNPC
+    public class MeteorTidal : Terraria.ModLoader.ModNPC
     {
         public override void SetStaticDefaults()
         {

@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 using Terraria.DataStructures;
 namespace DisorderUnderstar.NPCs.Bosses.Code
 {
-    public class KeepImagineLastLongUnderSymbol : ModNPC
+    public class KeepImagineLastLongUnderSymbol : Terraria.ModLoader.ModNPC
     {
         public override void SetStaticDefaults()
         {
@@ -13,6 +13,8 @@ namespace DisorderUnderstar.NPCs.Bosses.Code
         public override void SetDefaults()
         {
             npc.boss = true;
+            npc.width = 10;
+            npc.height = 10;
             npc.defense = 0;
             npc.lifeMax = 9999999;
             if (npc.defense == 0)

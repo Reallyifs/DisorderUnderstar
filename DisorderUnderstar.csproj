@@ -1,190 +1,143 @@
-﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\references\tModLoader.targets" />
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{693903EF-B57E-4AB6-83ED-36EAFBD6BA2C}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <NoStandardLibraries>false</NoStandardLibraries>
-    <AssemblyName>ClassLibrary</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <AssemblyName>DisorderUnderstar</AssemblyName>
+    <TargetFramework>net45</TargetFramework>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <RootNamespace>DisorderUnderstar</RootNamespace>
-  </PropertyGroup>
+  <Target Name="BuildMod" AfterTargets="Build">
+    <Exec Command="&quot;$(tMLBuildServerPath)&quot; -build $(ProjectDir) -eac $(TargetPath) -define $(DefineConstants) -unsafe $(AllowUnsafeBlocks)" />
+  </Target>
   <ItemGroup>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Xna.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libraries\Microsoft.Xna.Framework.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Xna.Framework.Game, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libraries\Microsoft.Xna.Framework.Game.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Xna.Framework.Graphics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libraries\Microsoft.Xna.Framework.Graphics.dll</HintPath>
-    </Reference>
-    <Reference Include="ReLogic, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libraries\ReLogic.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="Terraria.EXE, Version=1.3.5.1, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libraries\Terraria.EXE.exe</HintPath>
-    </Reference>
+    <Compile Remove="Libraries\**" />
+    <EmbeddedResource Remove="Libraries\**" />
+    <None Remove="Libraries\**" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="build.txt" />
-    <Content Include="description.txt" />
-    <Content Include="icon.png" />
-    <Content Include="Libraries\Microsoft.Xna.Framework.dll" />
-    <Content Include="Libraries\Microsoft.Xna.Framework.Game.dll" />
-    <Content Include="Libraries\Microsoft.Xna.Framework.Graphics.dll" />
-    <Content Include="Libraries\ReLogic.dll" />
-    <Content Include="Libraries\Terraria.EXE.exe" />
-    <Content Include="Sounds\Disorder\DisorderEschatologyDeathSound.mp3" />
+    <None Remove="Buffs\DebuffGreenLight.png" />
+    <None Remove="Buffs\Disorder\BuffBlessingMoment.png" />
+    <None Remove="Buffs\Disorder\DebuffBendingMagnets.png" />
+    <None Remove="Buffs\Disorder\DebuffChaosTheory.png" />
+    <None Remove="Buffs\Disorder\DebuffFourHeavyBlocking.png" />
+    <None Remove="Buffs\MODCrystalLeaf.png" />
+    <None Remove="Buffs\NMODCrystalLeaf.png" />
+    <None Remove="Buffs\Sunset\DebuffSunsetBlackFire.png" />
+    <None Remove="Dusts\Code\DustCodeNumber.png" />
+    <None Remove="Dusts\Code\DustCodeParticle.png" />
+    <None Remove="Dusts\Code\DustCodeParticle\DustCodeParticle0.png" />
+    <None Remove="Dusts\Code\DustCodeParticle\DustCodeParticle1.png" />
+    <None Remove="Dusts\Code\DustCodeParticle\DustCodeParticle2.png" />
+    <None Remove="Dusts\Code\DustCodeParticle\DustCodeParticle3.png" />
+    <None Remove="Dusts\Code\DustCodeParticle\DustCodeParticle4.png" />
+    <None Remove="Dusts\Disorder\DustBodyDebris.png" />
+    <None Remove="Dusts\Disorder\DustGoldenSymbol.png" />
+    <None Remove="icon.png" />
+    <None Remove="Items\Armors\ChlorophyteHeadnail.png" />
+    <None Remove="Items\Armors\ChlorophyteHeadnail_Head.png" />
+    <None Remove="Items\Armors\HallowedHeadnail.png" />
+    <None Remove="Items\Armors\HallowedHeadnail_Head.png" />
+    <None Remove="Items\Armors\ShroomiteHeadnail.png" />
+    <None Remove="Items\Armors\ShroomiteHeadnail_Head.png" />
+    <None Remove="Items\Armors\SwimwearBody.png" />
+    <None Remove="Items\Armors\SwimwearBody_Arms.png" />
+    <None Remove="Items\Armors\SwimwearBody_Body.png" />
+    <None Remove="Items\Armors\SwimwearBody_FemaleBody.png" />
+    <None Remove="Items\Armors\SwimwearHead.png" />
+    <None Remove="Items\Armors\SwimwearHead_Head.png" />
+    <None Remove="Items\Armors\SwimwearLegs.png" />
+    <None Remove="Items\Armors\SwimwearLegs_Legs.png" />
+    <None Remove="Items\CelestialCrystal.png" />
+    <None Remove="Items\Code\CodeFragments.png" />
+    <None Remove="Items\Code\CodeGun.png" />
+    <None Remove="Items\Code\CoreGun.png" />
+    <None Remove="Items\Disorder\Armors\DisorderBreastplate.png" />
+    <None Remove="Items\Disorder\Armors\DisorderBreastplate_Arms.png" />
+    <None Remove="Items\Disorder\Armors\DisorderBreastplate_Body.png" />
+    <None Remove="Items\Disorder\Armors\DisorderBreastplate_FemaleBody.png" />
+    <None Remove="Items\Disorder\Armors\DisorderHelmet.png" />
+    <None Remove="Items\Disorder\Armors\DisorderHelmet_Head.png" />
+    <None Remove="Items\Disorder\Armors\DisorderLeggings.png" />
+    <None Remove="Items\Disorder\Armors\DisorderLeggings_Legs.png" />
+    <None Remove="Items\Disorder\ChaoticSword.png" />
+    <None Remove="Items\Disorder\DisorderAxe.png" />
+    <None Remove="Items\Disorder\DisorderBar.png" />
+    <None Remove="Items\Disorder\DisorderCross.png" />
+    <None Remove="Items\Disorder\DisorderEschatologyBossBag.png" />
+    <None Remove="Items\Disorder\DisorderFourtype.png" />
+    <None Remove="Items\Disorder\DisorderFourtype_Wings.png" />
+    <None Remove="Items\Disorder\DisorderHammer.png" />
+    <None Remove="Items\Disorder\DisorderKnife.png" />
+    <None Remove="Items\Disorder\DisorderMyself.png" />
+    <None Remove="Items\Disorder\DisorderMyself_Wings.png" />
+    <None Remove="Items\Disorder\DisorderOmnipotence.png" />
+    <None Remove="Items\Disorder\DisorderPickaxe.png" />
+    <None Remove="Items\Disorder\DisorderSummoned.png" />
+    <None Remove="Items\Disorder\DisorderWings.png" />
+    <None Remove="Items\Disorder\DisorderWings_Wings.png" />
+    <None Remove="Items\DXTBlade.png" />
+    <None Remove="Items\GlitchRIO.png" />
+    <None Remove="Items\GlitchSIO.png" />
+    <None Remove="Items\LikeLifeLine.png" />
+    <None Remove="Items\PoisonousPotion.png" />
+    <None Remove="Items\PurpleStone.png" />
+    <None Remove="Items\RSGun.png" />
+    <None Remove="Items\StartStarsStory.png" />
+    <None Remove="Items\Star\Armors\StarHat.png" />
+    <None Remove="Items\Star\Armors\StarHat_Head.png" />
+    <None Remove="Items\Star\Armors\StarPants.png" />
+    <None Remove="Items\Star\Armors\StarPants_Legs.png" />
+    <None Remove="Items\Star\Armors\StarVest.png" />
+    <None Remove="Items\Star\Armors\StarVest_Arms.png" />
+    <None Remove="Items\Star\Armors\StarVest_Body.png" />
+    <None Remove="Items\Star\Armors\StarVest_FemaleBody.png" />
+    <None Remove="Items\Star\BiDirectionalMeteor.png" />
+    <None Remove="Items\Star\FireOfStarZero.png" />
+    <None Remove="Items\Star\GalaxyLight.png" />
+    <None Remove="Items\Star\StarFrame.png" />
+    <None Remove="Items\Star\StarKnife.png" />
+    <None Remove="Items\Star\StarMana.png" />
+    <None Remove="Items\Star\StarManaGun.png" />
+    <None Remove="Items\Star\StarSurround.png" />
+    <None Remove="Items\Star\StellarDeliberate.png" />
+    <None Remove="Items\Star\SurroundStar.png" />
+    <None Remove="Items\Sunset\BlackLavaBow.png" />
+    <None Remove="Items\Sunset\ElectromagnetismLighting.png" />
+    <None Remove="Items\Testament\OctoberOath.png" />
+    <None Remove="NPCs\Bosses\Code\KeepImagineLastLongUnderSymbol.png" />
+    <None Remove="NPCs\Bosses\Star\MeteorTidal.png" />
+    <None Remove="NPCs\Star\Hostile\StarCurseTheStarOfFire.png" />
+    <None Remove="NPCs\Star\Hostile\StarIchorTheStarOfFire.png" />
+    <None Remove="Projectiles\Code\ProCodeLaser.png" />
+    <None Remove="Projectiles\Disorder\Bosses\DisorderEschatologyTriangleBlack.png" />
+    <None Remove="Projectiles\Disorder\Bosses\DisorderEschatologyTriangleBule.png" />
+    <None Remove="Projectiles\Disorder\Bosses\DisorderEschatologyTriangleGreen.png" />
+    <None Remove="Projectiles\Disorder\Bosses\DisorderEschatologyTriangleLime.png" />
+    <None Remove="Projectiles\Disorder\Bosses\DisorderEschatologyTriangleRed.png" />
+    <None Remove="Projectiles\Disorder\Bosses\DisorderEschatologyTriangleYellow.png" />
+    <None Remove="Projectiles\Disorder\ProDisorderBeam.png" />
+    <None Remove="Projectiles\FalseBeam.png" />
+    <None Remove="Projectiles\NHolyArrow.png" />
+    <None Remove="Projectiles\NNHolyArrow.png" />
+    <None Remove="Projectiles\NNNHolyArrow.png" />
+    <None Remove="Projectiles\Star\Monsters\ProStarCTSOF1.png" />
+    <None Remove="Projectiles\Star\Monsters\ProStarCTSOF2.png" />
+    <None Remove="Projectiles\Star\Monsters\ProStarCTSOF3.png" />
+    <None Remove="Projectiles\Star\Monsters\ProStarITSOF1.png" />
+    <None Remove="Projectiles\Star\Monsters\ProStarITSOF2.png" />
+    <None Remove="Projectiles\Star\Monsters\ProStarITSOF3.png" />
+    <None Remove="Projectiles\Star\ProStarArrow.png" />
+    <None Remove="Projectiles\Star\ProStarDownStar.png" />
+    <None Remove="Projectiles\Star\ProStarFollowingStar1.png" />
+    <None Remove="Projectiles\Star\ProStarFollowingStar2.png" />
+    <None Remove="Projectiles\Star\ProStarLight.png" />
+    <None Remove="Projectiles\Sunset\ProSunsetBlackFireArrow.png" />
+    <None Remove="Projectiles\Sunset\ProSunsetElectromagneticProjectile.png" />
+    <None Remove="Projectiles\Sunset\ProSunsetEnergyArrow.png" />
+    <None Remove="Projectiles\Sunset\ProSunsetLaser1.png" />
+    <None Remove="Projectiles\Sunset\ProSunsetLaser2.png" />
+    <None Remove="Projectiles\Sunset\PSEUDOProSunsetElectromagneticProjectile.png" />
+    <None Remove="Projectiles\Sunset\PSEUDOProSunsetEnergyArrow.png" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include=".vs\DisorderUnderstar\v15\.suo" />
-    <None Include=".vs\slnx.sqlite" />
-    <None Include=".vs\VSWorkspaceState.json" />
-    <None Include="Items\.vs\Items\v15\.suo" />
-    <None Include="Items\.vs\slnx.sqlite" />
-    <None Include="Items\.vs\VSWorkspaceState.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Buffs\Disorder\BuffBlessingMoment.cs" />
-    <Compile Include="Buffs\Disorder\DebuffChaosTheory.cs" />
-    <Compile Include="Buffs\Disorder\DebuffBendingMagnets.cs" />
-    <Compile Include="Buffs\DebuffGreenLight.cs" />
-    <Compile Include="Buffs\Disorder\DebuffFourHeavyBlocking.cs" />
-    <Compile Include="Buffs\NMODCrystalLeaf.cs" />
-    <Compile Include="Buffs\MODCrystalLeaf.cs" />
-    <Compile Include="Buffs\Sunset\DebuffSunsetBlackFire.cs" />
-    <Compile Include="DisorderUnderstar.cs" />
-    <Compile Include="Dusts\Code\DustCodeParticle.cs" />
-    <Compile Include="Dusts\Disorder\DustBodyDebris.cs" />
-    <Compile Include="Dusts\Disorder\DustGoldenSymbol.cs" />
-    <Compile Include="Items\Armors\ChlorophyteHeadnail.cs" />
-    <Compile Include="Items\Code\CodeFragments.cs" />
-    <Compile Include="Items\Code\CodeGun.cs" />
-    <Compile Include="Items\Code\CoreGun.cs" />
-    <Compile Include="Items\Disorder\Armors\DisorderBreastplate.cs" />
-    <Compile Include="Items\Disorder\Armors\DisorderHelmet.cs" />
-    <Compile Include="Items\Disorder\Armors\DisorderLeggings.cs" />
-    <Compile Include="Items\Disorder\DisorderAxe.cs" />
-    <Compile Include="Items\Disorder\DisorderBar.cs" />
-    <Compile Include="Items\Disorder\DisorderCross.cs" />
-    <Compile Include="Items\Disorder\DisorderEschatologyBossBag.cs" />
-    <Compile Include="Items\Disorder\DisorderFourtype.cs" />
-    <Compile Include="Items\Disorder\DisorderHammer.cs" />
-    <Compile Include="Items\Disorder\DisorderKnife.cs" />
-    <Compile Include="Items\Disorder\DisorderMyself.cs" />
-    <Compile Include="Items\Disorder\DisorderOmnipotence.cs" />
-    <Compile Include="Items\Disorder\DisorderPickaxe.cs" />
-    <Compile Include="Items\Disorder\DisorderSummoned.cs" />
-    <Compile Include="Items\Disorder\DisorderWings.cs" />
-    <Compile Include="Items\StartStarsStory.cs" />
-    <Compile Include="Items\Armors\SwimwearBody.cs" />
-    <Compile Include="Items\Armors\SwimwearHead.cs" />
-    <Compile Include="Items\Armors\SwimwearLegs.cs" />
-    <Compile Include="Items\Armors\HallowedHeadnail.cs" />
-    <Compile Include="Items\Armors\ShroomiteHeadnail.cs" />
-    <Compile Include="Items\DXTBlade.cs" />
-    <Compile Include="Items\PoisonousPotion.cs" />
-    <Compile Include="Items\Star\Armors\StarHat.cs" />
-    <Compile Include="Items\Star\Armors\StarPants.cs" />
-    <Compile Include="Items\Star\Armors\StarVest.cs" />
-    <Compile Include="Items\Star\FireOfStarZero.cs" />
-    <Compile Include="Items\Star\GalaxyLight.cs" />
-    <Compile Include="Items\GlitchRIO.cs" />
-    <Compile Include="Items\GlitchSIO.cs" />
-    <Compile Include="Items\LikeLifeLine.cs" />
-    <Compile Include="Items\PurpleStone.cs" />
-    <Compile Include="Items\Star\StarFrame.cs" />
-    <Compile Include="Items\Star\BiDirectionalMeteor.cs" />
-    <Compile Include="Items\Star\StarKnife.cs" />
-    <Compile Include="Items\Star\StarMana.cs" />
-    <Compile Include="Items\Star\StarManaGun.cs" />
-    <Compile Include="Items\Star\StellarDeliberate.cs" />
-    <Compile Include="Items\Star\SurroundStar.cs" />
-    <Compile Include="Items\Star\StarSurround.cs" />
-    <Compile Include="Items\RSGun.cs" />
-    <Compile Include="Items\Sunset\BlackLavaBow.cs" />
-    <Compile Include="Items\Sunset\ElectromagnetismLighting.cs" />
-    <Compile Include="Items\Testament\AugustGoose.cs" />
-    <Compile Include="Items\Testament\OctoberOath.cs" />
-    <Compile Include="Items\Testament\SeptemberOldFlames.cs" />
-    <Compile Include="NPCs\Bosses\Code\KeepImagineLastLongUnderSymbol.cs" />
-    <Compile Include="NPCs\Bosses\Disorder\DisorderEschatology.cs" />
-    <Compile Include="Dusts\Code\DustCodeNumber.cs" />
-    <Compile Include="NPCs\Bosses\Star\MeteorTidal.cs" />
-    <Compile Include="FSM_NPC.cs" />
-    <Compile Include="NPCs\Star\Hostile\StarCurseTheStarOfFire.cs" />
-    <Compile Include="NPCs\Star\Hostile\StarIchorTheStarOfFire.cs" />
-    <Compile Include="Projectiles\Disorder\Bosses\DisorderEschatologyTriangleBlack.cs" />
-    <Compile Include="Projectiles\Disorder\Bosses\DisorderEschatologyTriangleBule.cs" />
-    <Compile Include="Projectiles\Disorder\Bosses\DisorderEschatologyTriangleGreen.cs" />
-    <Compile Include="Projectiles\Disorder\Bosses\DisorderEschatologyTriangleLime.cs" />
-    <Compile Include="Projectiles\Disorder\Bosses\DisorderEschatologyTriangleRed.cs" />
-    <Compile Include="Projectiles\Disorder\Bosses\DisorderEschatologyTriangleYellow.cs" />
-    <Compile Include="Projectiles\Disorder\ProDisorderBeam.cs" />
-    <Compile Include="Projectiles\FalseBeam.cs" />
-    <Compile Include="Projectiles\Code\ProCodeLaser.cs" />
-    <Compile Include="Projectiles\NHolyArrow.cs" />
-    <Compile Include="Projectiles\NNHolyArrow.cs" />
-    <Compile Include="Projectiles\NNNHolyArrow.cs" />
-    <Compile Include="Projectiles\Star\Monsters\ProStarCTSOF3.cs" />
-    <Compile Include="Projectiles\Star\Monsters\ProStarITSOF3.cs" />
-    <Compile Include="Projectiles\Star\Monsters\ProStarITSOF2.cs" />
-    <Compile Include="Projectiles\Star\Monsters\ProStarITSOF1.cs" />
-    <Compile Include="Projectiles\Star\ProStarDownStar.cs" />
-    <Compile Include="Projectiles\Star\ProStarFollowingStar2.cs" />
-    <Compile Include="Projectiles\Star\ProStarLight.cs" />
-    <Compile Include="Projectiles\Star\Monsters\ProStarCTSOF1.cs" />
-    <Compile Include="Projectiles\Star\Monsters\ProStarCTSOF2.cs" />
-    <Compile Include="Projectiles\Star\ProStarFollowingStar1.cs" />
-    <Compile Include="Projectiles\Star\ProStarArrow.cs" />
-    <Compile Include="Projectiles\Sunset\ProSunsetBlackFireArrow.cs" />
-    <Compile Include="Projectiles\Sunset\ProSunsetElectromagneticProjectile.cs" />
-    <Compile Include="Projectiles\Sunset\ProSunsetEnergyArrow.cs" />
-    <Compile Include="Projectiles\Sunset\ProSunsetLaser1.cs" />
-    <Compile Include="Projectiles\Sunset\ProSunsetLaser2.cs" />
-    <Compile Include="Projectiles\Sunset\PSEUDOProSunsetElectromagneticProjectile.cs" />
-    <Compile Include="Projectiles\Sunset\PSEUDOProSunsetEnergyArrow.cs" />
-    <Compile Include="Utils\MyDustID.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="NPCs\Star\Friendly\" />
-    <Folder Include="NPCs\Sunset\" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
-  <ProjectExtensions>
-    <VisualStudio AllowExistingFolder="true" />
-  </ProjectExtensions>
 </Project>

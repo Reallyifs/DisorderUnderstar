@@ -1,7 +1,7 @@
 ﻿using Terraria.ModLoader;
-namespace DisorderUnderstar.NPCs
+namespace DisorderUnderstar
 {
-    public abstract class DUNPC : ModNPC
+    public abstract class ModNPC : Terraria.ModLoader.ModNPC
     {
         protected int State
         {

@@ -1,7 +1,7 @@
-﻿using Microsoft.Xna.Framework;
-using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
 using DisorderUnderstar.Utils;
+using Microsoft.Xna.Framework;
 namespace DisorderUnderstar.Projectiles
 {
     public class FalseBeam : ModProjectile
@@ -12,15 +12,15 @@ namespace DisorderUnderstar.Projectiles
 		}
 		public override void SetDefaults()
         {
+            projectile.melee = true;
+			projectile.scale = 1.5f;
             projectile.width = 8;
             projectile.height = 8;
-			projectile.scale = 1.5f;
-            projectile.friendly = true;
+			projectile.aiStyle = 132;
             projectile.hostile = false;
-            projectile.melee = true;
+            projectile.friendly = true;
             projectile.timeLeft = 600;
 			projectile.ignoreWater = true;
-			projectile.aiStyle = 132;
 
 			// 如果写这句话粒子效果也变成泰拉剑气的了
 			// aiType = ProjectileID.TerraBeam;
@@ -39,7 +39,7 @@ namespace DisorderUnderstar.Projectiles
 		}
         public override void Kill(int timeLeft)
         {
-            for (int r18 = 0; r18 < 5; r18++)
+            for (int r = 0; r < 5; r++)
             {
                 Dust dust = Dust.NewDustDirect
                     (projectile.position, projectile.width, projectile.height,

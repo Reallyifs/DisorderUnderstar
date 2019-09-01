@@ -3,16 +3,24 @@
 *0个没做的贴图
  作者：“nice。”
 *Bugs fixing
- Please wait a min...
- Bugs fix number: 4
+ Bugs fix number: 6
 *移除Example一套
  累赘代码？不，只是单纯的懒了而已
+*星零之火回归
+ 我实在是懒得自己写AI了
+ 饶了我吧or2
+*增加颜色介绍
+ 主要是提示哪个是哪种类型的
+ 目前只使用在无序系列上
+ 以后会给所有东西都加上的
 *以下是增强：
  电磁光亮
  星星系列的某些武器（星系之光：……）
  无序·恐惧症的宝藏袋（？）及它的攻击和无序·我于万物之中
- 一瓶药
+ 一瓶药，RS之枪
+ Glitch R.I.O和Glitch S.I.O
 *下面是削弱：
+ 很多，相信我
 
  以下是上期更新：
 *Bugs fixs
@@ -43,9 +51,9 @@
 --------------------
 制作者and发布者and汉、英化者：实弑Reality_Killer（QQ：1249014149）
 发布群：
-爱咋咋地（群号：824525819）【官方1群】（什）
+DisorderUnderstar Mod交流群（群号：824525819）
 --------------------
-系列详情请入群后查看。
+访问 https://shimo.im/docs/JcCpvWhKrPWWQ9qp 查阅更多信息
 --------------------
 
 C.DisorderUnderstar v0.0.2.0

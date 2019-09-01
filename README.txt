@@ -9,7 +9,7 @@ Or you can call me "Reality_Killer", either.
 
 # Why you write this?
 Emm...write this to myself?
-I think this is the best way to explain all of this [.txt](Actually, [.cs])
+I think this is the best way to explain all of this [.txt] (Actually, [.cs])
 
 # Other things
 Keep learning!

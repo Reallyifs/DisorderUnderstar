@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using DisorderUnderstar.Projectiles.Star;
 namespace DisorderUnderstar.Items.Star
 {
     public class GalaxyLight : ModItem
@@ -19,7 +20,7 @@ namespace DisorderUnderstar.Items.Star
             item.rare = ItemRarityID.LightPurple;
             item.magic = true;
             item.scale = 1f;
-            item.shoot = mod.ProjectileType("ProStarFollowingStar1");
+            item.shoot = mod.ProjectileType<ProStarFollowingStar1>();
             item.value = Item.sellPrice(0, 1, 50, 0);
             item.width = 40;
             item.damage = 12;
@@ -44,9 +45,9 @@ namespace DisorderUnderstar.Items.Star
             recipe1.AddIngredient(ItemID.StarCannon, 1);
             recipe1.AddIngredient(ItemID.Starfury, 1);
             recipe1.AddIngredient(ItemID.MeteoriteBar, 30);
-            //recipe1.AddIngredient(mod, "FireOfStarZero", 6);
+            recipe1.AddIngredient(mod.ItemType<FireOfStarZero>(), 6);
             recipe1.AddIngredient(ItemID.FallenStar, 20);
-            recipe1.AddIngredient(mod, "StarFrame", 3);
+            recipe1.AddIngredient(mod.ItemType<StarFrame>(), 3);
             recipe1.AddTile(TileID.Anvils);
             recipe1.SetResult(this);
             recipe1.AddRecipe();

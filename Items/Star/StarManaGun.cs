@@ -2,6 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
+using DisorderUnderstar.Projectiles.Star;
 namespace DisorderUnderstar.Items.Star
 {
     public class StarManaGun : ModItem
@@ -19,7 +20,7 @@ namespace DisorderUnderstar.Items.Star
             item.rare = ItemRarityID.Lime;
             item.magic = true;
             item.scale = 0.9f;
-            item.shoot = mod.ProjectileType("ProStarLight");
+            item.shoot = mod.ProjectileType<ProStarLight>();
             item.value = Item.buyPrice(0, 12, 0, 0);
             item.value = Item.sellPrice(0, 6, 0, 0);
             item.width = 34;
@@ -32,30 +33,14 @@ namespace DisorderUnderstar.Items.Star
             item.knockBack = 2f;
             item.shootSpeed = 40f;
             item.useAnimation = 30;
-            if (Main.dayTime)
-            {
-                item.damage = 49;
-            }
-            else if (!Main.dayTime)
-            {
-                item.damage = 82;
-            }
-            else if (Main.bloodMoon)
-            {
-                item.damage = 93;
-            }
-            else if (Main.snowMoon)
-            {
-                item.damage = 104;
-            }
-            else if (Main.pumpkinMoon)
-            {
-                item.damage = 104;
-            }
-            else
-            {
-                item.damage = 115;
-            }
+            #region 神奇的判定
+            if (Main.dayTime) item.damage = 49;
+            else if (!Main.dayTime) item.damage = 82;
+            else if (Main.bloodMoon) item.damage = 93;
+            else if (Main.snowMoon) item.damage = 104;
+            else if (Main.pumpkinMoon) item.damage = 104;
+            else item.damage = 115;
+            #endregion
         }
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
@@ -68,30 +53,14 @@ namespace DisorderUnderstar.Items.Star
             item.mana = 0;
             item.crit = 35;
             item.damage = 71;
-            if (Main.dayTime)
-            {
-                item.damage = 60;
-            }
-            else if (!Main.dayTime)
-            {
-                item.damage = 93;
-            }
-            else if (Main.bloodMoon)
-            {
-                item.damage = 104;
-            }
-            else if (Main.snowMoon)
-            {
-                item.damage = 115;
-            }
-            else if (Main.pumpkinMoon)
-            {
-                item.damage = 115;
-            }
-            else
-            {
-                item.damage = 126;
-            }
+            #region 神奇的判定2
+            if (Main.dayTime) item.damage = 60;
+            else if (!Main.dayTime) item.damage = 93;
+            else if (Main.bloodMoon) item.damage = 104;
+            else if (Main.snowMoon) item.damage = 115;
+            else if (Main.pumpkinMoon) item.damage = 115;
+            else item.damage = 126;
+            #endregion
         }
         public override Vector2? HoldoutOffset()
         {
@@ -106,7 +75,7 @@ namespace DisorderUnderstar.Items.Star
             real.AddIngredient(ItemID.SpaceGun, 1);
             real.AddIngredient(ItemID.IronBar, 20);
             real.AddIngredient(ItemID.MeteoriteBar, 7);
-            real.AddIngredient(mod, "StarFrame", 7);
+            real.AddIngredient(mod.ItemType<StarFrame>(), 7);
             real.AddIngredient(ItemID.FallenStar, 14);
             real.AddTile(TileID.Tables);
             real.AddTile(TileID.Chairs);

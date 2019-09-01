@@ -19,7 +19,7 @@ namespace DisorderUnderstar.Items.Star
                 "魔法、近战和远程伤害增加10%，魔法消耗减少1%\n" +
                 "近战暴击增加5%，近战速度增加10%，速度增加50%，跳跃高度增加10%\n" +
                 "免疫击退，着火，中毒，剧毒\n" +
-                "如果你的生命低于你最大生命的30%，你会获得“冰障”Buff\n" +
+                "如果你的生命低于你最大生命的30%，你会获得冰障Buff\n" +
                 "-");
         }
         public override void SetDefaults()
@@ -79,7 +79,7 @@ namespace DisorderUnderstar.Items.Star
             recipe1.AddIngredient(ItemID.EoCShield, 1);
             recipe1.AddIngredient(ItemID.BrainOfConfusion, 1);
             recipe1.AddIngredient(ItemID.FallenStar, 10);
-            recipe1.AddIngredient(mod, "StarFrame", 5);
+            recipe1.AddIngredient(mod.ItemType<StarFrame>(), 5);
             recipe1.AddTile(TileID.Anvils);
             recipe1.SetResult(this);
             recipe1.AddRecipe();

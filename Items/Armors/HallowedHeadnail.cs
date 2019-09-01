@@ -1,4 +1,4 @@
-using Terraria;
+ï»¿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 namespace DisorderUnderstar.Items.Armors
@@ -8,14 +8,14 @@ namespace DisorderUnderstar.Items.Armors
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("ÉñÊ¥Í·¼×");
-            Tooltip.SetDefault("Ôö¼Ó10%µÄ½üÕ½ÉËº¦¼°±©»÷ÂÊ\n" +
-                "Ôö¼Ó29%µÄ½üÕ½¹¥ËÙ\n" +
-                "Ôö¼Ó12%µÄÄ§·¨ÉËº¦¼°±©»÷ÂÊ£¬Ôö¼Ó100µÄÄ§·¨ÉÏÏŞ\n" +
-                "Ä§·¨ÏûºÄ¼õÉÙ20%\n" +
-                "Ôö¼Ó15%µÄÔ¶³ÌÉËº¦£¬Ôö¼Ó8%µÄ±©»÷ÂÊ\n" +
-                "25%µÄ¼¸ÂÊ²»ÏûºÄµ¯Ò©\n" +
-                "ÒÆ¶¯ËÙ¶ÈÔö¼Ó19%");
+            DisplayName.SetDefault("ç¥åœ£å¤´ç”²");
+            Tooltip.SetDefault("å¢åŠ 10%çš„è¿‘æˆ˜ä¼¤å®³åŠæš´å‡»ç‡\n" +
+                "å¢åŠ 29%çš„è¿‘æˆ˜æ”»é€Ÿ\n" +
+                "å¢åŠ 12%çš„é­”æ³•ä¼¤å®³åŠæš´å‡»ç‡ï¼Œå¢åŠ 100çš„é­”æ³•ä¸Šé™\n" +
+                "é­”æ³•æ¶ˆè€—å‡å°‘20%\n" +
+                "å¢åŠ 15%çš„è¿œç¨‹ä¼¤å®³ï¼Œå¢åŠ 8%çš„æš´å‡»ç‡\n" +
+                "25%çš„å‡ ç‡ä¸æ¶ˆè€—å¼¹è¯\n" +
+                "ç§»åŠ¨é€Ÿåº¦å¢åŠ 19%");
         }
         public override void SetDefaults()
         {

@@ -16,9 +16,9 @@ namespace DisorderUnderstar.Dusts.Code.DustCodeParticle
         public override bool Update(Dust dust)
         {
             #region 生成下一个Dust
-            if (dust.dustIndex <= 1)
-                Dust.NewDustDirect(dust.position, 1, 1, mod.DustType("DustCodeParticle2"),
-                    0, 0, 102, Color.Green, 1f);
+            if (dust.dustIndex >= 1) dust.dustIndex--;
+            if (dust.dustIndex <= 0) dust.active = false;
+            if (dust.dustIndex == 1) Dust.NewDustDirect(dust.position, 1, 1, mod.DustType<DustCodeParticle2>(), 0, 0, 102, Color.Green, 1f);
             #endregion
             return false;
         }

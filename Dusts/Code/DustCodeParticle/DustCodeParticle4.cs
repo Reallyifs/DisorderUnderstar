@@ -13,5 +13,13 @@ namespace DisorderUnderstar.Dusts.Code.DustCodeParticle
             dust.dustIndex = 13;
             dust.noGravity = true;
         }
+        public override bool Update(Dust dust)
+        {
+            #region Dust的消失
+            if (dust.dustIndex >= 1) dust.dustIndex--;
+            if (dust.dustIndex <= 0) dust.active = false;
+            #endregion
+            return false;
+        }
     }
 }

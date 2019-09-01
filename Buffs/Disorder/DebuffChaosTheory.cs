@@ -20,9 +20,7 @@ namespace DisorderUnderstar.Buffs.Disorder
             {
                 player.statLife -= 6;
                 Dust.NewDustDirect
-                    (player.position, player.width, player.height,
-                    mod.DustType("DustBodyDebris"), 0, 0, 128,
-                    Color.Red, -0.5f);
+                    (player.position, 1, 1, mod.DustType("DustBodyDebris"), 0, 0, 128, Color.Red);
             }
         }
     }

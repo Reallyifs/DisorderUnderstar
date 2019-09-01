@@ -1,6 +1,6 @@
-﻿using Terraria.ModLoader;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 using DisorderUnderstar.Utils;
 using Microsoft.Xna.Framework;
 namespace DisorderUnderstar.Buffs.Disorder
@@ -22,6 +22,7 @@ namespace DisorderUnderstar.Buffs.Disorder
         }
         public override void Update(Player player, ref int buffIndex)
         {
+            #region Buff的设置
             if (player.buffTime[buffIndex] > 10)
             {
                 player.buffImmune[BuffID.Venom] = false;
@@ -116,10 +117,11 @@ namespace DisorderUnderstar.Buffs.Disorder
                     player.statLife -= 30;
                 }
                 {
-                    if (Main.rand.Next(10) < 1) player.statLifeMax2 -= 10;
+                    if (Main.rand.Next(5) < 1) player.statLifeMax2 -= 10;
                     else player.statLifeMax2 += 1;
                 }
             }
+            #endregion
         }
     }
 }

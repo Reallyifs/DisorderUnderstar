@@ -29,20 +29,14 @@ namespace DisorderUnderstar.Projectiles.Code
         {
             if (projectile.timeLeft < 597)
             {
-                Dust dust = Dust.NewDustDirect
-                    (projectile.position, projectile.width, projectile.height,
-                    MyDustId.SicklyGreen, 0f, 0f, 100,
+                Dust dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, MyDustId.SicklyGreen, 0f, 0f, 100,
                     Color.Green, 3f);
                 dust.noGravity = true;
-                Dust no = Dust.NewDustDirect
-                        (projectile.position, projectile.width, projectile.height,
-                        mod.DustType("DustCodeParticle"), 0f, +0.1f, +10,
-                        Color.Green, -0.4f);
+                Dust no = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, mod.DustType("DustCodeParticle"), 0f,
+                    0f, 10, Color.Green, 1f);
                 no.noLight = false;
-                Dust tsud = Dust.NewDustDirect
-                    (projectile.position, projectile.width, projectile.height,
-                    mod.DustType("DustCodeNumber"), 0f, +0.2f, +25,
-                    Color.Green, -0.1f);
+                Dust tsud = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, mod.DustType("DustCodeNumber"), 0f,
+                    0f, 25, Color.Green, 1f);
                 tsud.noLight = false;
             }
         }
@@ -50,15 +44,11 @@ namespace DisorderUnderstar.Projectiles.Code
         {
             for(int i = 0; i < 5; i++)
             {
-                Dust dust = Dust.NewDustDirect
-                        (projectile.position, projectile.width, projectile.height,
-                        mod.DustType("DustCodeParticle"), 0f, +0.1f, +10,
-                        Color.Green, -0.4f);
+                Dust dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, mod.DustType("DustCodeParticle"), 0f,
+                    0f, 10, Color.Green, 1f);
                 dust.noLight = false;
-                Dust tsud = Dust.NewDustDirect
-                    (projectile.position, projectile.width, projectile.height,
-                    mod.DustType("DustCodeNumber"), 0f, +0.2f, +25,
-                    Color.Green, -0.1f);
+                Dust tsud = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, mod.DustType("DustCodeNumber"), 0f,
+                    0f, 25, Color.Green, 1f);
                 tsud.noLight = false;
             }
         }

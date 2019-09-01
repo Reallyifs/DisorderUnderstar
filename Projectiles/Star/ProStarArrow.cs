@@ -24,16 +24,15 @@ namespace DisorderUnderstar.Projectiles.Star
             projectile.friendly = true;
             projectile.timeLeft = 600;
             projectile.penetrate = 1;
-            projectile.ignoreWater = true;
+            projectile.ignoreWater = false;
             projectile.tileCollide = true;
         }
         public override void AI()
         {
             if (projectile.timeLeft < 597)
             {
-                Dust dust = Dust.NewDustDirect
-                    (projectile.position, projectile.width, projectile.height,
-                    MyDustId.YellowGoldenFire, 0f, 0f, 100, default(Color), 1f);
+                Dust dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, MyDustId.YellowGoldenFire, 0f, 0f,
+                    100, default(Color), 1f);
                 dust.noGravity = true;
             }
         }
@@ -46,15 +45,13 @@ namespace DisorderUnderstar.Projectiles.Star
         {
             for (int i = 0; i < 5; i++)
             {
-                Dust dust = Dust.NewDustDirect
-                    (projectile.position, projectile.width, projectile.height, 
-                    MyDustId.YellowFx, 0f, 0f, 100,
+                Dust dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, MyDustId.YellowFx, 0f, 0f, 100,
                     Color.Yellow, 1f);
-                dust.noGravity = true;
                 dust.noLight = false;
+                dust.noGravity = true;
             }
-            Projectile.NewProjectile(projectile.position, projectile.velocity,
-                ProjectileID.RocketI, 120, 2f, projectile.owner);
+            Vector2 ToUPVEC = new Vector2(projectile.Center.X, projectile.Center.Y - projectile.height);
+            // Projectile.NewProjectile(projectile.position, ToUPVEC, ProjectileID.RocketIII, 120, 2f, projectile.owner);
         }
     }
 }

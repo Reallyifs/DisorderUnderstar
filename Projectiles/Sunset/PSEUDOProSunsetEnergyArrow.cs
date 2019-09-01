@@ -45,26 +45,21 @@ namespace DisorderUnderstar.Projectiles.Sunset
                 Vector2 uVEC = Vector2.Normalize(Main.MouseWorld - pl.Center);
                 float rVEC = uVEC.ToRotation();
                 pl.direction = Main.MouseWorld.X < pl.Center.X ? -1 : 1;
-                pl.itemRotation = (float)Math.Atan2
-                    (rVEC.ToRotationVector2().Y * pl.direction,
-                    rVEC.ToRotationVector2().X + pl.direction);
+                pl.itemRotation = (float)Math.Atan2(rVEC.ToRotationVector2().Y * pl.direction, rVEC.ToRotationVector2().X + pl.direction);
                 pl.itemTime = 2;
                 pl.itemAnimationMax = 2;
                 for(float f = 0f; f < 1f; f += 0.1f)
                 {
-                    Dust d = Dust.NewDustDirect(projectile.Center, projectile.width,
-                        projectile.height, MyDustId.BlueMagic, -pl.velocity.X, -pl.velocity.Y,
-                        255 - (ai0 + 99), Color.Blue, (float)(ai0 / 104f));
+                    Dust d = Dust.NewDustDirect(projectile.Center, projectile.width, projectile.height, MyDustId.BlueMagic, -pl.velocity.X,
+                        -pl.velocity.Y, 255 - (ai0 + 99), Color.Blue, (float)(ai0 / 104f));
                     d.rotation += 0.09f;
                     d.velocity *= 1.5f;
                 }
             }
             else
             {
-                var pVEC = Projectile.NewProjectileDirect
-                    (projectile.Center, projectile.velocity * 30f,
-                    mod.ProjectileType<ProSunsetEnergyArrow>(),
-                    (int)(projectile.ai[0] / 200f * 200), 6f, projectile.owner);
+                var pVEC = Projectile.NewProjectileDirect(projectile.Center, projectile.velocity * 30f,
+                    mod.ProjectileType<ProSunsetEnergyArrow>(), (int)(projectile.ai[0] / 200f * 200), 6f, projectile.owner);
                 pVEC.scale = 1f + (float)(projectile.ai[0] / 2448f);
                 if (projectile.timeLeft > 30) projectile.timeLeft = 30;
                 return;

@@ -29,10 +29,8 @@ namespace DisorderUnderstar.Projectiles.Sunset
         {
             if (projectile.timeLeft < 9999996)
             {
-                Dust dust = Dust.NewDustDirect
-                    (projectile.position, projectile.width + 2, projectile.height + 2,
-                    MyDustId.BlueMagic, -projectile.velocity.X, -projectile.velocity.Y, 100,
-                    Color.LightBlue, 1f);
+                Dust dust = Dust.NewDustDirect(projectile.position, projectile.width + 2, projectile.height + 2, MyDustId.BlueMagic,
+                    -projectile.velocity.X, -projectile.velocity.Y, 100, Color.LightBlue, 1f);
                 dust.noLight = false;
                 dust.velocity *= 1.2f;
                 dust.noGravity = true;
@@ -42,10 +40,8 @@ namespace DisorderUnderstar.Projectiles.Sunset
         {
             for (int i = 0; i < 5; i++)
             {
-                Dust dust = Dust.NewDustDirect
-                    (projectile.Center, projectile.width + 4, projectile.height + 4,
-                    MyDustId.BlueCircle, 0f, 0f, 100,
-                    Color.LightBlue, 1.5f);
+                Dust dust = Dust.NewDustDirect(projectile.Center, projectile.width + 4, projectile.height + 4, MyDustId.BlueCircle, 0f, 0f,
+                    100, Color.LightBlue, 1.5f);
                 dust.noLight = true;
                 dust.velocity *= 1.2f;
                 dust.noGravity = true;

@@ -30,30 +30,26 @@ namespace DisorderUnderstar.Projectiles.Sunset
                 Lighting.AddLight(projectile.position, 1f, 1f, 0.5f);
                 Lighting.AddLight(projectile.position, 0f, 0f, 0f);
             }
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 1; i++)
             {
-                Dust d = Dust.NewDustDirect(projectile.position, projectile.width,
-                    projectile.height, MyDustId.YellowGoldenFire, 0, 0, 100, Color.Yellow, 1f);
+                Dust d = Dust.NewDustDirect(projectile.position, 2, 2, MyDustId.YellowGoldenFire, 0, 0, 100, Color.Yellow, 1f);
+                d.scale = (float)Main.rand.Next(90, 110) * 0.014f;
                 d.position = projectile.Center - projectile.velocity * i / 3f;
                 d.velocity *= 0.2f;
                 d.noGravity = true;
-                d.scale = (float)Main.rand.Next(90, 110) * 0.014f;
-                Dust u = Dust.NewDustDirect(projectile.position, projectile.width,
-                    projectile.height, MyDustId.WhiteLight, 0, 0, 100, Color.White, 1f);
+                Dust u = Dust.NewDustDirect(projectile.position, 2, 2, MyDustId.WhiteLight, 0, 0, 100, Color.White, 1f);
+                u.scale = (float)Main.rand.Next(90, 110) * 0.014f;
                 u.position = projectile.Center - projectile.velocity * i / 3f;
                 u.velocity *= 0.2f;
                 u.noGravity = true;
-                u.scale = (float)Main.rand.Next(90, 110) * 0.014f;
             }
             NPC tar = Main.npc[(int)projectile.ai[0]];
             if (tar.active)
             {
                 float nVEC = 28f;
                 if (nVEC <= 28f && nVEC > 0) nVEC -= 0.1f;
-                Vector2 tarVEC = Vector2.Normalize(tar.Center - projectile.Center);
-                tarVEC *= 6f;
+                Vector2 tarVEC = Vector2.Normalize(tar.Center - projectile.Center)*6;
                 projectile.velocity = (projectile.velocity * nVEC + tarVEC) / (nVEC + 1f);
-                if (projectile.velocity.Length() < 30) projectile.velocity *= 2;
             }
         }
     }

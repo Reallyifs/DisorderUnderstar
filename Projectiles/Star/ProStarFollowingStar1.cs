@@ -33,39 +33,31 @@ namespace DisorderUnderstar.Projectiles.Star
             {
                 if (projectile.timeLeft <= 297)
                 {
-                    Dust dust = Dust.NewDustDirect
-                        (projectile.position, projectile.width, projectile.height,
-                        MyDustId.BlueCircle, 0f, 0f, 100,
+                    Dust dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, MyDustId.BlueCircle, 0f, 0f, 100,
                         Color.Blue, 1f);
-                    dust.noGravity = true;
                     dust.noLight = false;
+                    dust.noGravity = true;
                 }
                 if (projectile.timeLeft <= 200)
                 {
-                    Dust dust = Dust.NewDustDirect
-                        (projectile.position, projectile.width, projectile.height,
-                        MyDustId.GreenFXPowder, 0f, 0f, 100,
-                        Color.Green, 1f);
-                    dust.noGravity = true;
+                    Dust dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, MyDustId.GreenFXPowder, 0f, 0f,
+                        100, Color.Green, 1f);
                     dust.noLight = false;
+                    dust.noGravity = true;
                 }
                 if (projectile.timeLeft <= 100)
                 {
-                    Dust dust = Dust.NewDustDirect
-                        (projectile.position, projectile.width, projectile.height,
-                        MyDustId.YellowFx, 0f, 0f, 100,
+                    Dust dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, MyDustId.YellowFx, 0f, 0f, 100,
                         Color.Yellow, 1f);
-                    dust.noGravity = true;
                     dust.noLight = false;
+                    dust.noGravity = true;
                 }
                 if (projectile.timeLeft <= 10)
                 {
-                    Dust dust = Dust.NewDustDirect
-                        (projectile.position, projectile.width, projectile.height,
-                        MyDustId.RedLight, 0f, 0f, 100,
+                    Dust dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, MyDustId.RedLight, 0f, 0f, 100,
                         Color.Red, 1f);
-                    dust.noGravity = true;
                     dust.noLight = false;
+                    dust.noGravity = true;
                 }
                 if (projectile.timeLeft <= 30)
                 {
@@ -106,8 +98,7 @@ namespace DisorderUnderstar.Projectiles.Star
                     float nVEC = 30f;
                     if (nVEC <= 30f && 0f < nVEC) nVEC -= 0.1f;
                     // 朝向npc的单位向量 * nVEC + 3.33%偏移量
-                    projectile.velocity =
-                        (projectile.velocity * nVEC + tarVEC) / (nVEC + 1f);
+                    projectile.velocity = (projectile.velocity * nVEC + tarVEC) / (nVEC + 1f);
                 }
             }
         }
@@ -115,19 +106,23 @@ namespace DisorderUnderstar.Projectiles.Star
         {
             for (int i = 0; i < 5; i++)
             {
-                Dust dust = Dust.NewDustDirect
-                    (projectile.position, projectile.width, projectile.height, 
-                    MyDustId.YellowGoldenFire, 0f, 0f, 100,
-                    Color.Yellow, 3f);
+                Dust dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, MyDustId.YellowGoldenFire, 0f, 0f,
+                    100, Color.Yellow, 3f);
                 dust.noGravity = true;
             }
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(BuffID.Venom, 600);
-            target.AddBuff(BuffID.OnFire, 600);
+            target.AddBuff(BuffID.Venom, 60);
+            target.AddBuff(BuffID.OnFire, 60);
             target.AddBuff(BuffID.Frozen, damage);
             target.AddBuff(BuffID.Confused, damage * 5);
+        }
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            if (projectile.velocity.X != oldVelocity.X) projectile.velocity.X = -oldVelocity.X;
+            if (projectile.velocity.Y != oldVelocity.Y) projectile.velocity.Y = -oldVelocity.Y;
+            return false;
         }
     }
 }

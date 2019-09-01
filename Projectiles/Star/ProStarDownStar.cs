@@ -26,12 +26,8 @@ namespace DisorderUnderstar.Projectiles.Star
             #region 弹幕的粒子效果
             for(int i = 0; i < 8; i++)
             {
-                Dust d = Dust.NewDustDirect(projectile.Center, projectile.width + 4,
-                    projectile.height + 4, MyDustId.TrailingYellow1, -projectile.velocity.X,
-                    -projectile.velocity.Y);
-                d.alpha = Main.rand.Next(0, 200);
-                d.color = Color.Yellow;
-                d.scale = Main.rand.NextFloat(0.5f, 1.5f);
+                Dust d = Dust.NewDustDirect(projectile.Center, projectile.width + 4, projectile.height + 4, MyDustId.TrailingYellow1,
+                    -projectile.velocity.X, -projectile.velocity.Y, Main.rand.Next(0, 200), Color.Yellow, Main.rand.NextFloat(0.5f, 1.5f));
                 d.velocity *= 0.3f;
             }
             #endregion
@@ -48,20 +44,16 @@ namespace DisorderUnderstar.Projectiles.Star
         #region 发射FollowingStar2
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target = Main.npc[(int)projectile.ai[0]];
             Vector2 NPCUpVEC = new Vector2(target.Center.X, target.position.Y - target.height);
             Vector2 NPCToVEC = Vector2.Normalize(target.Center - NPCUpVEC) * 5;
-            Projectile.NewProjectile(NPCUpVEC, NPCToVEC,
-                mod.ProjectileType("ProStarFollowingStar2"), projectile.damage / 2,
+            Projectile.NewProjectile(NPCUpVEC, NPCToVEC, mod.ProjectileType<ProStarFollowingStar2>(), projectile.damage / 2,
                 projectile.knockBack / 2, projectile.owner, target.whoAmI);
         }
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            target = Main.player[(int)projectile.ai[0]];
             Vector2 PLAYERUpVEC = new Vector2(target.Center.X, target.position.Y - target.height);
             Vector2 PLAYERToVEC = Vector2.Normalize(target.Center - PLAYERUpVEC) * 5;
-            Projectile.NewProjectile(PLAYERUpVEC, PLAYERToVEC,
-                mod.ProjectileType("ProStarFollowingStar2"), projectile.damage / 2,
+            Projectile.NewProjectile(PLAYERUpVEC, PLAYERToVEC, mod.ProjectileType<ProStarFollowingStar2>(), projectile.damage / 2,
                 projectile.knockBack / 2, projectile.owner, target.whoAmI);
         }
         #endregion
@@ -69,12 +61,8 @@ namespace DisorderUnderstar.Projectiles.Star
         {
             for(int i = 0; i < 8; i++)
             {
-                Dust d = Dust.NewDustDirect(projectile.Center, projectile.width + 6,
-                    projectile.height + 6, MyDustId.TrailingYellow1, -projectile.velocity.X,
-                    -projectile.velocity.Y);
-                d.alpha = Main.rand.Next(0, 200);
-                d.color = Color.Yellow;
-                d.scale = Main.rand.NextFloat(0.5f, 1.5f);
+                Dust d = Dust.NewDustDirect(projectile.Center, projectile.width + 6, projectile.height + 6, MyDustId.TrailingYellow1,
+                    -projectile.velocity.X, -projectile.velocity.Y, Main.rand.Next(0, 200), Color.Yellow, Main.rand.NextFloat(0.5f, 1.5f));
                 d.velocity *= 0.3f;
             }
         }

@@ -46,8 +46,7 @@ namespace DisorderUnderstar.Projectiles.Sunset
                 float rotaion = unit.ToRotation();
                 player.direction = Main.MouseWorld.X < player.Center.X ? -1 : 1;
                 player.itemRotation = (float)Math.Atan2
-                    (rotaion.ToRotationVector2().Y * player.direction,
-                    rotaion.ToRotationVector2().X * player.direction);
+                    (rotaion.ToRotationVector2().Y * player.direction, rotaion.ToRotationVector2().X * player.direction);
                 player.itemTime = 2;
                 player.itemAnimation = 2;
                 for (float f = 0f; f < 1f; f += 0.1f)
@@ -66,10 +65,8 @@ namespace DisorderUnderstar.Projectiles.Sunset
             }
             else
             {
-                var pro1 = Projectile.NewProjectileDirect(projectile.Center,
-                    projectile.velocity * 7f,
-                    mod.ProjectileType<ProSunsetElectromagneticProjectile>(),
-                    (int)(projectile.ai[0] / 200f * 200), 5f, projectile.owner);
+                var pro1 = Projectile.NewProjectileDirect(projectile.Center, projectile.velocity * 7f,
+                    mod.ProjectileType<ProSunsetElectromagneticProjectile>(), (int)(projectile.ai[0] / 200f * 200), 5f, projectile.owner);
                 pro1.scale = 1f + (float)(projectile.ai[0] / 1616f);
                 if (projectile.timeLeft >= 30) projectile.timeLeft = 30;
                 return;

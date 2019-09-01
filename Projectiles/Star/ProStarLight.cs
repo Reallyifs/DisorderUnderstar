@@ -31,24 +31,20 @@ namespace DisorderUnderstar.Projectiles.Star
         {
             if (projectile.timeLeft < 597)
             {
-                Dust dust = Dust.NewDustDirect
-                    (projectile.position, projectile.width, projectile.height,
-                    MyDustId.YellowFx, 0f, 0f, +10,
+                Dust dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, MyDustId.YellowFx, 0f, 0f, +10,
                     Color.LightYellow, -0.5f);
-                dust.noGravity = true;
                 dust.noLight = false;
+                dust.noGravity = true;
             }
         }
         public override void Kill(int timeLeft)
         {
             for (int i = 0; i < 5; i++)
             {
-                Dust dust = Dust.NewDustDirect
-                    (projectile.position, projectile.width, projectile.height,
-                    MyDustId.YellowFx, 0f, 0f, +10,
+                Dust dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, MyDustId.YellowFx, 0f, 0f, +10,
                     Color.LightYellow, -0.5f);
-                dust.noGravity = true;
                 dust.noLight = false;
+                dust.noGravity = true;
             }
         }
     }

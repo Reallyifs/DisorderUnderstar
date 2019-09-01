@@ -41,8 +41,7 @@ namespace DisorderUnderstar.Projectiles.Sunset
             }
             for (int i = 0; i < 3; i++)
             {
-                Dust.NewDustDirect(projectile.Center, projectile.width * 2,
-                    projectile.height * 2, MyDustId.BlueMagic, -projectile.velocity.X,
+                Dust.NewDustDirect(projectile.Center, projectile.width * 2, projectile.height * 2, MyDustId.BlueMagic, -projectile.velocity.X,
                     -projectile.velocity.Y, 128, Color.Blue, 1.5f);
             }
             if(projectile.timeLeft<=5997)
@@ -51,12 +50,9 @@ namespace DisorderUnderstar.Projectiles.Sunset
                 float disMAX = 1000f;
                 foreach (NPC npc in Main.npc)
                 {
-                    if (npc.active && !npc.friendly && npc.type != NPCID.LunarTowerNebula &&
-                    !npc.behindTiles && Collision.CanHit
-                    (projectile.Center, 1, 1, npc.position, npc.width, npc.height) &&
-                    npc.type != NPCID.LunarTowerSolar &&
-                    npc.type != NPCID.LunarTowerStardust &&
-                    npc.type != NPCID.LunarTowerVortex)
+                    if (npc.active && !npc.friendly && npc.type != NPCID.LunarTowerNebula && Collision.CanHit
+                        (projectile.Center, 1, 1, npc.position, npc.width, npc.height) && npc.type != NPCID.LunarTowerSolar &&
+                        npc.type != NPCID.LunarTowerStardust && npc.type != NPCID.LunarTowerVortex)
                     {
                         float dis = Vector2.Distance(npc.Center, projectile.Center);
                         if (disMAX >= dis)
@@ -68,8 +64,7 @@ namespace DisorderUnderstar.Projectiles.Sunset
                 }
                 if (tar != null)
                 {
-                    Vector2 tarVEC = Vector2.Normalize(tar.Center - projectile.Center);
-                    tarVEC *= 20f;
+                    Vector2 tarVEC = Vector2.Normalize(tar.Center - projectile.Center) * 20;
                     float nVEC = 10f;
                     if (nVEC <= 10f) nVEC -= 0.1f;
                     projectile.velocity = (projectile.velocity * nVEC + tarVEC) / (nVEC + 1f);
@@ -80,9 +75,8 @@ namespace DisorderUnderstar.Projectiles.Sunset
         {
             for(int i = 0; i < 5; i++)
             {
-                Dust.NewDustDirect(projectile.Center, projectile.width * 3,
-                    projectile.height * 3, MyDustId.BlueCircle, 3f, 3f, 128, Color.Blue,
-                    1f);
+                Dust.NewDustDirect(projectile.Center, projectile.width * 3, projectile.height * 3, MyDustId.BlueCircle, 3f, 3f, 128,
+                    Color.Blue, 1f);
             }
         }
     }

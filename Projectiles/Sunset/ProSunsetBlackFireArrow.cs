@@ -29,10 +29,8 @@ namespace DisorderUnderstar.Projectiles.Sunset
         {
             if (projectile.timeLeft < 9999996)
             {
-                Dust dust = Dust.NewDustDirect
-                    (projectile.position, projectile.width, projectile.height,
-                    MyDustId.Fire, -projectile.velocity.X, -projectile.velocity.Y, 100,
-                    Color.Black, 1f);
+                Dust dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, MyDustId.Fire,
+                    -projectile.velocity.X, -projectile.velocity.Y, 100, Color.Black, 1f);
                 dust.noLight = false;
                 dust.noGravity = true;
             }
@@ -41,14 +39,13 @@ namespace DisorderUnderstar.Projectiles.Sunset
         {
             for (int i = 0; i < 5; i++)
             {
-                Dust dust = Dust.NewDustDirect
-                    (projectile.Center, projectile.width + 3, projectile.height + 3,
-                    MyDustId.Fire, 0f, 0f, 10,
+                Dust dust = Dust.NewDustDirect(projectile.Center, projectile.width + 3, projectile.height + 3, MyDustId.Fire, 0f, 0f, 10,
                     Color.Firebrick, 1.5f);
                 dust.noLight = false;
                 dust.noGravity = true;
             }
         }
+        #region Debuff
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
             target.AddBuff(mod.BuffType("DebuffSunsetBlackFire"), damage);
@@ -61,5 +58,6 @@ namespace DisorderUnderstar.Projectiles.Sunset
         {
             target.AddBuff(mod.BuffType("DebuffSunsetBlackFire"), damage);
         }
+        #endregion
     }
 }

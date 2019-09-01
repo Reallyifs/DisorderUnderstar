@@ -8,8 +8,7 @@ namespace DisorderUnderstar.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("S式魔法线");
-            Tooltip.SetDefault("一瓶比较好的魔法药水\n" +
-                "试试就知道了hhh");
+            Tooltip.SetDefault("你的魔力在增强！");
         }
         public override void SetDefaults()
         {

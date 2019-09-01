@@ -1,8 +1,8 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
 using DisorderUnderstar.Utils;
+using Microsoft.Xna.Framework;
 namespace DisorderUnderstar.Items
 {
 	public class PurpleStone : ModItem
@@ -10,7 +10,7 @@ namespace DisorderUnderstar.Items
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("紫色为零");
-			Tooltip.SetDefault("紫");
+			Tooltip.SetDefault("紫七之东。");
 		}
 		public override void SetDefaults()
 		{

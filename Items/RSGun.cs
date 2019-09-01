@@ -19,13 +19,13 @@ namespace DisorderUnderstar.Items
 			item.rare = ItemRarityID.Blue;
 			item.value = Item.sellPrice(100, 100, 100, 99);
 			item.scale = 1f;
-			item.shoot = ProjectileID.ChlorophyteBullet;
 			item.width = 40;
 			item.damage = 123;
             item.expert = true;
 			item.height = 38;
 			item.ranged = true;
 			item.noMelee = true;
+            item.useAmmo = AmmoID.Bullet;
 			item.useTime = 6;
             item.useTurn = true;
 			item.maxStack = 1;
@@ -36,13 +36,32 @@ namespace DisorderUnderstar.Items
 			item.shootSpeed = 20f;
 			item.useAnimation = 6;
 		}
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(0.0f, 0.0f);
+        }
         public override bool ConsumeAmmo(Player player)
         {
             return Main.rand.Next(10) < 9;
         }
-        public override Vector2? HoldoutOffset()
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage,
+            ref float knockBack)
         {
-            return new Vector2(0.0f, 0.0f);
+            #region 发射
+            #region 弹药和设定
+            int _1 = item.useAmmo;
+            int _2 = ProjectileID.Bullet;
+            int _3 = ProjectileID.ChlorophyteBullet;
+            int _4 = 0;
+            Vector2 _5 = new Vector2(player.Center.X, player.Center.Y);
+            Vector2 _6 = Vector2.Normalize(Main.MouseWorld - _5) * item.shootSpeed;
+            #endregion
+            if (Main.rand.Next(0, 100) <= 33) _4 = _3;
+            else if (Main.rand.Next(0, 100) <= 50) _4 = _2;
+            else _4 = _1;
+            Projectile.NewProjectile(_5, _6, _4, item.damage, item.knockBack, item.owner);
+            #endregion
+            return false;
         }
         public override void AddRecipes()
 		{

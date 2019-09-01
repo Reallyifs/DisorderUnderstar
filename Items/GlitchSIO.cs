@@ -1,8 +1,9 @@
-using Terraria;
+ï»¿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using DisorderUnderstar.Utils;
 using Microsoft.Xna.Framework;
+using DisorderUnderstar.Projectiles;
 namespace DisorderUnderstar.Items
 {
     public class GlitchSIO : ModItem
@@ -10,8 +11,8 @@ namespace DisorderUnderstar.Items
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Glitch S.I.O.");
-            Tooltip.SetDefault("ÖªµÀÁËÃ´£¿¡­¡­\n" +
-                "Àë×îºóÖ»ÓĞÒ»ÃëÖ®²î¡£");
+            Tooltip.SetDefault("çŸ¥é“äº†ä¹ˆï¼Ÿâ€¦â€¦\n" +
+                "ç¦»æœ€ååªæœ‰ä¸€ç§’ä¹‹å·®ã€‚");
         }
         public override void SetDefaults()
         {
@@ -35,31 +36,28 @@ namespace DisorderUnderstar.Items
             item.shootSpeed = 30f;
             item.useAnimation = 30;
         }
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage,
+            ref float knockBack)
         {
-            #region ·¢ÉäÁ£×Ó
+            #region å‘å°„ç²’å­
             float dis = 5f;
             float disMAX = 300f;
             Vector2 uVEC = new Vector2(speedX, speedY);
             uVEC.Normalize();
             for (float i = 0f; i < disMAX; i += dis)
             {
-                var d = Dust.NewDustDirect(position + uVEC * i, 4, 4, MyDustId.BlueMagic,
-                    0, 0, 0, Color.Blue, 1.5f);
+                var d = Dust.NewDustDirect(position + uVEC * i, 4, 4, MyDustId.BlueMagic, 0, 0, 0, Color.Blue, 1.5f);
                 d.velocity *= 0.3f;
                 d.noGravity = true;
             }
             #endregion
-            #region ÏòÄ¿±ê·¢Éä
+            #region å‘ç›®æ ‡å‘å°„
             NPC tar = null;
             foreach (NPC npc in Main.npc)
             {
-                if (npc.active && !npc.friendly && npc.type != NPCID.LunarTowerNebula &&
-                    !npc.behindTiles && Collision.CanHit
-                    (Main.MouseWorld, 1, 1, npc.position, npc.width, npc.height) &&
-                    npc.type != NPCID.LunarTowerSolar &&
-                    npc.type != NPCID.LunarTowerStardust &&
-                    npc.type != NPCID.LunarTowerVortex)
+                if (npc.active && !npc.friendly && npc.type != NPCID.LunarTowerNebula && Collision.CanHit
+                    (Main.MouseWorld, 1, 1, npc.position, npc.width, npc.height) && npc.type != NPCID.LunarTowerSolar &&
+                    npc.type != NPCID.LunarTowerStardust && npc.type != NPCID.LunarTowerVortex)
                 {
                     float dis2 = Vector2.Distance(npc.Center, Main.MouseWorld);
                     if (dis2 <= disMAX)
@@ -72,8 +70,7 @@ namespace DisorderUnderstar.Items
             if (tar != null)
             {
                 Vector2 tVEC = Vector2.Normalize(tar.Center - Main.MouseWorld) * 40;
-                Projectile.NewProjectile(player.Center, tVEC,
-                    mod.ProjectileType("NNHolyArrow"), item.damage, item.knockBack, item.owner);
+                Projectile.NewProjectile(player.Center, tVEC, mod.ProjectileType<NNHolyArrow>(), item.damage, item.knockBack, item.owner);
             }
             #endregion
             return false;

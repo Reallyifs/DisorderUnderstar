@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using DisorderUnderstar.Projectiles;
 namespace DisorderUnderstar.Items
 {
 	public class DXTBlade : ModItem
@@ -17,7 +18,7 @@ namespace DisorderUnderstar.Items
 			item.rare = ItemRarityID.Purple;
 			item.scale = 22f;
 			item.melee = true;
-            item.shoot = mod.ProjectileType("FalseBeam");
+            item.shoot = mod.ProjectileType<FalseBeam>();
 			item.value = Item.sellPrice(100, 0, 0, 0);
 			item.width = 30;
 			item.damage = 100;

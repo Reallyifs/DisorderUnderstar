@@ -15,11 +15,11 @@ namespace DisorderUnderstar.Items.Star
                 "“嘿，看呐，流星雨。”\n" +
                 "“听说流星的温度很高呢……”\n" +
                 "-\n" +
-                "最大生命增加100，最大魔法增加20\n" +
-                "魔法、近战和远程伤害增加10%，魔法消耗减少1%\n" +
-                "近战暴击增加5%，近战速度增加10%，速度增加50%，跳跃高度增加10%\n" +
-                "免疫击退，着火，中毒，剧毒\n" +
-                "如果你的生命低于你最大生命的30%，你会获得冰障Buff\n" +
+                "[c/FF0000:最大生命]增加100，[c/0000FF:最大魔法]增加20\n" +
+                "[c/FF00FF:魔法]、[c/FF8000:近战]和远程伤害增加10%，[c/0000FF:魔法消耗]减少11%\n" +
+                "[c/FF8000:近战暴击]增加5%，[c/FF8000:近战速度]增加10%，速度增加50%，跳跃高度增加10%\n" +
+                "免疫击退和[c/3F3F3F:着火]、[c/3F3F3F:中毒]、[c/3F3F3F:剧毒Debuff]\n" +
+                "如果你的[c/FF0000:生命]低于你[c/FF0000:最大生命]的30%，你会获得[c/BFBFBF:冰障Buff]\n" +
                 "-");
         }
         public override void SetDefaults()
@@ -35,40 +35,31 @@ namespace DisorderUnderstar.Items.Star
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            {
-                player.statLifeMax2 += 100;
-                player.statManaMax2 += 50;
-            }
-            {
-                player.magicDamage += 0.1f;
-                player.meleeDamage += 0.1f;
-                player.rangedDamage += 0.1f;
-            }
-            {
-                player.manaCost -= 0.01f;
-                player.moveSpeed += 0.5f;
-                player.meleeCrit += 5;
-                player.meleeSpeed += 0.1f;
-            }
-            {
-                player.noKnockback = true;
-                player.jumpSpeedBoost += 0.1f;
-            }
-            {
-                player.buffImmune[BuffID.Venom] = true;
-                player.buffImmune[BuffID.OnFire] = true;
-                player.buffImmune[BuffID.Poisoned] = true;
-            }
-            if (player.statLife < player.statLifeMax2 * 0.3f)
-            {
-                player.AddBuff(BuffID.IceBarrier, 1);
-            }
+            #region 生命、伤害和暴击等
+            player.manaCost -= 0.11f;
+            player.meleeCrit += 5;
+            player.moveSpeed += 0.5f;
+            player.meleeSpeed += 0.1f;
+            player.magicDamage += 0.1f;
+            player.meleeDamage += 0.1f;
+            player.rangedDamage += 0.1f;
+            player.statLifeMax2 += 100;
+            player.statManaMax2 += 50;
+            #endregion
+            #region 其他
+            player.noKnockback = true;
+            player.jumpSpeedBoost += 0.1f;
+            player.buffImmune[BuffID.Venom] = true;
+            player.buffImmune[BuffID.OnFire] = true;
+            player.buffImmune[BuffID.Poisoned] = true;
+            #endregion
+            if (player.statLife < player.statLifeMax2 * 0.3f) { player.AddBuff(BuffID.IceBarrier, 1); }
             if (hideVisual == true)
             {
                 for (int i = 0; i < 1; i++)
                 {
-                    Dust.NewDustDirect(player.position, player.width, player.height,
-                        MyDustId.YellowGoldenFire, -player.velocity.X * 0.5f, -player.velocity.Y * 0.5f, 100, Color.White, 1.0f);
+                    Dust.NewDustDirect(player.position, player.width, player.height, MyDustId.YellowGoldenFire, -player.velocity.X * 0.5f,
+                        -player.velocity.Y * 0.5f, 100, Color.White, 1.0f);
                 }
             }
         }

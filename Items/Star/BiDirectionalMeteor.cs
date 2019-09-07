@@ -14,17 +14,17 @@ namespace DisorderUnderstar.Items.Star
                 "“听说，对着流星许下愿望……”\n" +
                 "“就会实现哦！”\n" +
                 "-\n" +
-                "[c/FF0000:最大生命]增加400，最大魔法增加200\n" +
-                "所有伤害增加40%\n" +
-                "魔法消耗减少4%，近战暴击增加20%，近战速度加快40%\n" +
+                "[c/FF0000:生命上限]增加400，[c/0000FF:魔法上限]增加200\n" +
+                "[c/000000:所有伤害]增加40%\n" +
+                "[c/0000FF:魔法消耗]减少4%，近战暴击增加20%，近战速度加快40%\n" +
                 "移动速度增加2%，跳跃高度增加40%，免疫摔落伤害\n" +
-                "免疫摔落伤害，缓慢、着火、燃烧、黑暗、中毒、沉默、破甲\n" +
+                "免疫摔落伤害，[c/3F3F3F:缓慢]、[c/3F3F3F:着火]、[c/3F3F3F:燃烧]、[c/3F3F3F:黑暗]、[c/3F3F3F:中毒]、[c/3F3F3F:沉默]、[c/3F3F3F:破甲]\n" +
                 "-\n" +
-                "当你的[c/FF0000:生命上限]大于等于500，魔法上限大于等于200\n" +
-                "且[c/FF0000:生命值]小于100，魔法值小于30时\n" +
-                "你的随从伤害增加10，远程伤害增加20，魔法伤害增加30\n" +
-                "近战伤害增加40，投掷伤害增加50\n" +
-                "并给予一个持续20秒的冰障Buff\n" +
+                "当你的[c/FF0000:生命上限]大于等于500，[c/0000FF:魔法上限]大于等于200\n" +
+                "且[c/FF0000:生命值]小于100，[c/0000FF:魔法值]小于30时\n" +
+                "你的[c/00FFFF:随从伤害]增加10，[c/00007F:远程伤害]增加20，[c/0000FF:魔法伤害]增加30\n" +
+                "[c/FF8000:近战伤害]增加40，[c/7F7F7F:投掷伤害]增加50\n" +
+                "并给予一个持续20秒的[c/BFBFBF:冰障buff]\n" +
                 "-");
         }
         public override void SetDefaults()
@@ -41,37 +41,33 @@ namespace DisorderUnderstar.Items.Star
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            {
-                player.statLifeMax2 += 400;
-                player.statManaMax2 += 200;
-            }
-            {
-                player.magicDamage += 0.4f;
-                player.meleeDamage += 0.4f;
-                player.minionDamage += 0.4f;
-                player.rangedDamage += 0.4f;
-                player.thrownDamage += 0.4f;
-            }
-            {
-                player.manaCost -= 0.04f;
-                player.meleeCrit += 20;
-                player.meleeSpeed += 0.4f;
-            }
-            {
-                player.moveSpeed += 1f;
-                player.moveSpeed += 1f;
-                player.noFallDmg = true;
-                player.jumpSpeedBoost += 0.4f;
-            }
-            {
-                player.buffImmune[BuffID.Slow] = true;
-                player.buffImmune[BuffID.OnFire] = true;
-                player.buffImmune[BuffID.Burning] = true;
-                player.buffImmune[BuffID.Darkness] = true;
-                player.buffImmune[BuffID.Poisoned] = true;
-                player.buffImmune[BuffID.Silenced] = true;
-                player.buffImmune[BuffID.BrokenArmor] = true;
-            }
+            #region 生命&伤害
+            player.magicDamage += 0.4f;
+            player.meleeDamage += 0.4f;
+            player.minionDamage += 0.4f;
+            player.rangedDamage += 0.4f;
+            player.statLifeMax2 += 400;
+            player.statManaMax2 += 200;
+            player.thrownDamage += 0.4f;
+            #endregion
+            #region 加成
+            player.manaCost -= 0.04f;
+            player.meleeCrit += 20;
+            player.noFallDmg = true;
+            player.moveSpeed += 1f;
+            player.moveSpeed += 1f;
+            player.meleeSpeed += 0.4f;
+            player.jumpSpeedBoost += 0.4f;
+            #endregion
+            #region Buff免疫
+            player.buffImmune[BuffID.Slow] = true;
+            player.buffImmune[BuffID.OnFire] = true;
+            player.buffImmune[BuffID.Burning] = true;
+            player.buffImmune[BuffID.Darkness] = true;
+            player.buffImmune[BuffID.Poisoned] = true;
+            player.buffImmune[BuffID.Silenced] = true;
+            player.buffImmune[BuffID.BrokenArmor] = true;
+            #endregion
             if (hideVisual == true)
             {
                 for (int i = 0; i < 2; i++)

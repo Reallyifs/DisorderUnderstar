@@ -14,8 +14,8 @@ namespace DisorderUnderstar.Items.Star.Armors
             Tooltip.SetDefault("【星星-Star】\n" +
                 "“望向星空虚无。”\n" +
                 "-\n" +
-                "魔法暴击增加5%，魔法伤害增加20\n" +
-                "拥有夜视（？），最大魔法增加10\n" +
+                "[c/FF00FF:魔法暴击]增加5%，[c/FF00FF:魔法伤害]增加20\n" +
+                "拥有夜视（？），[c/0000FF:魔法上限]增加10\n" +
                 "-");
         }
         public override void SetDefaults()
@@ -57,13 +57,10 @@ namespace DisorderUnderstar.Items.Star.Armors
             player.statManaMax2 += 40;
             if (Main.rand.Next(10) < 1)
             {
-                for (int i = 0; i < 1; i++)
+                for (int i = 0; i < 2; i++)
                 {
-                    Dust.NewDustDirect
-                        (player.position, player.width, player.height,
-                        MyDustId.YellowHallowFx,
-                        -player.velocity.X * 0.5f, -player.velocity.Y * 0.5f, +85,
-                        Color.Yellow, -0.1f);
+                    Dust.NewDustDirect(player.position, player.width, player.height, MyDustId.YellowHallowFx, 0, -player.velocity.Y * 0.5f,
+                        85, Color.Yellow, -0.1f);
                 }
             }
         }
@@ -72,8 +69,8 @@ namespace DisorderUnderstar.Items.Star.Armors
             ModRecipe A = new ModRecipe(mod);
             A.AddIngredient(ItemID.MeteorHelmet, 1);
             A.AddIngredient(ItemID.Meteorite, 3);
-            A.AddIngredient(mod, "FireOfStarZero", 5);
-            A.AddIngredient(mod, "StarFrame", 10);
+            A.AddIngredient(mod.ItemType<FireOfStarZero>(), 5);
+            A.AddIngredient(mod.ItemType<StarFrame>(), 10);
             A.AddIngredient(ItemID.LesserManaPotion, 2);
             A.AddTile(TileID.Loom);
             A.SetResult(this);

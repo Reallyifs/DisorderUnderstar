@@ -11,8 +11,7 @@ namespace DisorderUnderstar.Items.Glitch
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Glitch R.I.O.");
-            Tooltip.SetDefault("Glitch S.I.O的老弟\n" +
-                "离最后只有一秒之差。");
+            Tooltip.SetDefault("根本不与其他弓一般");
         }
         public override void SetDefaults()
         {

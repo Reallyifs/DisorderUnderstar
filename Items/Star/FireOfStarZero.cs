@@ -15,12 +15,11 @@ namespace DisorderUnderstar.Items.Star
         }
         public override void SetDefaults()
         {
-            item.height = 24;
-            item.width = 18;
-            item.maxStack = 99;
             item.rare = ItemRarityID.LightRed;
-            item.value = Item.sellPrice(0, 0, 25, 0);
             item.value = Item.buyPrice(0, 0, 50, 0);
+            item.width = 18;
+            item.height = 24;
+            item.maxStack = 99;
         }
     }
 }

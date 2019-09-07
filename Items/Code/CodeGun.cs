@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using DisorderUnderstar.Projectiles.Code;
 namespace DisorderUnderstar.Items.Code
 {
     public class CodeGun : ModItem
@@ -18,14 +19,14 @@ namespace DisorderUnderstar.Items.Code
             item.rare = ItemRarityID.LightPurple;
             item.magic = true;
             item.scale = 1f;
-            item.shoot = mod.ProjectileType("ProCodeLaser");
+            item.shoot = mod.ProjectileType<ProCodeLaser>();
             item.value = Item.buyPrice(0, 0, 14, 100);
             item.value = Item.sellPrice(0, 0, 0, 100);
             item.width = 24;
             item.damage = 27;
             item.height = 20;
             item.noMelee = true;
-            item.useTurn = true;
+            item.useTurn = false;
             item.useTime = 24;
             item.maxStack = 1;
             item.useStyle = 5;
@@ -41,7 +42,7 @@ namespace DisorderUnderstar.Items.Code
                 anyIronBar = true
             };
             R.AddIngredient(ItemID.SpaceGun, 1);
-            R.AddIngredient(mod, "CodeFragments", 10);
+            R.AddIngredient(mod.ItemType<CodeFragments>(), 10);
             R.AddIngredient(ItemID.IronBar, 30);
             R.AddIngredient(ItemID.Sapphire, 10);
             R.AddTile(TileID.Tables);

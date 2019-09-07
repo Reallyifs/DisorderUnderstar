@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 namespace DisorderUnderstar.Items.Armors
@@ -9,11 +10,11 @@ namespace DisorderUnderstar.Items.Armors
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("叶绿头甲");
-            Tooltip.SetDefault("增加16%的近战伤害，增加6%的近战暴击\n" +
-                "增加64%的远程伤害，20%的几率不消耗弹药\n" +
-                "增加16%的魔法伤害，增加80的魔法上限，减少17%的魔法消耗\n" +
-                "直接召唤一个叶绿水晶为你而战");
-        }
+            Tooltip.SetDefault("增加16%的[c/FF8000:近战伤害]，增加6%的[c/FF8000:近战暴击]\n" +
+                "增加64%的[c/00007F:远程伤害]，20%的几率不[c/00007F:消耗弹药]\n" +
+                "增加16%的[c/FF00FF:魔法伤害]，增加80的[c/0000FF:魔法上限]，减少17%的[c/0000FF:魔法消耗]\n" +
+                "直接召唤一个[c/00FF00:叶绿水晶]为你而战");
+    }
         public override void SetDefaults()
         {
             item.rare = ItemRarityID.Lime;
@@ -33,9 +34,11 @@ namespace DisorderUnderstar.Items.Armors
             player.meleeDamage += 0.16f;
             player.rangedDamage += 0.64f;
             player.statManaMax2 += 80;
-            Player.crystalLeafKB = 2;
-            Player.crystalLeafDamage = 100;
-            // player.AddBuff(mod.BuffType("NNMODCrystalLeaf"), 1);
+        }
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            Projectile.NewProjectile(player.Center, player.velocity, ProjectileID.CrystalLeaf, 100, 2f, player.whoAmI);
+            return false;
         }
         public override bool ConsumeAmmo(Player player)
         {

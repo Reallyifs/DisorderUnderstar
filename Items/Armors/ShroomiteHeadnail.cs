@@ -9,8 +9,8 @@ namespace DisorderUnderstar.Items.Armors
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("蘑菇头甲");
-            Tooltip.SetDefault("增加28%的箭、子弹及火箭的伤害\n" +
-                "远程武器增加15%的暴击率\n" +
+            Tooltip.SetDefault("增加28%的[c/00007F:箭]、[c/00007F:子弹]及[c/00007F:火箭]的伤害\n" +
+                "增加15%的[c/00007F:远程暴击]\n" +
                 "不移动会进入隐形状态");
         }
         public override void SetDefaults()
@@ -27,8 +27,8 @@ namespace DisorderUnderstar.Items.Armors
         {
             player.rangedCrit += 15;
             player.arrowDamage += 0.28f;
-            player.rocketDamage += 0.28f;
             player.bulletDamage += 0.28f;
+            player.rocketDamage += 0.28f;
             player.shroomiteStealth = true;
         }
         public override void AddRecipes()

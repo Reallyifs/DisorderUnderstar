@@ -9,12 +9,9 @@ namespace DisorderUnderstar.Items.Armors
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("神圣头甲");
-            Tooltip.SetDefault("增加10%的近战伤害及暴击率\n" +
-                "增加29%的近战攻速\n" +
-                "增加12%的魔法伤害及暴击率，增加100的魔法上限\n" +
-                "魔法消耗减少20%\n" +
-                "增加15%的远程伤害，增加8%的暴击率\n" +
-                "25%的几率不消耗弹药\n" +
+            Tooltip.SetDefault("增加10%的[c/FF8000:近战伤害]及[c/FF8000:近战暴击]，增加29%的[c/FF8000:近战攻速]\n" +
+                "增加12%的[c/FF00FF:魔法伤害]及[c/FF00FF:魔法暴击]，增加100的[c/0000FF:魔法上限]，[c/0000FF:魔法消耗]减少20%\n" +
+                "增加15%的[c/00007F:远程伤害]，增加8%的[c/00007F:远程暴击]，25%的几率不[c/00007F:消耗弹药]\n" +
                 "移动速度增加19%");
         }
         public override void SetDefaults()

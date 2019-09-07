@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 using DisorderUnderstar.Buffs;
 using DisorderUnderstar.Utils;
 using Microsoft.Xna.Framework;
@@ -14,6 +15,7 @@ namespace DisorderUnderstar.Items.Disorder
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("无序·我于万物之中");
+            DisplayName.AddTranslation(GameCulture.English, "Disorder ` I am everything");
             Tooltip.SetDefault("【[c/FF0000:无序-Disorder]】\n" +
                 "“万物于我，我于万物之中。”\n" +
                 "“万物即我，我于我之中。”\n" +

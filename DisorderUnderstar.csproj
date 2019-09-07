@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\references\tModLoader.targets" />
   <PropertyGroup>
@@ -25,6 +25,17 @@
     <None Remove="Buffs\NMODCrystalLeaf.png" />
     <None Remove="Buffs\Sunset\DebuffSunsetBlackFire.png" />
     <None Remove="Dusts\Code\DustCodeNumber.png" />
+    <None Remove="Dusts\Code\DustCodeNumber\DustCodeNumber0.png" />
+    <None Remove="Dusts\Code\DustCodeNumber\DustCodeNumber1.png" />
+    <None Remove="Dusts\Code\DustCodeNumber\DustCodeNumber2.png" />
+    <None Remove="Dusts\Code\DustCodeNumber\DustCodeNumber3.png" />
+    <None Remove="Dusts\Code\DustCodeNumber\DustCodeNumber4.png" />
+    <None Remove="Dusts\Code\DustCodeNumber\DustCodeNumber5.png" />
+    <None Remove="Dusts\Code\DustCodeNumber\DustCodeNumber6.png" />
+    <None Remove="Dusts\Code\DustCodeNumber\DustCodeNumber7.png" />
+    <None Remove="Dusts\Code\DustCodeNumber\DustCodeNumber8.png" />
+    <None Remove="Dusts\Code\DustCodeNumber\DustCodeNumber9.png" />
+    <None Remove="Dusts\Code\DustCodeNumber\DustCodeNumberAll.png" />
     <None Remove="Dusts\Code\DustCodeParticle.png" />
     <None Remove="Dusts\Code\DustCodeParticle\DustCodeParticle0.png" />
     <None Remove="Dusts\Code\DustCodeParticle\DustCodeParticle1.png" />
@@ -79,6 +90,8 @@
     <None Remove="Items\DXTBlade.png" />
     <None Remove="Items\GlitchRIO.png" />
     <None Remove="Items\GlitchSIO.png" />
+    <None Remove="Items\Glitch\GlitchRIO.png" />
+    <None Remove="Items\Glitch\GlitchSIO.png" />
     <None Remove="Items\LikeLifeLine.png" />
     <None Remove="Items\PoisonousPotion.png" />
     <None Remove="Items\PurpleStone.png" />
@@ -118,6 +131,12 @@
     <None Remove="Projectiles\Disorder\Bosses\DisorderEschatologyTriangleYellow.png" />
     <None Remove="Projectiles\Disorder\ProDisorderBeam.png" />
     <None Remove="Projectiles\FalseBeam.png" />
+    <None Remove="Projectiles\Glitch\NHolyArrow.png" />
+    <None Remove="Projectiles\Glitch\NNHolyArrow.png" />
+    <None Remove="Projectiles\Glitch\NNNHolyArrow.png" />
+    <None Remove="Projectiles\Glitch\ProGlitchHolyLaser.png" />
+    <None Remove="Projectiles\Glitch\ProGlitchHolyLaser2.png" />
+    <None Remove="Projectiles\Glitch\ProGlitchLaser.png" />
     <None Remove="Projectiles\NHolyArrow.png" />
     <None Remove="Projectiles\NNHolyArrow.png" />
     <None Remove="Projectiles\NNNHolyArrow.png" />
@@ -139,5 +158,15 @@
     <None Remove="Projectiles\Sunset\ProSunsetLaser2.png" />
     <None Remove="Projectiles\Sunset\PSEUDOProSunsetElectromagneticProjectile.png" />
     <None Remove="Projectiles\Sunset\PSEUDOProSunsetEnergyArrow.png" />
+    <None Remove="Sounds\Disorder\DisorderEschatologyDeathSound.mp3" />
+    <None Remove="Utils\颜色代码.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Utils\颜色代码.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="ColinUtils">
+      <HintPath>ColinUtils.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

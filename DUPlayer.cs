@@ -39,7 +39,7 @@ namespace DisorderUnderstar
                 Main.NewText("在此宣传一下官方群：824525819", Color.Blue);
                 Main.NewText("目前的想法是添加一个真实生命和难度模式=_=", Color.Blue);
                 Main.NewText("所以，敬请期待=v=！", Color.Blue);
-                EnterTheWorldInOnce = 1;
+                EnterTheWorldInOnce += 1;
             }
             else Main.NewText("欢迎加载“DisorderUnderstar Mod！”", Color.Blue);
         }

@@ -36,42 +36,33 @@ namespace DisorderUnderstar.Buffs.Disorder
                 player.lifeRegen = 40;
                 player.lifeRegen -= 160;
                 player.altFunctionUse = 1;
-                for (int i = 0; i < 5; i++)
+                #region 粒子效果
+                for (int _0 = 0; _0 < 5; _0++)
                 {
-                    Dust dust = Dust.NewDustDirect
-                        (player.position, player.width, player.height,
-                        MyDustId.GreenBubble1, 0, 0, 128,
+                    Dust dust = Dust.NewDustDirect(player.position, player.width, player.height, MyDustId.GreenBubble1, 0, 0, 128,
                         Color.Green, -0.5f);
                     dust.noGravity = true;
                 }
-                for (int i = 0; i < 5; i++)
+                for (int _1 = 0; _1 < 5; _1++)
                 {
-                    Dust dust = Dust.NewDustDirect
-                        (player.position, player.width, player.height,
-                        MyDustId.RedBlood, 0, 0, 128,
-                        Color.Red, -0.5f);
+                    Dust dust = Dust.NewDustDirect(player.position, player.width, player.height, MyDustId.RedBlood, 0, 0, 128, Color.Red,
+                        -0.5f);
                     dust.noGravity = true;
                 }
-                for (int i = 0; i < 5; i++)
+                for (int _2 = 0; _2 < 5; _2++)
                 {
-                    Dust dust = Dust.NewDustDirect
-                        (player.position, player.width, player.height,
-                        MyDustId.PurpleBlackGrey, 0, 0, 128,
+                    Dust dust = Dust.NewDustDirect(player.position, player.width, player.height, MyDustId.PurpleBlackGrey, 0, 0, 128,
                         Color.Lime, -0.5f);
                     dust.noGravity = true;
                 }
-                for (int i = 0; i < 5; i++)
+                for (int _3 = 0; _3 < 5; _3++)
                 {
-                    Dust dust = Dust.NewDustDirect
-                        (player.position, player.width, player.height,
-                        MyDustId.CursedFire, 0, 0, 128,
+                    Dust dust = Dust.NewDustDirect(player.position, player.width, player.height, MyDustId.CursedFire, 0, 0, 128,
                         Color.GreenYellow, -0.5f);
                     dust.noGravity = true;
                 }
-                for (int li = 0; li < 1; li++)
-                {
-                    player.statLife -= 15;
-                }
+                for (int _4 = 0; _4 < 1; _4++) player.statLife -= 15;
+                #endregion
             }
             else
             {
@@ -80,46 +71,35 @@ namespace DisorderUnderstar.Buffs.Disorder
                 player.lifeRegen = 40;
                 player.lifeRegen -= 160;
                 player.altFunctionUse = 1;
-                for (int i = 0; i < 5; i++)
+                #region 粒子效果
+                for (int _0 = 0; _0 < 5; _0++)
                 {
-                    Dust dust = Dust.NewDustDirect
-                        (player.position, player.width, player.height,
-                        MyDustId.GreenBubble1, 0, 0, 128,
+                    Dust dust = Dust.NewDustDirect(player.position, player.width, player.height, MyDustId.GreenBubble1, 0, 0, 128,
                         Color.Green, -0.5f);
                     dust.noGravity = true;
                 }
-                for (int i = 0; i < 5; i++)
+                for (int _1 = 0; _1 < 5; _1++)
                 {
-                    Dust dust = Dust.NewDustDirect
-                        (player.position, player.width, player.height,
-                        MyDustId.RedBlood, 0, 0, 128,
-                        Color.Red, -0.5f);
+                    Dust dust = Dust.NewDustDirect(player.position, player.width, player.height, MyDustId.RedBlood, 0, 0, 128, Color.Red,
+                        -0.5f);
                     dust.noGravity = true;
                 }
-                for (int i = 0; i < 5; i++)
+                for (int _2 = 0; _2 < 5; _2++)
                 {
-                    Dust dust = Dust.NewDustDirect
-                        (player.position, player.width, player.height,
-                        MyDustId.PurpleBlackGrey, 0, 0, 128,
+                    Dust dust = Dust.NewDustDirect(player.position, player.width, player.height, MyDustId.PurpleBlackGrey, 0, 0, 128,
                         Color.Lime, -0.5f);
                     dust.noGravity = true;
                 }
-                for (int i = 0; i < 5; i++)
+                for (int _3 = 0; _3 < 5; _3++)
                 {
-                    Dust dust = Dust.NewDustDirect
-                        (player.position, player.width, player.height,
-                        MyDustId.CursedFire, 0, 0, 128,
+                    Dust dust = Dust.NewDustDirect(player.position, player.width, player.height, MyDustId.CursedFire, 0, 0, 128,
                         Color.GreenYellow, -0.5f);
                     dust.noGravity = true;
                 }
-                for (int li = 0; li < 2; li++) 
-                {
-                    player.statLife -= 30;
-                }
-                {
-                    if (Main.rand.Next(5) < 1) player.statLifeMax2 -= 10;
-                    else player.statLifeMax2 += 1;
-                }
+                for (int _4 = 0; _4 < 2; _4++) player.statLife -= 30;
+                if (Main.rand.Next(0, 1) < 1) player.statLifeMax2 -= 10;
+                else player.statLifeMax2 += 1;
+                #endregion
             }
             #endregion
         }

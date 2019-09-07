@@ -1,9 +1,9 @@
 ﻿/*
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.Audio;
 using Terraria.ModLoader;
-
+using Terraria.DataStructures;
 namespace DisorderUnderstar.NPCs.Bosses.Disorder
 {
     public class DisorderEschatology : ModNPC
@@ -14,6 +14,7 @@ namespace DisorderUnderstar.NPCs.Bosses.Disorder
         }
         public override void SetDefaults()
         {
+            npc.boss = true;
             npc.value = Item.buyPrice(10, 10, 10, 10);
             npc.damage = 123;
             npc.defense = 89;
@@ -28,6 +29,10 @@ namespace DisorderUnderstar.NPCs.Bosses.Disorder
         }
         public override void AI()
         {
+        }
+        public override void BossLoot(ref string name, ref int potionType)
+        {
+            potionType = ItemID.SuperHealingPotion;
         }
         public override void NPCLoot()
         {

@@ -3,7 +3,8 @@ version = 0.0.2.0
 hideCode = true
 homepage = https://jq.qq.com/?_wv=1027&k=5kHMuc2
 includePDB = false
-buildIgnore = *.csproj, *.sln, obj\*, bin\*, *.suo, *.user, .git\*, .vs\*, Libraries\*
+buildIgnore = *.csproj, *.sln, obj\*, bin\*, *.suo, *.user, .git\*, .vs\*, Libraries\*, 颜色代码.txt
 displayName = [c/FF0000:C.DisorderUnderstar]（[c/FF0000:中文.无序之星]）
+dllReferences = ColinUtils
 hideResources = true
 includeSource = false

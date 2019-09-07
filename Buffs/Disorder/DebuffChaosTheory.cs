@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
+using DisorderUnderstar.Dusts.Disorder;
 namespace DisorderUnderstar.Buffs.Disorder
 {
     public class DebuffChaosTheory : ModBuff
@@ -19,8 +20,7 @@ namespace DisorderUnderstar.Buffs.Disorder
             if (Main.rand.Next(25) < 1)
             {
                 player.statLife -= 6;
-                Dust.NewDustDirect
-                    (player.position, 1, 1, mod.DustType("DustBodyDebris"), 0, 0, 128, Color.Red);
+                Dust.NewDustDirect(player.position, 1, 1, mod.DustType<DustBodyDebris>(), 0, 0, 128, Color.Red);
             }
         }
     }

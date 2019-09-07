@@ -1,9 +1,6 @@
 ﻿using Terraria;
-using System.Linq;
 using Terraria.ID;
 using Terraria.ModLoader;
-using DisorderUnderstar.Utils;
-using Microsoft.Xna.Framework;
 using DisorderUnderstar.Items.Star;
 namespace DisorderUnderstar.NPCs.Star.Hostile
 {
@@ -48,23 +45,23 @@ namespace DisorderUnderstar.NPCs.Star.Hostile
             #region 掉落
             Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height, ItemID.SilverCoin, 31);
             Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height, ItemID.CopperCoin, 72);
-            if (Main.rand.Next(100) < 1) Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height, ItemID.DepthMeter);
-            else if (Main.rand.Next(99) < 1) Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height, ItemID.Compass);
-            if (Main.rand.Next(5) < 1) Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height,
-                mod.ItemType<FireOfStarZero>(), 1);
-            else if (Main.rand.Next(10) < 1) Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height,
-                mod.ItemType<FireOfStarZero>(), 2);
-            else if (Main.rand.Next(20) < 1) Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height,
-                mod.ItemType<FireOfStarZero>(), 3);
+            if (Main.rand.Next(0, 100) < 1) Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height, ItemID.DepthMeter);
+            else if (Main.rand.Next(0, 99) < 1) Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height, ItemID.Compass);
+            if (Main.rand.Next(0, 5) < 1) Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height,
+                 mod.ItemType<FireOfStarZero>(), 1);
+            else if (Main.rand.Next(0, 10) < 1) Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height,
+                 mod.ItemType<FireOfStarZero>(), 2);
+            else if (Main.rand.Next(0, 20) < 1) Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height,
+                 mod.ItemType<FireOfStarZero>(), 3);
             if (Main.hardMode)
             {
-                if (Main.rand.Next(15) < 1) Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height,
-                    mod.ItemType<FireOfStarZero>(), 3);
-                else if (Main.rand.Next(5) < 1) Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height,
-                    mod.ItemType<FireOfStarZero>(), 2);
-                else if (Main.rand.Next(1) < 1) Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height,
-                    mod.ItemType<FireOfStarZero>(), 1);
-                if (Main.rand.Next(4) < 1) Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height, ItemID.Ichor, 2);
+                if (Main.rand.Next(0, 15) < 1) Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height,
+                     mod.ItemType<FireOfStarZero>(), 3);
+                else if (Main.rand.Next(0, 5) < 1) Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height,
+                     mod.ItemType<FireOfStarZero>(), 2);
+                else if (Main.rand.Next(0, 1) < 1) Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height,
+                     mod.ItemType<FireOfStarZero>(), 1);
+                if (Main.rand.Next(0, 4) < 1) Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height, ItemID.Ichor, 2);
             }
             #endregion
         }

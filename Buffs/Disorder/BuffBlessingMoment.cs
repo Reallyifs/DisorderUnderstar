@@ -16,20 +16,17 @@ namespace DisorderUnderstar.Buffs.Disorder
         }
         public override void Update(Player player, ref int buffIndex)
         {
-            int timer = 0;
-            if (Main.rand.Next(100) < 1) timer = 1;
+            int _0 = 0;
+            if (Main.rand.Next(100) < 1) _0 = 1;
             {
                 #region timer的加减乘除
-                if (timer == 1) timer++;
-                else if (timer >= 2) timer *= 2;
-                else if (timer > 500) timer = 0;
+                if (_0 == 1) _0++;
+                else if (_0 >= 2) _0 *= 2;
+                else if (_0 > 500) _0 = 0;
                 #endregion
                 #region player的加减乘除
-                if (timer > 10 && timer <= 100)
-                {
-                    player.statLife += 12;
-                }
-                else if (timer > 100 && timer <= 450)
+                if (_0 > 10 && _0 <= 100) player.statLife += 12;
+                else if (_0 > 100 && _0 <= 450)
                 {
                     player.statLife += 5;
                     player.AddBuff(BuffID.Daybreak, 1);

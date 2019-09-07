@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 using Terraria.DataStructures;
 namespace DisorderUnderstar.NPCs.Bosses.Code
 {
-    public class KeepImagineLastLongUnderSymbol : Terraria.ModLoader.ModNPC
+    public class KeepImagineLastLongUnderSymbol : ModNPC
     {
         public override void SetStaticDefaults()
         {

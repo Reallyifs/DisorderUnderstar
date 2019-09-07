@@ -1,24 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-/// <summary>
-/// 命名空间自己改，这个文件是四十九落星内部源码的一部分
-/// </summary>
-namespace DisorderUnderstar.Utils
+﻿namespace DisorderUnderstar.Utils
 {
-	/// <summary>
-	/// DXTsT自制的粒子ID表
-	/// 制作时间：2017/1/31
-	/// 版权所有：DXTsT & 四十九落星制作组
-	/// 
-	/// 说明：以下字段带有（!）标识符的说明此粒子效果会在黑暗中自发光
-	/// 带有（.）标识符说明此粒子效果会高亮显示但是不会发光
-	/// 其余Dust全部都不会发光！
-	/// 
-	/// 感谢所有参与制作者：Rainbow Fluorescence，子冀，海琴烟
-	/// </summary>
 	public static class MyDustId
 	{
 		/// <summary>

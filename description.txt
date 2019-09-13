@@ -1,8 +1,8 @@
 ﻿DisorderUnderstar v0.0.2.0更新！
 
 ——————————
-前往 https://github.com/Reallyifs/DisorderUnderstar/tree/Disorder_Understar/Change%20Logs 查看更新日志（暂未开放）
 
+前往 https://github.com/Reallyifs/DisorderUnderstar/tree/Disorder_Understar/Change%20Logs 查看更新日志（暂未开放）
 ——————————
 
 访问 https://shimo.im/docs/JcCpvWhKrPWWQ9qp 查阅更多信息（暂未开放）

@@ -30,12 +30,13 @@ namespace DisorderUnderstar.Projectiles.Star.Monsters
         }
         public override void AI()
         {
+            projectile.alpha += 10;
+            if (projectile.rotation >= 1) projectile.rotation = 0;
+            else projectile.rotation += 0.2f;
             if (projectile.timeLeft < 597)
             {
-                Dust.NewDustDirect
-                    (projectile.position, projectile.width, projectile.height,
-                    MyDustId.GreenFXPowder, 0f, 0f, +85,
-                    Color.Lime, -0.3f);
+                Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, MyDustId.GreenFXPowder, 0f, 0f, +85, Color.Lime,
+                    -0.3f);
             }
         }
         public override void OnHitPlayer(Player target, int damage, bool crit)

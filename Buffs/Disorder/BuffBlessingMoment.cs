@@ -1,15 +1,19 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 using Microsoft.Xna.Framework;
+using DisorderUnderstar.Dusts.Disorder;
 namespace DisorderUnderstar.Buffs.Disorder
 {
     public class BuffBlessingMoment : ModBuff
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("祝福时刻");
-            Description.SetDefault("你身边的符号似乎会给予你好运");
+            DisplayName.SetDefault("Blessing Moment");
+            DisplayName.AddTranslation(GameCulture.Chinese, "祝福时刻");
+            Description.SetDefault("The symbols around you seem to give you good luck.");
+            Description.AddTranslation(GameCulture.Chinese, "你身边的符号似乎会给予你好运");
             Main.debuff[Type] = false;
             Main.buffNoSave[Type] = true;
             Main.buffNoTimeDisplay[Type] = true;
@@ -41,8 +45,8 @@ namespace DisorderUnderstar.Buffs.Disorder
                 #endregion
             }
             Vector2 pleft = new Vector2(player.Center.X - player.width, player.Center.Y);
-            Dust.NewDustDirect(pleft - Main.screenPosition, player.width, player.height,
-                mod.DustType("DustGoldenSymbol"), player.velocity.X, player.velocity.Y);
+            Dust.NewDustDirect(pleft - Main.screenPosition, player.width, player.height, mod.DustType<DustGoldenSymbol>(), player.velocity.X,
+                player.velocity.Y);
         }
     }
 }

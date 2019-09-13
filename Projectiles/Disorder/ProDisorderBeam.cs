@@ -27,37 +27,27 @@ namespace DisorderUnderstar.Projectiles.Disorder
         }
         public override void AI()
         {
-            if (projectile.timeLeft < 1000)
-            {
-                projectile.damage = projectile.timeLeft * 2 - 666;
-            }
-            else if (projectile.timeLeft < 500)
+            #region 伤害计算
+            if (projectile.timeLeft <= 250) projectile.damage = projectile.timeLeft * 3 + 666;
+            else if (projectile.timeLeft <= 500)
             {
                 projectile.damage = projectile.timeLeft * 2 + 2333;
-                Dust dust = Dust.NewDustDirect
-                        (projectile.Center, projectile.width + 2, projectile.height + 2,
-                        MyDustId.Fire, -projectile.velocity.X, -projectile.velocity.Y,
-                        128, default(Color), 1.5f);
-                dust.noLight = false;
-                dust.noGravity = true;
+                Dust _0 = Dust.NewDustDirect(projectile.Center, projectile.width + 2, projectile.height + 2, MyDustId.Fire, -projectile.velocity.X,
+                    -projectile.velocity.Y, 128, default(Color), 1.5f);
+                _0.noLight = false;
+                _0.noGravity = true;
             }
-            else
-            {
-                projectile.damage = projectile.timeLeft * 3 + 666;
-            }
+            else projectile.damage = projectile.timeLeft * 2 - 666;
+            #endregion
             if (projectile.timeLeft <= 1197)
             {
                 NPC tar = null;
                 float disMAX = 1000f;
                 foreach(NPC npc in Main.npc)
                 {
-                    if (npc.active && !npc.friendly && npc.type != NPCID.TargetDummy &&
-                        !npc.behindTiles && Collision.CanHit
-                        (projectile.Center, 1, 1, npc.position, npc.width, npc.height) &&
-                        npc.type != NPCID.LunarTowerNebula &&
-                        npc.type != NPCID.LunarTowerSolar &&
-                        npc.type != NPCID.LunarTowerStardust &&
-                        npc.type != NPCID.LunarTowerVortex)
+                    if (npc.active && !npc.friendly && npc.type != NPCID.TargetDummy && Collision.CanHit
+                        (projectile.Center, 1, 1, npc.position, npc.width, npc.height) && npc.type != NPCID.LunarTowerNebula &&
+                        npc.type != NPCID.LunarTowerSolar && npc.type != NPCID.LunarTowerStardust && npc.type != NPCID.LunarTowerVortex)
                     {
                         float dis = Vector2.Distance(npc.Center, projectile.Center);
                         if (disMAX >= dis)
@@ -73,8 +63,7 @@ namespace DisorderUnderstar.Projectiles.Disorder
                     tarVEC *= 20f;
                     float nVEC = 20f;
                     if (nVEC <= 20f) nVEC -= 0.1f;
-                    projectile.velocity =
-                        (projectile.velocity * nVEC + tarVEC) / (nVEC + 1f);
+                    projectile.velocity = (projectile.velocity * nVEC + tarVEC) / (nVEC + 1f);
                 }
             }
         }

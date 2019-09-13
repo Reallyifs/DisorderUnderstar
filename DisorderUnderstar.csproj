@@ -11,8 +11,11 @@
     <Exec Command="&quot;$(tMLBuildServerPath)&quot; -build $(ProjectDir) -eac $(TargetPath) -define $(DefineConstants) -unsafe $(AllowUnsafeBlocks)" />
   </Target>
   <ItemGroup>
+    <Compile Remove="Images\**" />
     <Compile Remove="Libraries\**" />
+    <EmbeddedResource Remove="Images\**" />
     <EmbeddedResource Remove="Libraries\**" />
+    <None Remove="Images\**" />
     <None Remove="Libraries\**" />
   </ItemGroup>
   <ItemGroup>

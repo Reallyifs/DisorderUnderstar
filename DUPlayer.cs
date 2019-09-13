@@ -1,9 +1,9 @@
 ﻿using Terraria;
 using Terraria.ID;
+using DisorderUnderstar;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
-
 namespace DisorderUnderstar
 {
     public class DUPlayer : ModPlayer
@@ -28,21 +28,27 @@ namespace DisorderUnderstar
         public bool Hell;
         public bool Nightmare;
         #endregion
+        #region 检测Mod加载
+        public bool LoadedWtfway = false;
+        public bool Loaded_1LifeMaxAccessories = false;
+        #endregion
         #region 进世界提示（OnEnterWorld）
-        public int EnterTheWorldInOnce = 0;
         public override void OnEnterWorld(Player player)
         {
-            if (EnterTheWorldInOnce == 0)
+            Main.NewText("感谢加载“DisorderUnderstar Mod”！", Color.Blue);
+            Mod Wtfway = ModLoader.GetMod("Wtfway");
+            Mod _1LifeMaxAccessories = ModLoader.GetMod("_1LifeMaxAccessories");
+            if (Wtfway != null)
             {
-                Main.NewText("欢迎加载“DisorderUnderstar Mod！”", Color.Blue);
-                Main.NewText("我是这个Mod的制作人Really'if.s.", Color.Blue);
-                Main.NewText("在此宣传一下官方群：824525819", Color.Blue);
-                Main.NewText("目前的想法是添加一个真实生命和难度模式=_=", Color.Blue);
-                Main.NewText("所以，敬请期待=v=！", Color.Blue);
-                EnterTheWorldInOnce += 1;
+                Main.NewText("诶，没想到你还加载了这个Mod，真是tql，那我就降低一点难度吧。", Color.Blue);
+                LoadedWtfway = true;
             }
-            else Main.NewText("欢迎加载“DisorderUnderstar Mod！”", Color.Blue);
-        }
+            if (_1LifeMaxAccessories != null)
+            {
+                Main.NewText("加载了1血上限？不愧是你。", Color.Blue);
+                Loaded_1LifeMaxAccessories = true;
+            }
+    }
         #endregion
         #region 难度判定（PlayerConnect，PlayerDisconnect）
         public override void PlayerConnect(Player player)

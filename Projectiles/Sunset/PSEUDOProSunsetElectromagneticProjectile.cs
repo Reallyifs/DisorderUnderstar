@@ -29,46 +29,44 @@ namespace DisorderUnderstar.Projectiles.Sunset
         }
         public override void AI()
         {
+            #region 相关数值
             projectile.ai[0] = 0f;
             {
-                if (projectile.ai[0] <= 100f) projectile.ai[0]++;
-                else if (projectile.ai[0] <= 1000f) projectile.ai[0] *= 2f;
-                else projectile.ai[0]--;
+                if (projectile.ai[0] <= 100f) { projectile.ai[0]++; }
+                else if (projectile.ai[0] <= 1000f) { projectile.ai[0] *= 2f; }
+                else { projectile.ai[0]--; }
             }
-            int ai0 = 0;
-            {
-                if (ai0 <= 105f) ai0++;
-            }
+            int _0 = 0;
+            if (_0 <= 105f) _0++;
+            #endregion
             if (Main.player[projectile.owner].channel)
             {
-                Player player = Main.player[projectile.owner];
-                Vector2 unit = Vector2.Normalize(Main.MouseWorld - player.Center);
-                float rotaion = unit.ToRotation();
-                player.direction = Main.MouseWorld.X < player.Center.X ? -1 : 1;
-                player.itemRotation = (float)Math.Atan2
-                    (rotaion.ToRotationVector2().Y * player.direction, rotaion.ToRotationVector2().X * player.direction);
-                player.itemTime = 2;
-                player.itemAnimation = 2;
-                for (float f = 0f; f < 1f; f += 0.1f)
+                Player _1 = Main.player[projectile.owner];
+                Vector2 _2 = Vector2.Normalize(Main.MouseWorld - _1.Center);
+                float _3 = _2.ToRotation();
+                _1.direction = Main.MouseWorld.X < _1.Center.X ? -1 : 1;
+                _1.itemRotation = (float)Math.Atan2(_3.ToRotationVector2().Y * _1.direction, _3.ToRotationVector2().X * _1.direction);
+                _1.itemTime = 2;
+                _1.itemAnimation = 2;
+                for (float _4 = 0f; _4 < 1f; _4 += 0.1f)
                 {
-                    Dust d = Dust.NewDustDirect(projectile.Center, projectile.width,
-                        projectile.height, MyDustId.BlueMagic, -player.velocity.X,
-                        -player.velocity.Y, 128, Color.Blue, ai0 / (float)(106f / 1.5f));
-                    d.rotation += 0.1f;
-                    d.velocity *= 2;
-                    Dust u = Dust.NewDustDirect(projectile.Center, projectile.width,
-                        projectile.height, MyDustId.BlueCircle, -player.velocity.X,
-                        -player.velocity.Y, 128, Color.Blue, ai0 / (float)(106f / 1.5f));
-                    u.rotation += 0.3f;
-                    u.velocity *= 1;
+                    Dust _5 = Dust.NewDustDirect(projectile.Center, projectile.width, projectile.height, MyDustId.BlueMagic, -_1.velocity.X / 2,
+                        -_1.velocity.Y / 2, 128, Color.Blue, _0 / (float)(106f / 1.5f));
+                    _5.rotation += 0.1f;
+                    _5.velocity *= 2;
+                    Dust _6 = Dust.NewDustDirect(projectile.Center, projectile.width,
+                        projectile.height, MyDustId.BlueCircle, -_1.velocity.X,
+                        -_1.velocity.Y, 128, Color.Blue, _0 / (float)(106f / 1.5f));
+                    _6.rotation += 0.3f;
+                    _6.velocity *= 1;
                 }
             }
             else
             {
-                var pro1 = Projectile.NewProjectileDirect(projectile.Center, projectile.velocity * 7f,
+                var _7 = Projectile.NewProjectileDirect(projectile.Center, projectile.velocity * 7f,
                     mod.ProjectileType<ProSunsetElectromagneticProjectile>(), (int)(projectile.ai[0] / 200f * 200), 5f, projectile.owner);
-                pro1.scale = 1f + (float)(projectile.ai[0] / 1616f);
-                if (projectile.timeLeft >= 30) projectile.timeLeft = 30;
+                _7.scale = 1f + (float)(projectile.ai[0] / 1616f);
+                if (projectile.timeLeft >= 30) { projectile.timeLeft = 30; }
                 return;
             }
         }

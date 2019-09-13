@@ -55,7 +55,7 @@
 [c/FF0000:生命恢复]
 [c/FF0000:Life Regen]
 [c/FF0000:生命上限]
-[c/FF0000:Life Max]
+[c/FF0000:Maximum Life]
 [c/FF0000:临时生命]
 [c/FF0000:Temporary Life]
 [c/FF0000:]
@@ -67,25 +67,26 @@
 [c/0000FF:魔法恢复]
 [c/0000FF:Mana Regen]
 [c/0000FF:魔法上限]
-[c/0000FF:Mana Max]
+[c/0000FF:Maximum mana]
 [c/0000FF:临时魔法]
 [c/0000FF:Temporary Mana]
-[c/0000FF:魔法恢复]
+[c/0000FF:魔法消耗]
 [c/0000FF:Mana Cost]
 [c/0000FF:]
 
 [c/00007F:消耗弹药]
-[c/00007F:消耗弹药]
+[c/00007F:Consume ammo]
 [c/00007F:]
 
 [c/00FFFF:随从上限]
+[c/00FFFF:Maximum minion]
 [c/00FFFF:]
 
 ——————————Buff类
-[c/BFBFBF:buff]
+[c/BFBFBF:Buff]
 [c/BFBFBF:]
 
-[c/3F3F3F:debuff]
+[c/3F3F3F:Debuff]
 [c/3F3F3F:]
 
 ——————————其他类

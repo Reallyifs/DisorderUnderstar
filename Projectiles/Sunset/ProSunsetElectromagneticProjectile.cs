@@ -25,6 +25,7 @@ namespace DisorderUnderstar.Projectiles.Sunset
             projectile.penetrate = 1;
             projectile.ignoreWater = false;
             projectile.tileCollide = true;
+            projectile.extraUpdates = 10;
             Main.projFrames[projectile.type] = 3;
         }
         public override void AI()
@@ -41,8 +42,8 @@ namespace DisorderUnderstar.Projectiles.Sunset
             }
             for (int i = 0; i < 3; i++)
             {
-                Dust.NewDustDirect(projectile.Center, projectile.width * 2, projectile.height * 2, MyDustId.BlueMagic, -projectile.velocity.X,
-                    -projectile.velocity.Y, 128, Color.Blue, 1.5f);
+                Dust.NewDust(projectile.Center, projectile.width * 2, projectile.height * 2, MyDustId.BlueMagic, projectile.velocity.X,
+                    projectile.velocity.Y, 128, Color.Blue, 1.5f);
             }
             if(projectile.timeLeft<=5997)
             {
@@ -75,8 +76,7 @@ namespace DisorderUnderstar.Projectiles.Sunset
         {
             for(int i = 0; i < 5; i++)
             {
-                Dust.NewDustDirect(projectile.Center, projectile.width * 3, projectile.height * 3, MyDustId.BlueCircle, 3f, 3f, 128,
-                    Color.Blue, 1f);
+                Dust.NewDust(projectile.Center, projectile.width * 3, projectile.height * 3, MyDustId.BlueCircle, 3f, 3f, 128, Color.Blue, 1f);
             }
         }
     }

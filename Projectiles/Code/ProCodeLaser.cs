@@ -2,6 +2,8 @@
 using Terraria.ModLoader;
 using DisorderUnderstar.Utils;
 using Microsoft.Xna.Framework;
+using DisorderUnderstar.Dusts.Code.DustCodeNumber;
+using DisorderUnderstar.Dusts.Code.DustCodeParticle;
 namespace DisorderUnderstar.Projectiles.Code
 {
     public class ProCodeLaser : ModProjectile
@@ -29,27 +31,28 @@ namespace DisorderUnderstar.Projectiles.Code
         {
             if (projectile.timeLeft < 597)
             {
-                Dust dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, MyDustId.SicklyGreen, 0f, 0f, 100,
+                float _0 = Main.rand.NextFloatDirection() * 0.8f;
+                Dust _1 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, MyDustId.SicklyGreen, _0, _0, 100,
                     Color.Green, 3f);
-                dust.noGravity = true;
-                Dust no = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, mod.DustType("DustCodeParticle"), 0f,
-                    0f, 10, Color.Green, 1f);
-                no.noLight = false;
-                Dust tsud = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, mod.DustType("DustCodeNumber"), 0f,
-                    0f, 25, Color.Green, 1f);
-                tsud.noLight = false;
+                _1.noGravity = true;
+                Dust _2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, mod.DustType<DustCodeParticle0>(), _0, _0,
+                    10, Color.Green, 1f);
+                _2.noLight = false;
+                Dust _3 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, mod.DustType<DustCodeNumberAll>(), _0, _0,
+                    25, Color.Green, 1f);
+                _3.noLight = false;
             }
         }
         public override void Kill(int timeLeft)
         {
-            for(int i = 0; i < 5; i++)
+            for(int _4 = 0; _4 < 5; _4++)
             {
-                Dust dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, mod.DustType("DustCodeParticle"), 0f,
-                    0f, 10, Color.Green, 1f);
-                dust.noLight = false;
-                Dust tsud = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, mod.DustType("DustCodeNumber"), 0f,
-                    0f, 25, Color.Green, 1f);
-                tsud.noLight = false;
+                Dust _5 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, mod.DustType<DustCodeParticle0>(), 0f, 0f,
+                    10, Color.Green, 1f);
+                _5.noLight = false;
+                Dust _6 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, mod.DustType<DustCodeNumberAll>(), 0f, 0f,
+                    25, Color.Green, 1f);
+                _6.noLight = false;
             }
         }
     }

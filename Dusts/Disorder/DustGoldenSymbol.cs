@@ -6,7 +6,7 @@ namespace DisorderUnderstar.Dusts.Disorder
 {
     public class DustGoldenSymbol : ModDust
     {
-        private Player pl = Main.player[Main.myPlayer];
+        private readonly Player pl = Main.player[Main.myPlayer];
         public override void OnSpawn(Dust dust)
         {
             Player pl = Main.player[Main.myPlayer];

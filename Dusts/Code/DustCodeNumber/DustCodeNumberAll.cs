@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
+using ColinUtils;
 namespace DisorderUnderstar.Dusts.Code.DustCodeNumber
 {
     public class DustCodeNumberAll : ModDust

@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 using Microsoft.Xna.Framework;
 using DisorderUnderstar.Projectiles.Star;
 namespace DisorderUnderstar.Items.Star
@@ -9,8 +10,11 @@ namespace DisorderUnderstar.Items.Star
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("星体蓄意");
-            Tooltip.SetDefault("【星星-Star】\n" +
+            DisplayName.SetDefault("Stellar Deliberate");
+            DisplayName.AddTranslation(GameCulture.Chinese, "星体蓄意");
+            Tooltip.SetDefault("[Star]\n" +
+                "\"The stars are shining for you!\"");
+            Tooltip.AddTranslation(GameCulture.Chinese, "【星星】\n" +
                 "“星星正在为你照耀！”");
         }
         public override void SetDefaults()
@@ -26,14 +30,35 @@ namespace DisorderUnderstar.Items.Star
             item.height = 60;
             item.ranged = true;
             item.noMelee = true;
+            item.useAmmo = AmmoID.Arrow;
             item.useTime = 10;
             item.maxStack = 1;
             item.useStyle = 5;
             item.autoReuse = true;
             item.knockBack = 3f;
-            item.expertOnly = true;
             item.shootSpeed = 20f;
             item.useAnimation = 20;
+        }
+        public override bool ConsumeAmmo(Player player)
+        {
+            if (Main.rand.Next(0, 4) < 3) { return false; }
+            else { return true; }
+        }
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage,
+            ref float knockBack)
+        {
+            if (item.shoot == ProjectileID.WoodenArrowFriendly)
+            {
+                Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType<ProStarArrow>(), item.damage,
+                    item.knockBack / 2f, item.owner);
+            }
+            else if (item.shoot == ProjectileID.FireArrow)
+            {
+                Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType<ProStarArrow>(), item.damage,
+                    item.knockBack / 2f, item.owner);
+            }
+            else { Projectile.NewProjectile(position.X, position.Y, speedX, speedY, item.shoot, item.damage, item.knockBack, item.owner); }
+            return false;
         }
         public override Vector2? HoldoutOffset()
         {

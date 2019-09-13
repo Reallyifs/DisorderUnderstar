@@ -56,10 +56,10 @@ namespace DisorderUnderstar.Items.Star
             if (player.statLife < player.statLifeMax2 * 0.3f) { player.AddBuff(BuffID.IceBarrier, 1); }
             if (hideVisual == true)
             {
-                for (int i = 0; i < 1; i++)
+                for (int _0 = 0; _0 < 1; _0++)
                 {
-                    Dust.NewDustDirect(player.position, player.width, player.height, MyDustId.YellowGoldenFire, -player.velocity.X * 0.5f,
-                        -player.velocity.Y * 0.5f, 100, Color.White, 1.0f);
+                    Dust.NewDustDirect(player.position, player.width, player.height, MyDustId.YellowGoldenFire, player.velocity.X * 0.5f,
+                        player.velocity.Y * 0.5f, 100, Color.White, 1.0f);
                 }
             }
         }

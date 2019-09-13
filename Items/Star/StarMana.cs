@@ -1,14 +1,18 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 namespace DisorderUnderstar.Items.Star
 {
     public class StarMana : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("星之魔法");
-            Tooltip.SetDefault("【星星-Star】\n" +
+            DisplayName.SetDefault("Star Mana");
+            DisplayName.AddTranslation(GameCulture.Chinese, "星之魔法");
+            Tooltip.SetDefault("[Star]\n" +
+                "\"Call the stars from the book!\"");
+            Tooltip.SetDefault("【星星】\n" +
                 "“从书中召唤天上的星星！”");
         }
         public override void SetDefaults()

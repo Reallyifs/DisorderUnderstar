@@ -1,16 +1,21 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 using Microsoft.Xna.Framework;
 using DisorderUnderstar.Projectiles.Star;
+using DisorderUnderstar.Items.Star.Armors;
 namespace DisorderUnderstar.Items.Star
 {
     public class StarManaGun : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("星法光枪");
-            Tooltip.SetDefault("【星星-Star】\n" +
+            DisplayName.SetDefault("Star Mana Gun");
+            DisplayName.AddTranslation(GameCulture.Chinese, "星法光枪");
+            Tooltip.SetDefault("[Star]\n" +
+                "\"Shoot a laser!\"");
+            Tooltip.AddTranslation(GameCulture.Chinese, "【星星】\n" +
                 "“射出激光！”");
         }
         public override void SetDefaults()
@@ -34,19 +39,17 @@ namespace DisorderUnderstar.Items.Star
             item.shootSpeed = 40f;
             item.useAnimation = 30;
             #region 神奇的判定
-            if (Main.dayTime) item.damage = 49;
-            else if (!Main.dayTime) item.damage = 82;
-            else if (Main.bloodMoon) item.damage = 93;
-            else if (Main.snowMoon) item.damage = 104;
-            else if (Main.pumpkinMoon) item.damage = 104;
-            else item.damage = 115;
+            if (Main.dayTime) { item.damage = 49; }
+            else if (!Main.dayTime) { item.damage = 82; }
+            else if (Main.bloodMoon) { item.damage = 93; }
+            else if (Main.snowMoon) { item.damage = 104; }
+            else if (Main.pumpkinMoon) { item.damage = 104; }
+            else { item.damage = 115; }
             #endregion
         }
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
-            return head.type == mod.ItemType("StarHat") &&
-                body.type == mod.ItemType("StarVest") &&
-                legs.type == mod.ItemType("StarPants");
+            return head.type == mod.ItemType<StarHat>() && body.type == mod.ItemType<StarVest>() && legs.type == mod.ItemType<StarPants>();
         }
         public override void UpdateArmorSet(Player player)
         {
@@ -54,12 +57,12 @@ namespace DisorderUnderstar.Items.Star
             item.crit = 35;
             item.damage = 71;
             #region 神奇的判定2
-            if (Main.dayTime) item.damage = 60;
-            else if (!Main.dayTime) item.damage = 93;
-            else if (Main.bloodMoon) item.damage = 104;
-            else if (Main.snowMoon) item.damage = 115;
-            else if (Main.pumpkinMoon) item.damage = 115;
-            else item.damage = 126;
+            if (Main.dayTime) { item.damage = 60; }
+            else if (!Main.dayTime) { item.damage = 93; }
+            else if (Main.bloodMoon) { item.damage = 104; }
+            else if (Main.snowMoon) { item.damage = 115; }
+            else if (Main.pumpkinMoon) { item.damage = 115; }
+            else { item.damage = 126; }
             #endregion
         }
         public override Vector2? HoldoutOffset()

@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 using Microsoft.Xna.Framework;
 using DisorderUnderstar.Projectiles.Star;
 namespace DisorderUnderstar.Items.Star
@@ -9,8 +10,11 @@ namespace DisorderUnderstar.Items.Star
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("星星之剑");
-            Tooltip.SetDefault("【星星-Star】\n" +
+            DisplayName.SetDefault("Star Knife");
+            DisplayName.AddTranslation(GameCulture.Chinese, "星星之剑");
+            Tooltip.SetDefault("[Star]\n" +
+                "\"Hope is in hand.\"");
+            Tooltip.AddTranslation(GameCulture.Chinese, "【星星】\n" +
                 "“手握希望。”");
         }
         public override void SetDefaults()
@@ -33,34 +37,32 @@ namespace DisorderUnderstar.Items.Star
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage,
             ref float knockBack)
         {
-            NPC _1 = null;
-            Player _2 = null;
             #region 对敌方的无差别全方位打击
             #region NPC
-            foreach (NPC _3 in Main.npc)
+            NPC _1 = null;
+            foreach (NPC _2 in Main.npc)
             {
-                if (_3.active && !_3.friendly && _3.type != NPCID.LunarTowerNebula && _3.type != NPCID.LunarTowerSolar &&
-                    _3.type != NPCID.LunarTowerStardust && _3.type != NPCID.LunarTowerVortex) _1 = _3;
+                if (_2.active && !_2.friendly && _2.type != NPCID.LunarTowerNebula && _2.type != NPCID.LunarTowerSolar &&
+                    _2.type != NPCID.LunarTowerStardust && _2.type != NPCID.LunarTowerVortex) { _1 = _2; }
             }
             if (_1 != null)
             {
-                Vector2 NPCUpVEC = new Vector2(_1.Center.X, _1.position.Y - _1.height);
-                Vector2 NPCToVEC = Vector2.Normalize(_1.Center - NPCUpVEC) * 10;
-                Projectile.NewProjectile(NPCUpVEC, NPCToVEC, mod.ProjectileType<ProStarDownStar>(), item.damage, item.knockBack, item.owner,
-                    _1.whoAmI);
+                Vector2 _3 = new Vector2(_1.Center.X, _1.position.Y - _1.height);
+                Vector2 _4 = Vector2.Normalize(_1.Center - _3) * 10 * _1.velocity;
+                Projectile.NewProjectile(_3, _4, mod.ProjectileType<ProStarDownStar>(), item.damage, item.knockBack, item.owner, _1.whoAmI);
             }
             #endregion
             #region PLAYER
-            foreach (Player _3 in Main.player)
+            Player _5 = null;
+            foreach (Player _6 in Main.player)
             {
-                if (_3.team != player.team && _3.statLife >= 100 && _3.statDefense >= 10) _2 = _3;
+                if (_6.team != player.team && _6.statLife >= 100 && _6.statDefense >= 10) { _5 = _6; }
             }
-            if (_2 != null)
+            if (_5 != null)
             {
-                Vector2 PLAYERUpVEC = new Vector2(_2.Center.X, _2.position.Y - _2.height);
-                Vector2 PLAYERToVEC = Vector2.Normalize(_1.Center - PLAYERUpVEC) * 10;
-                Projectile.NewProjectile(PLAYERUpVEC, PLAYERToVEC, mod.ProjectileType<ProStarDownStar>(), item.damage, item.knockBack,
-                    item.owner, _2.whoAmI);
+                Vector2 _7 = new Vector2(_5.Center.X, _5.position.Y - _5.height);
+                Vector2 _8 = Vector2.Normalize(_1.Center - _7) * 10 * _5.velocity;
+                Projectile.NewProjectile(_7, _8, mod.ProjectileType<ProStarDownStar>(), item.damage, item.knockBack, item.owner, _5.whoAmI);
             }
             #endregion
             #endregion

@@ -17,7 +17,6 @@ namespace DisorderUnderstar.Items.Disorder
         public override void SetDefaults()
         {
             item.rare = 10;
-            item.value = Item.buyPrice(6, 5, 4, 3);
             item.value = Item.sellPrice(5, 4, 3, 2);
             item.width = 28;
             item.expert = true;

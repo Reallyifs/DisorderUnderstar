@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 using Terraria.DataStructures;
 namespace DisorderUnderstar.Items.Star
 {
@@ -8,8 +9,11 @@ namespace DisorderUnderstar.Items.Star
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("星零之火");
-            Tooltip.SetDefault("【星星-Star】\n" +
+            DisplayName.SetDefault("Fire of Star Zero");
+            DisplayName.AddTranslation(GameCulture.Chinese, "星零之火");
+            Tooltip.SetDefault("[Star]\n" +
+                "\"A single spark can start a prairie fire.\"");
+            Tooltip.AddTranslation(GameCulture.Chinese, "【星星】\n" +
                 "“星星之火，可以燎原。”");
 			Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
         }

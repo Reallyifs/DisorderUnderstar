@@ -37,8 +37,7 @@ namespace DisorderUnderstar.Items.Star.Armors
         }
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
-            return body.type == mod.ItemType("StarVest") &&
-                legs.type == mod.ItemType("StarPants");
+            return body.type == mod.ItemType("StarVest") && legs.type == mod.ItemType("StarPants");
         }
         public override void UpdateArmorSet(Player player)
         {
@@ -57,10 +56,10 @@ namespace DisorderUnderstar.Items.Star.Armors
             player.statManaMax2 += 40;
             if (Main.rand.Next(10) < 1)
             {
-                for (int i = 0; i < 2; i++)
+                for (int _0 = 0; _0 < 2; _0++)
                 {
-                    Dust.NewDustDirect(player.position, player.width, player.height, MyDustId.YellowHallowFx, 0, -player.velocity.Y * 0.5f,
-                        85, Color.Yellow, -0.1f);
+                    Dust.NewDustDirect(player.position, player.width, player.height, MyDustId.YellowHallowFx, 0, player.velocity.Y * 0.5f,
+                        85, Color.Yellow, Main.rand.NextFloat(0.5f, 1.3f));
                 }
             }
         }

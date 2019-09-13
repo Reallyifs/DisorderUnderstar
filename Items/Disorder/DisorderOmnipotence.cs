@@ -7,7 +7,6 @@ namespace DisorderUnderstar.Items.Disorder
     {
         public override void SetStaticDefaults()
         {
-            base.SetStaticDefaults();
             DisplayName.SetDefault("无序·万能型");
             Tooltip.SetDefault("【[c/FF0000:无序-Disorder]】\n" +
                 "集合了工具上的无序之力。");

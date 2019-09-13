@@ -11,12 +11,14 @@ namespace DisorderUnderstar.Items.Star
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("闪耀星盾");
-            DisplayName.AddTranslation(GameCulture.English, "Shining Shield");
-            Tooltip.SetDefault("虽然也没有很亮\n" +
-                "但是也可以拿来做个自行携带的发光药水？？？");
-            Tooltip.AddTranslation(GameCulture.English, "Although it's not very bright\n" +
+            DisplayName.SetDefault("Shining Shield");
+            DisplayName.AddTranslation(GameCulture.Chinese, "闪耀星盾");
+            Tooltip.SetDefault("[Star]\n" +
+                "Although it's not very bright\n" +
                 "It can also be used as a self-contained luminescent potion???");
+            Tooltip.AddTranslation(GameCulture.Chinese, "【星星】\n" +
+                "虽然也没有很亮\n" +
+                "但是也可以拿来做个自行携带的发光药水？？？");
         }
         public override void SetDefaults()
         {

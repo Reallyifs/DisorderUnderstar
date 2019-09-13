@@ -37,59 +37,57 @@ namespace DisorderUnderstar.Items.Disorder
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            {
-                player.buffImmune[BuffID.Slow] = true;
-                player.buffImmune[BuffID.Weak] = true;
-                player.buffImmune[BuffID.Cursed] = true;
-                player.buffImmune[BuffID.OnFire] = true;
-                player.buffImmune[BuffID.Bleeding] = true;
-                player.buffImmune[BuffID.Confused] = true;
-                player.buffImmune[BuffID.Darkness] = true;
-                player.buffImmune[BuffID.Poisoned] = true;
-                player.buffImmune[BuffID.Silenced] = true;
-                player.buffImmune[BuffID.BrokenArmor] = true;
-                player.buffImmune[BuffID.VortexDebuff] = true;
-            }
-            {
-                player.endurance += 0.95f;
-                player.lifeRegen += 290;
-                player.manaRegen += 145;
-                player.statLifeMax2 += 1800;
-                player.statManaMax2 += 900;
-            }
-            {
-                player.magicCrit += 38;
-                player.meleeCrit += 38;
-                player.meleeSpeed += 0.75f;
-                player.rangedCrit += 38;
-                player.thrownCrit += 38;
-                player.crystalLeaf = true;
-                player.magicDamage *= 7.4f;
-                player.meleeDamage *= 7.4f;
-                player.minionDamage *= 7.4f;
-                player.rangedDamage *= 7.4f;
-                player.thrownDamage *= 7.4f;
-                player.shroomiteStealth = true;
-            }
-            {
-                player.swimTime = 6000;
-                player.wingTime = 50;
-                player.jumpBoost = true;
-                player.moveSpeed += 1f;
-                player.noFallDmg = true;
-                player.waterWalk2 = true;
-                player.noKnockback = true;
-                player.CollectTaxes();
-                player.jumpSpeedBoost += 7.5f;
-            }
+            #region BuffImmune
+            player.buffImmune[BuffID.Slow] = true;
+            player.buffImmune[BuffID.Weak] = true;
+            player.buffImmune[BuffID.Cursed] = true;
+            player.buffImmune[BuffID.OnFire] = true;
+            player.buffImmune[BuffID.Bleeding] = true;
+            player.buffImmune[BuffID.Confused] = true;
+            player.buffImmune[BuffID.Darkness] = true;
+            player.buffImmune[BuffID.Poisoned] = true;
+            player.buffImmune[BuffID.Silenced] = true;
+            player.buffImmune[BuffID.BrokenArmor] = true;
+            player.buffImmune[BuffID.VortexDebuff] = true;
+            #endregion
+            #region Life & Mana
+            player.endurance += 0.95f;
+            player.lifeRegen += 290;
+            player.manaRegen += 145;
+            player.statLifeMax2 += 1800;
+            player.statManaMax2 += 900;
+            #endregion
+            #region Damage & Crit
+            player.magicCrit += 38;
+            player.meleeCrit += 38;
+            player.meleeSpeed += 0.75f;
+            player.rangedCrit += 38;
+            player.thrownCrit += 38;
+            player.crystalLeaf = true;
+            player.magicDamage *= 7.4f;
+            player.meleeDamage *= 7.4f;
+            player.minionDamage *= 7.4f;
+            player.rangedDamage *= 7.4f;
+            player.thrownDamage *= 7.4f;
+            player.shroomiteStealth = true;
+            #endregion
+            #region Other
+            player.swimTime = 6000;
+            player.wingTime = 50;
+            player.jumpBoost = true;
+            player.moveSpeed += 1f;
+            player.noFallDmg = true;
+            player.waterWalk2 = true;
+            player.noKnockback = true;
+            player.CollectTaxes();
+            player.jumpSpeedBoost += 7.5f;
+            #endregion
             if (hideVisual == true)
             {
                 for (int i = 0; i < 2; i++)
                 {
-                    Dust.NewDustDirect
-                        (player.position, player.width, player.height,
-                        MyDustId.Fire, -player.velocity.X * 0.5f, -player.velocity.Y * 0.5f, 100,
-                        Color.White, 1.0f);
+                    Dust.NewDustDirect(player.position, player.width, player.height, MyDustId.Fire, -player.velocity.X * 0.5f,
+                        -player.velocity.Y * 0.5f, 100, Color.White, 1.0f);
                 }
             }
         }

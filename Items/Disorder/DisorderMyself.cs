@@ -14,16 +14,38 @@ namespace DisorderUnderstar.Items.Disorder
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("无序·我于万物之中");
-            DisplayName.AddTranslation(GameCulture.English, "Disorder ` I am everything");
-            Tooltip.SetDefault("【[c/FF0000:无序-Disorder]】\n" +
+            #region 英文
+            DisplayName.SetDefault("Disorder ` I am everything");
+            Tooltip.SetDefault("[[c/FF0000:Disorder]]\n" +
+                "\"Everything is in me, I am in everything.\"\n" +
+                "\"Everything is me, I am everything.\"\n" +
+                "\"I hate myself, I love myself.\"\n" +
+                "          -- scp-3999\n" +
+                "-\n" +
+                "You'll get a bunch of [c/BFBFBF:Buffs] that I actually wrote but didn't work.\n" +
+                "-\n" +
+                "When [c/FF0000:Life] is below 2888, [c/0000FF:Maximum mana] increases 388, [c/0000FF:Temporary Magic] increases 88\n" +
+                "When [c/0000FF:Mana] is below 288, [c/FF0000:Life Max] increases 888, [c/FF0000:Temporary Life] increases 388.\n" +
+                "When [c/FF0000:Life] is below 200 and [c/0000FF:Mana] is below 20, [c/FF0000:Temporary Life] increases 666 and [c/0000FF:Temporary Magic] increases 66.\n" +
+                "If none of the above conditions are met, multiply the moving speed by 8\n" +
+                "-\n" +
+                "When [c/FF0000:Life] is below a third of [c/FF0000:Life Max], give you [c/BFBF:Ice Barrier Buff] for 30 seconds.\n" +
+                "If the above conditions are not satisfied, give you [c/BFBFBF:Blessing Moment Buff], and give you [c/3F3F3F:Chaos Theory Debuff]\n" +
+                "-\n" +
+                "Give you [c/3F3F3F:Bending Magnets Debuff] no matter what state you are in.\n" +
+                "-\n" +
+                "(Incomplete)\n" +
+                "-");
+            #endregion
+            #region 中文
+            DisplayName.AddTranslation(GameCulture.Chinese, "无序·我于万物之中");
+            Tooltip.AddTranslation(GameCulture.Chinese, "【[c/FF0000:无序]】\n" +
                 "“万物于我，我于万物之中。”\n" +
                 "“万物即我，我于我之中。”\n" +
                 "“可恨的自己，可爱的自己。”\n" +
                 "          ——scp-3999\n" +
                 "-\n" +
                 "你会获得一堆实际上我写了但是没有作用的[c/BFBFBF:Buff]\n" +
-                "（我真的写了护盾）\n" +
                 "-\n" +
                 "当[c/FF0000:生命]低于2888时，[c/0000FF:最大魔法]增加388，[c/0000FF:临时魔法]增加88\n" +
                 "当[c/0000FF:魔法]低于288时，[c/FF0000:最大生命]增加888，[c/FF0000:临时生命]增加388\n" +
@@ -37,6 +59,7 @@ namespace DisorderUnderstar.Items.Disorder
                 "-\n" +
                 "（不全）\n" +
                 "-");
+            #endregion
         }
         public override void SetDefaults()
         {

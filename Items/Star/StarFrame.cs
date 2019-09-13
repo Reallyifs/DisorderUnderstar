@@ -1,14 +1,18 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 namespace DisorderUnderstar.Items.Star
 {
     public class StarFrame : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("星型框架");
-            Tooltip.SetDefault("【星星-Star】\n" +
+            DisplayName.SetDefault("Star Frame");
+            DisplayName.AddTranslation(GameCulture.Chinese, "星型框架");
+            Tooltip.SetDefault("[Star]\n" +
+                "Empty. What can I do with it?");
+            Tooltip.AddTranslation(GameCulture.Chinese, "【星星】\n" +
                 "空空的，应该能拿来做东西？");
         }
         public override void SetDefaults()

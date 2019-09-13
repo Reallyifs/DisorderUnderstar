@@ -1,8 +1,8 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
 using DisorderUnderstar.Utils;
+using Microsoft.Xna.Framework;
 namespace DisorderUnderstar.Items.Disorder
 {
     public class DisorderCross : ModItem

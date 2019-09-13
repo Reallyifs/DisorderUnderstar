@@ -23,36 +23,37 @@ namespace DisorderUnderstar.Items.Disorder
         {
             return true;
         }
-        public override bool CanUseItem(Player player)
+        public override bool CanRightClick()
+        {
+            return true;
+        }
+        public override void RightClick(Player player)
         {
             if (player.altFunctionUse != 1)
             {
-                item.shoot = Item.NewItem((int)player.position.X, (int)player.position.Y,
-                    player.width, player.height, mod.ItemType("DisorderEschatologyBossBag"), 2);
                 item.maxStack -= 1;
+                item.shoot = Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, item.type, 2);
             }
             else
             {
                 player.dead = true;
-                player.KillMe(PlayerDeathReason.ByCustomReason
-                    (player.name + "说：“啥?”"), 9999, 0);
+                player.KillMe(PlayerDeathReason.ByCustomReason(player.name + "说：“啥?”"), 9999, 0);
             }
-            return false;
         }
         public override void AddRecipes()
         {
-            ModRecipe z2333 = new ModRecipe(mod);
-            z2333.AddIngredient(mod, "DisorderEschatologyBossBag", 2);
-            z2333.SetResult(this);
-            z2333.AddRecipe();
-            ModRecipe z3222 = new ModRecipe(mod)
+            ModRecipe _0 = new ModRecipe(mod);
+            _0.AddIngredient(mod, "DisorderEschatologyBossBag", 2);
+            _0.SetResult(this);
+            _0.AddRecipe();
+            _0 = new ModRecipe(mod)
             {
                 anyWood = true
             };
-            z3222.AddIngredient(ItemID.Wood, 233);
-            z3222.AddIngredient(ItemID.StoneBlock, 233);
-            z3222.SetResult(this, 100);
-            z3222.AddRecipe();
+            _0.AddIngredient(ItemID.Wood, 233 * ItemID.Wood);
+            _0.AddIngredient(ItemID.StoneBlock, 233 * ItemID.StoneBlock);
+            _0.SetResult(this, 100);
+            _0.AddRecipe();
         }
     }
 }

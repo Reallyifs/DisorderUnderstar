@@ -70,10 +70,10 @@ namespace DisorderUnderstar.Items.Star
             #endregion
             if (hideVisual == true)
             {
-                for (int i = 0; i < 2; i++)
+                for (int _0 = 0; _0 < 2; _0++)
                 {
-                    Dust.NewDustDirect(player.position, player.width, player.height, MyDustId.YellowTorch, -player.velocity.X * 0.5f,
-                        -player.velocity.Y * 0.5f, 100, Color.Yellow, 1.0f);
+                    Dust.NewDustDirect(player.position, player.width, player.height, MyDustId.YellowTorch, player.velocity.X * 0.5f,
+                        player.velocity.Y * 0.5f, 100, Color.Yellow, 1.0f);
                 }
             }
             if (player.statLifeMax2 >= 500 && player.statManaMax2 >= 200 && player.statLife < 100 && player.statMana < 30)

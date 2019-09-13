@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 using DisorderUnderstar.Projectiles.Star;
 namespace DisorderUnderstar.Items.Star
 {
@@ -8,10 +9,14 @@ namespace DisorderUnderstar.Items.Star
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("星系之光");
-            Tooltip.SetDefault("【星星-Star】\n" +
+            DisplayName.SetDefault("Galaxy Light");
+            DisplayName.AddTranslation(GameCulture.Chinese, "星系之光");
+            Tooltip.SetDefault("[Star]\n" +
+                "\"The bright yellow stars glow blue...\"\n" +
+                "\"That's strange.\"");
+            Tooltip.AddTranslation(GameCulture.Chinese, "【星星】\n" +
                 "“明明是黄色的星星却发出蓝色的光……”\n" +
-                "“那可真奇怪……”");
+                "“那可真奇怪。”");
         }
         public override void SetDefaults()
         {

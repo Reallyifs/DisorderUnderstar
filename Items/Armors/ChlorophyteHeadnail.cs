@@ -1,7 +1,7 @@
-﻿using Microsoft.Xna.Framework;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
 namespace DisorderUnderstar.Items.Armors
 {
     [AutoloadEquip(EquipType.Head)]
@@ -35,7 +35,8 @@ namespace DisorderUnderstar.Items.Armors
             player.rangedDamage += 0.64f;
             player.statManaMax2 += 80;
         }
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage,
+            ref float knockBack)
         {
             Projectile.NewProjectile(player.Center, player.velocity, ProjectileID.CrystalLeaf, 100, 2f, player.whoAmI);
             return false;

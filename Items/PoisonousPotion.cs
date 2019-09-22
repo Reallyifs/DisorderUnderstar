@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using DisorderUnderstar.Buffs;
 using Terraria.DataStructures;
 namespace DisorderUnderstar.Items
 {
@@ -72,11 +73,10 @@ namespace DisorderUnderstar.Items
 
 			// 给玩家加上猛毒buff，持续 60000 / 60 = 1000秒 
 			player.AddBuff(BuffID.Venom, 60000);
-            player.AddBuff(mod.BuffType("GreenLight"), 999999);
+            player.AddBuff(mod.BuffType<DebuffGreenLight>(), 999999);
 
             // 嘿嘿
-            player.KillMe(PlayerDeathReason.ByCustomReason
-                (player.name + " 喝生命药水被恢复生命过多血管爆炸而死"), 9999, 0);
+            player.KillMe(PlayerDeathReason.ByCustomReason(player.name + " 喝生命药水被恢复生命过多血管爆炸而死"), 9999, 0);
 
 			// 这个函数有一个布尔类型返回值（还记得是啥吗
 			// 返回true就说明使用成功了（其实没啥用，顶多用来判定），false是默认值

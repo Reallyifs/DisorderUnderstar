@@ -85,10 +85,8 @@ namespace DisorderUnderstar.Items
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    Dust.NewDustDirect
-                        (player.position, player.width, player.height,
-                        MyDustId.PurpleLight, -player.velocity.X * 0.5f, -player.velocity.Y * 0.5f, 10,
-                        Color.White, 1.0f);
+                    Dust.NewDust(player.position, player.width, player.height, MyDustId.PurpleLight, -player.velocity.X / 2,
+                        -player.velocity.Y / 2, 10, Color.White, 1.0f);
                 }
             }
 		}

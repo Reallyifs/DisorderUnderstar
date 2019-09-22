@@ -16,8 +16,8 @@ namespace DisorderUnderstar.Items.Testament.Books
         public override void SetDefaults()
         {
             item.value = 0;
-            item.width = 10;
-            item.height = 10;
+            item.width = 51;
+            item.height = 67;
             item.useStyle = 0;
         }
         public override bool CanUseItem(Player player)

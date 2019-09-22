@@ -54,12 +54,12 @@ namespace DisorderUnderstar.Items.Testament
                         npc.type != NPCID.LunarTowerSolar && npc.type != NPCID.LunarTowerStardust && npc.type != NPCID.LunarTowerVortex)
                     {
                         float dis = Vector2.Distance(pl.Center, npc.Center);
-                        if (disMAX >= dis) tar = npc;
+                        if (disMAX >= dis) { tar = npc; }
                     }
                 }
-                for (int _1 = 0; _1 < 6; _1++)
+                if (tar != null)
                 {
-                    if (tar != null)
+                    for (int _1 = 0; _1 < 6; _1++)
                     {
                         if (_1 % 2 == 0)
                         {

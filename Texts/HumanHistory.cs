@@ -17,7 +17,7 @@ namespace DisorderUnderstar.Texts
         /// <summary>
         /// 玩家是否在阅读
         /// </summary>
-        public bool IsReading = false;
+        public static bool IsReading = false;
         #endregion
         public bool HumanHistroy1 = false; public bool HumanHistroy2 = false;
         public bool HumanHistroy3 = false; public bool HumanHistroy4 = false;
@@ -33,11 +33,11 @@ namespace DisorderUnderstar.Texts
         /// <summary>
         /// 文字设定（String）
         /// </summary>
-        public string sHH;
+        public static string sHH;
         /// <summary>
         /// 在阅读的小节
         /// </summary>
-        public int ReadPages = 1;
+        public static int ReadPages = 1;
         #endregion
         public override void PostUpdate()
         {

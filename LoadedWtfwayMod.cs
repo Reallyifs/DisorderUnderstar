@@ -9,7 +9,7 @@ namespace DisorderUnderstar
     {
         public override void OnHitAnything(float x, float y, Entity victim)
         {
-            if (player.GetModPlayer<DUPlayer>().LoadedWtfway && victim.active && Main.rand.Next(0, 5) < 2)
+            if (player.GetModPlayer<DisorderUnderstarPlayer>().加载了Wtfway && victim.active && Main.rand.Next(0, 5) < 2)
             {
                 int _0 = Main.rand.Next(3, 7);
                 Vector2 _1 = new Vector2(x, y);

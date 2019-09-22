@@ -11,10 +11,13 @@
     <Exec Command="&quot;$(tMLBuildServerPath)&quot; -build $(ProjectDir) -eac $(TargetPath) -define $(DefineConstants) -unsafe $(AllowUnsafeBlocks)" />
   </Target>
   <ItemGroup>
+    <Compile Remove="dllReferences\**" />
     <Compile Remove="Images\**" />
     <Compile Remove="Libraries\**" />
+    <EmbeddedResource Remove="dllReferences\**" />
     <EmbeddedResource Remove="Images\**" />
     <EmbeddedResource Remove="Libraries\**" />
+    <None Remove="dllReferences\**" />
     <None Remove="Images\**" />
     <None Remove="Libraries\**" />
   </ItemGroup>
@@ -24,10 +27,7 @@
     <None Remove="Buffs\Disorder\DebuffBendingMagnets.png" />
     <None Remove="Buffs\Disorder\DebuffChaosTheory.png" />
     <None Remove="Buffs\Disorder\DebuffFourHeavyBlocking.png" />
-    <None Remove="Buffs\MODCrystalLeaf.png" />
-    <None Remove="Buffs\NMODCrystalLeaf.png" />
     <None Remove="Buffs\Sunset\DebuffSunsetBlackFire.png" />
-    <None Remove="Dusts\Code\DustCodeNumber.png" />
     <None Remove="Dusts\Code\DustCodeNumber\DustCodeNumber0.png" />
     <None Remove="Dusts\Code\DustCodeNumber\DustCodeNumber1.png" />
     <None Remove="Dusts\Code\DustCodeNumber\DustCodeNumber2.png" />
@@ -39,7 +39,6 @@
     <None Remove="Dusts\Code\DustCodeNumber\DustCodeNumber8.png" />
     <None Remove="Dusts\Code\DustCodeNumber\DustCodeNumber9.png" />
     <None Remove="Dusts\Code\DustCodeNumber\DustCodeNumberAll.png" />
-    <None Remove="Dusts\Code\DustCodeParticle.png" />
     <None Remove="Dusts\Code\DustCodeParticle\DustCodeParticle0.png" />
     <None Remove="Dusts\Code\DustCodeParticle\DustCodeParticle1.png" />
     <None Remove="Dusts\Code\DustCodeParticle\DustCodeParticle2.png" />
@@ -82,7 +81,6 @@
     <None Remove="Items\Disorder\DisorderFourtype.png" />
     <None Remove="Items\Disorder\DisorderFourtype_Wings.png" />
     <None Remove="Items\Disorder\DisorderHammer.png" />
-    <None Remove="Items\Disorder\DisorderKnife.png" />
     <None Remove="Items\Disorder\DisorderMyself.png" />
     <None Remove="Items\Disorder\DisorderMyself_Wings.png" />
     <None Remove="Items\Disorder\DisorderOmnipotence.png" />
@@ -91,8 +89,6 @@
     <None Remove="Items\Disorder\DisorderWings.png" />
     <None Remove="Items\Disorder\DisorderWings_Wings.png" />
     <None Remove="Items\DXTBlade.png" />
-    <None Remove="Items\GlitchRIO.png" />
-    <None Remove="Items\GlitchSIO.png" />
     <None Remove="Items\Glitch\GlitchRIO.png" />
     <None Remove="Items\Glitch\GlitchSIO.png" />
     <None Remove="Items\LikeLifeLine.png" />
@@ -120,6 +116,7 @@
     <None Remove="Items\Star\SurroundStar.png" />
     <None Remove="Items\Sunset\BlackLavaBow.png" />
     <None Remove="Items\Sunset\ElectromagnetismLighting.png" />
+    <None Remove="Items\Testament\Books\HumanHistory1.png" />
     <None Remove="Items\Testament\OctoberOath.png" />
     <None Remove="NPCs\Bosses\Code\KeepImagineLastLongUnderSymbol.png" />
     <None Remove="NPCs\Bosses\Star\MeteorTidal.png" />
@@ -140,6 +137,7 @@
     <None Remove="Projectiles\Glitch\ProGlitchHolyLaser.png" />
     <None Remove="Projectiles\Glitch\ProGlitchHolyLaser2.png" />
     <None Remove="Projectiles\Glitch\ProGlitchLaser.png" />
+    <None Remove="Projectiles\LoadedMod\ProWtfway.png" />
     <None Remove="Projectiles\NHolyArrow.png" />
     <None Remove="Projectiles\NNHolyArrow.png" />
     <None Remove="Projectiles\NNNHolyArrow.png" />
@@ -161,15 +159,12 @@
     <None Remove="Projectiles\Sunset\ProSunsetLaser2.png" />
     <None Remove="Projectiles\Sunset\PSEUDOProSunsetElectromagneticProjectile.png" />
     <None Remove="Projectiles\Sunset\PSEUDOProSunsetEnergyArrow.png" />
+    <None Remove="Projectiles\Testament\ProTestamentLightboom.png" />
+    <None Remove="Projectiles\Testament\ProTestamentLightsaber.png" />
     <None Remove="Sounds\Disorder\DisorderEschatologyDeathSound.mp3" />
     <None Remove="Utils\颜色代码.txt" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Utils\颜色代码.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="ColinUtils">
-      <HintPath>ColinUtils.dll</HintPath>
-    </Reference>
   </ItemGroup>
 </Project>

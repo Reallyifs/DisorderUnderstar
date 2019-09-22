@@ -14,9 +14,9 @@ namespace DisorderUnderstar.Projectiles.Testament
         public override void SetDefaults()
         {
             projectile.melee = true;
-            projectile.width = 2;
+            projectile.width = 3;
             projectile.damage = 100;
-            projectile.height = 2;
+            projectile.height = 48;
             projectile.aiStyle = -1;
             projectile.hostile = false;
             projectile.friendly = true;

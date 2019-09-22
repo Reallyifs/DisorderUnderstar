@@ -13,9 +13,11 @@ using DisorderUnderstar.Texts;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
 using Terraria.GameContent.UI;
+using DisorderUnderstar.Events;
 using Terraria.Graphics.Effects;
 using Terraria.Graphics.Shaders;
 using System.Collections.Generic;
+using DisorderUnderstar.Items.Star;
 using Terraria.ModLoader.Exceptions;
 using Microsoft.Xna.Framework.Graphics;
 namespace DisorderUnderstar
@@ -45,15 +47,15 @@ namespace DisorderUnderstar
         /// </summary>
         public ModHotKey RTNS;
         #endregion
-        #region 月蚀事件
-        public bool MeetingTheEventConditions_LunarEclipse(NPCSpawnInfo spawnInfo)
-        {
-            Player player = spawnInfo.player;
-            return !Main.dayTime && !Main.pumpkinMoon && !Main.snowMoon && !Main.bloodMoon && !player.ZoneOldOneArmy;
-        }
+        #region 难度
+        internal static int Difficulty;
+        public static bool Easy;
+        public static bool Normal;
+        public static bool Hard;
+        public static bool Hell;
+        public static bool Nightmare;
         #endregion
-        private Player player = Main.player[Main.myPlayer];
-        private static Queue<Texture2D> VanillaChangeTexture;
+        private static readonly Queue<Texture2D> 原版材质改变;
         public DisorderUnderstar()
         {
             Properties = new ModProperties()
@@ -72,21 +74,51 @@ namespace DisorderUnderstar
         public override void Unload()
         {
             #region Dequeue
-            Main.buffTexture[BuffID.SolarShield1] = VanillaChangeTexture.Dequeue();
-            Main.buffTexture[BuffID.SolarShield2] = VanillaChangeTexture.Dequeue();
-            Main.buffTexture[BuffID.SolarShield3] = VanillaChangeTexture.Dequeue();
+            Main.buffTexture[BuffID.SolarShield1] = 原版材质改变.Dequeue();
+            Main.buffTexture[BuffID.SolarShield2] = 原版材质改变.Dequeue();
+            Main.buffTexture[BuffID.SolarShield3] = 原版材质改变.Dequeue();
             #endregion
             RTPS = null;
             RTNS = null;
+        }
+        public override void PreUpdateEntities()
+        {
+            Mod mod = ModLoader.GetMod("DisorderUnderstar");
+            NPC target = Main.npc[Main.maxNPCs];
+            Item item = Main.item[Main.maxItems];
+            Player player = Main.player[Main.myPlayer];
+            Projectile projectile = Main.projectile[Main.maxProjectiles];
+            // LunarEclipse.判定(mod, target, item, player, projectile);
+        }
+        public override void UpdateUI(GameTime gameTime)
+        {
+            Mod mod = ModLoader.GetMod("DisorderUnderstar");
+            NPC target = Main.npc[Main.maxNPCs];
+            Item item = Main.item[Main.maxItems];
+            Player player = Main.player[Main.myPlayer];
+            Projectile projectile = Main.projectile[Main.maxProjectiles];
+            // LunarEclipse.符合事件出现条件_月蚀_有概率();
+            // LunarEclipse.判定(mod, target, item, player, projectile);
+        }
+        public override void HotKeyPressed(string name)
+        {
+            if (name == "阅读上一小节（读书用）" && HumanHistory.IsReading == true)
+            {
+                HumanHistory.ReadPages -= 1;
+            }
+            else if (name == "阅读下一小节（读书用）" && HumanHistory.IsReading == true)
+            {
+                HumanHistory.ReadPages += 1;
+            }
         }
         public override void PostSetupContent()
         {
             if (!Main.dedServ)
             {
                 #region Enqueue
-                VanillaChangeTexture.Enqueue(Main.buffTexture[BuffID.SolarShield1]);
-                VanillaChangeTexture.Enqueue(Main.buffTexture[BuffID.SolarShield2]);
-                VanillaChangeTexture.Enqueue(Main.buffTexture[BuffID.SolarShield3]);
+                原版材质改变.Enqueue(Main.buffTexture[BuffID.SolarShield1]);
+                原版材质改变.Enqueue(Main.buffTexture[BuffID.SolarShield2]);
+                原版材质改变.Enqueue(Main.buffTexture[BuffID.SolarShield3]);
                 #endregion
                 #region GetTexture
                 Main.buffTexture[BuffID.SolarShield1] = GetTexture("Images/VanillaChange/SolarShield_I");
@@ -95,28 +127,18 @@ namespace DisorderUnderstar
                 #endregion
             }
         }
-        public override void HotKeyPressed(string name)
-        {
-            if (name == "阅读上一小节（读书用）" && player.GetModPlayer<HumanHistory>().IsReading == true)
-            {
-                player.GetModPlayer<HumanHistory>().ReadPages -= 1;
-            }
-            else if (name == "阅读下一小节（读书用）" && player.GetModPlayer<HumanHistory>().IsReading == true)
-            {
-                player.GetModPlayer<HumanHistory>().ReadPages += 1;
-            }
-        }
         public override void PostDrawInterface(SpriteBatch spriteBatch)
         {
-            if (player.GetModPlayer<HumanHistory>().IsReading == true)
+            if (HumanHistory.IsReading)
             {
+                Player player = Main.player[Main.myPlayer];
                 Vector2 _0 = new Vector2(player.Center.X, player.Center.Y);
-                Texture2D _1 = GetTexture("Images/Testament/Books");
-                string _2 = player.GetModPlayer<HumanHistory>().sHH;
+                Texture2D _1 = GetTexture("Images/Testament/Book");
+                string _2 = HumanHistory.sHH;
                 Main.fontMouseText.MeasureString(_2);
-                bool _3 = player.GetModPlayer<HumanHistory>().ReadPages % 2 == 0 ? false : true;
+                bool _3 = HumanHistory.ReadPages % 2 == 0 ? true : false;
                 SpriteEffects _4 = SpriteEffects.None;
-                if (_3 == true) { _4 = SpriteEffects.FlipHorizontally; }
+                if (_3) { _4 = SpriteEffects.FlipHorizontally; }
                 Main.spriteBatch.Draw(_1, _0 - Main.screenPosition, null, Color.White, 0f, _1.Size() * 0.5f, 1f, _4 , 0f);
                 Terraria.Utils.DrawBorderStringFourWay(Main.spriteBatch, Main.fontMouseText, _2, _0.X, _0.Y, Color.White, Color.Black,
                     _1.Size() * 0.5f, 1f);

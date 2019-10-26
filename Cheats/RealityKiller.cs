@@ -1,5 +1,4 @@
 ﻿using Terraria;
-using DisorderUnderstar;
 using Terraria.ModLoader;
 using Terraria.Localization;
 using DisorderUnderstar.Texts;
@@ -61,6 +60,7 @@ namespace DisorderUnderstar.Cheats
             item.instanced = true;
             item.ownIgnore = 1;
             item.consumable = true;
+            item.createTile = 1;
             item.expertOnly = true;
             item.shootSpeed = 1;
             item.noGrabDelay = 1;
@@ -70,13 +70,14 @@ namespace DisorderUnderstar.Cheats
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            int _0 = 0; _0 += 1;
-            if (你真的以为这个物品能使用 && 别想了 && 我劝你啊 && 还是自己写代码比较好 && _这个物品能否使用判定 == false)
+            int _0 = 0;
+            _0 += 1;
+            if (你真的以为这个物品能使用 && 别想了 && 我劝你啊 && 还是自己写代码比较好 && !_这个物品能否使用判定)
             {
                 player.dead = true;
                 _这个物品能否使用判定 = true;
             }
-            if (_0 >= 300 && _这个物品能否使用判定 == true)
+            if (_0 >= 300 && _这个物品能否使用判定)
             {
                 _0 = 0;
                 player.statLifeMax = 1;
@@ -85,37 +86,15 @@ namespace DisorderUnderstar.Cheats
         }
         public override bool CanUseItem(Player player)
         {
-            if (player.GetModPlayer<HumanHistory>().CheatItem == false)
+            if (!player.GetModPlayer<Cheat>().CheatItem)
             {
-                player.GetModPlayer<HumanHistory>().CheatItem = true;
-                player.GetModPlayer<HumanHistory>().IsReading = true;
+                player.GetModPlayer<Cheat>().CheatItem = true;
             }
             else
             {
-                player.GetModPlayer<HumanHistory>().CheatItem = false;
-                player.GetModPlayer<HumanHistory>().IsReading = false;
+                player.GetModPlayer<Cheat>().CheatItem = false;
             }
             return true;
-        }
-        public override void AddRecipes()
-        {
-            ModRecipe _0 = new ModRecipe(mod)
-            {
-                alchemy = true,
-                anySand = true,
-                anyWood = true,
-                needLava = true,
-                needHoney = true,
-                needWater = true,
-                anyIronBar = true,
-                anyFragment = true,
-                needSnowBiome = true,
-                anyPressurePlate = true,
-            };
-            _0.AddIngredient(1, 1);
-            _0.AddTile(1);
-            _0.SetResult(this);
-            _0.AddRecipe();
         }
     }
 }

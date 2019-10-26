@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
-using DisorderUnderstar.Utils;
+using Terraria.Localization;
+using DisorderUnderstar.Tools;
 using Microsoft.Xna.Framework;
 namespace DisorderUnderstar.Buffs.Sunset
 {
@@ -8,15 +9,14 @@ namespace DisorderUnderstar.Buffs.Sunset
     {
         public override void SetDefaults()
         {
-            DisplayName.SetDefault("黑色火焰");
-            Description.SetDefault("这些黑色的火焰包围在你身边……");
+            DisplayName.SetDefault("Black Fire");
+            DisplayName.AddTranslation(GameCulture.Chinese, "黑色火焰");
+            Description.SetDefault("These Black flames were surround you...");
+            Description.AddTranslation(GameCulture.Chinese,"这些黑色的火焰包围在你身边……");
             Main.debuff[Type] = true;
             Main.pvpBuff[Type] = true;
-            Main.lightPet[Type] = false;
-            Main.vanityPet[Type] = false;
             Main.buffNoSave[Type] = false;
             Main.buffNoTimeDisplay[Type] = false;
-            this.canBeCleared = false;
             this.longerExpertDebuff = true;
         }
         public override void Update(Player player, ref int buffIndex)
@@ -42,7 +42,8 @@ namespace DisorderUnderstar.Buffs.Sunset
                     _5.noGravity = true;
                     player.lifeRegen = 0;
                 }
-                Description.SetDefault("它开始消失了……");
+                Description.SetDefault("It starts to dissipation...");
+                Description.AddTranslation(GameCulture.Chinese,"它开始消失了……");
             }
             if (Main.rand.Next(20) < 1) { for (int _6 = 0; _6 < 5; _6++) { player.statLife -= 10; } }
         }

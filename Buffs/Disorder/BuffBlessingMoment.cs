@@ -21,15 +21,15 @@ namespace DisorderUnderstar.Buffs.Disorder
         public override void Update(Player player, ref int buffIndex)
         {
             int _0 = 0;
-            if (Main.rand.Next(100) < 1) _0 = 1;
+            if (Main.rand.Next(100) < 1) { _0 = 1; }
             {
                 #region timer的加减乘除
-                if (_0 == 1) _0++;
-                else if (_0 >= 2) _0 *= 2;
-                else if (_0 > 500) _0 = 0;
+                if (_0 == 1) { _0++; }
+                else if (_0 >= 2) { _0 *= 2; }
+                else if (_0 > 500) { _0 = 0; }
                 #endregion
                 #region player的加减乘除
-                if (_0 > 10 && _0 <= 100) player.statLife += 12;
+                if (_0 > 10 && _0 <= 100) { player.statLife += 12; }
                 else if (_0 > 100 && _0 <= 450)
                 {
                     player.statLife += 5;
@@ -43,10 +43,10 @@ namespace DisorderUnderstar.Buffs.Disorder
                     player.AddBuff(BuffID.MagicLantern, 1);
                 }
                 #endregion
+                Vector2 pleft = new Vector2(player.Center.X - player.width, player.Center.Y);
+                Dust.NewDustDirect(pleft - Main.screenPosition, player.width, player.height, ModContent.DustType<DustGoldenSymbol>(),
+                    player.velocity.X, player.velocity.Y);
             }
-            Vector2 pleft = new Vector2(player.Center.X - player.width, player.Center.Y);
-            Dust.NewDustDirect(pleft - Main.screenPosition, player.width, player.height, mod.DustType<DustGoldenSymbol>(), player.velocity.X,
-                player.velocity.Y);
         }
     }
 }

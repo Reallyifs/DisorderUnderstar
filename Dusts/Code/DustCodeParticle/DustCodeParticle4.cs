@@ -15,6 +15,7 @@ namespace DisorderUnderstar.Dusts.Code.DustCodeParticle
         }
         public override bool Update(Dust dust)
         {
+            if (dust.position.Y > -1) { dust.position.Y--; }
             #region Dust的消失
             if (dust.dustIndex >= 1) dust.dustIndex--;
             if (dust.dustIndex <= 0) dust.active = false;

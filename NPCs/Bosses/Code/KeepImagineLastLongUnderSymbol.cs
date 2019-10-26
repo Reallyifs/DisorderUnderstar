@@ -2,6 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
+using DisorderUnderstar.Items.Code;
 namespace DisorderUnderstar.NPCs.Bosses.Code
 {
     public class KeepImagineLastLongUnderSymbol : ModNPC
@@ -36,6 +37,19 @@ namespace DisorderUnderstar.NPCs.Bosses.Code
                 npc.damage = 999999999;
                 npc.lifeRegen += 999999999;
             }
+        }
+        public override void AI()
+        {
+            for(int i = 0; i < Main.maxBuffTypes; i++)
+            {
+                npc.buffImmune[i] = true;
+                foreach(Player player in Main.player)
+                {
+                    player.statLife--;
+                }
+            }
+            Player player1 = Main.player[npc.target];
+            if (player1.dead) { npc.life = int.MinValue; }
         }
         public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit)
         {
@@ -107,12 +121,21 @@ namespace DisorderUnderstar.NPCs.Bosses.Code
         {
             return 0.0f;
         }
-        public override void BossLoot(ref string name, ref int potionType)
+        public override void NPCLoot()
         {
-            Item.NewItem((int)npc.velocity.X, (int)npc.position.Y,
-                npc.width, npc.height, ItemID.Heart, 200);
-            Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y,
-                npc.width, npc.height, mod.ItemType("CodeFragments"), 9);
+            Player player = Main.player[npc.target];
+            if (player.statLife < player.statLifeMax)
+            {
+                Item.NewItem((int)npc.velocity.X, (int)npc.position.Y, npc.width, npc.height, ItemID.Heart, 200);
+                Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height, ModContent.ItemType<CodeFragments>(), 9);
+            }
+            else
+            {
+                for (float f = float.NegativeInfinity; f < float.PositiveInfinity; f += float.Epsilon)
+                {
+                    Dust.NewDust(npc.Center, 1, 1, 1, 1, 1, 1, new Microsoft.Xna.Framework.Color(1, 1, 1), 1);
+                }
+            }
         }
     }
 }

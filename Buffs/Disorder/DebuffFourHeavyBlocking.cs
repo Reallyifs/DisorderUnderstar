@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Localization;
-using DisorderUnderstar.Utils;
+using DisorderUnderstar.Tools;
 using Microsoft.Xna.Framework;
 namespace DisorderUnderstar.Buffs.Disorder
 {
@@ -15,12 +15,8 @@ namespace DisorderUnderstar.Buffs.Disorder
             Description.SetDefault("The air around you that contains poison is burning in a cursed flame...");
             Description.AddTranslation(GameCulture.Chinese, "你周围包含着毒药的空气正在被诅咒火焰燃烧……");
             Main.debuff[Type] = true;
-            Main.pvpBuff[Type] = false;
-            Main.lightPet[Type] = false;
-            Main.vanityPet[Type] = false;
             Main.buffNoSave[Type] = false;
             Main.buffNoTimeDisplay[Type] = false;
-            this.canBeCleared = false;
             this.longerExpertDebuff = true;
         }
         public override void Update(Player player, ref int buffIndex)
@@ -28,8 +24,10 @@ namespace DisorderUnderstar.Buffs.Disorder
             #region Buff的设置
             if (player.buffTime[buffIndex] > 10)
             {
-                int _0 = player.whoAmI; if (_0 > 10) { _0 = 10; }
-                int _1 = _0 / buffIndex; if (_1 < 5) { _1 = 5; }
+                int _0 = player.whoAmI;
+                if (_0 > 10) { _0 = 10; }
+                int _1 = _0 / buffIndex;
+                if (_1 < 5) { _1 = 5; }
                 player.buffImmune[BuffID.Venom] = false;
                 player.AddBuff(BuffID.Venom, buffIndex * _1);
                 player.buffImmune[BuffID.Bleeding] = false;
@@ -72,9 +70,9 @@ namespace DisorderUnderstar.Buffs.Disorder
             else
             {
                 Description.SetDefault("The air around you that contains poison is burning in a cursed flame...\n" +
-                    "You deserve it. =)");
+                    "YOU DESERVE IT. =)");
                 Description.AddTranslation(GameCulture.Chinese, "你周围包含着毒药的空气正在被诅咒火焰燃烧……\n" +
-                    "你 应 得 的 =)");
+                    "你 应 得 的。 =)");
                 player.lifeRegen = 40;
                 player.lifeRegen -= 160;
                 player.altFunctionUse = 1;

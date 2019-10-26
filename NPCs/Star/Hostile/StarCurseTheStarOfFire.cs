@@ -13,6 +13,8 @@ namespace DisorderUnderstar.NPCs.Star.Hostile
         public override void SetDefaults()
         {
             aiType = NPCID.EyeofCthulhu;
+            banner = npc.type;
+            bannerItem = ModContent.ItemType<FireOfStarZero>();
             animationType = NPCID.MeteorHead;
             npc.damage = 40;
             npc.defense = 15;
@@ -25,8 +27,6 @@ namespace DisorderUnderstar.NPCs.Star.Hostile
             npc.buffImmune[BuffID.Ichor] = true;
             npc.buffImmune[BuffID.OnFire] = true;
             npc.buffImmune[BuffID.Confused] = true;
-            banner = npc.type;
-            bannerItem = mod.ItemType<FireOfStarZero>();
         }
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
@@ -36,31 +36,43 @@ namespace DisorderUnderstar.NPCs.Star.Hostile
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            if (Main.dayTime) return SpawnCondition.Corruption.Chance * 0.1f;
-            else if (!Main.dayTime) return SpawnCondition.Corruption.Chance * 0.2f;
-            return 0.0f;
+            if (Main.dayTime) { return SpawnCondition.Corruption.Chance * 0.1f; }
+            else if (!Main.dayTime) { return SpawnCondition.Corruption.Chance * 0.2f; }
+            else return 0.0f;
         }
         public override void NPCLoot()
         {
             #region 掉落
             Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height, ItemID.SilverCoin, 31);
             Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height, ItemID.CopperCoin, 72);
-            if (Main.rand.Next(0, 100) < 1) Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height, ItemID.DepthMeter);
-            else if (Main.rand.Next(0, 99) < 1) Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height, ItemID.Compass);
-            if (Main.rand.Next(0, 5) < 1) Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height,
-                 mod.ItemType<FireOfStarZero>(), 1);
-            else if (Main.rand.Next(0, 10) < 1) Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height,
-                 mod.ItemType<FireOfStarZero>(), 2);
-            else if (Main.rand.Next(0, 20) < 1) Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height,
-                 mod.ItemType<FireOfStarZero>(), 3);
+            if (Main.rand.Next(0, 100) < 1) { Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height, ItemID.DepthMeter); }
+            else if (Main.rand.Next(0, 99) < 1) { Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height, ItemID.Compass); }
+            if (Main.rand.Next(0, 5) < 1)
+            {
+                Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height, ModContent.ItemType<FireOfStarZero>(), 1);
+            }
+            else if (Main.rand.Next(0, 10) < 1)
+            {
+                Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height, ModContent.ItemType<FireOfStarZero>(), 2);
+            }
+            else if (Main.rand.Next(0, 20) < 1)
+            {
+                Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height, ModContent.ItemType<FireOfStarZero>(), 3);
+            }
             if (Main.hardMode)
             {
-                if (Main.rand.Next(0, 15) < 1) Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height,
-                     mod.ItemType<FireOfStarZero>(), 3);
-                else if (Main.rand.Next(0, 5) < 1) Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height,
-                     mod.ItemType<FireOfStarZero>(), 2);
-                else if (Main.rand.Next(0, 1) < 1) Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height,
-                     mod.ItemType<FireOfStarZero>(), 1);
+                if (Main.rand.Next(0, 15) < 1)
+                {
+                    Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height, ModContent.ItemType<FireOfStarZero>(), 3);
+                }
+                else if (Main.rand.Next(0, 5) < 1)
+                {
+                    Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height, ModContent.ItemType<FireOfStarZero>(), 2);
+                }
+                else if (Main.rand.Next(0, 1) < 1)
+                {
+                    Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height, ModContent.ItemType<FireOfStarZero>(), 1);
+                }
                 if (Main.rand.Next(0, 4) < 1) Item.NewItem((int)npc.velocity.X, (int)npc.velocity.Y, npc.width, npc.height, ItemID.CursedFlame, 2);
             }
             #endregion

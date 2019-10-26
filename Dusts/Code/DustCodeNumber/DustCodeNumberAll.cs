@@ -1,7 +1,6 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using ColinUtils;
 namespace DisorderUnderstar.Dusts.Code.DustCodeNumber
 {
     public class DustCodeNumberAll : ModDust
@@ -16,6 +15,7 @@ namespace DisorderUnderstar.Dusts.Code.DustCodeNumber
         }
         public override bool Update(Dust dust)
         {
+            if (dust.position.Y > -1) { dust.position.Y--; }
             #region Dust的消失
             if (dust.dustIndex >= 1) dust.dustIndex--;
             if (dust.dustIndex <= 0) dust.active = false;
@@ -23,16 +23,17 @@ namespace DisorderUnderstar.Dusts.Code.DustCodeNumber
             #region 生成Dust本体
             int _0 = Main.rand.Next(0, 9);
             float _1 = Main.rand.NextFloat(0.1f, 25.5f);
-            if (_0 == 0) Dust.NewDustDirect(dust.position, 1, 1, mod.DustType("DustCodeNumber0"), 0, 0, (int)((_0 + 1) * _1), Color.Green, 0.5f);
-            else if (_0 == 1) Dust.NewDustDirect(dust.position, 1, 1, mod.DustType("DustCodeNumber1"), 0, 0, (int)((_0 + 1) * _1), Color.Green, 0.5f);
-            else if (_0 == 2) Dust.NewDustDirect(dust.position, 1, 1, mod.DustType("DustCodeNumber2"), 0, 0, (int)((_0 + 1) * _1), Color.Green, 0.5f);
-            else if (_0 == 3) Dust.NewDustDirect(dust.position, 1, 1, mod.DustType("DustCodeNumber3"), 0, 0, (int)((_0 + 1) * _1), Color.Green, 0.5f);
-            else if (_0 == 4) Dust.NewDustDirect(dust.position, 1, 1, mod.DustType("DustCodeNumber4"), 0, 0, (int)((_0 + 1) * _1), Color.Green, 0.5f);
-            else if (_0 == 5) Dust.NewDustDirect(dust.position, 1, 1, mod.DustType("DustCodeNumber5"), 0, 0, (int)((_0 + 1) * _1), Color.Green, 0.5f);
-            else if (_0 == 6) Dust.NewDustDirect(dust.position, 1, 1, mod.DustType("DustCodeNumber6"), 0, 0, (int)((_0 + 1) * _1), Color.Green, 0.5f);
-            else if (_0 == 7) Dust.NewDustDirect(dust.position, 1, 1, mod.DustType("DustCodeNumber7"), 0, 0, (int)((_0 + 1) * _1), Color.Green, 0.5f);
-            else if (_0 == 8) Dust.NewDustDirect(dust.position, 1, 1, mod.DustType("DustCodeNumber8"), 0, 0, (int)((_0 + 1) * _1), Color.Green, 0.5f);
-            else if (_0 == 9) Dust.NewDustDirect(dust.position, 1, 1, mod.DustType("DustCodeNumber9"), 0, 0, (int)((_0 + 1) * _1), Color.Green, 0.5f);
+            int _2 = (int)((_0 + 1) * _1);
+            if (_0 == 0) Dust.NewDustDirect(dust.position, 1, 1, ModContent.DustType<DustCodeNumber0>(), 0, 0, _2, Color.Green, 0.5f);
+            else if (_0 == 1) Dust.NewDustDirect(dust.position, 1, 1, ModContent.DustType<DustCodeNumber1>(), 0, 0, _2, Color.Green, 0.5f);
+            else if (_0 == 2) Dust.NewDustDirect(dust.position, 1, 1, ModContent.DustType<DustCodeNumber2>(), 0, 0, _2, Color.Green, 0.5f);
+            else if (_0 == 3) Dust.NewDustDirect(dust.position, 1, 1, ModContent.DustType<DustCodeNumber3>(), 0, 0, _2, Color.Green, 0.5f);
+            else if (_0 == 4) Dust.NewDustDirect(dust.position, 1, 1, ModContent.DustType<DustCodeNumber4>(), 0, 0, _2, Color.Green, 0.5f);
+            else if (_0 == 5) Dust.NewDustDirect(dust.position, 1, 1, ModContent.DustType<DustCodeNumber5>(), 0, 0, _2, Color.Green, 0.5f);
+            else if (_0 == 6) Dust.NewDustDirect(dust.position, 1, 1, ModContent.DustType<DustCodeNumber6>(), 0, 0, _2, Color.Green, 0.5f);
+            else if (_0 == 7) Dust.NewDustDirect(dust.position, 1, 1, ModContent.DustType<DustCodeNumber7>(), 0, 0, _2, Color.Green, 0.5f);
+            else if (_0 == 8) Dust.NewDustDirect(dust.position, 1, 1, ModContent.DustType<DustCodeNumber8>(), 0, 0, _2, Color.Green, 0.5f);
+            else if (_0 == 9) Dust.NewDustDirect(dust.position, 1, 1, ModContent.DustType<DustCodeNumber9>(), 0, 0, _2, Color.Green, 0.5f);
             #endregion
             return false;
         }

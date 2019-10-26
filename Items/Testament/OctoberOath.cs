@@ -65,7 +65,7 @@ namespace DisorderUnderstar.Items.Testament
                         {
                             Vector2 positionVEC = new Vector2(tar.Center.X, tar.Center.Y - tar.height * 3);
                             Vector2 shootVEC = Vector2.Normalize(tar.Center - positionVEC) * 100;
-                            Projectile.NewProjectile(positionVEC, shootVEC, mod.ProjectileType<ProTestamentLightsaber>(), item.damage,
+                            Projectile.NewProjectile(positionVEC, shootVEC, ModContent.ProjectileType<ProTestamentLightsaber>(), item.damage,
                                 item.knockBack, item.owner, item.type);
                         }
                     }

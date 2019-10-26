@@ -44,9 +44,9 @@ namespace DisorderUnderstar.Items.Star
             q.AddIngredient(ItemID.SpaceGun, 1);
             q.AddIngredient(ItemID.Book, 3);
             q.AddIngredient(ItemID.MeteoriteBar, 20);
-            q.AddIngredient(mod.ItemType<FireOfStarZero>(), 6);
+            q.AddIngredient(ModContent.ItemType<FireOfStarZero>(), 6);
             q.AddIngredient(ItemID.FallenStar, 10);
-            q.AddIngredient(mod.ItemType<StarFrame>(), 3);
+            q.AddIngredient(ModContent.ItemType<StarFrame>(), 3);
             q.AddTile(TileID.Bookcases);
             q.SetResult(this, 1);
             q.AddRecipe();

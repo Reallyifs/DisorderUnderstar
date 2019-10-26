@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using DisorderUnderstar.Utils;
+using DisorderUnderstar.Tools;
 namespace DisorderUnderstar.Items.Star
 {
     public class StarSurround : ModItem
@@ -54,13 +54,10 @@ namespace DisorderUnderstar.Items.Star
             player.buffImmune[BuffID.Poisoned] = true;
             #endregion
             if (player.statLife < player.statLifeMax2 * 0.3f) { player.AddBuff(BuffID.IceBarrier, 1); }
-            if (hideVisual == true)
+            if (hideVisual)
             {
-                for (int _0 = 0; _0 < 1; _0++)
-                {
-                    Dust.NewDustDirect(player.position, player.width, player.height, MyDustId.YellowGoldenFire, player.velocity.X * 0.5f,
-                        player.velocity.Y * 0.5f, 100, Color.White, 1.0f);
-                }
+                Dust.NewDustDirect(player.position, player.width, player.height, MyDustId.YellowGoldenFire, player.velocity.X * 0.5f,
+                    player.velocity.Y * 0.5f, 100, Color.White, 1.0f);
             }
         }
         public override void AddRecipes()
@@ -70,7 +67,7 @@ namespace DisorderUnderstar.Items.Star
             recipe1.AddIngredient(ItemID.EoCShield, 1);
             recipe1.AddIngredient(ItemID.BrainOfConfusion, 1);
             recipe1.AddIngredient(ItemID.FallenStar, 10);
-            recipe1.AddIngredient(mod.ItemType<StarFrame>(), 5);
+            recipe1.AddIngredient(ModContent.ItemType<StarFrame>(), 5);
             recipe1.AddTile(TileID.Anvils);
             recipe1.SetResult(this);
             recipe1.AddRecipe();

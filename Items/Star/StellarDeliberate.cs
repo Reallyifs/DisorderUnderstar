@@ -20,13 +20,12 @@ namespace DisorderUnderstar.Items.Star
         public override void SetDefaults()
         {
             item.crit = 10;
-            item.rare = ItemRarityID.Lime;
+            item.rare = ItemRarityID.Yellow;
             item.scale = 1f;
-            item.shoot = mod.ProjectileType<ProStarArrow>();
+            item.shoot = ModContent.ProjectileType<ProStarArrow>();
             item.value = Item.sellPrice(0, 1, 50, 0);
             item.width = 28;
             item.damage = 60;
-            item.expert = true;
             item.height = 60;
             item.ranged = true;
             item.noMelee = true;
@@ -36,6 +35,7 @@ namespace DisorderUnderstar.Items.Star
             item.useStyle = 5;
             item.autoReuse = true;
             item.knockBack = 3f;
+            item.expertOnly = true;
             item.shootSpeed = 20f;
             item.useAnimation = 20;
         }
@@ -47,17 +47,19 @@ namespace DisorderUnderstar.Items.Star
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage,
             ref float knockBack)
         {
-            if (item.shoot == ProjectileID.WoodenArrowFriendly)
+            if (!Main.expertMode)
             {
-                Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType<ProStarArrow>(), item.damage,
-                    item.knockBack / 2f, item.owner);
+                Vector2 tVEC = Vector2.Normalize(Main.MouseWorld - player.Center) * item.shootSpeed;
+                if (type == ProjectileID.WoodenArrowFriendly)
+                {
+                    type = Projectile.NewProjectile(position, tVEC, ModContent.ProjectileType<ProStarArrow>(), damage, knockBack / 2f, item.owner);
+                }
+                else if (type == ProjectileID.FireArrow)
+                {
+                    type = Projectile.NewProjectile(position, tVEC, ModContent.ProjectileType<ProStarArrow>(), damage, knockBack / 2f, item.owner);
+                }
+                else { Projectile.NewProjectile(position, tVEC, type, damage, knockBack, item.owner); }
             }
-            else if (item.shoot == ProjectileID.FireArrow)
-            {
-                Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType<ProStarArrow>(), item.damage,
-                    item.knockBack / 2f, item.owner);
-            }
-            else { Projectile.NewProjectile(position.X, position.Y, speedX, speedY, item.shoot, item.damage, item.knockBack, item.owner); }
             return false;
         }
         public override Vector2? HoldoutOffset()
@@ -75,8 +77,8 @@ namespace DisorderUnderstar.Items.Star
             recipe1.AddIngredient(ItemID.ManaCrystal, 1);
             recipe1.AddIngredient(ItemID.Wood, 30);
             recipe1.AddIngredient(ItemID.IronBar, 20);
-            recipe1.AddIngredient(mod.ItemType<FireOfStarZero>(), 8);
-            recipe1.AddIngredient(mod.ItemType<StarFrame>(), 4);
+            recipe1.AddIngredient(ModContent.ItemType<FireOfStarZero>(), 8);
+            recipe1.AddIngredient(ModContent.ItemType<StarFrame>(), 4);
             recipe1.AddTile(TileID.Anvils);
             recipe1.SetResult(this);
             recipe1.AddRecipe();

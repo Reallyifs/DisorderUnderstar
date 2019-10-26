@@ -1,9 +1,7 @@
 ﻿using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Localization;
 using DisorderUnderstar.Texts;
-using Microsoft.Xna.Framework;
 namespace DisorderUnderstar.Items.Testament.Books
 {
     public class HumanHistory1 : ModItem
@@ -22,7 +20,7 @@ namespace DisorderUnderstar.Items.Testament.Books
         }
         public override bool CanUseItem(Player player)
         {
-            if (player.GetModPlayer<HumanHistory>().HumanHistroy1 == false)
+            if (!player.GetModPlayer<HumanHistory>().HumanHistroy1)
             {
                 player.GetModPlayer<HumanHistory>().IsReading = true;
                 player.GetModPlayer<HumanHistory>().HumanHistroy1 = true;

@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using DisorderUnderstar.Utils;
+using DisorderUnderstar.Tools;
 using Microsoft.Xna.Framework;
 using DisorderUnderstar.Projectiles.Glitch;
 namespace DisorderUnderstar.Items.Glitch
@@ -69,7 +69,7 @@ namespace DisorderUnderstar.Items.Glitch
             {
                 Vector2 tVEC = Vector2.Normalize(tar.Center - Main.MouseWorld) * 30;
                 tVEC = tVEC.RotatedBy(Main.rand.NextFloatDirection() * 0.15f);
-                Projectile.NewProjectile(player.Center, tVEC, mod.ProjectileType<ProGlitchLaser>(), item.damage, item.knockBack, item.owner);
+                Projectile.NewProjectile(player.Center, tVEC, ModContent.ProjectileType<ProGlitchLaser>(), item.damage, item.knockBack, item.owner);
             }
             #endregion
             return false;

@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using DisorderUnderstar.Utils;
+using DisorderUnderstar.Tools;
 using Microsoft.Xna.Framework;
 using DisorderUnderstar.Projectiles.Glitch;
 namespace DisorderUnderstar.Items.Glitch
@@ -69,7 +69,8 @@ namespace DisorderUnderstar.Items.Glitch
             if (tar != null)
             {
                 Vector2 tVEC = Vector2.Normalize(tar.Center - Main.MouseWorld) * 40;
-                Projectile.NewProjectile(player.Center, tVEC, mod.ProjectileType<ProGlitchHolyLaser>(), item.damage, item.knockBack, item.owner);
+                Projectile.NewProjectile(player.Center, tVEC, ModContent.ProjectileType<ProGlitchHolyLaser>(), item.damage, item.knockBack,
+                    item.owner);
             }
             #endregion
             return false;
@@ -81,9 +82,8 @@ namespace DisorderUnderstar.Items.Glitch
         public override void AddRecipes()
         {
             ModRecipe recipe1 = new ModRecipe(mod);
-            recipe1.AddIngredient(mod.ItemType<GlitchRIO>(), 1);
-            recipe1.AddIngredient(mod.ItemType<DXTBlade>(), 1);
-            recipe1.AddIngredient(mod.ItemType<RSGun>(), 1);
+            recipe1.AddIngredient(ModContent.ItemType<GlitchRIO>(), 1);
+            recipe1.AddIngredient(ModContent.ItemType<RSGun>(), 1);
             recipe1.AddIngredient(ItemID.MoltenFury, 1);
             recipe1.AddIngredient(ItemID.HallowedRepeater, 1);
             recipe1.AddIngredient(ItemID.ChlorophyteShotbow, 1);

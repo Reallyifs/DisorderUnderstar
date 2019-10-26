@@ -12,7 +12,6 @@ namespace DisorderUnderstar.Items
         }
         public override void SetDefaults()
         {
-            item.value = Item.buyPrice(0, 1, 0, 0);
             item.value = Item.sellPrice(0, 0, 50, 0);
             item.width = 18;
             item.height = 28;

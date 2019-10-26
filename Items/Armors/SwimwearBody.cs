@@ -28,7 +28,7 @@ namespace DisorderUnderstar.Items.Armors
         }
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
-            return head.type == mod.ItemType("SwimwearHead") && legs.type == mod.ItemType("SwimwearLegs");
+            return head.type == ModContent.ItemType<SwimwearHead>() && legs.type == ModContent.ItemType<SwimwearLegs>();
         }
         public override void UpdateArmorSet(Player player)
         {

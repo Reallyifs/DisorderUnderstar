@@ -19,7 +19,7 @@ namespace DisorderUnderstar.Items.Code
             item.rare = ItemRarityID.LightPurple;
             item.magic = true;
             item.scale = 1f;
-            item.shoot = mod.ProjectileType<ProCodeLaser>();
+            item.shoot = ModContent.ProjectileType<ProCodeLaser>();
             item.value = Item.buyPrice(0, 0, 14, 100);
             item.value = Item.sellPrice(0, 0, 0, 100);
             item.width = 24;
@@ -42,7 +42,7 @@ namespace DisorderUnderstar.Items.Code
                 anyIronBar = true
             };
             R.AddIngredient(ItemID.SpaceGun, 1);
-            R.AddIngredient(mod.ItemType<CodeFragments>(), 10);
+            R.AddIngredient(ModContent.ItemType<CodeFragments>(), 10);
             R.AddIngredient(ItemID.IronBar, 30);
             R.AddIngredient(ItemID.Sapphire, 10);
             R.AddTile(TileID.Tables);

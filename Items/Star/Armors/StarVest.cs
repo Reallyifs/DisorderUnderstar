@@ -39,8 +39,8 @@ namespace DisorderUnderstar.Items.Star.Armors
             ModRecipe A = new ModRecipe(mod);
             A.AddIngredient(ItemID.MeteorSuit, 1);
             A.AddIngredient(ItemID.Meteorite, 5);
-            A.AddIngredient(mod.ItemType<FireOfStarZero>(), 7);
-            A.AddIngredient(mod.ItemType<StarFrame>(), 14);
+            A.AddIngredient(ModContent.ItemType<FireOfStarZero>(), 7);
+            A.AddIngredient(ModContent.ItemType<StarFrame>(), 14);
             A.AddIngredient(ItemID.LesserManaPotion, 6);
             A.AddTile(TileID.Loom);
             A.SetResult(this);

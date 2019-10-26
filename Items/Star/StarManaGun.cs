@@ -25,7 +25,7 @@ namespace DisorderUnderstar.Items.Star
             item.rare = ItemRarityID.Lime;
             item.magic = true;
             item.scale = 0.9f;
-            item.shoot = mod.ProjectileType<ProStarLight>();
+            item.shoot = ModContent.ProjectileType<ProStarLight>();
             item.value = Item.buyPrice(0, 12, 0, 0);
             item.value = Item.sellPrice(0, 6, 0, 0);
             item.width = 34;
@@ -49,7 +49,8 @@ namespace DisorderUnderstar.Items.Star
         }
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
-            return head.type == mod.ItemType<StarHat>() && body.type == mod.ItemType<StarVest>() && legs.type == mod.ItemType<StarPants>();
+            return head.type == ModContent.ItemType<StarHat>() && body.type == ModContent.ItemType<StarVest>() &&
+                legs.type == ModContent.ItemType<StarPants>();
         }
         public override void UpdateArmorSet(Player player)
         {
@@ -78,7 +79,7 @@ namespace DisorderUnderstar.Items.Star
             real.AddIngredient(ItemID.SpaceGun, 1);
             real.AddIngredient(ItemID.IronBar, 20);
             real.AddIngredient(ItemID.MeteoriteBar, 7);
-            real.AddIngredient(mod.ItemType<StarFrame>(), 7);
+            real.AddIngredient(ModContent.ItemType<StarFrame>(), 7);
             real.AddIngredient(ItemID.FallenStar, 14);
             real.AddTile(TileID.Tables);
             real.AddTile(TileID.Chairs);

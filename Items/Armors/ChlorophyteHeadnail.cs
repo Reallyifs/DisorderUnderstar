@@ -14,7 +14,7 @@ namespace DisorderUnderstar.Items.Armors
                 "增加64%的[c/00007F:远程伤害]，20%的几率不[c/00007F:消耗弹药]\n" +
                 "增加16%的[c/FF00FF:魔法伤害]，增加80的[c/0000FF:魔法上限]，减少17%的[c/0000FF:魔法消耗]\n" +
                 "直接召唤一个[c/00FF00:叶绿水晶]为你而战");
-    }
+        }
         public override void SetDefaults()
         {
             item.rare = ItemRarityID.Lime;
@@ -27,6 +27,7 @@ namespace DisorderUnderstar.Items.Armors
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
+            item.shoot = ProjectileID.CrystalLeaf;
             player.manaCost -= 0.17f;
             player.meleeCrit += 6;
             player.crystalLeaf = true;
@@ -38,7 +39,8 @@ namespace DisorderUnderstar.Items.Armors
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage,
             ref float knockBack)
         {
-            Projectile.NewProjectile(player.Center, player.velocity, ProjectileID.CrystalLeaf, 100, 2f, player.whoAmI);
+            Vector2 positionVEC = new Vector2(player.Center.X, player.position.Y - player.height);
+            Projectile.NewProjectile(positionVEC, player.velocity, ProjectileID.CrystalLeaf, 100, 2f, player.whoAmI);
             return false;
         }
         public override bool ConsumeAmmo(Player player)
@@ -58,7 +60,3 @@ namespace DisorderUnderstar.Items.Armors
         }
     }
 }
-// 以上详情（更多）请询问群里dalao
-// ！以上复制模板，这只是个简化版！
-// 模板位置http://www.fs49.org/2018/04/28/%e5%a5%97%e8%a3%85/
-// 作者说模板没版权，但还是要注明作者=v=

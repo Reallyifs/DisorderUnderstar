@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Localization;
-using DisorderUnderstar.Utils;
+using DisorderUnderstar.Tools;
 using Microsoft.Xna.Framework;
 namespace DisorderUnderstar.Items.Star
 {
@@ -22,18 +22,40 @@ namespace DisorderUnderstar.Items.Star
         }
         public override void SetDefaults()
         {
-            item.CloneDefaults(ItemID.EoCShield);
             item.crit = 25;
+            item.rare = ItemRarityID.Yellow;
             item.magic = true;
+            item.value = Item.sellPrice(0, 1, 50, 0);
+            item.width = 32;
             item.damage = 40;
+            item.expert = true;
+            item.height = 28;
+            item.defense = 10;
             item.accessory = true;
+            item.knockBack = 10f;
             item.expertOnly = true;
             if (item.crit > 50) { item.crit = 50; }
             if (item.damage > item.crit * 5) { item.damage = item.crit * 5; }
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            
+            int StellarDeliberate = ModContent.ItemType<StellarDeliberate>();
+            if (player.HasItem(StellarDeliberate))
+            {
+                item.damage = 80;
+                item.defense = 30;
+                player.statLifeMax2 += 100;
+                player.statManaMax2 += 50;
+                if (item.crit > 100) { item.crit = 100; }
+                if (item.damage > item.crit * 10) { item.damage = item.crit * 10; }
+            }
+            if (hideVisual)
+            {
+                Tooltip.SetDefault("[Star]\n" +
+                    "Although it's not very bright...");
+                Tooltip.AddTranslation(GameCulture.Chinese, "【星星】\n" +
+                    "虽然也没有很亮……");
+            }
         }
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {

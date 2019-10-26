@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using DisorderUnderstar.Utils;
+using DisorderUnderstar.Tools;
 using Microsoft.Xna.Framework;
 namespace DisorderUnderstar.Items.Star.Armors
 {
@@ -22,7 +22,6 @@ namespace DisorderUnderstar.Items.Star.Armors
         {
             item.rare = ItemRarityID.Orange;
             item.value = Item.sellPrice(0, 2, 50, 0);
-            item.value = Item.buyPrice(0, 5, 0, 0);
             item.width = 22;
             item.height = 12;
             item.defense = 8;
@@ -37,7 +36,7 @@ namespace DisorderUnderstar.Items.Star.Armors
         }
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
-            return body.type == mod.ItemType("StarVest") && legs.type == mod.ItemType("StarPants");
+            return body.type == ModContent.ItemType<StarVest>() && legs.type == ModContent.ItemType<StarPants>();
         }
         public override void UpdateArmorSet(Player player)
         {
@@ -68,8 +67,8 @@ namespace DisorderUnderstar.Items.Star.Armors
             ModRecipe A = new ModRecipe(mod);
             A.AddIngredient(ItemID.MeteorHelmet, 1);
             A.AddIngredient(ItemID.Meteorite, 3);
-            A.AddIngredient(mod.ItemType<FireOfStarZero>(), 5);
-            A.AddIngredient(mod.ItemType<StarFrame>(), 10);
+            A.AddIngredient(ModContent.ItemType<FireOfStarZero>(), 5);
+            A.AddIngredient(ModContent.ItemType<StarFrame>(), 10);
             A.AddIngredient(ItemID.LesserManaPotion, 2);
             A.AddTile(TileID.Loom);
             A.SetResult(this);

@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using DisorderUnderstar.Utils;
+using DisorderUnderstar.Tools;
 namespace DisorderUnderstar.Items.Star
 {
     public class BiDirectionalMeteor : ModItem
@@ -42,13 +42,9 @@ namespace DisorderUnderstar.Items.Star
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             #region 生命&伤害
-            player.magicDamage += 0.4f;
-            player.meleeDamage += 0.4f;
-            player.minionDamage += 0.4f;
-            player.rangedDamage += 0.4f;
+            player.allDamage += 0.4f;
             player.statLifeMax2 += 400;
             player.statManaMax2 += 200;
-            player.thrownDamage += 0.4f;
             #endregion
             #region 加成
             player.manaCost -= 0.04f;
@@ -68,14 +64,6 @@ namespace DisorderUnderstar.Items.Star
             player.buffImmune[BuffID.Silenced] = true;
             player.buffImmune[BuffID.BrokenArmor] = true;
             #endregion
-            if (hideVisual == true)
-            {
-                for (int _0 = 0; _0 < 2; _0++)
-                {
-                    Dust.NewDustDirect(player.position, player.width, player.height, MyDustId.YellowTorch, player.velocity.X * 0.5f,
-                        player.velocity.Y * 0.5f, 100, Color.Yellow, 1.0f);
-                }
-            }
             if (player.statLifeMax2 >= 500 && player.statManaMax2 >= 200 && player.statLife < 100 && player.statMana < 30)
             {
                 player.minionDamage += 10;
@@ -85,14 +73,22 @@ namespace DisorderUnderstar.Items.Star
                 player.thrownDamage += 50;
                 player.AddBuff(BuffID.IceBarrier, 20);
             }
+            if (hideVisual)
+            {
+                for (int _0 = 0; _0 < 2; _0++)
+                {
+                    Dust.NewDustDirect(player.position, player.width, player.height, MyDustId.YellowTorch, player.velocity.X * 0.5f,
+                        player.velocity.Y * 0.5f, 100, Color.Yellow, 1.0f);
+                }
+            }
         }
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType<StarSurround>(), 1);
-            recipe.AddIngredient(mod.ItemType<SurroundStar>(), 1);
-            recipe.AddIngredient(mod.ItemType<FireOfStarZero>(), 16);
-            recipe.AddIngredient(mod.ItemType<StarFrame>(), 8);
+            recipe.AddIngredient(ModContent.ItemType<StarSurround>(), 1);
+            recipe.AddIngredient(ModContent.ItemType<SurroundStar>(), 1);
+            recipe.AddIngredient(ModContent.ItemType<FireOfStarZero>(), 16);
+            recipe.AddIngredient(ModContent.ItemType<StarFrame>(), 8);
             recipe.AddIngredient(ItemID.BoneGlove, 1);
             recipe.AddIngredient(ItemID.HiveBackpack, 1);
             recipe.AddIngredient(ItemID.HellstoneBar, 20);

@@ -25,11 +25,22 @@ namespace DisorderUnderstar.Items.Armors
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
+            int second = 0;
             player.rangedCrit += 15;
             player.arrowDamage += 0.28f;
             player.bulletDamage += 0.28f;
             player.rocketDamage += 0.28f;
-            player.shroomiteStealth = true;
+            if (player.velocity.Length() < 0.05f) { second++; }
+            else { second = 0; }
+            if (second > 10)
+            {
+                if (player.GetModPlayer<DisorderUnderstarPlayer>().透明程度 > 0.1f)
+                {
+                    player.GetModPlayer<DisorderUnderstarPlayer>().透明程度 -= 0.1f;
+                }
+                else { player.shroomiteStealth = true; }
+            }
+            player.GetModPlayer<DisorderUnderstarPlayer>().装备_蘑菇头甲 = true;
         }
         public override void AddRecipes()
         {

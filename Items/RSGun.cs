@@ -56,9 +56,9 @@ namespace DisorderUnderstar.Items
             Vector2 _5 = new Vector2(player.Center.X, player.Center.Y);
             Vector2 _6 = Vector2.Normalize(Main.MouseWorld - _5) * item.shootSpeed;
             #endregion
-            if (Main.rand.Next(0, 100) <= 33) _4 = _3;
-            else if (Main.rand.Next(0, 100) <= 50) _4 = _2;
-            else _4 = _1;
+            if (Main.rand.Next(0, 100) <= 33) { _4 = _3; }
+            else if (Main.rand.Next(0, 100) <= 50) { _4 = _2; }
+            else { _4 = _1; }
             Projectile.NewProjectile(_5, _6, _4, item.damage, item.knockBack, item.owner);
             #endregion
             return false;

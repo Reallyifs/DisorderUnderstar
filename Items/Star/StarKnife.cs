@@ -49,7 +49,7 @@ namespace DisorderUnderstar.Items.Star
             {
                 Vector2 _3 = new Vector2(_1.Center.X, _1.position.Y - _1.height);
                 Vector2 _4 = Vector2.Normalize(_1.Center - _3) * 10 * _1.velocity;
-                Projectile.NewProjectile(_3, _4, mod.ProjectileType<ProStarDownStar>(), item.damage, item.knockBack, item.owner, _1.whoAmI);
+                Projectile.NewProjectile(_3, _4, ModContent.ProjectileType<ProStarDownStar>(), item.damage, item.knockBack, item.owner, _1.whoAmI);
             }
             #endregion
             #region PLAYER
@@ -62,7 +62,7 @@ namespace DisorderUnderstar.Items.Star
             {
                 Vector2 _7 = new Vector2(_5.Center.X, _5.position.Y - _5.height);
                 Vector2 _8 = Vector2.Normalize(_1.Center - _7) * 10 * _5.velocity;
-                Projectile.NewProjectile(_7, _8, mod.ProjectileType<ProStarDownStar>(), item.damage, item.knockBack, item.owner, _5.whoAmI);
+                Projectile.NewProjectile(_7, _8, ModContent.ProjectileType<ProStarDownStar>(), item.damage, item.knockBack, item.owner, _5.whoAmI);
             }
             #endregion
             #endregion
@@ -73,7 +73,7 @@ namespace DisorderUnderstar.Items.Star
             ModRecipe real = new ModRecipe(mod);
             real.AddIngredient(ItemID.Starfury, 1);
             real.AddIngredient(ItemID.Hellstone, 10);
-            real.AddIngredient(mod.ItemType<StarFrame>(), 5);
+            real.AddIngredient(ModContent.ItemType<StarFrame>(), 5);
             real.AddIngredient(ItemID.FallenStar,10);
             real.AddTile(TileID.Anvils);
             real.SetResult(this);

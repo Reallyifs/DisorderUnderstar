@@ -41,7 +41,7 @@ namespace DisorderUnderstar.Items.Sunset
             if (player.altFunctionUse != 2)
             {
                 item.mana = 5;
-                item.shoot = mod.ProjectileType<ProSunsetBlackFireArrow>();
+                item.shoot = ModContent.ProjectileType<ProSunsetBlackFireArrow>();
                 item.damage = 133;
                 item.channel = false;
                 item.useTime = 5;
@@ -53,7 +53,7 @@ namespace DisorderUnderstar.Items.Sunset
             else
             {
                 item.mana = 10;
-                item.shoot = mod.ProjectileType<PSEUDOProSunsetEnergyArrow>();
+                item.shoot = ModContent.ProjectileType<PSEUDOProSunsetEnergyArrow>();
                 item.damage = 0;
                 item.channel = true;
                 item.useTime = 40;

@@ -20,7 +20,6 @@ namespace DisorderUnderstar.Items.Star.Armors
         {
             item.rare = ItemRarityID.Orange;
             item.value = Item.sellPrice(0, 2, 50, 0);
-            item.value = Item.buyPrice(0, 5, 0, 0);
             item.width = 20;
             item.height = 16;
             item.defense = 9;
@@ -38,8 +37,8 @@ namespace DisorderUnderstar.Items.Star.Armors
             ModRecipe A = new ModRecipe(mod);
             A.AddIngredient(ItemID.MeteorLeggings, 1);
             A.AddIngredient(ItemID.Meteorite, 4);
-            A.AddIngredient(mod.ItemType<FireOfStarZero>(), 6);
-            A.AddIngredient(mod.ItemType<StarFrame>(), 12);
+            A.AddIngredient(ModContent.ItemType<FireOfStarZero>(), 6);
+            A.AddIngredient(ModContent.ItemType<StarFrame>(), 12);
             A.AddIngredient(ItemID.LesserManaPotion, 4);
             A.AddTile(TileID.Loom);
             A.SetResult(this);

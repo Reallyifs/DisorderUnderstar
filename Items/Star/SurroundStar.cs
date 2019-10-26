@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using DisorderUnderstar.Utils;
+using DisorderUnderstar.Tools;
 namespace DisorderUnderstar.Items.Star
 {
     public class SurroundStar : ModItem
@@ -54,7 +54,7 @@ namespace DisorderUnderstar.Items.Star
             player.buffImmune[BuffID.Poisoned] = true;
             #endregion
             if (player.statLife < player.statLifeMax2 * 0.3f) { player.AddBuff(BuffID.IceBarrier, 1); }
-            if (hideVisual == true)
+            if (hideVisual)
             {
                 for (int i = 0; i < 1; i++)
                 {
@@ -70,7 +70,7 @@ namespace DisorderUnderstar.Items.Star
             recipe0.AddIngredient(ItemID.EoCShield, 1);
             recipe0.AddIngredient(ItemID.WormScarf, 1);
             recipe0.AddIngredient(ItemID.FallenStar, 10);
-            recipe0.AddIngredient(mod.ItemType<StarFrame>(), 5);
+            recipe0.AddIngredient(ModContent.ItemType<StarFrame>(), 5);
             recipe0.AddTile(TileID.Anvils);
             recipe0.SetResult(this);
             recipe0.AddRecipe();

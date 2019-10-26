@@ -1,7 +1,8 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
-using DisorderUnderstar.Utils;
+using DisorderUnderstar.Tools;
 using Microsoft.Xna.Framework;
+using DisorderUnderstar.Buffs.Sunset;
 namespace DisorderUnderstar.Projectiles.Sunset
 {
     public class ProSunsetBlackFireArrow : ModProjectile
@@ -29,8 +30,8 @@ namespace DisorderUnderstar.Projectiles.Sunset
         {
             if (projectile.timeLeft < 9999996)
             {
-                Dust dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, MyDustId.Fire,
-                    -projectile.velocity.X, -projectile.velocity.Y, 100, Color.Black, 1f);
+                Dust dust = Dust.NewDustDirect(projectile.Center, projectile.width, projectile.height, MyDustId.Fire, -projectile.velocity.X,
+                    -projectile.velocity.Y, 100, Color.Black, 1f);
                 dust.noLight = false;
                 dust.noGravity = true;
             }
@@ -48,15 +49,15 @@ namespace DisorderUnderstar.Projectiles.Sunset
         #region Debuff
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            target.AddBuff(mod.BuffType("DebuffSunsetBlackFire"), damage);
+            target.AddBuff(ModContent.BuffType<DebuffSunsetBlackFire>(), damage);
         }
         public override void OnHitPvp(Player target, int damage, bool crit)
         {
-            target.AddBuff(mod.BuffType("DebuffSunsetBlackFire"), damage);
+            target.AddBuff(ModContent.BuffType<DebuffSunsetBlackFire>(), damage);
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(mod.BuffType("DebuffSunsetBlackFire"), damage);
+            target.AddBuff(ModContent.BuffType<DebuffSunsetBlackFire>(), damage);
         }
         #endregion
     }

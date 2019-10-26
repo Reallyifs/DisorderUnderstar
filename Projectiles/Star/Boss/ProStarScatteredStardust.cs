@@ -15,8 +15,8 @@ namespace DisorderUnderstar.Projectiles.Star.Boss
         public override void SetDefaults()
         {
             projectile.magic = true;
-            projectile.width = 5;
-            projectile.height = 5;
+            projectile.width = 14;
+            projectile.height = 30;
             projectile.aiStyle = -1;
             projectile.hostile = true;
             projectile.friendly = false;

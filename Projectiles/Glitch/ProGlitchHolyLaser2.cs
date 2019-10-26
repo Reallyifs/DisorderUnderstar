@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using DisorderUnderstar.Utils;
+using DisorderUnderstar.Tools;
 using Microsoft.Xna.Framework;
 namespace DisorderUnderstar.Projectiles.Glitch
 {
@@ -9,6 +9,7 @@ namespace DisorderUnderstar.Projectiles.Glitch
     {
         public bool[] visited;
         public float distance;
+        public override string Texture => ProjectileOverride.弹幕贴图转换(true);
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("神圣激光");
@@ -23,9 +24,9 @@ namespace DisorderUnderstar.Projectiles.Glitch
             projectile.friendly = true;
             projectile.timeLeft = 400 - (int)distance;
             projectile.knockBack = 2f;
-            projectile.penetrate = 1;
+            projectile.penetrate = -1;
             projectile.extraUpdates = 90;
-            distance += projectile.ai[1];
+            distance = projectile.ai[1];
             visited = new bool[Main.npc.Length];
         }
         public override void AI()
@@ -50,7 +51,8 @@ namespace DisorderUnderstar.Projectiles.Glitch
             if (tar != null)
             {
                 Vector2 tarVEC = Vector2.Normalize(tar.Center - projectile.Center) * 40;
-                Projectile.NewProjectile(tar.Center, tarVEC, projectile.type, projectile.damage - (int)(distance / 5f), 1f, projectile.owner);
+                Projectile.NewProjectile(tar.Center, tarVEC, projectile.type, projectile.damage - (int)(distance / 5f), 1f, projectile.owner,
+                    0, distance);
             }
             #endregion
         }

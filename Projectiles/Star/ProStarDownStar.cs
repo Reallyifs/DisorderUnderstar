@@ -1,6 +1,6 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
-using DisorderUnderstar.Utils;
+using DisorderUnderstar.Tools;
 using Microsoft.Xna.Framework;
 namespace DisorderUnderstar.Projectiles.Star
 {
@@ -24,7 +24,7 @@ namespace DisorderUnderstar.Projectiles.Star
         public override void AI()
         {
             #region 弹幕的粒子效果
-            for(int i = 0; i < 8; i++)
+            for (int i = 0; i < 8; i++)
             {
                 Dust d = Dust.NewDustDirect(projectile.Center, projectile.width + 4, projectile.height + 4, MyDustId.TrailingYellow1,
                     -projectile.velocity.X, -projectile.velocity.Y, Main.rand.Next(0, 200), Color.Yellow, Main.rand.NextFloat(0.5f, 1.5f));
@@ -32,8 +32,8 @@ namespace DisorderUnderstar.Projectiles.Star
             }
             #endregion
             #region 弹幕的速度快慢
-            if (projectile.timeLeft <= 60 && projectile.timeLeft > 30) projectile.velocity *= 1.5f;
-            else if (projectile.timeLeft == 30) projectile.velocity *= 0.99f;
+            if (projectile.timeLeft <= 60 && projectile.timeLeft > 30) { projectile.velocity *= 1.5f; }
+            else if (projectile.timeLeft == 30) { projectile.velocity *= 0.99f; }
             else
             {
                 projectile.alpha += 9;
@@ -46,20 +46,20 @@ namespace DisorderUnderstar.Projectiles.Star
         {
             Vector2 NPCUpVEC = new Vector2(target.Center.X, target.position.Y - target.height);
             Vector2 NPCToVEC = Vector2.Normalize(target.Center - NPCUpVEC) * 5;
-            Projectile.NewProjectile(NPCUpVEC, NPCToVEC, mod.ProjectileType<ProStarFollowingStar2>(), projectile.damage / 2,
+            Projectile.NewProjectile(NPCUpVEC, NPCToVEC, ModContent.ProjectileType<ProStarFollowingStar2>(), projectile.damage / 2,
                 projectile.knockBack / 2, projectile.owner, target.whoAmI);
         }
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
             Vector2 PLAYERUpVEC = new Vector2(target.Center.X, target.position.Y - target.height);
             Vector2 PLAYERToVEC = Vector2.Normalize(target.Center - PLAYERUpVEC) * 5;
-            Projectile.NewProjectile(PLAYERUpVEC, PLAYERToVEC, mod.ProjectileType<ProStarFollowingStar2>(), projectile.damage / 2,
+            Projectile.NewProjectile(PLAYERUpVEC, PLAYERToVEC, ModContent.ProjectileType<ProStarFollowingStar2>(), projectile.damage / 2,
                 projectile.knockBack / 2, projectile.owner, target.whoAmI);
         }
         #endregion
         public override void Kill(int timeLeft)
         {
-            for(int i = 0; i < 8; i++)
+            for (int i = 0; i < 8; i++)
             {
                 Dust d = Dust.NewDustDirect(projectile.Center, projectile.width + 6, projectile.height + 6, MyDustId.TrailingYellow1,
                     -projectile.velocity.X, -projectile.velocity.Y, Main.rand.Next(0, 200), Color.Yellow, Main.rand.NextFloat(0.5f, 1.5f));

@@ -1,6 +1,6 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
-using DisorderUnderstar.Utils;
+using DisorderUnderstar.Tools;
 using Microsoft.Xna.Framework;
 using DisorderUnderstar.Projectiles.LoadedMod;
 namespace DisorderUnderstar
@@ -29,7 +29,7 @@ namespace DisorderUnderstar
                 }
                 for (int _5 = 0; _5 < _0; _5++)
                 {
-                    Projectile.NewProjectile(player.Center, _2, mod.ProjectileType<ProWtfway>(), 24, 2f, player.whoAmI, victim.whoAmI);
+                    Projectile.NewProjectile(player.Center, _2, ModContent.ProjectileType<ProWtfway>(), 24, 2f, player.whoAmI, victim.whoAmI);
                 }
             }
         }

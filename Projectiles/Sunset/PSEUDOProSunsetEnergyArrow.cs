@@ -1,7 +1,7 @@
 ﻿using System;
 using Terraria;
 using Terraria.ModLoader;
-using DisorderUnderstar.Utils;
+using DisorderUnderstar.Tools;
 using Microsoft.Xna.Framework;
 namespace DisorderUnderstar.Projectiles.Sunset
 {
@@ -32,9 +32,9 @@ namespace DisorderUnderstar.Projectiles.Sunset
             #region 相关数值
             projectile.ai[0] = 0f;
             {
-                if (projectile.ai[0] <= 152f) projectile.ai[0]++;
-                else if (projectile.ai[0] <= 1520f) projectile.ai[0] *= 2;
-                else projectile.ai[0]--;
+                if (projectile.ai[0] <= 152f) { projectile.ai[0]++; }
+                else if (projectile.ai[0] <= 1520f) { projectile.ai[0] *= 2; }
+                else { projectile.ai[0]--; }
             }
             int _0 = 0;
             if (_0 <= 156) { _0++; }
@@ -44,9 +44,9 @@ namespace DisorderUnderstar.Projectiles.Sunset
             {
                 Vector2 _2 = Vector2.Normalize(Main.MouseWorld - _1.Center);
                 float _3 = _2.ToRotation();
+                _1.itemTime = 2;
                 _1.direction = Main.MouseWorld.X < _1.Center.X ? -1 : 1;
                 _1.itemRotation = (float)Math.Atan2(_3.ToRotationVector2().Y * _1.direction, _3.ToRotationVector2().X + _1.direction);
-                _1.itemTime = 2;
                 _1.itemAnimationMax = 2;
                 for(float _4 = 0f; _4 < 1f; _4 += 0.1f)
                 {
@@ -58,9 +58,10 @@ namespace DisorderUnderstar.Projectiles.Sunset
             }
             else
             {
-                var _6 = Projectile.NewProjectileDirect(projectile.Center, projectile.velocity * 30f,
-                    mod.ProjectileType<ProSunsetEnergyArrow>(), (int)(projectile.ai[0] / 200f * 200), 6f, projectile.owner);
-                _6.scale = 1f + (float)(projectile.ai[0] / 2448f);
+                Player _6 = Main.player[projectile.owner];
+                var _7 = Projectile.NewProjectileDirect(_6.Center, projectile.velocity * 30f, ModContent.ProjectileType<ProSunsetEnergyArrow>(),
+                    (int)(projectile.ai[0] / 200f * 200), 6f, projectile.owner);
+                _7.scale = 1f + (float)(projectile.ai[0] / 2448f);
                 if (projectile.timeLeft > 30) { projectile.timeLeft = 30; }
                 return;
             }

@@ -1,6 +1,6 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
-using DisorderUnderstar.Utils;
+using DisorderUnderstar.Tools;
 using Microsoft.Xna.Framework;
 using DisorderUnderstar.Dusts.Code.DustCodeNumber;
 using DisorderUnderstar.Dusts.Code.DustCodeParticle;
@@ -35,23 +35,23 @@ namespace DisorderUnderstar.Projectiles.Code
                 Dust _1 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, MyDustId.SicklyGreen, _0, _0, 100,
                     Color.Green, 3f);
                 _1.noGravity = true;
-                Dust _2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, mod.DustType<DustCodeParticle0>(), _0, _0,
-                    10, Color.Green, 1f);
+                Dust _2 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, ModContent.DustType<DustCodeParticle0>(), _0,
+                    _0, 10, Color.Green, 1f);
                 _2.noLight = false;
-                Dust _3 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, mod.DustType<DustCodeNumberAll>(), _0, _0,
-                    25, Color.Green, 1f);
+                Dust _3 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, ModContent.DustType<DustCodeNumberAll>(), _0,
+                    _0, 25, Color.Green, 1f);
                 _3.noLight = false;
             }
         }
         public override void Kill(int timeLeft)
         {
-            for(int _4 = 0; _4 < 5; _4++)
+            for (int _4 = 0; _4 < 5; _4++)
             {
-                Dust _5 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, mod.DustType<DustCodeParticle0>(), 0f, 0f,
-                    10, Color.Green, 1f);
+                Dust _5 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, ModContent.DustType<DustCodeParticle0>(), 0f,
+                    0f, 10, Color.Green, 1f);
                 _5.noLight = false;
-                Dust _6 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, mod.DustType<DustCodeNumberAll>(), 0f, 0f,
-                    25, Color.Green, 1f);
+                Dust _6 = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, ModContent.DustType<DustCodeNumberAll>(), 0f,
+                    0f, 25, Color.Green, 1f);
                 _6.noLight = false;
             }
         }

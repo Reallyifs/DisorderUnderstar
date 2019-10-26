@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using DisorderUnderstar.Utils;
+using DisorderUnderstar.Tools;
 using Microsoft.Xna.Framework;
 namespace DisorderUnderstar.Projectiles.Disorder
 {
@@ -14,10 +14,9 @@ namespace DisorderUnderstar.Projectiles.Disorder
         public override void SetDefaults()
         {
             projectile.melee = true;
-            projectile.scale = 1.5f;
-            projectile.width = 18;
-            projectile.damage = 666;
-            projectile.height = 18;
+            projectile.scale = 1f;
+            projectile.width = 30;
+            projectile.height = 30;
             projectile.aiStyle = -1;
             projectile.hostile = false;
             projectile.friendly = true;
@@ -28,7 +27,7 @@ namespace DisorderUnderstar.Projectiles.Disorder
         public override void AI()
         {
             #region 伤害计算
-            if (projectile.timeLeft <= 250) projectile.damage = projectile.timeLeft * 3 + 666;
+            if (projectile.timeLeft <= 250) { projectile.damage = projectile.timeLeft * 3 + 666; }
             else if (projectile.timeLeft <= 500)
             {
                 projectile.damage = projectile.timeLeft * 2 + 2333;
@@ -37,7 +36,7 @@ namespace DisorderUnderstar.Projectiles.Disorder
                 _0.noLight = false;
                 _0.noGravity = true;
             }
-            else projectile.damage = projectile.timeLeft * 2 - 666;
+            else { projectile.damage = projectile.timeLeft * 2 - 666; }
             #endregion
             if (projectile.timeLeft <= 1197)
             {
@@ -59,10 +58,9 @@ namespace DisorderUnderstar.Projectiles.Disorder
                 }
                 if (tar != null)
                 {
-                    Vector2 tarVEC = Vector2.Normalize(tar.Center - projectile.Center);
-                    tarVEC *= 20f;
+                    Vector2 tarVEC = Vector2.Normalize(tar.Center - projectile.Center) * 20;
                     float nVEC = 20f;
-                    if (nVEC <= 20f) nVEC -= 0.1f;
+                    if (nVEC <= 20f) { nVEC -= 0.1f; }
                     projectile.velocity = (projectile.velocity * nVEC + tarVEC) / (nVEC + 1f);
                 }
             }

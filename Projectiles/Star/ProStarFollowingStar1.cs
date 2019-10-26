@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using DisorderUnderstar.Utils;
+using DisorderUnderstar.Tools;
 using Microsoft.Xna.Framework;
 namespace DisorderUnderstar.Projectiles.Star
 {
@@ -96,7 +96,7 @@ namespace DisorderUnderstar.Projectiles.Star
                     tarVEC *= 20f;
                     // 声明一个float变量，并随之减小
                     float nVEC = 30f;
-                    if (nVEC <= 30f && 0f < nVEC) nVEC -= 0.1f;
+                    if (nVEC > 0) { nVEC -= 0.1f; }
                     // 朝向npc的单位向量 * nVEC + 3.33%偏移量
                     projectile.velocity = (projectile.velocity * nVEC + tarVEC) / (nVEC + 1f);
                 }

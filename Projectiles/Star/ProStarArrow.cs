@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using DisorderUnderstar.Utils;
+using DisorderUnderstar.Tools;
 using Microsoft.Xna.Framework;
 namespace DisorderUnderstar.Projectiles.Star
 {
@@ -50,8 +50,6 @@ namespace DisorderUnderstar.Projectiles.Star
                 dust.noLight = false;
                 dust.noGravity = true;
             }
-            Vector2 ToUPVEC = new Vector2(projectile.Center.X, projectile.Center.Y - projectile.height);
-            // Projectile.NewProjectile(projectile.position, ToUPVEC, ProjectileID.RocketIII, 120, 2f, projectile.owner);
         }
     }
 }

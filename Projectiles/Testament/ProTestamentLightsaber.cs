@@ -1,8 +1,5 @@
 ﻿using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
-using DisorderUnderstar.Utils;
-using Microsoft.Xna.Framework;
 namespace DisorderUnderstar.Projectiles.Testament
 {
     public class ProTestamentLightsaber : ModProjectile
@@ -32,7 +29,7 @@ namespace DisorderUnderstar.Projectiles.Testament
         }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            Projectile.NewProjectile(target.Center, target.velocity, mod.ProjectileType<ProTestamentLightboom>(), projectile.damage,
+            Projectile.NewProjectile(target.Center, target.velocity, ModContent.ProjectileType<ProTestamentLightboom>(), projectile.damage,
                 projectile.knockBack, projectile.owner, target.whoAmI);
         }
     }

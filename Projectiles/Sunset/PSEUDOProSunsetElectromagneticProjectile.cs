@@ -1,7 +1,7 @@
 ﻿using System;
 using Terraria;
 using Terraria.ModLoader;
-using DisorderUnderstar.Utils;
+using DisorderUnderstar.Tools;
 using Microsoft.Xna.Framework;
 namespace DisorderUnderstar.Projectiles.Sunset
 {
@@ -44,9 +44,9 @@ namespace DisorderUnderstar.Projectiles.Sunset
                 Player _1 = Main.player[projectile.owner];
                 Vector2 _2 = Vector2.Normalize(Main.MouseWorld - _1.Center);
                 float _3 = _2.ToRotation();
+                _1.itemTime = 2;
                 _1.direction = Main.MouseWorld.X < _1.Center.X ? -1 : 1;
                 _1.itemRotation = (float)Math.Atan2(_3.ToRotationVector2().Y * _1.direction, _3.ToRotationVector2().X * _1.direction);
-                _1.itemTime = 2;
                 _1.itemAnimation = 2;
                 for (float _4 = 0f; _4 < 1f; _4 += 0.1f)
                 {
@@ -54,8 +54,7 @@ namespace DisorderUnderstar.Projectiles.Sunset
                         -_1.velocity.Y / 2, 128, Color.Blue, _0 / (float)(106f / 1.5f));
                     _5.rotation += 0.1f;
                     _5.velocity *= 2;
-                    Dust _6 = Dust.NewDustDirect(projectile.Center, projectile.width,
-                        projectile.height, MyDustId.BlueCircle, -_1.velocity.X,
+                    Dust _6 = Dust.NewDustDirect(projectile.Center, projectile.width, projectile.height, MyDustId.BlueCircle, -_1.velocity.X,
                         -_1.velocity.Y, 128, Color.Blue, _0 / (float)(106f / 1.5f));
                     _6.rotation += 0.3f;
                     _6.velocity *= 1;
@@ -63,9 +62,10 @@ namespace DisorderUnderstar.Projectiles.Sunset
             }
             else
             {
-                var _7 = Projectile.NewProjectileDirect(projectile.Center, projectile.velocity * 7f,
-                    mod.ProjectileType<ProSunsetElectromagneticProjectile>(), (int)(projectile.ai[0] / 200f * 200), 5f, projectile.owner);
-                _7.scale = 1f + (float)(projectile.ai[0] / 1616f);
+                Player _7 = Main.player[projectile.owner];
+                var _8 = Projectile.NewProjectileDirect(_7.Center, projectile.velocity * 7f,
+                    ModContent.ProjectileType<ProSunsetElectromagneticProjectile>(), (int)(projectile.ai[0] / 200f * 200), 5f, projectile.owner);
+                _8.scale = 1f + (float)(projectile.ai[0] / 1616f);
                 if (projectile.timeLeft >= 30) { projectile.timeLeft = 30; }
                 return;
             }

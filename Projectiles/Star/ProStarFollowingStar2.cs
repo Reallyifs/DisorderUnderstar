@@ -50,13 +50,13 @@ namespace DisorderUnderstar.Projectiles.Star
             {
                 Vector2 tarVEC = Vector2.Normalize(tar.Center - projectile.Center) * 20;
                 float nVEC = 30f;
-                if (nVEC <= 30f && 0f < nVEC) nVEC -= 0.1f;
+                if (nVEC > 0) { nVEC -= 0.1f; }
                 projectile.velocity = (projectile.velocity * nVEC + tarVEC) / (nVEC + 1f);
             }
             #endregion
             #region 速度算法
-            if (projectile.timeLeft <= 1000 && projectile.timeLeft > 800) projectile.velocity *= 1.5f;
-            else if (projectile.timeLeft <= 800 && projectile.timeLeft > 300) projectile.velocity *= 0.99f;
+            if (projectile.timeLeft <= 1000 && projectile.timeLeft > 800) { projectile.velocity *= 1.5f; }
+            else if (projectile.timeLeft <= 800 && projectile.timeLeft > 300) { projectile.velocity *= 0.99f; }
             else
             {
                 projectile.alpha += 1;

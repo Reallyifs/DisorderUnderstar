@@ -1,6 +1,6 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
-using DisorderUnderstar.Utils;
+using DisorderUnderstar.Tools;
 using Microsoft.Xna.Framework;
 namespace DisorderUnderstar.Projectiles.Glitch
 {
@@ -26,8 +26,10 @@ namespace DisorderUnderstar.Projectiles.Glitch
         public override void Kill(int timeLeft)
         {
             for (int i = 0; i < 4; i++)
+            {
                 Dust.NewDustDirect(projectile.Center, projectile.width, projectile.height, MyDustId.YellowHallowFx, projectile.oldVelocity.X,
                     projectile.oldVelocity.Y, 20, Color.Yellow, 1.3f);
+            }
         }
     }
 }

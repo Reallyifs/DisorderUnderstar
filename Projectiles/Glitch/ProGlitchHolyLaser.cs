@@ -8,6 +8,7 @@ namespace DisorderUnderstar.Projectiles.Glitch
     {
         private bool[] visited;
         public float distance;
+        public override string Texture => ProjectileOverride.弹幕贴图转换(true);
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("神圣激光");
@@ -74,8 +75,8 @@ namespace DisorderUnderstar.Projectiles.Glitch
                 if (tar != null)
                 {
                     Vector2 tarVEC = Vector2.Normalize(tar.Center - projectile.Center) * 30;
-                    Projectile.NewProjectile(tar.Center, tarVEC, mod.ProjectileType<ProGlitchHolyLaser2>(), 90, 2.5f, projectile.owner, tar.whoAmI,
-                        distance);
+                    Projectile.NewProjectile(tar.Center, tarVEC, ModContent.ProjectileType<ProGlitchHolyLaser2>(), 90, 2.5f, projectile.owner,
+                        tar.whoAmI, distance);
                 }
             }
         }

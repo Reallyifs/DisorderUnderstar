@@ -1,6 +1,6 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
-using DisorderUnderstar.Utils;
+using DisorderUnderstar.Tools;
 using Microsoft.Xna.Framework;
 namespace DisorderUnderstar.Projectiles.Sunset
 {
@@ -19,7 +19,7 @@ namespace DisorderUnderstar.Projectiles.Sunset
             projectile.aiStyle = -1;
             projectile.hostile = false;
             projectile.friendly = true;
-            projectile.timeLeft = 9999999;
+            projectile.timeLeft = 300;
             projectile.knockBack = 1f;
             projectile.penetrate = 1;
             projectile.ignoreWater = true;
@@ -27,7 +27,7 @@ namespace DisorderUnderstar.Projectiles.Sunset
         }
         public override void AI()
         {
-            if (projectile.timeLeft < 9999996)
+            if (projectile.timeLeft < 297)
             {
                 Dust _0 = Dust.NewDustDirect(projectile.position, projectile.width + 2, projectile.height + 2, MyDustId.BlueMagic,
                     projectile.velocity.X, projectile.velocity.Y, 100, Color.LightBlue, 1f);

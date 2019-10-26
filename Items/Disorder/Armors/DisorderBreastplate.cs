@@ -3,9 +3,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 namespace DisorderUnderstar.Items.Disorder.Armors
 {
-    // 注意这里，这是C#里面的一个神奇的语法
-    // 作用是给一个类附加一个属性
-    // 比如这里就是给这个类附加一个装备样式为头盔的属性，这样TML就会把它识别成头盔
     [AutoloadEquip(EquipType.Body)]
     public class DisorderBreastplate : ModItem
     {
@@ -56,7 +53,7 @@ namespace DisorderUnderstar.Items.Disorder.Armors
             recipe0.AddIngredient(ItemID.HallowedPlateMail, 1);
             recipe0.AddIngredient(ItemID.ChlorophytePlateMail, 1);
             recipe0.AddIngredient(ItemID.ShroomiteBreastplate, 1);
-            recipe0.AddIngredient(mod.ItemType<DisorderBar>(), 20);
+            recipe0.AddIngredient(ModContent.ItemType<DisorderBar>(), 20);
             recipe0.AddTile(TileID.LunarCraftingStation);
             recipe0.SetResult(this);
             recipe0.AddRecipe();

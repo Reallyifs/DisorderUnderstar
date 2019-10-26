@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Localization;
 using DisorderUnderstar.Buffs;
-using DisorderUnderstar.Utils;
+using DisorderUnderstar.Tools;
 using Microsoft.Xna.Framework;
 using DisorderUnderstar.Buffs.Sunset;
 using DisorderUnderstar.Buffs.Disorder;
@@ -116,14 +116,15 @@ namespace DisorderUnderstar.Items.Disorder
             player.buffImmune[BuffID.PotionSickness] = true;
             player.buffImmune[BuffID.WitheredWeapon] = true;
             player.buffImmune[BuffID.DryadsWardDebuff] = true;
-            player.buffImmune[mod.BuffType<DebuffGreenLight>()] = true;
-            player.buffImmune[mod.BuffType<DebuffSunsetBlackFire>()] = true;
-            player.buffImmune[mod.BuffType<DebuffFourHeavyBlocking>()] = true;
+            player.buffImmune[ModContent.BuffType<DebuffGreenLight>()] = true;
+            player.buffImmune[ModContent.BuffType<DebuffSunsetBlackFire>()] = true;
+            player.buffImmune[ModContent.BuffType<DebuffFourHeavyBlocking>()] = true;
             #endregion
             #region 伤害暴击
             player.attackCD -= 1;
             player.manaCost -= 0.9f;
             player.minionKB += 0.5f;
+            player.allDamage *= 23.87f;
             player.magicCrit += 88;
             player.meleeCrit += 88;
             player.maxMinions += 40;
@@ -131,11 +132,6 @@ namespace DisorderUnderstar.Items.Disorder
             player.rangedCrit += 88;
             player.thrownCrit += 88;
             player.crystalLeaf = true;
-            player.magicDamage *= 23.87f;
-            player.meleeDamage *= 23.87f;
-            player.minionDamage *= 23.87f;
-            player.rangedDamage *= 23.87f;
-            player.thrownDamage *= 23.87f;
             player.stardustMinion = true;
             player.shroomiteStealth = true;
             player.vortexStealthActive = true;
@@ -178,12 +174,13 @@ namespace DisorderUnderstar.Items.Disorder
             if (player.statLife < player.statLifeMax2 / 3) player.AddBuff(BuffID.IceBarrier, 30);
             else
             {
-                player.AddBuff(mod.BuffType("BuffBlessingMoment"), 10);
-                player.AddBuff(mod.BuffType("DebuffChaosTheory"), 10);
+                player.AddBuff(ModContent.BuffType<DebuffChaosTheory>(), 10);
+                player.AddBuff(ModContent.BuffType<BuffBlessingMoment>(), 10);
             }
             #endregion
             #region 加成3
-            player.AddBuff(mod.BuffType("DebuffBendingMagnets"), 10);
+            player.AddBuff(ModContent.BuffType<DebuffBendingMagnets>(), 10);
+            player.GetModPlayer<DisorderUnderstarPlayer>().装备_无序我于万物之中 = true;
             #endregion
             #region 加成4
             if (hideVisual == true)
@@ -236,12 +233,12 @@ namespace DisorderUnderstar.Items.Disorder
         public override void AddRecipes()
         {
             ModRecipe recipe1 = new ModRecipe(mod);
-            recipe1.AddIngredient(mod.ItemType<DisorderFourtype>(), 1);
-            recipe1.AddIngredient(mod.ItemType<DisorderOmnipotence>(), 1);
-            recipe1.AddIngredient(mod.ItemType<DisorderCross>(), 1);
-            recipe1.AddIngredient(mod.ItemType<DisorderBar>(), 33);
-            recipe1.AddIngredient(mod.ItemType<LikeLifeLine>(), 10);
-            recipe1.AddIngredient(mod.ItemType<StartStarsStory>(), 10);
+            recipe1.AddIngredient(ModContent.ItemType<DisorderFourtype>(), 1);
+            recipe1.AddIngredient(ModContent.ItemType<DisorderOmnipotence>(), 1);
+            recipe1.AddIngredient(ModContent.ItemType<DisorderCross>(), 1);
+            recipe1.AddIngredient(ModContent.ItemType<DisorderBar>(), 33);
+            recipe1.AddIngredient(ModContent.ItemType<LikeLifeLine>(), 10);
+            recipe1.AddIngredient(ModContent.ItemType<StartStarsStory>(), 10);
             recipe1.AddIngredient(ItemID.LifeCrystal, 25);
             recipe1.AddIngredient(ItemID.ManaCrystal, 25);
             recipe1.AddTile(TileID.LunarCraftingStation);

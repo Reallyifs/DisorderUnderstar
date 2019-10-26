@@ -1,6 +1,9 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
+using DisorderUnderstar.Tools;
+using Microsoft.Xna.Framework;
 using DisorderUnderstar.Projectiles.Disorder;
 namespace DisorderUnderstar.Items.Disorder
 {
@@ -8,8 +11,11 @@ namespace DisorderUnderstar.Items.Disorder
 	{
 		public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("无序大剑");
-            Tooltip.SetDefault("【[c/FF0000:无序-Disorder]】\n" +
+            DisplayName.SetDefault("Chaotic Sword");
+            DisplayName.AddTranslation(GameCulture.Chinese, "无序大剑");
+            Tooltip.SetDefault("[[c/FF0000:Disorder]]\n" +
+                "Strong enough to defeat all enemies.");
+            Tooltip.AddTranslation(GameCulture.Chinese, "【[c/FF0000:无序]】\n" +
                 "强大到可以打败所有敌人。");
         }
         public override void SetDefaults()
@@ -18,7 +24,7 @@ namespace DisorderUnderstar.Items.Disorder
             item.rare = ItemRarityID.Red;
             item.melee = true;
             item.scale = 1.1f;
-            item.shoot = mod.ProjectileType<ProDisorderBeam>();
+            item.shoot = ModContent.ProjectileType<ProDisorderBeam>();
             item.value = Item.sellPrice(5, 5, 10, 10);
             item.width = 56;
             item.damage = 3440;
@@ -32,38 +38,51 @@ namespace DisorderUnderstar.Items.Disorder
             item.shootSpeed = 20f;
             item.useAnimation = 8;
         }
+        public override void MeleeEffects(Player player, Rectangle hitbox)
+        {
+            #region 粒子设定
+            int dINT;
+            int rINT = Main.rand.Next(1, 3);
+            if (rINT == 1) { dINT = MyDustId.OrangeFire1; }
+            else if(rINT == 2) { dINT = MyDustId.PurpleLight; }
+            else if(rINT == 3) { dINT = MyDustId.DarkBluePinkLight; }
+            else { dINT = MyDustId.BlueCircle; }
+            #endregion
+            Dust.NewDust(player.Center, hitbox.Width, hitbox.Height, dINT, player.velocity.X / 3, player.velocity.Y / 3, Main.rand.Next(100, 200),
+                Color.White, Main.rand.NextFloat(0.8f, 1.2f));
+        }
         public override void AddRecipes()
         {
-            ModRecipe recipe1 = new ModRecipe(mod);
-            ModRecipe recipe0 = new ModRecipe(mod);
-            recipe1.AddIngredient(ItemID.StardustDragonStaff, 1);
-            recipe1.AddIngredient(ItemID.StardustCellStaff, 1);
-            recipe1.AddIngredient(ItemID.Phantasm, 1);
-            recipe1.AddIngredient(ItemID.VortexBeater, 1);
-            recipe1.AddIngredient(ItemID.NebulaArcanum, 1);
-            recipe1.AddIngredient(ItemID.NebulaBlaze, 1);
-            recipe1.AddIngredient(ItemID.SolarEruption, 1);
-            recipe1.AddIngredient(ItemID.DayBreak, 1);
-            recipe1.AddIngredient(ItemID.Meowmere, 1);
-            recipe1.AddIngredient(ItemID.CobaltSword, 1);
-            recipe1.AddIngredient(mod.ItemType<DisorderBar>(), 20);
-            recipe0.AddIngredient(ItemID.StardustDragonStaff, 1);
-            recipe0.AddIngredient(ItemID.StardustCellStaff, 1);
-            recipe0.AddIngredient(ItemID.Phantasm, 1);
-            recipe0.AddIngredient(ItemID.VortexBeater, 1);
-            recipe0.AddIngredient(ItemID.NebulaArcanum, 1);
-            recipe0.AddIngredient(ItemID.NebulaBlaze, 1);
-            recipe0.AddIngredient(ItemID.SolarEruption, 1);
-            recipe0.AddIngredient(ItemID.DayBreak, 1);
-            recipe0.AddIngredient(ItemID.Meowmere, 1);
-            recipe0.AddIngredient(ItemID.PalladiumSword, 1);
-            recipe1.AddIngredient(mod.ItemType<DisorderBar>(), 20);
-            recipe1.AddTile(TileID.LunarCraftingStation);
-            recipe0.AddTile(TileID.LunarCraftingStation);
-            recipe1.SetResult(this);
-            recipe1.AddRecipe();
-            recipe0.SetResult(this);
-            recipe0.AddRecipe();
+            ModRecipe _0 = new ModRecipe(mod);
+            ModRecipe _1 = new ModRecipe(mod);
+            _0.AddIngredient(ItemID.StardustDragonStaff, 1);
+            _0.AddIngredient(ItemID.StardustCellStaff, 1);
+            _0.AddIngredient(ItemID.Phantasm, 1);
+            _0.AddIngredient(ItemID.VortexBeater, 1);
+            _0.AddIngredient(ItemID.NebulaArcanum, 1);
+            _0.AddIngredient(ItemID.NebulaBlaze, 1);
+            _0.AddIngredient(ItemID.SolarEruption, 1);
+            _0.AddIngredient(ItemID.DayBreak, 1);
+            _0.AddIngredient(ItemID.Meowmere, 1);
+            _0.AddIngredient(ItemID.CobaltSword, 1);
+            _0.AddIngredient(ModContent.ItemType<DisorderBar>(), 10);
+            _1.AddIngredient(ItemID.StardustDragonStaff, 1);
+            _1.AddIngredient(ItemID.StardustCellStaff, 1);
+            _1.AddIngredient(ItemID.Phantasm, 1);
+            _1.AddIngredient(ItemID.VortexBeater, 1);
+            _1.AddIngredient(ItemID.NebulaArcanum, 1);
+            _1.AddIngredient(ItemID.NebulaBlaze, 1);
+            _1.AddIngredient(ItemID.SolarEruption, 1);
+            _1.AddIngredient(ItemID.DayBreak, 1);
+            _1.AddIngredient(ItemID.Meowmere, 1);
+            _1.AddIngredient(ItemID.PalladiumSword, 1);
+            _0.AddIngredient(ModContent.ItemType<DisorderBar>(), 10);
+            _0.AddTile(TileID.LunarCraftingStation);
+            _1.AddTile(TileID.LunarCraftingStation);
+            _0.SetResult(this);
+            _0.AddRecipe();
+            _1.SetResult(this);
+            _1.AddRecipe();
         }
     }
 }

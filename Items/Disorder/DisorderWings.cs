@@ -1,7 +1,8 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using DisorderUnderstar.Utils;
+using Terraria.Localization;
+using DisorderUnderstar.Tools;
 using Microsoft.Xna.Framework;
 namespace DisorderUnderstar.Items.Disorder
 {
@@ -10,8 +11,11 @@ namespace DisorderUnderstar.Items.Disorder
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("无序·翅膀");
-            Tooltip.SetDefault("【[c/FF0000:无序-Disorder]】\n" +
+            DisplayName.SetDefault("Disorder ` Wings");
+            DisplayName.AddTranslation(GameCulture.Chinese, "无序·翅膀");
+            Tooltip.SetDefault("[[c/FF0000:Disorder]]\n" +
+                "\"Fly to everywhere.\"");
+            Tooltip.AddTranslation(GameCulture.Chinese, "【[c/FF0000:无序]】\n" +
                 "“飞向世界各地。”");
         }
         public override void SetDefaults()
@@ -31,10 +35,8 @@ namespace DisorderUnderstar.Items.Disorder
             {
                 for (int i = 0; i < 1; i++)
                 {
-                    Dust.NewDustDirect
-                        (player.position, player.width, player.height,
-                        MyDustId.Fire, -player.velocity.X * 0.5f, -player.velocity.Y * 0.5f, 100,
-                        Color.White, 1.0f);
+                    Dust.NewDustDirect(player.position, player.width, player.height, MyDustId.Fire, -player.velocity.X * 0.5f,
+                        -player.velocity.Y * 0.5f, 100, Color.White, 1.0f);
                 }
             }
         }
@@ -66,7 +68,7 @@ namespace DisorderUnderstar.Items.Disorder
             recipe1.AddIngredient(ItemID.Hoverboard, 1);
             recipe1.AddIngredient(ItemID.SpookyWings, 1);
             recipe1.AddIngredient(ItemID.FestiveWings, 1);
-            recipe1.AddIngredient(mod, "DisorderBar", 10);
+            recipe1.AddIngredient(ModContent.ItemType<DisorderBar>(), 10);
             recipe1.AddTile(TileID.LunarCraftingStation);
             recipe1.SetResult(this);
             recipe1.AddRecipe();

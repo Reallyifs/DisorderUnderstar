@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 using DisorderUnderstar.Items.Armors;
 namespace DisorderUnderstar.Items.Disorder.Armors
 {
@@ -15,10 +16,19 @@ namespace DisorderUnderstar.Items.Disorder.Armors
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("无序·头盔");
-            Tooltip.SetDefault("【[c/FF0000:无序-Disorder]】\n" +
+            DisplayName.SetDefault("Disorder ` Helmet");
+            DisplayName.AddTranslation(GameCulture.Chinese,"无序·头盔");
+            Tooltip.SetDefault("[[c/FF0000:Disorder]]\n" +
+                "\"Listen to World's Slience.\"\n" +
+                "-Equipment Effect-" +
+                "[c/FF0000:Life Regen] increase 100, [c/0000FF:Mana Regen] increase 30\n" +
+                "[c/FF0000:Maximum Life] increase 500, [c/0000FF:Maximum Mana] increase 250\n" +
+                "[c/FF8000:Melee Crit] increase 40%, [c/000000:all Crit] increase 45% except [c/00FFFF:Summon]\n" +
+                "[c/0000FF:Mana], [c/FF8000:Melee] and [c/00007F:Ranged] damage multiplied by 2.5, [c/7F7F7F:Thrown] and [c/00FFFF:Summon] damage multiplied by 4.5\n" +
+                "40% does not [c/00007F:Consume Ammunition], [c/00FFFF:Summon] a [");
+            Tooltip.AddTranslation(GameCulture.Chinese, "【[c/FF0000:无序]】\n" +
                 "“聆听世界寂静。”\n" +
-                "-\n" +
+                "-装备效果-\n" +
                 "[c/FF0000:生命恢复]增加100，[c/0000FF:魔法恢复]增加30\n" +
                 "[c/FF0000:最大生命]增加500，[c/0000FF:最大魔法]增加250\n" +
                 "[c/FF8000:近战暴击]增加40%，除[c/00FFFF:召唤]外其他暴击增加45%\n" +
@@ -56,13 +66,11 @@ namespace DisorderUnderstar.Items.Disorder.Armors
                 player.minionDamage *= 4.5f;
                 player.rangedDamage *= 2.5f;
                 player.thrownDamage *= 4.5f;
-                //player.AddBuff(mod.BuffType("NMODCrystalLeaf"), 1);
             }
         }
         public override bool ConsumeAmmo(Player player)
         {
-            if (item.bodySlot == mod.ItemType("DisorderBreastplate") &&
-                item.legSlot == mod.ItemType("DisorderLeggings"))
+            if (item.bodySlot == ModContent.ItemType<DisorderBreastplate>() && item.legSlot == ModContent.ItemType<DisorderLeggings>())
             {
                 return Main.rand.Next(20) < 13;
             }
@@ -70,11 +78,11 @@ namespace DisorderUnderstar.Items.Disorder.Armors
         }
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
-            return body.type == mod.ItemType("DisorderBreastplate") &&
-                legs.type == mod.ItemType("DisorderLeggings");
+            return body.type == ModContent.ItemType<DisorderBreastplate>() &&  legs.type == ModContent.ItemType<DisorderLeggings>();
         }
         public override void UpdateArmorSet(Player player)
         {
+            item.shoot = ProjectileID.CrystalLeaf;
             player.setBonus = "-\n" +
                 "“你的身体看起来……没有顺序？”\n" +
                 "-\n" +
@@ -87,19 +95,16 @@ namespace DisorderUnderstar.Items.Disorder.Armors
                 "-";
             player.manaCost -= 0.6f;
             player.minionKB += 0.1f;
-            player.lifeRegen += 100;
+            player.allDamage *= 6.66f;
             player.endurance += 0.7f;
+            player.lifeRegen += 100;
             player.setNebula = true;
             player.lavaImmune = true;
             player.lifeMagnet = true;
             player.maxMinions += 10;
-            player.magicDamage *= 6.66f;
-            player.meleeDamage *= 6.66f;
-            player.minionDamage *= 6.66f;
-            player.rangedDamage *= 6.66f;
-            player.thrownDamage *= 6.66f;
             player.vortexStealthActive = true;
-            //player.AddBuff(mod.BuffType("NMODStardustGuardian"), 1);
+            Player.crystalLeafKB = 4;
+            Player.crystalLeafDamage = 444;
         }
         public override void AddRecipes()
         {
@@ -109,17 +114,13 @@ namespace DisorderUnderstar.Items.Disorder.Armors
             recipe0.AddIngredient(ItemID.NebulaHelmet, 1);
             recipe0.AddIngredient(ItemID.SolarFlareHelmet, 1);
             recipe0.AddIngredient(ItemID.MoltenHelmet, 1);
-            recipe0.AddIngredient(mod.ItemType<HallowedHeadnail>(), 1);
-            recipe0.AddIngredient(mod.ItemType<ChlorophyteHeadnail>(), 1);
-            recipe0.AddIngredient(mod.ItemType<ShroomiteHeadnail>(), 1);
-            recipe0.AddIngredient(mod.ItemType<DisorderBar>(), 10);
+            recipe0.AddIngredient(ModContent.ItemType<HallowedHeadnail>(), 1);
+            recipe0.AddIngredient(ModContent.ItemType<ChlorophyteHeadnail>(), 1);
+            recipe0.AddIngredient(ModContent.ItemType<ShroomiteHeadnail>(), 1);
+            recipe0.AddIngredient(ModContent.ItemType<DisorderBar>(), 10);
             recipe0.AddTile(TileID.LunarCraftingStation);
             recipe0.SetResult(this);
             recipe0.AddRecipe();
         }
     }
 }
-// 以上详情（更多）请询问群里dalao
-// ！以上复制模板，这只是个简化版！
-// 模板位置http://www.fs49.org/2018/04/28/%e5%a5%97%e8%a3%85/
-// 作者说模板没版权，但还是要注明作者=v=

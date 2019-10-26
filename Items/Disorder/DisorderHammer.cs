@@ -41,7 +41,7 @@ namespace DisorderUnderstar.Items.Disorder
             _0.AddIngredient(ItemID.ChlorophyteJackhammer, 1);
             _0.AddIngredient(ItemID.HallowedBar, 9);
             _0.AddIngredient(ItemID.ShroomiteBar, 9);
-            _0.AddIngredient(mod.ItemType<DisorderBar>(), 5);
+            _0.AddIngredient(ModContent.ItemType<DisorderBar>(), 5);
             _0.AddTile(TileID.LunarCraftingStation);
             _0.SetResult(this);
             _0.AddRecipe();

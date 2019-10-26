@@ -45,7 +45,7 @@ namespace DisorderUnderstar.Items.Disorder
             recipe3.AddIngredient(ItemID.ChlorophytePickaxe, 1);
             recipe3.AddIngredient(ItemID.ChlorophyteDrill, 1);
             recipe3.AddIngredient(ItemID.ShroomiteDiggingClaw, 1);
-            recipe3.AddIngredient(mod, "DisorderBar", 11);
+            recipe3.AddIngredient(ModContent.ItemType<DisorderBar>(), 11);
             recipe3.AddTile(TileID.LunarCraftingStation);
             recipe3.SetResult(this);
             recipe3.AddRecipe();

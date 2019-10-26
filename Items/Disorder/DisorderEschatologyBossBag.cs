@@ -9,7 +9,7 @@ namespace DisorderUnderstar.Items.Disorder
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("宝藏袋");
-            Tooltip.SetDefault("右键单击以打开");
+            Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
         }
         public override void SetDefaults()
         {
@@ -37,13 +37,13 @@ namespace DisorderUnderstar.Items.Disorder
             else
             {
                 player.dead = true;
-                player.KillMe(PlayerDeathReason.ByCustomReason(player.name + "说：“啥?”"), 9999, 0);
+                player.KillMe(PlayerDeathReason.ByCustomReason(player.name + "says: \"What?\""), 9999, 0);
             }
         }
         public override void AddRecipes()
         {
             ModRecipe _0 = new ModRecipe(mod);
-            _0.AddIngredient(mod, "DisorderEschatologyBossBag", 2);
+            _0.AddIngredient(item.type, 2);
             _0.SetResult(this);
             _0.AddRecipe();
             _0 = new ModRecipe(mod)

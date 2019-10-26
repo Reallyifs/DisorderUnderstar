@@ -37,12 +37,12 @@ namespace DisorderUnderstar.Items.Disorder
         public override void AddRecipes()
         {
             ModRecipe recipe1 = new ModRecipe(mod);
-            recipe1.AddIngredient(mod.ItemType<DisorderPickaxe>(), 1);
-            recipe1.AddIngredient(mod.ItemType<DisorderAxe>(), 1);
-            recipe1.AddIngredient(mod.ItemType<DisorderHammer>(), 1);
-            recipe1.AddIngredient(mod.ItemType<ChaoticSword>(), 1);
+            recipe1.AddIngredient(ModContent.ItemType<DisorderPickaxe>(), 1);
+            recipe1.AddIngredient(ModContent.ItemType<DisorderAxe>(), 1);
+            recipe1.AddIngredient(ModContent.ItemType<DisorderHammer>(), 1);
+            recipe1.AddIngredient(ModContent.ItemType<ChaoticSword>(), 1);
             recipe1.AddIngredient(ItemID.SpectreBar, 10);
-            recipe1.AddIngredient(mod.ItemType<DisorderBar>(), 10);
+            recipe1.AddIngredient(ModContent.ItemType<DisorderBar>(), 10);
             recipe1.AddTile(TileID.LunarCraftingStation);
             recipe1.SetResult(this);
             recipe1.AddRecipe();

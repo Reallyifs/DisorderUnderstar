@@ -1,14 +1,18 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 namespace DisorderUnderstar.Items.Disorder
 {
     public class DisorderAxe : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("无序·斧");
-            Tooltip.SetDefault("【[c/FF0000:无序-Disorder]】\n" +
+            DisplayName.SetDefault("Disorder ` Axe");
+            DisplayName.AddTranslation(GameCulture.Chinese, "无序·斧");
+            Tooltip.SetDefault("[[c/FF0000:Disorder]]\n" +
+                "Strong enough to destroy all wood");
+            Tooltip.AddTranslation(GameCulture.Chinese, "【[c/FF0000:无序]】\n" +
                 "强大到足以摧毁所有木头。");
         }
         public override void SetDefaults()
@@ -44,7 +48,7 @@ namespace DisorderUnderstar.Items.Disorder
             recipe1.AddIngredient(ItemID.ChlorophyteGreataxe, 1);
             recipe1.AddIngredient(ItemID.HallowedBar, 9);
             recipe1.AddIngredient(ItemID.ShroomiteBar, 9);
-            recipe1.AddIngredient(mod.ItemType<DisorderBar>(), 5);
+            recipe1.AddIngredient(ModContent.ItemType<DisorderBar>(), 5);
             recipe1.AddTile(TileID.LunarCraftingStation);
             recipe1.SetResult(this);
             recipe1.AddRecipe();

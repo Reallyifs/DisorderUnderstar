@@ -3,9 +3,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 namespace DisorderUnderstar.Items.Disorder.Armors
 {
-    // 注意这里，这是C#里面的一个神奇的语法
-    // 作用是给一个类附加一个属性
-    // 比如这里就是给这个类附加一个装备样式为护腿的属性，这样TML就会把它识别成护腿
     [AutoloadEquip(EquipType.Legs)]
     public class DisorderLeggings : ModItem
     {
@@ -36,25 +33,17 @@ namespace DisorderUnderstar.Items.Disorder.Armors
         {
             if (player.velocity.Length() > 0.05f)
             {
+                player.allDamage += 0.6f;
                 player.moveSpeed += 6.66f;
-                player.magicDamage += 0.60f;
-                player.meleeDamage += 0.60f;
-                player.minionDamage += 0.60f;
-                player.rangedDamage += 0.60f;
-                player.thrownDamage += 0.60f;
             }
             else
             {
                 player.manaCost -= 0.5f;
+                player.allDamage += 0.8f;
                 player.magicCrit += 50;
                 player.meleeCrit += 50;
                 player.rangedCrit += 50;
                 player.thrownCrit += 50;
-                player.magicDamage += 0.80f;
-                player.meleeDamage += 0.80f;
-                player.minionDamage += 0.80f;
-                player.rangedDamage += 0.80f;
-                player.thrownDamage += 0.80f;
             }
             player.jumpBoost = true;
             player.noFallDmg = true;
@@ -73,7 +62,7 @@ namespace DisorderUnderstar.Items.Disorder.Armors
             recipe1.AddIngredient(ItemID.HallowedGreaves, 1);
             recipe1.AddIngredient(ItemID.ChlorophyteGreaves, 1);
             recipe1.AddIngredient(ItemID.ShroomiteLeggings, 1);
-            recipe1.AddIngredient(mod.ItemType<DisorderBar>(), 15);
+            recipe1.AddIngredient(ModContent.ItemType<DisorderBar>(), 15);
             recipe1.AddTile(TileID.LunarCraftingStation);
             recipe1.SetResult(this);
             recipe1.AddRecipe();

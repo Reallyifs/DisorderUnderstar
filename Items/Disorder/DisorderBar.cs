@@ -2,6 +2,8 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Localization;
+using Microsoft.Xna.Framework;
+
 namespace DisorderUnderstar.Items.Disorder
 {
     public class DisorderBar : ModItem
@@ -10,16 +12,16 @@ namespace DisorderUnderstar.Items.Disorder
         {
             DisplayName.SetDefault("Disorder ` Bar");
             DisplayName.AddTranslation(GameCulture.Chinese, "无序·锭");
-            Tooltip.SetDefault("[[c/FF0000:Disorder]]\n" +
+            Tooltip.SetDefault("[Disorder]\n" +
                 "There is a lot of energy in these ingots, what should be used for...");
-            Tooltip.AddTranslation(GameCulture.Chinese, "【[c/FF0000:无序]】\n" +
+            Tooltip.AddTranslation(GameCulture.Chinese, "【无序】\n" +
                 "这些锭里散发出了许多能量，应该能拿来做些什么……");
             if (item.stack == 1)
             {
-                Tooltip.SetDefault("[[c/FF0000:Disorder]]\n" +
+                Tooltip.SetDefault("[Disorder]\n" +
                     "There is a lot of energy in this ingot, what should be used for...\n" +
                     "But... Not enough...");
-                Tooltip.AddTranslation(GameCulture.Chinese, "【[c/FF0000:无序]】\n" +
+                Tooltip.AddTranslation(GameCulture.Chinese, "【无序】\n" +
                     "这个锭里散发出了许多能量，应该能拿来做些什么……\n" +
                     "但是……还不够……");
             }
@@ -33,6 +35,10 @@ namespace DisorderUnderstar.Items.Disorder
             item.height = 22;
             item.maxStack = 999;
             item.expertOnly = true;
+        }
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return new Color((byte)Main.DiscoR, (byte)Main.DiscoG, (byte)Main.DiscoB, Main.mouseTextColor);
         }
         public override void AddRecipes()
         {

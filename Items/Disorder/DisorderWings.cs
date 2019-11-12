@@ -13,9 +13,9 @@ namespace DisorderUnderstar.Items.Disorder
         {
             DisplayName.SetDefault("Disorder ` Wings");
             DisplayName.AddTranslation(GameCulture.Chinese, "无序·翅膀");
-            Tooltip.SetDefault("[[c/FF0000:Disorder]]\n" +
-                "\"Fly to everywhere.\"");
-            Tooltip.AddTranslation(GameCulture.Chinese, "【[c/FF0000:无序]】\n" +
+            Tooltip.SetDefault("[Disorder]\n" +
+                "\"Fly to World's Everywhere.\"");
+            Tooltip.AddTranslation(GameCulture.Chinese, "【无序】\n" +
                 "“飞向世界各地。”");
         }
         public override void SetDefaults()
@@ -40,10 +40,8 @@ namespace DisorderUnderstar.Items.Disorder
                 }
             }
         }
-        public override void VerticalWingSpeeds
-            (Player player, ref float ascentWhenFalling, ref float ascentWhenRising,
-            ref float maxCanAscendMultiplier, ref float maxAscentMultiplier,
-            ref float constantAscend)
+        public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising,
+            ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)
         {
             ascentWhenFalling = 1.5f;
             ascentWhenRising = 0.25f;
@@ -51,8 +49,7 @@ namespace DisorderUnderstar.Items.Disorder
             maxCanAscendMultiplier = 11f;
             constantAscend = 0.1f;
         }
-        public override void HorizontalWingSpeeds(Player player, ref float speed,
-            ref float acceleration)
+        public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration)
         {
             speed = 50f;
             acceleration *= 10f;

@@ -10,9 +10,9 @@ namespace DisorderUnderstar.Items.Disorder
         {
             DisplayName.SetDefault("Disorder ` Axe");
             DisplayName.AddTranslation(GameCulture.Chinese, "无序·斧");
-            Tooltip.SetDefault("[[c/FF0000:Disorder]]\n" +
+            Tooltip.SetDefault("[Disorder]\n" +
                 "Strong enough to destroy all wood");
-            Tooltip.AddTranslation(GameCulture.Chinese, "【[c/FF0000:无序]】\n" +
+            Tooltip.AddTranslation(GameCulture.Chinese, "【无序】\n" +
                 "强大到足以摧毁所有木头。");
         }
         public override void SetDefaults()

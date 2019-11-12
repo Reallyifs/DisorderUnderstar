@@ -25,7 +25,7 @@ namespace DisorderUnderstar.Items.Disorder.Armors
                 "[c/FF0000:Maximum Life] increase 500, [c/0000FF:Maximum Mana] increase 250\n" +
                 "[c/FF8000:Melee Crit] increase 40%, [c/000000:all Crit] increase 45% except [c/00FFFF:Summon]\n" +
                 "[c/0000FF:Mana], [c/FF8000:Melee] and [c/00007F:Ranged] damage multiplied by 2.5, [c/7F7F7F:Thrown] and [c/00FFFF:Summon] damage multiplied by 4.5\n" +
-                "40% does not [c/00007F:Consume Ammunition], [c/00FFFF:Summon] a [");
+                "40% not [c/00007F:Consume Ammo], [c/00FFFF:Summon] a [c/00FF00:Crystal Leaf] to fight for you.");
             Tooltip.AddTranslation(GameCulture.Chinese, "【[c/FF0000:无序]】\n" +
                 "“聆听世界寂静。”\n" +
                 "-装备效果-\n" +
@@ -33,9 +33,7 @@ namespace DisorderUnderstar.Items.Disorder.Armors
                 "[c/FF0000:最大生命]增加500，[c/0000FF:最大魔法]增加250\n" +
                 "[c/FF8000:近战暴击]增加40%，除[c/00FFFF:召唤]外其他暴击增加45%\n" +
                 "[c/0000FF:魔法]、[c/FF8000:近战]和[c/00007F:远程]伤害乘以2.5，[c/7F7F7F:投掷]和[c/00FFFF:召唤]伤害乘以4.5\n" +
-                "40%不[c/00007F:消耗弹药]，[c/00FFFF:召唤]一个[c/00FF00:叶绿水晶]为你而战\n" +
-                "站着不动进入隐身状态\n" +
-                "-");
+                "40%不[c/00007F:消耗弹药]，[c/00FFFF:召唤]一个[c/00FF00:叶绿水晶]为你而战");
         }
         public override void SetDefaults()
         {
@@ -74,7 +72,7 @@ namespace DisorderUnderstar.Items.Disorder.Armors
             {
                 return Main.rand.Next(20) < 13;
             }
-            else return Main.rand.Next(5) < 2;
+            else { return Main.rand.Next(5) < 2; }
         }
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
@@ -82,17 +80,14 @@ namespace DisorderUnderstar.Items.Disorder.Armors
         }
         public override void UpdateArmorSet(Player player)
         {
-            item.shoot = ProjectileID.CrystalLeaf;
-            player.setBonus = "-\n" +
-                "“你的身体看起来……没有顺序？”\n" +
+            player.setBonus = "“你的身体看起来……没有顺序？”\n" +
                 "-\n" +
                 "[c/0000FF:魔法消耗]减少60%，[c/00FFFF:召唤物]击退增加10%，[c/FF0000:生命恢复]增加100\n" +
                 "[c/7F7F7F:耐力]增加70%，免疫熔浆，[c/FF0000:红心拾取范围]加大\n" +
                 "[c/00FFFF:最大随从]增加10个，[c/000000:所有伤害]乘以6.66\n" +
                 "改为65%不[c/00007F:消耗弹药]\n" +
                 "[c/00FFFF:召唤星辰守护者]为你而战，拥有[c/FF00FF:星云套]效果\n" +
-                "改为双击下键进入隐身状态\n" +
-                "-";
+                "改为双击下键进入隐身状态";
             player.manaCost -= 0.6f;
             player.minionKB += 0.1f;
             player.allDamage *= 6.66f;
@@ -105,22 +100,23 @@ namespace DisorderUnderstar.Items.Disorder.Armors
             player.vortexStealthActive = true;
             Player.crystalLeafKB = 4;
             Player.crystalLeafDamage = 444;
+            ItemOverride.漂浮叶绿水晶(player);
         }
         public override void AddRecipes()
         {
-            ModRecipe recipe0 = new ModRecipe(mod);
-            recipe0.AddIngredient(ItemID.StardustHelmet, 1);
-            recipe0.AddIngredient(ItemID.VortexHelmet, 1);
-            recipe0.AddIngredient(ItemID.NebulaHelmet, 1);
-            recipe0.AddIngredient(ItemID.SolarFlareHelmet, 1);
-            recipe0.AddIngredient(ItemID.MoltenHelmet, 1);
-            recipe0.AddIngredient(ModContent.ItemType<HallowedHeadnail>(), 1);
-            recipe0.AddIngredient(ModContent.ItemType<ChlorophyteHeadnail>(), 1);
-            recipe0.AddIngredient(ModContent.ItemType<ShroomiteHeadnail>(), 1);
-            recipe0.AddIngredient(ModContent.ItemType<DisorderBar>(), 10);
-            recipe0.AddTile(TileID.LunarCraftingStation);
-            recipe0.SetResult(this);
-            recipe0.AddRecipe();
+            ModRecipe 制作 = new ModRecipe(mod);
+            制作.AddIngredient(ItemID.StardustHelmet, 1);
+            制作.AddIngredient(ItemID.VortexHelmet, 1);
+            制作.AddIngredient(ItemID.NebulaHelmet, 1);
+            制作.AddIngredient(ItemID.SolarFlareHelmet, 1);
+            制作.AddIngredient(ItemID.MoltenHelmet, 1);
+            制作.AddRecipeGroup("蘑菇头盔", 1);
+            制作.AddRecipeGroup("神圣头盔", 1);
+            制作.AddRecipeGroup("叶绿头盔", 1);
+            制作.AddIngredient(ModContent.ItemType<DisorderBar>(), 10);
+            制作.AddTile(TileID.LunarCraftingStation);
+            制作.SetResult(this);
+            制作.AddRecipe();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 using Terraria.DataStructures;
 namespace DisorderUnderstar.Items.Disorder
 {
@@ -8,7 +9,8 @@ namespace DisorderUnderstar.Items.Disorder
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("宝藏袋");
+            DisplayName.SetDefault("Disorder ` Eschatology Boss Bag");
+            DisplayName.AddTranslation(GameCulture.Chinese, "宝藏袋");
             Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
         }
         public override void SetDefaults()
@@ -19,20 +21,14 @@ namespace DisorderUnderstar.Items.Disorder
             item.maxStack = 9999999;
             item.expertOnly = true;
         }
-        public override bool AltFunctionUse(Player player)
-        {
-            return true;
-        }
-        public override bool CanRightClick()
-        {
-            return true;
-        }
+        public override bool AltFunctionUse(Player player) => true;
+        public override bool CanRightClick() => true;
         public override void RightClick(Player player)
         {
             if (player.altFunctionUse != 1)
             {
+                Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, item.type, 2);
                 item.maxStack -= 1;
-                item.shoot = Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, item.type, 2);
             }
             else
             {

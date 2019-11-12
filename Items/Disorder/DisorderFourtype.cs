@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 using DisorderUnderstar.Tools;
 using Microsoft.Xna.Framework;
 using DisorderUnderstar.Items.Disorder.Armors;
@@ -11,18 +12,28 @@ namespace DisorderUnderstar.Items.Disorder
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("无序·四型");
-            Tooltip.SetDefault("【[c/FF0000:无序-Disorder]】\n" +
+            DisplayName.SetDefault("Disorder ` Fourtype");
+            DisplayName.AddTranslation(GameCulture.Chinese, "无序·四型");
+            Tooltip.SetDefault("[Disorder]\n" +
+                "Gather the forces of disorder in you.\n" +
+                "-Equipment Effect-\n" +
+                "Immune to All [c/3F3F3F:debuff] that Ankh Shield immune and [c/3F3F3F:Distorted Debuff]\n" +
+                "[c/5E5E5E:Endurance] increase 95%, [c/FF0000:Life Regen] increase 290, [c/0000FF:Mana Regen] increase 145, [c/FF0000:Maximum Life] increase 1800, [c/0000FF:Maximum Mana] increase 900\n" +
+                "[c/000000:All Crit] increase 38% excpet [c/00FFFF:Summon], [c/FF8000:Melee Speed] increase 75%, [c/000000:All Damage] multiply by 7.4\n" +
+                "Stealth effect when you standing still, but it will create the exposed Fire dust\n" +
+                "Unlimited flight, extend underwater breathing for 100 seconds, allow you to jump multiple times, Jump Speed Boost 7.5%, double the Move Speed\n" +
+                "Immune to Fall Damage, Knockback, allow you walking on lava, water and honey, auto Collect Taxes\n" +
+                "Flight and its instability");
+            Tooltip.AddTranslation(GameCulture.Chinese, "【无序】\n" +
                 "集合了你身上的无序之力。\n" +
-                "-\n" +
+                "-装备效果-\n" +
                 "免疫十字盾免疫的所有[c/3F3F3F:debuff]和[c/3F3F3F:旋涡漂浮Debuff]\n" +
                 "[c/5E5E5E:耐力]增加95%，[c/FF0000:生命恢复]增加290，[c/0000FF:魔法恢复]增加145，[c/FF0000:生命上限]增加1800，[c/0000FF:魔法上限]增加900\n" +
                 "除[c/00FFFF:召唤]外[c/000000:所有暴击]增加38%，[c/FF8000:近战速度]增加75%，[c/000000:所有伤害]乘以7.4\n" +
                 "站着不动进入隐身状态，但是会产生火焰粒子暴露位置\n" +
                 "可无限飞行，延长水下呼吸100秒，可以让玩家连跳，跳跃高度增加7.5%，速度翻一倍\n" +
                 "免疫摔落伤害及击退，可在熔浆、水和蜂蜜上行走，自动收取租金\n" +
-                "飞行及其不稳定\n" +
-                "-");
+                "飞行及其不稳定");
         }
         public override void SetDefaults()
         {

@@ -1,21 +1,29 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 namespace DisorderUnderstar.Items.Disorder
 {
     public class DisorderCross : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("无序·十字架");
-            Tooltip.SetDefault("【[c/FF0000:无序-Disorder]】\n" +
+            DisplayName.SetDefault("Disorder ` Cross");
+            DisplayName.AddTranslation(GameCulture.Chinese, "无序·十字架");
+            Tooltip.SetDefault("[Disorder]\n" +
+                "It looks very strange.\n" +
+                "-Equipment Effect-\n" +
+                "[c/0000FF:Mana Cost] reduce 40%, [c/FF0000:Maximum Life] increase 350, [c/0000FF:Maximum Mana] increase 175\n" +
+                "[c/FF8000:Melee Crit] increase 32%, [c/00FFFF:Max minion] increase 15, [c/FF8000:Melee Speed] increase 9%\n" +
+                "[c/FF00FF:Magic], [c/FF8000:Melee] and [c/00007F:Ranged] damage increase 55%\n" +
+                "Allow you to jump multiple times, Move Speed increase 80%, greatly increases [c/FF0000:Life Regen] when you aren't moving, Jump Speed Boost 50%");
+            Tooltip.AddTranslation(GameCulture.Chinese, "【无序】\n" +
                 "它的样子非常的奇怪。\n" +
                 "-装备效果-\n" +
                 "[c/0000FF:魔法消耗]减少40%，[c/FF0000:生命上限]增加350，[c/0000FF:魔法上限]增加175\n" +
                 "[c/FF8000:近战暴击]增加32%，[c/00FFFF:随从上限]增加15个，[c/FF8000:近战速度]增加9%\n" +
                 "[c/FF00FF:魔法]、[c/FF8000:近战]和[c/00007F:远程伤害]增加55%\n" +
-                "允许玩家连跳，速度增加80%，站着不动[c/FF0000:生命恢复]会大大提高，跳跃高度增加50%\n" +
-                "-");
+                "允许玩家连跳，速度增加80%，站着不动[c/FF0000:生命恢复]会大大提高，跳跃高度增加50%");
         }
         public override void SetDefaults()
         {

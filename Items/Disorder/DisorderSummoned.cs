@@ -2,7 +2,6 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Localization;
-// using DisorderUnderstar.Events;
 namespace DisorderUnderstar.Items.Disorder
 {
     public class DisorderSummoned : ModItem

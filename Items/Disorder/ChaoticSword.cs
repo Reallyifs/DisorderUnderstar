@@ -13,9 +13,9 @@ namespace DisorderUnderstar.Items.Disorder
         {
             DisplayName.SetDefault("Chaotic Sword");
             DisplayName.AddTranslation(GameCulture.Chinese, "无序大剑");
-            Tooltip.SetDefault("[[c/FF0000:Disorder]]\n" +
+            Tooltip.SetDefault("[Disorder]\n" +
                 "Strong enough to defeat all enemies.");
-            Tooltip.AddTranslation(GameCulture.Chinese, "【[c/FF0000:无序]】\n" +
+            Tooltip.AddTranslation(GameCulture.Chinese, "【无序】\n" +
                 "强大到可以打败所有敌人。");
         }
         public override void SetDefaults()
@@ -54,7 +54,6 @@ namespace DisorderUnderstar.Items.Disorder
         public override void AddRecipes()
         {
             ModRecipe _0 = new ModRecipe(mod);
-            ModRecipe _1 = new ModRecipe(mod);
             _0.AddIngredient(ItemID.StardustDragonStaff, 1);
             _0.AddIngredient(ItemID.StardustCellStaff, 1);
             _0.AddIngredient(ItemID.Phantasm, 1);
@@ -63,26 +62,11 @@ namespace DisorderUnderstar.Items.Disorder
             _0.AddIngredient(ItemID.NebulaBlaze, 1);
             _0.AddIngredient(ItemID.SolarEruption, 1);
             _0.AddIngredient(ItemID.DayBreak, 1);
-            _0.AddIngredient(ItemID.Meowmere, 1);
-            _0.AddIngredient(ItemID.CobaltSword, 1);
-            _0.AddIngredient(ModContent.ItemType<DisorderBar>(), 10);
-            _1.AddIngredient(ItemID.StardustDragonStaff, 1);
-            _1.AddIngredient(ItemID.StardustCellStaff, 1);
-            _1.AddIngredient(ItemID.Phantasm, 1);
-            _1.AddIngredient(ItemID.VortexBeater, 1);
-            _1.AddIngredient(ItemID.NebulaArcanum, 1);
-            _1.AddIngredient(ItemID.NebulaBlaze, 1);
-            _1.AddIngredient(ItemID.SolarEruption, 1);
-            _1.AddIngredient(ItemID.DayBreak, 1);
-            _1.AddIngredient(ItemID.Meowmere, 1);
-            _1.AddIngredient(ItemID.PalladiumSword, 1);
+            _0.AddRecipeGroup("钯金或钴蓝剑", 1);
             _0.AddIngredient(ModContent.ItemType<DisorderBar>(), 10);
             _0.AddTile(TileID.LunarCraftingStation);
-            _1.AddTile(TileID.LunarCraftingStation);
             _0.SetResult(this);
             _0.AddRecipe();
-            _1.SetResult(this);
-            _1.AddRecipe();
         }
     }
 }

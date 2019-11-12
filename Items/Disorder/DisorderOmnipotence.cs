@@ -1,14 +1,18 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 namespace DisorderUnderstar.Items.Disorder
 {
     public class DisorderOmnipotence : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("无序·万能型");
-            Tooltip.SetDefault("【[c/FF0000:无序-Disorder]】\n" +
+            DisplayName.SetDefault("Disorder ` Omnipotence");
+            DisplayName.AddTranslation(GameCulture.Chinese, "无序·万能型");
+            Tooltip.SetDefault("[Disorder]\n" +
+                "Gather the forces of disorder in you.");
+            Tooltip.AddTranslation(GameCulture.Chinese, "【无序】\n" +
                 "集合了工具上的无序之力。");
         }
         public override void SetDefaults()

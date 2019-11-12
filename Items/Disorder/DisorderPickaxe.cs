@@ -1,14 +1,18 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 namespace DisorderUnderstar.Items.Disorder
 {
     public class DisorderPickaxe : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("无序·镐");
-            Tooltip.SetDefault("【[c/FF0000:无序-Disorder]】\n" +
+            DisplayName.SetDefault("Disorder ` Pickaxe");
+            DisplayName.AddTranslation(GameCulture.Chinese, "无序·镐");
+            Tooltip.SetDefault("[Disorder]\n" +
+                "Strong enough to destroy all blocks.");
+            Tooltip.AddTranslation(GameCulture.Chinese, "【无序】\n" +
                 "强大到足以摧毁所有方块。");
         }
         public override void SetDefaults()

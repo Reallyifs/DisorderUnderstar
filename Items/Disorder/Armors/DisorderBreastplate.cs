@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 namespace DisorderUnderstar.Items.Disorder.Armors
 {
     [AutoloadEquip(EquipType.Body)]
@@ -8,14 +9,20 @@ namespace DisorderUnderstar.Items.Disorder.Armors
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("无序·胸甲");
-            Tooltip.SetDefault("【无序-Disorder】\n" +
+            DisplayName.SetDefault("Disorder ` Breastplate");
+            DisplayName.AddTranslation(GameCulture.Chinese, "无序·胸甲");
+            Tooltip.SetDefault("[Disorder]\n" +
+                "\"Feel the World's Heart.\"" +
+                "-Equipment Effect-\n" +
+                "[c/5E5E5E:Endurance] increase 70%, [c/FF0000:Life Regen] increase 40/s, [c/000000:All Crit] increase 22% except [c/00FFFF:Summon], [c/FF8000:Melee Speed] increase 50%\n" +
+                "Immune to Knockback, [c/FF0000:Maximum Life] increase 300, [c/0000FF:Maximum Mana] increase 150\n" +
+                "Immune to On Fire! debuff");
+            Tooltip.AddTranslation(GameCulture.Chinese, "【无序】\n" +
                 "“感受世界心跳。”\n" +
-                "-\n" +
-                "[c/5E5E5E:耐力]增加70%，[c/FF0000:生命恢复]增加40，除[c/00FFFF:召唤]外[c/000000:所有暴击]增加22%，[c/FF8000:近战速度]增加50%\n" +
+                "-装备效果-\n" +
+                "[c/5E5E5E:耐力]增加70%，[c/FF0000:生命恢复]增加40/s，除[c/00FFFF:召唤]外[c/000000:所有暴击]增加22%，[c/FF8000:近战速度]增加50%\n" +
                 "免疫击退，[c/FF0000:最大生命]增加300，[c/0000FF:最大魔法]增加150\n" +
-                "免疫火焰烧伤\n" +
-                "-");
+                "免疫火焰烧伤");
         }
         public override void SetDefaults()
         {

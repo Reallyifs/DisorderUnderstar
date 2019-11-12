@@ -1,14 +1,18 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 namespace DisorderUnderstar.Items.Disorder
 {
     public class DisorderHammer : ModItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("无序·锤");
-            Tooltip.SetDefault("【[c/FF0000:无序-Disorder]】\n" +
+            DisplayName.SetDefault("Disorder ` Hammer");
+            DisplayName.AddTranslation(GameCulture.Chinese, "无序·锤");
+            Tooltip.SetDefault("[Disorder]\n" +
+                "Strong enough to destroy all walls.");
+            Tooltip.AddTranslation(GameCulture.Chinese, "【无序】\n" +
                 "强大到足以摧毁所有墙壁。");
         }
         public override void SetDefaults()

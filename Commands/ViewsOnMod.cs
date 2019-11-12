@@ -25,7 +25,8 @@ namespace DisorderUnderstar.Commands
         public override void Action(CommandCaller caller, string input, string[] args)
         {
             Main.NewText("这个Mod为四大Mod之首，当之无愧倒是真的", 随机数(), 随机数(), 随机数());
-            Main.NewText("但是由于更新得太频繁，导致汉化常常跟不上版本", 随机数());
+            Main.NewText("但是由于更新得太频繁，导致汉化常常跟不上版本", 随机数(), 随机数(), 随机数());
+            Main.NewText("这也算是灾厄的厉害之处吧", 随机数(), 随机数(), 随机数());
         }
     }
 }

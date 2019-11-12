@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.UI;
 using Terraria.ModLoader;
+using DisorderUnderstar.Tools;
 using Microsoft.Xna.Framework;
 using DisorderUnderstar.Events;
 using System.Collections.Generic;
@@ -37,15 +38,12 @@ namespace DisorderUnderstar
         }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
-            /*
             #region 展示物品价格
             if (DisorderUndetstarClientConfig.ShowItemValue)
             {
-                ItemTooltip tooltip = item.ToolTip;
                 int 铂 = 0, 金 = 0, 银 = 0, 铜 = 0;
                 int value = item.value;
-                string 原文本 = tooltip.GetLine(item.ToolTip.Lines);
-                string 现文本 = 原文本 + "\n物品的价格为：";
+                string 现文本 = "物品的价格为：";
                 while (value > 0)
                 {
                     if (value >= Item.sellPrice(platinum: 1))
@@ -88,13 +86,25 @@ namespace DisorderUnderstar
                     }
                     if (铜 > 0) { 现文本 += 铜 + "铜"; }
                 }
-                else
-                {
-                    现文本 += "无价";
-                }
+                else { 现文本 += "无价"; }
+                tooltips.Add(new TooltipLine(mod, "ItemValue", 现文本));
             }
             #endregion
-            */
+        }
+        /// <summary>
+        /// 利用这个生成伪原版叶绿水晶
+        /// </summary>
+        /// <param name="player">在这个玩家头上漂浮叶绿水晶</param>
+        public static void 漂浮叶绿水晶(Player player)
+        {
+            Vector2 uVEC = new Vector2(player.Center.X, player.position.Y - player.height);
+            if (player.whoAmI == Main.myPlayer)
+            {
+                Projectile 叶绿水晶 = Projectile.NewProjectileDirect(uVEC, player.velocity, ProjectileID.CrystalLeaf, Player.crystalLeafDamage,
+                    Player.crystalLeafKB, player.whoAmI);
+                叶绿水晶.position.X = player.Center.X;
+                叶绿水晶.position.Y = player.position.Y - player.height;
+            }
         }
     }
 }

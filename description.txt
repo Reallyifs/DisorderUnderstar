@@ -1,4 +1,4 @@
-﻿DisorderUnderstar v0.0.2.0更新！
+﻿[c/FF8000:Disorder][c/FF00FF:Understar][c/00007F:无序][c/00FFFF:之星] v0.0.2.0更新！
 
 ——————————
 
@@ -18,8 +18,8 @@
 DisorderUnderstar Mod交流群（群号：824525819）
 ——————————
 
-DisorderUnderstar v0.0.2.0
-无序之星 v0.0.2.0
+[c/FF8000:Disorder][c/FF00FF:Understar] v0.0.2.0
+[c/00007F:无序][c/00FFFF:之星] v0.0.2.0
 ————实弑Reality_Killer（Really'if.s.）
 
 

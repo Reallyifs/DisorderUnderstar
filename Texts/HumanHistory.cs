@@ -31,7 +31,7 @@ namespace DisorderUnderstar.Texts
         /// <summary>
         /// 在阅读的小节
         /// </summary>
-        public static int ReadPages = 1;
+        public int ReadPages = 1;
         #endregion
         public override void PreUpdate()
         {

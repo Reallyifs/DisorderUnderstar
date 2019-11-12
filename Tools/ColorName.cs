@@ -1,4 +1,7 @@
-﻿namespace DisorderUnderstar.Tools
+﻿using System;
+using Terraria.ModLoader;
+using System.Collections.Generic;
+namespace DisorderUnderstar.Tools
 {
     public class ColorName
     {

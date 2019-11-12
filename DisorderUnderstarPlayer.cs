@@ -4,12 +4,15 @@ using DisorderUnderstar;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
-// using DisorderUnderstar.Events;
+using DisorderUnderstar.Events;
+using System.Collections.Generic;
 using DisorderUnderstar.Items.Star;
+using static DisorderUnderstar.Events.LunarEclipse;
 namespace DisorderUnderstar
 {
     public class DisorderUnderstarPlayer : ModPlayer
     {
+        private readonly DisorderUndetstarClientConfig DisorderUndetstarClientConfig;
         #region 物品
         public bool 装备_蘑菇头甲;
         public bool 装备_无序我于万物之中;
@@ -41,7 +44,7 @@ namespace DisorderUnderstar
         #region 进世界提示（OnEnterWorld）
         public override void OnEnterWorld(Player player)
         {
-            Main.NewText("感谢加载“DisorderUnderstar Mod”！", Color.Blue);
+            Main.NewText("感谢加载DisorderUnderstar无序之星Mod！", Color.Blue);
             检测Mod加载();
         }
         #endregion
@@ -161,13 +164,15 @@ namespace DisorderUnderstar
         {
             // Item item = Main.item[player.HeldItem.type];
             // Projectile projectile = Main.projectile[item.shoot];
-            bool 拥有_星体蓄意 = player.HasItem(ModContent.ItemType<StellarDeliberate>());
+            事件发生(Main.player[Main.myPlayer]);
             if (player.GetModPlayer<DisorderUnderstarPlayer>().Fixing)
             {
+                player.aggro += 200;
                 player.statDefense = 0;
                 if (player.moveSpeed > player.GetModPlayer<DisorderUnderstarPlayer>().maxMoveSpeed) { player.moveSpeed = maxMoveSpeed; }
             }
-            if (拥有_星体蓄意) { player.aggro -= 10; }/*
+            if (player.HeldItem.type == ModContent.ItemType<StellarDeliberate>() && player.whoAmI == Main.myPlayer) { player.aggro -= 100; }
+            /*
             #region 难度判定
             if (DisorderUnderstar.Easy)
             {
@@ -183,45 +188,12 @@ namespace DisorderUnderstar
             }
             if (DisorderUnderstar.Hard)
             {
-                #region 躲避子弹
-                foreach (NPC npc in Main.npc)
-                {
-                    float disMAX = 5f;
-                    if (npc.type != NPCID.LunarTowerNebula && npc.type != NPCID.LunarTowerSolar && npc.type != NPCID.LunarTowerStardust &&
-                        npc.type != NPCID.LunarTowerVortex && npc.type != NPCID.EaterofWorldsHead && npc.type != NPCID.EaterofWorldsBody &&
-                        npc.type != NPCID.EaterofWorldsTail && npc.type != NPCID.TheDestroyer && npc.type != NPCID.TheDestroyerBody &&
-                        npc.type != NPCID.TheDestroyerTail)
-                    {
-                        float dis = Vector2.Distance(projectile.Center, npc.Center);
-                        if (disMAX >= dis && projectile.friendly && Main.rand.Next(1, 10) <= 1)
-                        {
-                            Vector2 tVEC = Vector2.Normalize(projectile.Center - npc.Center) * item.shootSpeed;
-                            npc.velocity *= tVEC.RotatedBy(Main.rand.NextFloatDirection() * 0.5f);
-                        }
-                        else if (Main.rand.Next(1, 100) <= 1)
-                        {
-                            projectile.position = projectile.Center;
-                            projectile.velocity /= 2;
-                        }
-                    }
-                }
-                #endregion
             }
             #endregion*/
         }
         public override void OnHitByNPC(NPC npc, int damage, bool crit)
         {
-            foreach (NPC target in Main.npc)
-            {
-                if (!target.friendly && target.active && 装备_无序我于万物之中)
-                {
-                    for (int i = 0; i < 10; i++)
-                    {
-                        npc.whoAmI = i;
-                        player.ApplyDamageToNPC(npc, damage * 2, 5f, 0, true);
-                    }
-                }
-            }
+            if (npc.active && !npc.friendly && 装备_无序我于万物之中) { player.ApplyDamageToNPC(npc, damage * 2, 5f, 0, Main.rand.NextBool()); }
         }
         public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore,
             ref PlayerDeathReason damageSource)
@@ -230,7 +202,7 @@ namespace DisorderUnderstar
             {
                 if (player.GetModPlayer<DisorderUnderstarPlayer>().装备_无序我于万物之中)
                 {
-                    if (DisorderUnderstar.Hell || DisorderUnderstar.Nightmare)
+                    if (DisorderUnderstar.Difficulty == (int)DifficultyMode.Hell || DisorderUnderstar.Difficulty == (int)DifficultyMode.Nightmare)
                     {
                         player.statLife = (realLife * 5) / 2;
                         player.GetModPlayer<DisorderUnderstarPlayer>().maxMoveSpeed = player.moveSpeed / 2.5f;
@@ -243,7 +215,7 @@ namespace DisorderUnderstar
                 }
                 else
                 {
-                    if (DisorderUnderstar.Hell || DisorderUnderstar.Nightmare)
+                    if (DisorderUnderstar.Difficulty == (int)DifficultyMode.Hell || DisorderUnderstar.Difficulty == (int)DifficultyMode.Nightmare)
                     {
                         player.statLife = realLife / 2;
                         player.GetModPlayer<DisorderUnderstarPlayer>().maxMoveSpeed = player.moveSpeed / 4;
@@ -257,6 +229,10 @@ namespace DisorderUnderstar
                 return false;
             }
             else { return true; }
+        }
+        public override void OnHitAnything(float x, float y, Entity victim)
+        {
+            LoadedMod.LoadedWtfway.Wtfway弹幕发射(player, victim, x, y);
         }
         public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource)
         {
@@ -278,14 +254,26 @@ namespace DisorderUnderstar
         }
         private void 检测Mod加载()
         {
-            Mod Wtfway = ModLoader.GetMod("Wtfway");
+            int 国产数 = 0;
+            Mod 神话 = ModLoader.GetMod("MythMod");
             Mod 灾厄 = ModLoader.GetMod("CalamityMod");
-            Mod 四十九落星 = ModLoader.GetMod("FallenStar49");
-            Mod 永恒意志 = ModLoader.GetMod("Eternalresolve");
+            Mod Wtfway = ModLoader.GetMod("Wtfway");
+            Mod 寰宇神明 = ModLoader.GetMod("Peripateticism");
             Mod 无尽星云 = ModLoader.GetMod("EndlessGalaxyMod");
-            Mod 华夏圣光 = ModLoader.GetMod("PeripateticismMod");
             Mod 一血上限 = ModLoader.GetMod("_1LifeMaxAccessories");
-            if (四十九落星 != null && 永恒意志 != null && 无尽星云 != null && 华夏圣光 != null)
+            Mod 永恒意志 = ModLoader.GetMod("Eternalresolve");
+            Mod 四十九落星 = ModLoader.GetMod("FallenStar49");
+            foreach (Mod mod in ModLoader.Mods)
+            {
+                if (mod == 神话) { 国产数++; }
+                if (mod == Wtfway) { 国产数++; }
+                if (mod == 寰宇神明) { 国产数++; }
+                if (mod == 无尽星云) { 国产数++; }
+                if (mod == 一血上限) { 国产数++; }
+                if (mod == 永恒意志) { 国产数++; }
+                if (mod == 四十九落星) { 国产数++; }
+            }
+            if (国产数 >= 3)
             {
                 Main.NewText("感情你是专玩国产啊？？？", Color.Blue);
             }
@@ -316,10 +304,10 @@ namespace DisorderUnderstar
                     加载了EndlessGalaxyMod = true;
                     Main.NewText("加载了无尽星云，可还行。", Color.Blue);
                 }
-                if (华夏圣光 != null)
+                if (寰宇神明 != null)
                 {
                     加载了PeripateticismMod = true;
-                    Main.NewText("加载了华夏圣光……", Color.Blue);
+                    Main.NewText("加载了寰宇神明……", Color.Blue);
                 }
                 if (一血上限 != null)
                 {

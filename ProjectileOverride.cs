@@ -2,23 +2,27 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
+using DisorderUnderstar.Events;
 using System.Collections.Generic;
 using DisorderUnderstar.Projectiles;
 namespace DisorderUnderstar
 {
     public class ProjectileOverride : GlobalProjectile
     {
-        public override bool CloneNewInstances => true;
-        public override bool InstancePerEntity => true;
-        public static string 弹幕贴图转换(bool 透明贴图)
+        public override void ModifyHitNPC(Projectile projectile, NPC target, ref int damage, ref float knockback, ref bool crit,
+            ref int hitDirection)
         {
-            string 输出;
-            if (透明贴图)
+            if (LunarEclipse.事件发生中)
             {
-                输出 = "DisorderUnderstar/Projectiles/TransparentProjectile";
+                damage = target.lifeMax / 8;
+                projectile.Kill();
             }
+        }
+        public static string 弹幕贴图转换(ProjectileImageType 贴图类)
+        {
+            if (贴图类 == ProjectileImageType.Transparent) { return "DisorderUnderstar/Projectiles/TransparentProjectile"; }
+            else if (贴图类 == ProjectileImageType.Star) { return "DisorderUnderstar/Projectiles/Star"; }
             else { return null; }
-            return 输出;
         }
     }
 }

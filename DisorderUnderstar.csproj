@@ -128,10 +128,11 @@
     <None Remove="NPCs\Events\LunarEclipse\EyeofLunarShine.png" />
     <None Remove="NPCs\Star\Hostile\StarCurseTheStarOfFire.png" />
     <None Remove="NPCs\Star\Hostile\StarIchorTheStarOfFire.png" />
-    <None Remove="PeripateticismMod\Items\PurpleShao.png" />
-    <None Remove="PeripateticismMod\Projectiles\ProPurpleShao1.png" />
-    <None Remove="PeripateticismMod\Projectiles\ProPurpleShao2.png" />
-    <None Remove="PeripateticismMod\魔绍.zip" />
+    <None Remove="Peripateticism\Items\PurpleShao.png" />
+    <None Remove="Peripateticism\Projectiles\ProPurpleShao1.png" />
+    <None Remove="Peripateticism\Projectiles\ProPurpleShao2.png" />
+    <None Remove="Peripateticism\红钒.zip" />
+    <None Remove="Peripateticism\魔绍.zip" />
     <None Remove="Projectiles\Code\ProCodeLaser.png" />
     <None Remove="Projectiles\Disorder\Bosses\DisorderEschatologyTriangleBlack.png" />
     <None Remove="Projectiles\Disorder\Bosses\DisorderEschatologyTriangleBule.png" />
@@ -152,6 +153,7 @@
     <None Remove="Projectiles\NNHolyArrow.png" />
     <None Remove="Projectiles\NNNHolyArrow.png" />
     <None Remove="Projectiles\ProRainbowLighting.png" />
+    <None Remove="Projectiles\Star.png" />
     <None Remove="Projectiles\Star\Boss\ProStarScatteredStardust.png" />
     <None Remove="Projectiles\Star\Boss\ProStarStardust.png" />
     <None Remove="Projectiles\Star\Monsters\ProStarCTSOF.png" />
@@ -177,6 +179,7 @@
     <None Remove="Projectiles\Testament\ProTestamentLightboom.png" />
     <None Remove="Projectiles\Testament\ProTestamentLightsaber.png" />
     <None Remove="Projectiles\TransparentProjectile.png" />
+    <None Remove="Sounds\AnotherMusic\Sky.m4a" />
     <None Remove="Sounds\Disorder\DisorderEschatologyDeathSound.mp3" />
   </ItemGroup>
 </Project>

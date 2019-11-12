@@ -4,9 +4,6 @@ using Terraria.ModLoader;
 using DisorderUnderstar.Buffs;
 using Microsoft.Xna.Framework;
 using Terraria.GameContent.Events;
-using DisorderUnderstar.Items.Disorder;
-using DisorderUnderstar.Projectiles.Star;
-using DisorderUnderstar.Projectiles.LoadedMod;
 using DisorderUnderstar.NPCs.Events.LunarEclipse;
 namespace DisorderUnderstar.Events
 {
@@ -15,10 +12,10 @@ namespace DisorderUnderstar.Events
         public static int 杀怪分数 = 0;
         public static bool 事件发生中 = false;
         public static bool 使用月蚀耀碑 = false;
-        private int 波数 = 0;
+        private static int 波数 = 0;
         private static bool 每夜晚检测 = true;
         #region 特定怪物生成
-        private int 生成_月耀之眼;
+        private static int 生成_月耀之眼;
         #endregion
         public static bool 符合事件出现条件_月蚀()
         {
@@ -35,51 +32,34 @@ namespace DisorderUnderstar.Events
             else if (!每夜晚检测 && Main.dayTime) { 每夜晚检测 = true; }
             return !Main.dayTime && !Main.bloodMoon && Main.hardMode && !Main.pumpkinMoon && !Main.snowMoon && !DD2Event.Ongoing && 概率选中;
         }
-        public bool 判定(NPC target, Item item, Player player, Projectile projectile)
+        public static bool 判定()
         {
-            if (Main.dayTime || !完成事件())
+            if (Main.dayTime || 完成事件())
             {
                 事件发生中 = false;
                 使用月蚀耀碑 = false;
                 return false;
             }
-            if (使用月蚀耀碑 || 符合事件出现条件_月蚀_有概率() || 事件发生中)
-            {
-                事件发生中 = true;
-                事件发生(item);
-                事件发生(player);
-                事件发生(target);
-                事件发生(projectile);
-            }
+            if (使用月蚀耀碑 || 符合事件出现条件_月蚀_有概率() || 事件发生中) { 事件发生中 = true; }
             return 事件发生中;
         }
-        private bool 完成事件()
+        private static bool 完成事件()
         {
-            if (波数 > AllType.月蚀_杀怪分数.Length) { return true; }
-            else if (杀怪分数 >= AllType.月蚀_杀怪分数[波数]) { 波数 += 1; }
+            if (波数 > 月蚀.月蚀_杀怪分数.Length) { return true; }
+            else if (杀怪分数 >= 月蚀.月蚀_杀怪分数[波数]) { 波数 += 1; }
             return false;
         }
-        public void 事件发生(Item item)
+        public static void 事件发生(Item item)
         {
+            if (!判定()) { return; }
+            if (item.crit > 20) { item.crit = 20; }
+            if (item.mana < item.crit * 2) { item.mana = item.crit * 2; }
+            if (item.damage > item.crit * 5) { item.damage = item.crit * 5; }
+            if (item.useAnimation < 30) { item.useAnimation = 30; }
+            if (item.useTime < item.useAnimation) { item.useTime = item.useAnimation; }
             if (item.accessory)
             {
                 if (item.defense > 10) { item.defense = 10; }
-            }
-            if (item.melee)
-            {
-                if (item.crit > 20) { item.crit = 20; }
-                if (item.damage > item.crit * 5) { item.damage = item.crit * 5; }
-                if (item.useTime < item.useAnimation) { item.useTime = item.useAnimation; }
-                if (item.useAnimation < 30) { item.useAnimation = 30; }
-                // ItemOverride.事件_月蚀(item);
-            }
-            if (item.magic)
-            {
-                if (item.crit > 20) { item.crit = 20; }
-                if (item.mana < item.crit * 2) { item.mana = item.crit * 2; }
-                if (item.damage > item.crit * 5) { item.damage = item.crit * 5; }
-                if (item.useTime < item.useAnimation) { item.useTime = item.useAnimation; }
-                if (item.useAnimation < 30) { item.useAnimation = 30; }
             }
             if (item.ranged)
             {
@@ -93,16 +73,15 @@ namespace DisorderUnderstar.Events
             }
             return;
         }
-        public void 事件发生(Player player)
+        public static void 事件发生(Player player)
         {
             if (player.active)
             {
                 player.nightVision = true;
-                if (player.statDefense > 128) { player.statDefense = 128; }
+                if (player.statDefense > 100) { player.statDefense = 100; }
             }
-            if (NPC.downedPlantBoss && 波数 >= 5) { 生成怪物_世纪之花后(); }
         }
-        public void 事件发生(NPC target)
+        public static void 事件发生(NPC target)
         {
             if (target.active)
             {
@@ -112,9 +91,10 @@ namespace DisorderUnderstar.Events
                     target.knockBackResist = 5f;
                 }
             }
+            if (NPC.downedPlantBoss && 波数 >= 5) { 生成怪物_世纪之花后(); }
             return;
         }
-        public void 事件发生(Projectile projectile)
+        public static void 事件发生(Projectile projectile)
         {
             Player player = Main.player[Main.myPlayer];
             if (projectile.active && projectile.hostile)
@@ -123,15 +103,15 @@ namespace DisorderUnderstar.Events
                 float disMAX = 0.5f;
                 if (disMAX >= disP)
                 {
-                    projectile.Kill();
                     player.statLife -= 100;
                     player.AddBuff(ModContent.BuffType<DebuffLunarErosion>(), 60);
+                    projectile.Kill();
                 }
                 else
                 {
-                    Vector2 tVEC = Vector2.Normalize(player.Center - projectile.Center) * 30;
+                    Vector2 tVEC = (Vector2.Normalize(player.Center - projectile.Center) + player.velocity * 4) * 30;
                     float nVEC = 40f;
-                    if (nVEC > 30f) { nVEC--; }
+                    if (nVEC > 30f) { nVEC -= 0.1f; }
                     projectile.velocity = (projectile.velocity * nVEC + tVEC) / (nVEC + 1f);
                 }
                 foreach (NPC npc in Main.npc)
@@ -139,34 +119,23 @@ namespace DisorderUnderstar.Events
                     float disN = Vector2.Distance(projectile.Center, npc.Center);
                     if (npc.friendly && npc.active && disMAX >= disN)
                     {
-                        projectile.Kill();
                         npc.life -= 100;
                         npc.lifeMax -= npc.lifeMax / 10;
                         npc.AddBuff(ModContent.BuffType<DebuffLunarErosion>(), 120);
-                    }
-                    else if (!npc.friendly && npc.active && Main.rand.Next(1, 100) <= 1 && disMAX >= disN)
-                    {
                         projectile.Kill();
-                        npc.life += npc.lifeMax / 2;
-                        npc.lifeMax += npc.lifeMax / 4;
                     }
-                }
-            }
-            foreach (NPC target in Main.npc)
-            {
-                if (projectile.active && projectile.friendly)
-                {
-                    float dis = Vector2.Distance(projectile.Center, target.Center);
-                    float disMAX = 0.1f;
-                    projectile.penetrate = 1;
-                    projectile.extraUpdates += 2;
-                    if (projectile.knockBack > 3f) { projectile.knockBack = 3f; }
-                    if (disMAX >= dis && projectile.CanHit(target)) { projectile.damage = target.lifeMax / 8; }
+                    else if (!npc.friendly && npc.active && npc.life != npc.lifeMax && Main.rand.Next(1, 100) <= 1 && disMAX >= disN)
+                    {
+                        npc.life += npc.lifeMax / 4;
+                        npc.lifeMax += npc.lifeMax / 8;
+                        npc.HealEffect(npc.lifeMax / 2);
+                        projectile.Kill();
+                    }
                 }
             }
             return;
         }
-        private void 生成怪物_世纪之花后()
+        private static void 生成怪物_世纪之花后()
         {
             Player player = Main.player[Main.myPlayer];
             #region 月耀之眼
@@ -174,14 +143,14 @@ namespace DisorderUnderstar.Events
             {
                 if (Main.rand.NextBool())
                 {
-                    int yPosition = (int)player.Center.Y + Main.rand.Next(-20, 20);
                     int xPosition = (int)player.Center.X + Main.screenWidth + Main.rand.Next(-20, 20);
+                    int yPosition = (int)player.Center.Y + Main.rand.Next(-20, 20);
                     NPC.NewNPC(xPosition, yPosition, ModContent.NPCType<EyeofLunarShine>());
                 }
                 else
                 {
-                    int yPosition = (int)player.Center.Y + Main.rand.Next(-20, 20);
                     int xPosition = (int)player.Center.X - Main.screenWidth + Main.rand.Next(-20, 20);
+                    int yPosition = (int)player.Center.Y + Main.rand.Next(-20, 20);
                     NPC.NewNPC(xPosition, yPosition, ModContent.NPCType<EyeofLunarShine>());
                 }
                 生成_月耀之眼 += 1;

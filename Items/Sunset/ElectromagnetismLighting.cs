@@ -26,7 +26,6 @@ namespace DisorderUnderstar.Items.Sunset
             item.magic = true;
             item.scale = 0.8f;
             item.value = Item.buyPrice(0, 10, 50, 0);
-            item.value = Item.sellPrice(0, 0, 1, 0);
             item.width = 54;
             item.damage = 136;
             item.height = 26;

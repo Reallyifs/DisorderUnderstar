@@ -13,9 +13,13 @@ namespace DisorderUnderstar.Items.Star
             DisplayName.SetDefault("Stellar Deliberate");
             DisplayName.AddTranslation(GameCulture.Chinese, "星体蓄意");
             Tooltip.SetDefault("[Star]\n" +
-                "\"The stars are shining for you!\"");
+                "\"The stars are shining for you!\"\n" +
+                "60% chance to not [c/00007F:consume arrow]\n" +
+                (Main.expertMode ? "Turn Wooden arrow, Fire arrow and Jesters arrow into Star arrow." : "Turn Wooden arrow to Star arrow"));
             Tooltip.AddTranslation(GameCulture.Chinese, "【星星】\n" +
-                "“星星正在为你照耀！”");
+                "“星星正在为你照耀！”\n" +
+                "60%的几率不[c/00007F:消耗箭]\n" +
+                (Main.expertMode ? "将木剑，火焰箭和小丑箭转换为星星箭" : "将木剑转换为星星之箭"));
         }
         public override void SetDefaults()
         {
@@ -39,33 +43,23 @@ namespace DisorderUnderstar.Items.Star
             item.shootSpeed = 20f;
             item.useAnimation = 20;
         }
-        public override bool ConsumeAmmo(Player player)
-        {
-            if (Main.rand.Next(0, 4) < 3) { return false; }
-            else { return true; }
-        }
+        public override bool ConsumeAmmo(Player player) => Main.rand.Next(0, 4) > 3;
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage,
             ref float knockBack)
         {
-            if (!Main.expertMode)
+            Vector2 tVEC = Vector2.Normalize(Main.MouseWorld - player.Center) * item.shootSpeed;
+            if (Main.expertMode)
             {
-                Vector2 tVEC = Vector2.Normalize(Main.MouseWorld - player.Center) * item.shootSpeed;
-                if (type == ProjectileID.WoodenArrowFriendly)
+                if (type == ProjectileID.WoodenArrowFriendly || type == ProjectileID.FireArrow || type == ProjectileID.JestersArrow)
                 {
-                    type = Projectile.NewProjectile(position, tVEC, ModContent.ProjectileType<ProStarArrow>(), damage, knockBack / 2f, item.owner);
+                    type = ModContent.ProjectileType<ProStarArrow>();
                 }
-                else if (type == ProjectileID.FireArrow)
-                {
-                    type = Projectile.NewProjectile(position, tVEC, ModContent.ProjectileType<ProStarArrow>(), damage, knockBack / 2f, item.owner);
-                }
-                else { Projectile.NewProjectile(position, tVEC, type, damage, knockBack, item.owner); }
             }
+            else if (type == ProjectileID.WoodenArrowFriendly) { type = ModContent.ProjectileType<ProStarArrow>(); }
+            Projectile.NewProjectile(position, tVEC, type, damage, knockBack, item.owner);
             return false;
         }
-        public override Vector2? HoldoutOffset()
-        {
-            return new Vector2(0.0f, 0.0f);
-        }
+        public override Vector2? HoldoutOffset() => new Vector2(0f, 0f);
         public override void AddRecipes()
         {
             ModRecipe recipe1 = new ModRecipe(mod)

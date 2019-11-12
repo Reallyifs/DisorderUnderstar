@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 namespace DisorderUnderstar.Items.Star.Armors
 {
     [AutoloadEquip(EquipType.Legs)]
@@ -8,13 +9,18 @@ namespace DisorderUnderstar.Items.Star.Armors
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("星星裤子");
-            Tooltip.SetDefault("【星星-Star】\n" +
+            DisplayName.SetDefault("Star Pants");
+            DisplayName.AddTranslation(GameCulture.Chinese, "星星裤子");
+            Tooltip.SetDefault("[Star]\n" +
+                "\"Go to star source.\"\n" +
+                "-Equipment Effect-\n" +
+                "[c/FF00FF:Magic Crit] increase 8%, Move Speed increase 40%\n" +
+                "[c/FF00FF:Magic] damage increase 24, [c/0000FF:Maximum Mana] increase 15");
+            Tooltip.AddTranslation(GameCulture.Chinese, "【星星】\n" +
                 "“走向星空源头。”\n" +
-                "-\n" +
+                "-装备效果-\n" +
                 "[c/FF00FF:魔法暴击]增加8%，移动速度增加40%\n" +
-                "[c/FF00FF:魔法伤害]增加24，[c/0000FF:魔法上限]增加15\n" +
-                "-");
+                "[c/FF00FF:魔法伤害]增加24，[c/0000FF:魔法上限]增加15");
         }
         public override void SetDefaults()
         {

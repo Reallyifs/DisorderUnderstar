@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 using Microsoft.Xna.Framework;
 using DisorderUnderstar.Tools;
 namespace DisorderUnderstar.Items.Star
@@ -9,18 +10,28 @@ namespace DisorderUnderstar.Items.Star
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("环绕之星");
-            Tooltip.SetDefault("【星星-Star】\n" +
-                "“这项链旁好像围着一些小的行星碎片？”\n" +
+            DisplayName.SetDefault("Surround Star");
+            DisplayName.AddTranslation(GameCulture.Chinese, "环绕之星");
+            Tooltip.SetDefault("[Star]\n" +
+                "\"The necklace seems to be surrounded by some small pieces of planets?\"\n" +
+                "\"Hey, look, meteor shower.\"\n" +
+                "\"The temperature of meteors is very high...\"\n" +
+                "-Equipment Effect-\n" +
+                "[c/FF0000:Maximum Life] increase 100, [c/0000FF:Maximum Mana] increase 20\n" +
+                "[c/FF00FF:Magic], [c/FF8000:Melee] and [c/00007F:Ranged] damage increase 10%, [c/0000FF:Mana Cost] reduce 11%\n" +
+                "[c/FF8000:Melee Crit] increase 5%, [c/FF8000:Melee Speed] increase 10%, Move Speed increase 50%, Jump Speed Boost 10%\n" +
+                "Immune to Knockback, [c/3F3F3F:On Fire!], [c/3F3F3F:Poisoned] and [c/3F3F3F:Venom] debuff\n" +
+                "If your [c/FF0000:Life] is less than 30% of your [c/FF0000:Maximum Life], you will get [c/BFBFBF:Ice Barrier] buff");
+            Tooltip.AddTranslation(GameCulture.Chinese, "【星星】\n" +
+                "“这项链旁好像围绕着一些小的行星碎片？”\n" +
                 "“嘿，看呐，流星雨。”\n" +
                 "“听说流星的温度很高呢……”\n" +
-                "-\n" +
+                "-装备效果-\n" +
                 "[c/FF0000:最大生命]增加100，[c/0000FF:最大魔法]增加20\n" +
-                "[c/FF00FF:魔法]、[c/FF8000:近战]和远程伤害增加10%，[c/0000FF:魔法消耗]减少11%\n" +
+                "[c/FF00FF:魔法]、[c/FF8000:近战]和[c/00007F:远程]伤害增加10%，[c/0000FF:魔法消耗]减少11%\n" +
                 "[c/FF8000:近战暴击]增加5%，[c/FF8000:近战速度]增加10%，速度增加50%，跳跃高度增加10%\n" +
                 "免疫击退和[c/3F3F3F:着火]、[c/3F3F3F:中毒]、[c/3F3F3F:剧毒Debuff]\n" +
-                "如果你的[c/FF0000:生命]低于你[c/FF0000:最大生命]的30%，你会获得[c/BFBFBF:冰障Buff]\n" +
-                "-");
+                "如果你的[c/FF0000:生命]低于你[c/FF0000:最大生命]的30%，你会获得[c/BFBFBF:冰障Buff]");
         }
         public override void SetDefaults()
         {

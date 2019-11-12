@@ -1,7 +1,9 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Utilities;
 using Terraria.Localization;
+using Microsoft.Xna.Framework;
 using DisorderUnderstar.Projectiles.Star;
 namespace DisorderUnderstar.Items.Star
 {
@@ -40,6 +42,7 @@ namespace DisorderUnderstar.Items.Star
             item.expertOnly = true;
             item.shootSpeed = 9f;
             item.useAnimation = 60;
+            if (item.Prefix(PrefixID.Mythical)) { item.prefix = PrefixID.Godly; }
         }
         public override void AddRecipes()
         {

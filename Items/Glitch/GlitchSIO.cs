@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 using DisorderUnderstar.Tools;
 using Microsoft.Xna.Framework;
 using DisorderUnderstar.Projectiles.Glitch;
@@ -11,7 +12,10 @@ namespace DisorderUnderstar.Items.Glitch
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Glitch S.I.O.");
-            Tooltip.SetDefault("根本不与其他弓一般");
+            Tooltip.SetDefault("[Glitch]\n" +
+                "Not like any other bow");
+            Tooltip.AddTranslation(GameCulture.Chinese, "【差错】\n" +
+                "根本不与其他弓一般");
         }
         public override void SetDefaults()
         {

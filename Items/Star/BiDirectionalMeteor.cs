@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 using Microsoft.Xna.Framework;
 using DisorderUnderstar.Tools;
 namespace DisorderUnderstar.Items.Star
@@ -9,23 +10,40 @@ namespace DisorderUnderstar.Items.Star
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("双向流星");
-            Tooltip.SetDefault("快看！流星雨来了！\n" +
+            DisplayName.SetDefault("Bi-Directional Meteor");
+            DisplayName.AddTranslation(GameCulture.Chinese, "双向流星");
+            Tooltip.SetDefault("[Star]\n" +
+                "\"Look! Here comes the meteor shower!\"\n" +
+                "\"I heard that I made a wish to the meteor...\"\n" +
+                "\"It will bacome true!\"\n" +
+                "-Equipment Effect-\n" +
+                "[c/FF0000:Maximum Life] increase 400, [c/0000FF:Maximum Mana] increase 200\n" +
+                "[c/000000:All damage] increase 40%\n" +
+                "[c/0000FF:Mana Cost] reduce 4%, [c/FF8000:Malee Crit] increase 20%, [c/FF8000:Malee Speed] increase 40%\n" +
+                "Move Speed increase 2%, Jump Speed Boost 40%\n" +
+                "Immune to Fall Damage, [c/3F3F3F:Slow], [c/3F3F3F:On Fire!], [c/3F3F3F:Burning], [c/3F3F3F:Darkness], [c/3F3F3F:Poisoned], [c/3F3F3F:Silenced] and [c/3F3F3F:Broken Armor] debuff\n" +
+                "-\n" +
+                "When your [c/FF0000:Maximum Life] is greater than or equal to 500, [c/0000FF:Maximum Mana] is greater than or equal to 200\n" +
+                "And your [c/FF0000:Life] is below 100, [c/0000FF:Mana] is below 30\n" +
+                "Your [c/00FFFF:Minion] damage increase 10, [c/00007F:Ranged] damage increase 20, [c/0000FF:Magic] damage increase 30\n" +
+                "[c/FF8000:Melee] damage increase 40 and [c/7F7F7F:Thrown] damage increase 50\n" +
+                "And give you [c/BFBFBF:Ice Barrier] buff");
+            Tooltip.AddTranslation(GameCulture.Chinese, "【星星】\n" +
+                "“快看！流星雨来了！”\n" +
                 "“听说，对着流星许下愿望……”\n" +
                 "“就会实现哦！”\n" +
-                "-\n" +
+                "-装备效果-\n" +
                 "[c/FF0000:生命上限]增加400，[c/0000FF:魔法上限]增加200\n" +
                 "[c/000000:所有伤害]增加40%\n" +
                 "[c/0000FF:魔法消耗]减少4%，近战暴击增加20%，近战速度加快40%\n" +
-                "移动速度增加2%，跳跃高度增加40%，免疫摔落伤害\n" +
-                "免疫摔落伤害，[c/3F3F3F:缓慢]、[c/3F3F3F:着火]、[c/3F3F3F:燃烧]、[c/3F3F3F:黑暗]、[c/3F3F3F:中毒]、[c/3F3F3F:沉默]、[c/3F3F3F:破甲]\n" +
+                "移动速度增加2%，跳跃高度增加40%\n" +
+                "免疫摔落伤害，[c/3F3F3F:缓慢]、[c/3F3F3F:着火]、[c/3F3F3F:燃烧]、[c/3F3F3F:黑暗]、[c/3F3F3F:中毒]、[c/3F3F3F:沉默]和[c/3F3F3F:破甲]\n" +
                 "-\n" +
                 "当你的[c/FF0000:生命上限]大于等于500，[c/0000FF:魔法上限]大于等于200\n" +
                 "且[c/FF0000:生命值]小于100，[c/0000FF:魔法值]小于30时\n" +
                 "你的[c/00FFFF:随从伤害]增加10，[c/00007F:远程伤害]增加20，[c/0000FF:魔法伤害]增加30\n" +
                 "[c/FF8000:近战伤害]增加40，[c/7F7F7F:投掷伤害]增加50\n" +
-                "并给予一个持续20秒的[c/BFBFBF:冰障buff]\n" +
-                "-");
+                "并给予一个持续20秒的[c/BFBFBF:冰障buff]");
         }
         public override void SetDefaults()
         {

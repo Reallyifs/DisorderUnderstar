@@ -6,6 +6,7 @@ namespace DisorderUnderstar.Projectiles.Star
 {
     public class ProStarDownStar : ModProjectile
     {
+        public override string Texture => ProjectileOverride.弹幕贴图转换(ProjectileImageType.Star);
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("星星");

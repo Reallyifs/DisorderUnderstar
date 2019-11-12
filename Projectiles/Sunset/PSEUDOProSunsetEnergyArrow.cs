@@ -7,6 +7,7 @@ namespace DisorderUnderstar.Projectiles.Sunset
 {
     public class PSEUDOProSunsetEnergyArrow : ModProjectile
     {
+        public override string Texture => ProjectileOverride.弹幕贴图转换(ProjectileImageType.Transparent);
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("???你还能被这个打死我服了");
@@ -66,9 +67,6 @@ namespace DisorderUnderstar.Projectiles.Sunset
                 return;
             }
         }
-        public override bool ShouldUpdatePosition()
-        {
-            return false;
-        }
+        public override bool ShouldUpdatePosition() => false;
     }
 }

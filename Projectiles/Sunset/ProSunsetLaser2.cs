@@ -6,6 +6,7 @@ namespace DisorderUnderstar.Projectiles.Sunset
 {
     public class ProSunsetLaser2 : ModProjectile
     {
+        public override string Texture => ProjectileOverride.弹幕贴图转换(ProjectileImageType.Transparent);
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("金辉激光");

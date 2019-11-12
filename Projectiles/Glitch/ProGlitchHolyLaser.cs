@@ -8,7 +8,7 @@ namespace DisorderUnderstar.Projectiles.Glitch
     {
         private bool[] visited;
         public float distance;
-        public override string Texture => ProjectileOverride.弹幕贴图转换(true);
+        public override string Texture => ProjectileOverride.弹幕贴图转换(ProjectileImageType.Transparent);
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("神圣激光");

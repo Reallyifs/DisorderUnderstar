@@ -8,6 +8,7 @@ namespace DisorderUnderstar.Projectiles.Star
     {
         private int aiVisited;
         private bool[] visited;
+        public override string Texture => ProjectileOverride.弹幕贴图转换(ProjectileImageType.Star);
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("星星");

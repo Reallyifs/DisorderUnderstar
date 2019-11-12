@@ -41,7 +41,7 @@ namespace DisorderUnderstar.Projectiles.Testament
             target.lifeMax -= 13;
             if (!target.active)
             {
-                target.life = target.lifeMax / 2;
+                target.life = 1;
                 target.active = true;
                 target.lifeMax -= target.lifeMax / 2;
             }

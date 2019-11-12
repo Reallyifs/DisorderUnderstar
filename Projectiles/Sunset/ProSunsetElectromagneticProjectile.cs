@@ -45,7 +45,7 @@ namespace DisorderUnderstar.Projectiles.Sunset
                 Dust.NewDust(projectile.Center, projectile.width * 2, projectile.height * 2, MyDustId.BlueMagic, projectile.velocity.X,
                     projectile.velocity.Y, 128, Color.Blue, 1.5f);
             }
-            if(projectile.timeLeft<=5997)
+            if (projectile.timeLeft <= 5997)
             {
                 NPC tar = null;
                 float disMAX = 1000f;
@@ -74,7 +74,7 @@ namespace DisorderUnderstar.Projectiles.Sunset
         }
         public override void Kill(int timeLeft)
         {
-            for(int i = 0; i < 5; i++)
+            for (int i = 0; i < 5; i++)
             {
                 Dust.NewDust(projectile.Center, projectile.width * 3, projectile.height * 3, MyDustId.BlueCircle, 3f, 3f, 128, Color.Blue, 1f);
             }

@@ -30,44 +30,35 @@ namespace DisorderUnderstar.NPCs.Events.LunarEclipse
             npc.DeathSound = SoundID.NPCDeath1;
             npc.noTileCollide = true;
             npc.knockBackResist = 0f;
+            for (int _0 = 0; _0 < npc.buffImmune.Length; _0++) { npc.buffImmune[_0] = true; }
         }
-        public override void FindFrame(int frameHeight) => npc.frame.Y = 24 * frameHeight;
         public override void AI()
         {
-            npc.ai[0]++;
-            if (npc.ai[0] == 12) { FindFrame(0); }
-            else if (npc.ai[0] == 24)
+            NPCOverride.读图设置(npc, 12, true);
+            int _1 = 0;
+            _1++;
+            Player _2 = Main.player[npc.target];
+            if (npc.life <= npc.lifeMax / 4)
             {
-                FindFrame(1);
-                npc.ai[0] = 0;
-            }
-            for (int i = 0; i < Main.maxBuffTypes; i++) { npc.buffImmune[i] = true; }
-            int _0 = 0, _1 = 0;
-            Player _3 = Main.player[npc.target];
-            if (_0 == 0)
-            {
-                Vector2 _4 = Vector2.Normalize(_3.Center - npc.Center) * 30;
-                npc.velocity = (npc.velocity + _4) * 0.9f;
-                _0 = 1;
-            }
-            if (npc.life < npc.lifeMax / 4)
-            {
-                if (_1 < 60)
+                if (_1 == 1)
                 {
-                    _1++;
-                    if (_1 > 40) { npc.velocity *= 0.9f; }
+                    Vector2 tVEC = Vector2.Normalize(_2.Center - npc.Center) * 50;
+                    npc.velocity = tVEC * 0.9f;
                 }
-                else { _0 = _1 = 0; }
+                else if (_1 < 60 && _1 > 30) { npc.velocity *= 0.8f; }
+                else if (_1 >= 60) { _1 = 0; }
             }
             else
             {
-                if (_1 < 120)
+                if (_1 == 1)
                 {
-                    _1++;
-                    if (_1 > 60) { npc.velocity *= 0.8f; }
+                    Vector2 tVEC = Vector2.Normalize(_2.Center - npc.Center) * 25;
+                    npc.velocity = tVEC * 0.8f;
                 }
-                else { _0 = _1 = 0; }
+                else if (_1 < 120 && _1 > 60) { npc.velocity *= 0.9f; }
+                else if (_1 >= 120) { _1 = 0; }
             }
+            if (npc.life == npc.lifeMax / 4 && _1 != 0) { _1 = 0; }
         }
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
